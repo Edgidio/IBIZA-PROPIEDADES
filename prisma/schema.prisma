@@ -1,0 +1,72 @@
+// This is your modified Prisma schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuarios {
+  id        Int      @id @default(autoincrement())
+  usuario   String   @db.VarChar(20) @unique
+  password  String   @db.VarChar(100)
+  admin     String   @db.VarChar(1)
+  propiedades Propiedades[]   @relation("UsuarioPropiedad")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Propietarios {
+  cedula    Int     @id @unique
+  nombres   String  @db.VarChar(60)
+  apellidos String  @db.VarChar(60)   
+  telefono  String  @db.VarChar(15) 
+  correo    String  @db.VarChar(100)
+  casas     Propiedades[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Propiedades {
+  id               Int      @id @default(autoincrement())
+  id_propietario   Int 
+  propietario      Propietarios @relation(fields: [id_propietario], references: [cedula])
+  descripcion      String  @db.VarChar(100)
+  detalles         String  @db.VarChar(100)
+  ubicacion        String  @db.VarChar(100)
+  precio           Int?    @default(0)
+  venta_renta      String? @db.VarChar(1) @default("V")
+  n_habitaciones   Int?    @default(0)
+  n_banos          Int?    @default(0)
+  superficie       Float?  @default(0)
+  terreno          Float?  @default(0) 
+  tipo_propiedad   String  @db.VarChar(1)
+  vendida          Boolean? @default(false)
+  fotos            Propiedades_img[]
+  usuario          Usuarios? @relation("UsuarioPropiedad", fields: [usuarioId], references: [id])
+  usuarioId        Int?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model Propiedades_img {
+  id                      Int      @id @default(autoincrement())
+  id_propiedad            Int      
+  propiedad               Propiedades @relation(fields: [id_propiedad], references: [id])
+  ruta_imagen_propiedad   String   @db.VarChar(200)   
+  cantidad_img            Int
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+}
+
+model log_sesiones {
+  id                      Int       @id @default(autoincrement())
+  direccion_IP            String    @db.VarChar(200)
+  usuario                 String    @db.VarChar(200)
+  createdAt               DateTime? @default(now())
+  sesion                  Boolean
+  visto                   Boolean   @default(false)
+}

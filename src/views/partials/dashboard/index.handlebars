@@ -1,0 +1,164 @@
+
+    <!-- Left Panel -->
+    {{> "dashboard/componentes/aside" }}
+    <!-- /#left-panel -->
+
+    <!-- Right Panel -->
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        {{> "dashboard/componentes/header" }}
+        <!-- /#header -->
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Animated -->
+            <div class="animated fadeIn">
+                <!-- Widgets  -->
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-1">
+                                        <i class="pe-7s-cash"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text">$<span class="count">23569</span></div>
+                                            <div class="stat-heading">Total prop</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-2">
+                                        <i class="pe-7s-cart"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">3435</span></div>
+                                            <div class="stat-heading">Ventas</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-3">
+                                        <i class="fa fa-home"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">349</span></div>
+                                            <div class="stat-heading">Propiedades</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-4">
+                                        <i class="pe-7s-users"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">2986</span></div>
+                                            <div class="stat-heading">Clientes</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Widgets -->
+
+                <div class="clearfix"></div>
+
+
+   
+
+            <!-- .animated -->
+        </div>
+        <!-- /.content -->
+        <div class="clearfix"></div>
+
+        {{> "dashboard/componentes/footer" }}
+
+    </div>
+ 
+
+{{> "dashboard/componentes/scripts" }}
+
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        // Frontend
+        document.addEventListener('DOMContentLoaded', () => {
+            const socket = io();
+
+            // Marcar las notificaciones en visto
+            const botonActualizarCampo = document.getElementById('notification');
+
+            // Agregar un evento click al botón
+            botonActualizarCampo.addEventListener('click', () => {
+
+                console.log("emit")
+                
+                socket.emit('cliente_envia_evento');
+                const vistas_ = document.querySelector('.count');
+
+                vistas_.innerHTML = '0';
+
+            });
+
+            // Escucha el eventos para el intento o inicio de sesion
+            socket.on("inicio_de_sesion", (data) => {
+
+                const vistas_ = document.querySelector('.count');
+                vistas_.innerHTML = data.N_inicios;
+
+                const notificaciones = document.querySelector('#notificaciones_inicios');  
+
+                if (data.Iusuario.sesion){
+
+                    notificaciones.innerHTML += `                  
+                        <a class="dropdown-item media" href="#">
+                            <i style="color: #28A745;" class="fa fa-check"></i>
+                            <p>Inicio de sesion correcto</p>     
+                        </a>                    
+                    `
+
+                }else{
+                    
+                    notificaciones.innerHTML += `                  
+                        <a class="dropdown-item media" href="#">
+                            <i style="color: #DC3545;" class="fa fa-warning"></i>
+                            <p>inicio de sesion fallido</p>
+                        </a>                   
+                    `
+
+                }
+
+            })
+        });
+    </script>
+

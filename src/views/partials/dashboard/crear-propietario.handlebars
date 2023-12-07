@@ -1,0 +1,235 @@
+
+    <!-- Left Panel -->
+    {{> "dashboard/componentes/aside" }}
+    <!-- /#left-panel -->
+
+    <!-- Right Panel -->
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        {{> "dashboard/componentes/header" }}
+        <!-- /#header -->
+
+        
+        <!-- Content -->
+        <div class="breadcrumbs">
+
+            {{#if req_propietario_existe}}
+            <div style="text-align: center;" id="success-alertt" class="alert alert-warning" role="alert">
+                {{req_propietario_existe}}
+            </div>
+            {{/if}} 
+
+            <div class="breadcrumbs-inner">
+                <div class="row m-0">
+                    <div class="col-sm-4">
+                        <div class="page-header float-left">
+                            <div class="page-title">
+                                <h1>Crear propietario</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+ 
+
+        <div class="content">
+
+            <div class="animated fadeIn">
+                <div class="row">
+                   <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Nuevo propietario</strong>
+                            </div>
+                            <div class="card-body">
+                                <!-- Credit Card -->
+                                <div id="pay-invoice">
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            <h3 class="text-center">Propietario</h3>
+                                        </div>
+                                        <hr>
+                                        <br>
+                                        <form action="#" method="post" novalidate="novalidate">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label for="nombres" class="control-label mb-1">Nombres</label>
+                                                        <input {{#if errors}}{{#each errors}}{{#eq field "nombres"}} style=" border-color: #F3AA08 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.nombres}}"{{/if}}  type="text" id="nombres" name="nombres"  class="form-control cc-exp" placeholder="Nombres">
+                                                    </div>
+                                                    {{#if errors}}
+                                                        {{#each errors}}
+                                                            {{#eq field "nombres"}}
+                                                                <div style="margin-top: 12px;" class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
+                                                                    
+                                                                        {{message}}
+                                                                    
+                                                                </div>
+                                                            {{/eq}}
+                                                        {{/each}}
+                                                    {{/if}}
+                                                </div>
+                                                <div class="col-6">
+                                                    <label for="apellidos" class="control-label mb-1">Apellidos</label>
+                                                    <div class="input-group">
+                                                        <input {{#if errors}}{{#each errors}}{{#eq field "apellidos"}} style=" border-color: #F3AA08 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.apellidos}}"{{/if}} id="apellidos" name="apellidos"  type="text" class="form-control cc-cvc" placeholder="Apellidos">
+                                                    </div>
+                                                    {{#if errors}}
+                                                        {{#each errors}}
+                                                            {{#eq field "apellidos"}}
+                                                                <div style="margin-top: 12px;" class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
+                                                                    
+                                                                        {{message}}
+                                                                    
+                                                                </div>
+                                                            {{/eq}}
+                                                        {{/each}}
+                                                    {{/if}}
+                                                </div>
+                                                
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <div class="form-group">
+                                                        <label for="cedula" class="control-label mb-1">Cedula</label>
+                                                        <input {{#if errors}}{{#each errors}}{{#eq field "cedula"}} style=" border-color: #F3AA08 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.cedula}}"{{/if}}  id="cedula" name="cedula" type="number" class="form-control cc-exp"  placeholder="Numero de cedula">
+                                                    </div>
+
+                                                   {{#if errors}}
+                                                        {{#each errors}}
+                                                            {{#eq field "cedula"}}
+                                                                <div style="margin-top: 12px;" class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
+                                                                    
+                                                                        {{message}}
+                                                                    
+                                                                </div>
+                                                            {{/eq}}
+                                                        {{/each}}
+                                                    {{/if}}
+                                                </div>
+                                                <div class="col-6">
+                                                    <label for="telefono" class="control-label mb-1">Telefono</label>
+                                                    <div class="input-group">
+                                                        <input {{#if errors}}{{#each errors}}{{#eq field "telefono"}} style=" border-color: #F3AA08 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.telefono}}"{{/if}} id="telefono" name="telefono" type="text" class="form-control cc-cvc"   placeholder="Numero de telefono">
+                                                    </div>
+                                                    {{#if errors}}
+                                                        {{#each errors}}
+                                                            {{#eq field "telefono"}}
+                                                                <div style="margin-top: 12px;" class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
+                                                                    
+                                                                        {{message}}
+                                                                    
+                                                                </div>
+                                                            {{/eq}}
+                                                        {{/each}}
+                                                    {{/if}}
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="correo" class="control-label mb-1">Correo</label>
+                                                <input {{#if errors}}{{#each errors}}{{#eq field "correo"}} style=" border-color: #F3AA08 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.correo}}"{{/if}} id="correo" name="correo" type="email" class="form-control" placeholder="Correo electronico" aria-required="true" aria-invalid="false" >
+                                                {{#if errors}}
+                                                    {{#each errors}}
+                                                        {{#eq field "correo"}}
+                                                            <div style="margin-top: 12px;" class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
+                                                                
+                                                                    {{message}}
+                                                                
+                                                            </div>
+                                                        {{/eq}}
+                                                    {{/each}}
+                                                {{/if}}
+                                            </div>
+                                            <br>
+                                        
+                                            <div>
+                                                <button style="background-color: #0F32A1; color: white;" id="payment-button" type="submit" class="btn btn-lg  btn-block">
+
+                                                    <span id="payment-button-amount">Crear nuevo propietario</span>
+                                                    
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div> <!-- .card -->
+
+                    </div>
+                </div>
+            </div><!-- .animated -->
+        </div>
+
+        <div class="clearfix"></div>
+        
+
+        <!-- /.content -->
+
+        {{> "dashboard/componentes/footer" }}
+
+    </div>
+
+
+
+{{> "dashboard/componentes/scripts" }}
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        // Frontend
+        document.addEventListener('DOMContentLoaded', () => {
+            const socket = io();
+
+            // Marcar las notificaciones en visto
+            const botonActualizarCampo = document.getElementById('notification');
+
+            // Agregar un evento click al botón
+            botonActualizarCampo.addEventListener('click', () => {
+
+                console.log("emit")
+                
+                socket.emit('cliente_envia_evento');
+                const vistas_ = document.querySelector('.count');
+
+                vistas_.innerHTML = '0';
+
+            });
+
+            // Escucha el eventos para el intento o inicio de sesion
+            socket.on("inicio_de_sesion", (data) => {
+
+                const vistas_ = document.querySelector('.count');
+                vistas_.innerHTML = data.N_inicios;
+
+                const notificaciones = document.querySelector('#notificaciones_inicios');  
+
+                if (data.Iusuario.sesion){
+
+                    notificaciones.innerHTML += `                  
+                        <a class="dropdown-item media" href="#">
+                            <i style="color: #28A745;" class="fa fa-check"></i>
+                            <p>Inicio de sesion correcto</p>     
+                        </a>                    
+                    `
+
+                }else{
+                    
+                    notificaciones.innerHTML += `                  
+                        <a class="dropdown-item media" href="#">
+                            <i style="color: #DC3545;" class="fa fa-warning"></i>
+                            <p>inicio de sesion fallido</p>
+                        </a>                   
+                    `
+
+                }
+
+            })
+        });
+    </script>

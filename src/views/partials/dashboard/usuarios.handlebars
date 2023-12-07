@@ -1,0 +1,243 @@
+
+    <!-- Left Panel -->
+    {{> "dashboard/componentes/aside" }}
+    <!-- /#left-panel -->
+
+    <!-- Right Panel -->
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        {{> "dashboard/componentes/header" }}
+        <!-- /#header -->
+
+        <div class="modal fade" id="staticModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticModalLabel">Eliminar Usuario</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">X</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                              
+                           </p>
+                       </div>
+                       <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <form style="display: inline;" action="/admin-ibizapropiedades-dashboard/eliminar-usuario/:id" method="post">
+                            <button type="submit" class="btn btn-primary">Aceptar</a>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Content -->
+        <div class="breadcrumbs">
+            {{#if usuarioEliminado}}
+            <div style="text-align: center;" id="success-alertt" class="alert alert-success" role="alert">
+                {{usuarioEliminado}}
+            </div>
+
+            <script>
+                console.log("fuera del script")
+                document.addEventListener("DOMContentLoaded", function() {
+                        // Seleccionar el elemento del alerta
+                        console.log("dentro del script")
+                        var successAlert = document.getElementById("success-alertt");
+                        console.log("despues de la variable del script")
+                        // Esperar 3000 milisegundos (3 segundos) y luego ocultar el alerta
+                        setTimeout(function() {
+                            console.log("dentro de los segundo del script")
+                            console.log(successAlert)
+                            if (successAlert) {
+                                console.log("IF")
+                                successAlert.style.display = "none";
+                            }
+                        }, 2000);
+                    });
+            </script>
+            {{/if}}        
+
+
+            <div class="breadcrumbs-inner">
+                <div class="row m-0">
+                    <div class="col-sm-4">
+                        <div class="page-header float-left">
+                            <div class="page-title">
+                                <h1>Lista de usuarios administradores</h1>
+                            </div>
+                        </div>
+                    </div>
+{{!--                     <div class="col-sm-8">
+                        <div class="page-header float-right">
+                            <div class="page-title">
+                                <ol class="breadcrumb text-right">
+                                    <li><a href="#">admin-ibizapropiedades-dashboard</a></li>
+                                    <li><a href="#">usuarios</a></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div> --}}
+                </div>
+            </div>
+        </div>
+        <br>
+ 
+
+        <div class="content">
+
+            <div class="animated fadeIn">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">usuarios</strong>
+                            </div>
+                            <div class="table-stats order-table ov-h">
+                                <table class="table ">
+                                    <thead>
+                                        <tr>
+                                            <th class="avatar">Incono</th>
+                                            <th>ID</th>
+                                            <th>Usuario</th>
+                                            <th>Actualizar / Eliminar</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                            {{#each usuarios}}
+                                                <tr> 
+                                                   <td class="avatar">
+                                                        <div class="round-img">
+                                                            <a style="color: #F3AA08 !important; font-size: xx-large;" href="#"><i class="fa fa-user"></i></a>
+                                                        </div>
+                                                    </td>
+                                                    <td>{{id}}</td>
+
+                                                    <td> <span class="product">{{usuario}}</span> </td>
+                                                    <td>
+                                                        <a href="" class="badge badge-complete">Actualizar</a>
+                                                        <a onclick="editarModal('{{id}}','{{usuario}}')" data-toggle="modal" data-target="#staticModal" href="" style="background-color: red;" class="badge badge-complete">Eliminar</a>
+                                                    </td>
+                                                </tr>  
+                                            {{/each}}                                        
+                                    </tbody>
+                                </table>
+                            </div> <!-- /.table-stats -->
+                        </div>
+                    </div>
+        </div>
+    </div><!-- .animated -->
+</div>
+
+        <div class="clearfix"></div>
+
+
+
+        <!-- /.content -->
+
+        {{> "dashboard/componentes/footer" }}
+
+    </div>
+ 
+
+{{> "dashboard/componentes/scripts" }}
+
+<script>
+    // Función que se ejecuta cuando el modal se muestra
+    function editarModal(id, usuario) {
+        // Obtener el enlace "Aceptar"
+        var btnAceptar = document.querySelector("#staticModal .modal-footer a.btn-primary");
+        
+
+        // Verificar si el enlace "Aceptar" existe
+        if (btnAceptar) {
+            // Cambiar la dirección (href) del enlace "Aceptar"
+            btnAceptar.href = `admin-ibizapropiedades-dashboard/eliminar-usuario/${id}`;
+        }
+
+        // Cambiar el contenido del modal
+        var modalBody = document.querySelector("#staticModal .modal-body p");
+
+        // Verificar si el elemento del modal existe
+        if (modalBody) {
+            modalBody.innerHTML = `
+                            <p>
+                               Estás a punto de eliminar el usuario <span style="color: red; text-transform: uppercase;">${usuario}</span>. Esta acción es irreversible y eliminará todos los datos asociados a su cuenta. Por favor, asegúrate de que realmente deseas proceder con la eliminación.
+                            </p>
+            `;
+        }
+
+                // Obtener el formulario dentro del modal
+        var form = document.querySelector("#staticModal form");
+
+        // Verificar si el enlace "Aceptar" y el formulario existen
+        if (form) {
+            // Cambiar el action del formulario
+            form.action = `/admin-ibizapropiedades-dashboard/eliminar-usuario/${id}`;
+        }
+    }
+
+    // Escuchar el evento 'shown.bs.modal' del modal
+    document.getElementById("staticModal").addEventListener("shown.bs.modal", function() {
+        // Puedes llamar a la función editarModal con los parámetros deseados aquí si es necesario
+    });
+</script>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        // Frontend
+        document.addEventListener('DOMContentLoaded', () => {
+            const socket = io();
+
+            // Marcar las notificaciones en visto
+            const botonActualizarCampo = document.getElementById('notification');
+
+            // Agregar un evento click al botón
+            botonActualizarCampo.addEventListener('click', () => {
+
+                console.log("emit")
+                
+                socket.emit('cliente_envia_evento');
+                const vistas_ = document.querySelector('.count');
+
+                vistas_.innerHTML = '0';
+
+            });
+
+            // Escucha el eventos para el intento o inicio de sesion
+            socket.on("inicio_de_sesion", (data) => {
+
+                const vistas_ = document.querySelector('.count');
+                vistas_.innerHTML = data.N_inicios;
+
+                const notificaciones = document.querySelector('#notificaciones_inicios');  
+
+                if (data.Iusuario.sesion){
+
+                    notificaciones.innerHTML += `                  
+                        <a class="dropdown-item media" href="#">
+                            <i style="color: #28A745;" class="fa fa-check"></i>
+                            <p>Inicio de sesion correcto</p>     
+                        </a>                    
+                    `
+
+                }else{
+                    
+                    notificaciones.innerHTML += `                  
+                        <a class="dropdown-item media" href="#">
+                            <i style="color: #DC3545;" class="fa fa-warning"></i>
+                            <p>inicio de sesion fallido</p>
+                        </a>                   
+                    `
+
+                }
+
+            })
+        });
+    </script>

@@ -1,0 +1,259 @@
+
+    <!-- Left Panel -->
+    {{> "dashboard/componentes/aside" }}
+    <!-- /#left-panel -->
+
+    <!-- Right Panel -->
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        {{> "dashboard/componentes/header" }}
+        <!-- /#header -->
+
+        
+        <!-- Content -->
+        <div class="breadcrumbs">
+
+            {{#if req_nuevo_propietario}}
+            <div style="text-align: center;" id="success-alertt" class="alert alert-success" role="alert">
+                {{req_nuevo_propietario}}
+            </div>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                        // Seleccionar el elemento del alerta
+                        console.log("dentro del script")
+                        var successAlert = document.getElementById("success-alertt");
+                        console.log("despues de la variable del script")
+                        // Esperar 3000 milisegundos (3 segundos) y luego ocultar el alerta
+                        setTimeout(function() {
+                            console.log("dentro de los segundo del script")
+                            console.log(successAlert)
+                            if (successAlert) {
+                                console.log("IF")
+                                successAlert.style.display = "none";
+                            }
+                        }, 4000);
+                    });
+            </script>
+            {{/if}} 
+
+            <div class="breadcrumbs-inner">
+                <div class="row m-0">
+                    <div class="col-sm-4">
+                        <div class="page-header float-left">
+                            <div class="page-title">
+                                <h1>Crear propiedad</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+ 
+
+        <div class="content">
+
+            <div class="animated fadeIn">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong><font style="vertical-align: inherit;"></font></strong><font style="vertical-align: inherit;"><strong><font style="vertical-align: inherit;">Crear propiedad del propietario</font></strong></font></div>
+                            <div class="card-body card-block">
+                                <form action="" method="post" class="form-horizontal">
+                                    {{!-- Tipo propiedad --}}
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="tipo_propiedad" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tipo de propiedad</font></font></label></div>
+                                        <div class="col-12 col-md-9">
+                                            <select name="tipo_propiedad" id="tipo_propiedad" class="form-control">
+                                                <option value="C"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Casa</font></font></option>
+                                                <option value="A"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Apartamento</font></font></option>
+                                                <option value="L"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Local comercial</font></font></option>
+                                                <option value="O"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Oficina</font></font></option>
+                                                <option value="T"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Terreno</font></font></option>
+                                                <option value="E"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Edificio</font></font></option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    {{!-- Venta o renta --}}
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="venta_renta" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Propiedad en:</font></font></label></div>
+                                        <div class="col-12 col-md-9">
+                                            <select name="venta_renta" id="venta_renta" class="form-control">
+                                                <option value="V"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Venta</font></font></option>
+                                                <option value="R"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Renta</font></font></option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="descripcion" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Descripción</font></font></label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="descripcion" name="descripcion" placeholder="Descripción" class="form-control"><small class="form-text text-muted"><font style="vertical-align: inherit;"></font></small></div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="detalles" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Detalles</font></font></label></div>
+                                        <div class="col-12 col-md-9"><textarea name="detalles" id="detalles" rows="9" placeholder="Detalles..." class="form-control" style="height: 127px;"></textarea></div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="ubicacion" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubicacion</font></font></label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="ubicacion" name="ubicacion" placeholder="Ubicacion" class="form-control"></div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="precio" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Precio</font></font></label></div>
+                                        <div class="col-6 col-md-4"><input type="text" id="precio" name="precio" placeholder="Precio" class="form-control"></div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="n_habitaciones" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Numero de habitaciones</font></font></label></div>
+                                        <div class="col-6 col-md-4"><input type="text" id="n_habitaciones" name="n_habitaciones" placeholder="Habitaciones" class="form-control"></div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="n_banos" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Numero de baños</font></font></label></div>
+                                        <div class="col-6 col-md-4"><input type="text" id="n_banos" name="n_banos" placeholder="Baños" class="form-control"></div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="terreno" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Terreno</font></font></label></div>
+                                        <div class="col-6 col-md-4"><input type="text" id="terreno" name="terreno" placeholder="Terreno" class="form-control"></div>
+                                    </div>                                    
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="superficie" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Superficie</font></font></label></div>
+                                        <div class="col-6 col-md-4"><input type="text" id="superficie" name="superficie" placeholder="Superficie" class="form-control"></div>
+                                    </div>
+   
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="fotos" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cargar imagenes de la propiedad</font></font></label></div>
+                                        <div class="col-12 col-md-9"><input type="file" id="fotos" name="fotos" multiple="" class="form-control-file"></div>
+                                    </div>
+                                    <br>
+                                    <button style="background-color: #0F32A1; color: white;" id="payment-button" type="submit" class="btn btn-lg  btn-block">
+
+                                        <span id="payment-button-amount">Crear nuevo propietario</span>
+                                        
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- .animated -->
+        </div>
+
+        <div class="clearfix"></div>
+        
+
+        <!-- /.content -->
+
+        {{> "dashboard/componentes/footer" }}
+
+    </div>
+
+
+
+{{> "dashboard/componentes/scripts" }}
+    <!-- ... Tu código HTML anterior ... -->
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Obtener referencias a los campos a deshabilitar
+        const nHabitacionesInput = document.getElementById("n_habitaciones");
+        const nBanosInput = document.getElementById("n_banos");
+        const superficieInput = document.getElementById("superficie");
+        const terrenoInput = document.getElementById("terreno");
+
+        // Obtener referencia al elemento de tipo de propiedad
+        const tipoPropiedadSelect = document.getElementById("tipo_propiedad");
+
+        // Función para deshabilitar campos según el tipo de propiedad seleccionado
+        function deshabilitarCampos() {
+            const tipoSeleccionado = tipoPropiedadSelect.value;
+
+            // Restablecer la propiedad "disabled" para todos los campos
+            nHabitacionesInput.disabled = false;
+            nBanosInput.disabled = false;
+            superficieInput.disabled = false;
+            terrenoInput.disabled = false;
+
+            // Deshabilitar campos según el tipo de propiedad seleccionado
+            if (tipoSeleccionado === "T") { // Terreno
+                nHabitacionesInput.disabled = true;
+                nBanosInput.disabled = true;
+                superficieInput.disabled = true;
+            } else if (tipoSeleccionado === "O") { // Oficina
+                nHabitacionesInput.disabled = true;
+                terrenoInput.disabled = true;
+            } else if (tipoSeleccionado === "L") { // Local comercial
+                terrenoInput.disabled = true;
+                nHabitacionesInput.disabled = true;
+            } else if (tipoSeleccionado === "A") { // Apartamento
+                terrenoInput.disabled = true;
+            } else if (tipoSeleccionado === "E") { // Edificio
+                terrenoInput.disabled = true;
+            }
+        }
+
+        // Agregar un listener al evento change en el tipo de propiedad
+        tipoPropiedadSelect.addEventListener("change", deshabilitarCampos);
+
+        // Llamar a la función al cargar la página para manejar el estado inicial
+        deshabilitarCampos();
+    });
+</script>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        // Frontend
+        document.addEventListener('DOMContentLoaded', () => {
+            const socket = io();
+
+            // Marcar las notificaciones en visto
+            const botonActualizarCampo = document.getElementById('notification');
+
+            // Agregar un evento click al botón
+            botonActualizarCampo.addEventListener('click', () => {
+
+                console.log("emit")
+                
+                socket.emit('cliente_envia_evento');
+                const vistas_ = document.querySelector('.count');
+
+                vistas_.innerHTML = '0';
+
+            });
+
+            // Escucha el eventos para el intento o inicio de sesion
+            socket.on("inicio_de_sesion", (data) => {
+
+                const vistas_ = document.querySelector('.count');
+                vistas_.innerHTML = data.N_inicios;
+
+                const notificaciones = document.querySelector('#notificaciones_inicios');  
+
+                if (data.Iusuario.sesion){
+
+                    notificaciones.innerHTML += `                  
+                        <a class="dropdown-item media" href="#">
+                            <i style="color: #28A745;" class="fa fa-check"></i>
+                            <p>Inicio de sesion correcto</p>     
+                        </a>                    
+                    `
+
+                }else{
+                    
+                    notificaciones.innerHTML += `                  
+                        <a class="dropdown-item media" href="#">
+                            <i style="color: #DC3545;" class="fa fa-warning"></i>
+                            <p>inicio de sesion fallido</p>
+                        </a>                   
+                    `
+
+                }
+
+            })
+        });
+    </script>

@@ -1,0 +1,254 @@
+
+    <!-- Left Panel -->
+    {{> "dashboard/componentes/aside" }}
+    <!-- /#left-panel -->
+
+    <!-- Right Panel -->
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        {{> "dashboard/componentes/header" }}
+        <!-- /#header -->
+
+        
+        <!-- Content -->
+        <div class="breadcrumbs">
+
+            {{#if req_nuevo_usuario}}
+            <div style="text-align: center;" id="success-alertt" class="alert alert-success" role="alert">
+                {{req_nuevo_usuario}}
+            </div>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                        // Seleccionar el elemento del alerta
+                        console.log("dentro del script")
+                        var successAlert = document.getElementById("success-alertt");
+                        console.log("despues de la variable del script")
+                        // Esperar 3000 milisegundos (3 segundos) y luego ocultar el alerta
+                        setTimeout(function() {
+                            console.log("dentro de los segundo del script")
+                            console.log(successAlert)
+                            if (successAlert) {
+                                console.log("IF")
+                                successAlert.style.display = "none";
+                            }
+                        }, 4000);
+                    });
+            </script>
+            {{/if}} 
+
+            
+            <div class="breadcrumbs-inner">
+                <div class="row m-0">
+                    <div class="col-sm-4">
+                        <div class="page-header float-left">
+                            <div class="page-title">
+                                <h1>Crear usuario administrador</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+ 
+
+        <div class="content">
+
+            <div class="animated fadeIn">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">Nuevo usuario</div>
+                            <div class="card-body card-block">
+                            <br>
+                                <form action="/admin-ibizapropiedades-dashboard/crear-usuario" method="post" class="">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">Usuario</div>
+                                            <input {{#if errors}}{{#each errors}}{{#eq field "usuario"}} style=" border-color: #F3AA08 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.usuario}}"{{/if}} {{#if req_campo_usuario_error}}value="{{req_campo_usuario_error}}"{{/if}} type="text" id="usuario" name="usuario" {{#if req_usurio_existente}}style=" border-color: #F3AA08 !important;"{{/if}} class=" form-control">
+                                            <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                        </div>
+                                        {{#if req_usurio_existente}}
+                                        <div style="margin-top: 12px;" class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
+                                            
+                                                {{req_usurio_existente}}
+                                            
+                                        </div>
+                                        {{/if}}
+
+                                        {{#if errors}}
+                                            {{#each errors}}
+                                                {{#eq field "usuario"}}
+                                                    <div style="margin-top: 12px;" class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
+                                                        
+                                                            {{message}}
+                                                        
+                                                    </div>
+                                                {{/eq}}
+                                            {{/each}}
+                                        {{/if}}
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">Contraseña</div>
+                                            <input{{#if errors}} {{#each errors}}{{#eq field "password"}} style=" border-color: #F3AA08 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.password}}"{{/if}} type="password" id="password" name="password" class="form-control">
+                                            <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+                                        </div>
+                                                                                {{#if errors}}
+                                            {{#each errors}}
+                                                {{#eq field "password"}}
+                                                    <div style="margin-top: 12px;" class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
+                                                        
+                                                            {{message}}
+                                                        
+                                                    </div>
+                                                {{/eq}}
+                                            {{/each}}
+                                        {{/if}}
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-addon">Repetir la contraseña</div>
+                                            <input{{#if errors}} {{#each errors}}{{#eq field "passwordr"}} style=" border-color: #F3AA08 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.passwordr}}"{{/if}} type="password" id="passwordr" name="passwordr" class="form-control">
+                                            <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+                                        </div>
+                                                                                {{#if errors}}
+                                            {{#each errors}}
+                                                {{#eq field "passwordr"}}
+                                                    <div style="margin-top: 12px;" class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
+                                                        
+                                                            {{message}}
+                                                        
+                                                    </div>
+                                                {{/eq}}
+                                            {{/each}}
+                                        {{/if}}
+                                    </div>
+                                    <br>
+                                    <div style="background-color: ;" class="form-actions form-group">
+                                                   <button style="background-color: #0F32A1; color: white;" id="payment-button" type="submit" class="btn btn-lg  btn-block">
+
+                                                    <span id="payment-button-amount">Crear nuevo usuario</span>
+                                                    
+                                                </button>
+                                    </div>
+                                </form>
+                                <br>
+                                <br>
+                            </div>
+                        </div>
+                     </div>
+                </div>
+            </div><!-- .animated -->
+        </div>
+
+        <div class="clearfix"></div>
+        
+
+        <!-- /.content -->
+
+        {{> "dashboard/componentes/footer" }}
+
+    </div>
+
+
+
+{{> "dashboard/componentes/scripts" }}
+
+<script>
+    // Función que se ejecuta cuando el modal se muestra
+    function editarModal(id, usuario) {
+        // Obtener el enlace "Aceptar"
+        var btnAceptar = document.querySelector("#staticModal .modal-footer a.btn-primary");
+        
+
+        // Verificar si el enlace "Aceptar" existe
+        if (btnAceptar) {
+            // Cambiar la dirección (href) del enlace "Aceptar"
+            btnAceptar.href = `admin-ibizapropiedades-dashboard/eliminar-usuario/${id}`;
+        }
+
+        // Cambiar el contenido del modal
+        var modalBody = document.querySelector("#staticModal .modal-body p");
+
+        // Verificar si el elemento del modal existe
+        if (modalBody) {
+            modalBody.innerHTML = `
+                            <p>
+                               Estás a punto de eliminar el usuario <span style="color: red; text-transform: uppercase;">${usuario}</span>. Esta acción es irreversible y eliminará todos los datos asociados a su cuenta. Por favor, asegúrate de que realmente deseas proceder con la eliminación.
+                            </p>
+            `;
+        }
+
+                // Obtener el formulario dentro del modal
+        var form = document.querySelector("#staticModal form");
+
+        // Verificar si el enlace "Aceptar" y el formulario existen
+        if (form) {
+            // Cambiar el action del formulario
+            form.action = `/admin-ibizapropiedades-dashboard/eliminar-usuario/${id}`;
+        }
+    }
+
+    // Escuchar el evento 'shown.bs.modal' del modal
+    document.getElementById("staticModal").addEventListener("shown.bs.modal", function() {
+        // Puedes llamar a la función editarModal con los parámetros deseados aquí si es necesario
+    });
+</script>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        // Frontend
+        document.addEventListener('DOMContentLoaded', () => {
+            const socket = io();
+
+            // Marcar las notificaciones en visto
+            const botonActualizarCampo = document.getElementById('notification');
+
+            // Agregar un evento click al botón
+            botonActualizarCampo.addEventListener('click', () => {
+
+                console.log("emit")
+                
+                socket.emit('cliente_envia_evento');
+                const vistas_ = document.querySelector('.count');
+
+                vistas_.innerHTML = '0';
+
+            });
+
+            // Escucha el eventos para el intento o inicio de sesion
+            socket.on("inicio_de_sesion", (data) => {
+
+                const vistas_ = document.querySelector('.count');
+                vistas_.innerHTML = data.N_inicios;
+
+                const notificaciones = document.querySelector('#notificaciones_inicios');  
+
+                if (data.Iusuario.sesion){
+
+                    notificaciones.innerHTML += `                  
+                        <a class="dropdown-item media" href="#">
+                            <i style="color: #28A745;" class="fa fa-check"></i>
+                            <p>Inicio de sesion correcto</p>     
+                        </a>                    
+                    `
+
+                }else{
+                    
+                    notificaciones.innerHTML += `                  
+                        <a class="dropdown-item media" href="#">
+                            <i style="color: #DC3545;" class="fa fa-warning"></i>
+                            <p>inicio de sesion fallido</p>
+                        </a>                   
+                    `
+
+                }
+
+            })
+        });
+    </script>
