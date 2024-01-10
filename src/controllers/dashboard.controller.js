@@ -23,7 +23,8 @@ export const dashboardGET = async (req, res) => {
     res.render('partials/dashboard/index', {
         Titulo: "Ibiza Prop | Dashboard",
         Inicios_de_sesiones: Inicios_de_sesiones,
-        N_inicios
+        N_inicios,
+        rutaIF: "Backend"
     });
       
     }catch (error) {

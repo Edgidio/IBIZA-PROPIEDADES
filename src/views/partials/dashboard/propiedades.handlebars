@@ -1,0 +1,145 @@
+
+    <!-- Left Panel -->
+    {{> "dashboard/componentes/aside" }}
+    <!-- /#left-panel -->
+
+    <!-- Right Panel -->
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        {{> "dashboard/componentes/header" }}
+        <!-- /#header -->
+
+        
+        <!-- Content -->
+        <div class="breadcrumbs">
+
+
+
+            <div class="breadcrumbs-inner">
+                <div class="row m-0">
+                    <div class="col-sm-4">
+                        <div class="page-header float-left">
+                            <div class="page-title">
+                                <h1>Propiedades</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+ 
+
+        <div class="content">
+
+            {{#each propiedadesConImagenesYPropietario}}
+                <div id="gallery" style="display: flex; overflow-x: auto; white-space: nowrap; transition: transform 1s ease-in-out;">
+
+                <!-- Propiedad 1 -->
+                <div style="flex: 0 0 100%; box-sizing: border-box; padding: 20px; text-align: center;">
+                    <h2>{{descripcion}}</h2>
+                    <p>{{detalles}}</p>
+                    <p>{{id}}</p>
+                    {{#each fotos}}
+                          
+                    {{#each rutas}}
+                        <div class="item">
+                            <img src="/images/uploads/propiedades/original/{{this}}" alt="Imagen {{@index}}">
+                        </div>
+                    {{/each}}
+                        
+                    {{/each}}
+                    <!-- Repite para las imágenes restantes -->
+                </div>
+
+                <!-- Repite para las propiedades adicionales -->
+            </div>
+            {{/each}}
+
+            
+
+
+            <script>
+            const gallery = document.getElementById('gallery');
+            const slides = document.querySelectorAll('#gallery > div');
+
+            let currentSlide = 0;
+
+            function moveGallery() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                const translateValue = -currentSlide * 100;
+                gallery.style.transform = `translateX(${translateValue}%)`;
+            }
+
+            setInterval(moveGallery, 3000); // Cambiar de propiedad cada 3 segundos
+            </script>
+
+        </div>
+
+        <div class="clearfix"></div>
+        
+
+        <!-- /.content -->
+
+        {{> "dashboard/componentes/footer" }}
+
+    </div>
+
+
+
+{{> "dashboard/componentes/scripts" }}
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        // Frontend
+        document.addEventListener('DOMContentLoaded', () => {
+            const socket = io();
+
+            // Marcar las notificaciones en visto
+            const botonActualizarCampo = document.getElementById('notification');
+
+            // Agregar un evento click al botón
+            botonActualizarCampo.addEventListener('click', () => {
+
+                console.log("emit")
+                
+                socket.emit('cliente_envia_evento');
+                const vistas_ = document.querySelector('.count');
+
+                vistas_.innerHTML = '0';
+
+            });
+
+            // Escucha el eventos para el intento o inicio de sesion
+            socket.on("inicio_de_sesion", (data) => {
+
+                const vistas_ = document.querySelector('.count');
+                vistas_.innerHTML = data.N_inicios;
+
+                const notificaciones = document.querySelector('#notificaciones_inicios');  
+
+                if (data.Iusuario.sesion){
+
+                    notificaciones.innerHTML += `                  
+                        <a class="dropdown-item media" href="#">
+                            <i style="color: #28A745;" class="fa fa-check"></i>
+                            <p>Inicio de sesion correcto</p>     
+                        </a>                    
+                    `
+
+                }else{
+                    
+                    notificaciones.innerHTML += `                  
+                        <a class="dropdown-item media" href="#">
+                            <i style="color: #DC3545;" class="fa fa-warning"></i>
+                            <p>inicio de sesion fallido</p>
+                        </a>                   
+                    `
+
+                }
+
+            })
+        });
+    </script>

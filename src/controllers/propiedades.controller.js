@@ -41,9 +41,32 @@ export const obtenerPropiedadesDePropietario = async (req, res) => {
 };
 
 export const obtenerPropiedadesGET = async (req, res) => {
-    try {
-        const propiedades = await db.propiedades.findMany();
-        res.json(propiedades);
+
+
+      try {
+
+        const propiedadesConImagenesYPropietario = await db.propiedades.findMany({
+          include: {
+            fotos: true,
+            propietario: true,
+          },
+        });
+
+        const N_inicios = await db.log_sesiones.count({
+            where: {
+            visto: false,
+            },
+        });
+        console.log(propiedadesConImagenesYPropietario, "OPOOOOOOOOOOOOOOOOOOOOOOOOO")
+        console.log(propiedadesConImagenesYPropietario[7].fotos[0], "21111111111111111111111111111111")
+    
+        res.render("partials/dashboard/propiedades", {
+            Titulo: "Ibiza Prop | Propiedades",
+            N_inicios,
+            ruta: "/usuarios",
+            propiedadesConImagenesYPropietario
+        })
+        
       } catch (error) {
         console.error('Error al obtener propiedades:', error);
         res.status(500).json({ error: 'Error interno del servidor' });

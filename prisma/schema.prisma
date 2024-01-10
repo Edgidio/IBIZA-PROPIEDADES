@@ -13,7 +13,6 @@ model Usuarios {
   id        Int      @id @default(autoincrement())
   usuario   String   @db.VarChar(20) @unique
   password  String   @db.VarChar(100)
-  admin     String   @db.VarChar(1)
   propiedades Propiedades[]   @relation("UsuarioPropiedad")
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -25,6 +24,7 @@ model Propietarios {
   apellidos String  @db.VarChar(60)   
   telefono  String  @db.VarChar(15) 
   correo    String  @db.VarChar(100)
+  nombre_creador String @db.VarChar(100)
   casas     Propiedades[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -36,6 +36,7 @@ model Propiedades {
   propietario      Propietarios @relation(fields: [id_propietario], references: [cedula])
   descripcion      String  @db.VarChar(100)
   detalles         String  @db.VarChar(100)
+  estado           String  @default("pendiente") @db.VarChar(100) 
   ubicacion        String  @db.VarChar(100)
   precio           Int?    @default(0)
   venta_renta      String? @db.VarChar(1) @default("V")
@@ -53,13 +54,12 @@ model Propiedades {
 }
 
 model Propiedades_img {
-  id                      Int      @id @default(autoincrement())
-  id_propiedad            Int      
-  propiedad               Propiedades @relation(fields: [id_propiedad], references: [id])
-  ruta_imagen_propiedad   String   @db.VarChar(200)   
-  cantidad_img            Int
-  createdAt               DateTime @default(now())
-  updatedAt               DateTime @updatedAt
+  id        Int      @id @default(autoincrement())
+  id_propiedad            Int
+  propiedad Propiedades @relation(fields: [id_propiedad], references: [id])
+  rutas     String[] 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model log_sesiones {

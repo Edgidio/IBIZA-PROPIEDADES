@@ -63,7 +63,7 @@
                             <div class="card-header">
                                 <strong><font style="vertical-align: inherit;"></font></strong><font style="vertical-align: inherit;"><strong><font style="vertical-align: inherit;">Crear propiedad del propietario</font></strong></font></div>
                             <div class="card-body card-block">
-                                <form action="" method="post" class="form-horizontal">
+                                <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                                     {{!-- Tipo propiedad --}}
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="tipo_propiedad" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tipo de propiedad</font></font></label></div>
@@ -99,6 +99,37 @@
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="detalles" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Detalles</font></font></label></div>
                                         <div class="col-12 col-md-9"><textarea name="detalles" id="detalles" rows="9" placeholder="Detalles..." class="form-control" style="height: 127px;"></textarea></div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="select_estado" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Estado</font></font></label></div>
+                                        <div class="col-12 col-md-9">
+                                            <select name="select_estado" id="select_estado" class="form-control d-block rounded-0">
+                                                <option value="Amazonas">Amazonas</option>
+                                                <option value="Anzoátegui">Anzoátegui</option>
+                                                <option value="Apure">Apure</option>
+                                                <option value="Aragua">Aragua</option>
+                                                <option value="Barinas">Barinas</option>
+                                                <option value="Bolívar">Bolívar</option>
+                                                <option value="Carabobo">Carabobo</option>
+                                                <option value="Cojedes">Cojedes</option>
+                                                <option value="Delta Amacuro">Delta Amacuro</option>
+                                                <option value="Falcón">Falcón</option>
+                                                <option value="Guárico">Guárico</option>
+                                                <option value="Lara">Lara</option>
+                                                <option value="Mérida">Mérida</option>
+                                                <option value="Miranda">Miranda</option>
+                                                <option value="Monagas">Monagas</option>
+                                                <option value="Nueva Esparta">Nueva Esparta</option>
+                                                <option value="Portuguesa">Portuguesa</option>
+                                                <option value="Sucre">Sucre</option>
+                                                <option value="Táchira">Táchira</option>
+                                                <option value="Trujillo">Trujillo</option>
+                                                <option value="Vargas">Vargas</option>
+                                                <option value="Yaracuy">Yaracuy</option>
+                                                <option value="Zulia">Zulia</option>
+                                            </select>
+                                        </div>
                                     </div>
 
                                     <div class="row form-group">

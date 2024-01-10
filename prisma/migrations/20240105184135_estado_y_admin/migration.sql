@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Usuarios" ALTER COLUMN "admin" DROP DEFAULT,
+ALTER COLUMN "admin" SET DATA TYPE VARCHAR(1);

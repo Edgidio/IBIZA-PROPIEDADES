@@ -65,6 +65,7 @@ app.use(express.static(publicPath));
 app.use(cors());
 connect(server)
 
+
 // Importaciones de modulos personales
 import {isAuthenticated} from './middlewares/isAuthenticated.js';
 import usuarios_router from "./routes/usuarios.routes.js"
@@ -72,9 +73,10 @@ import propietarios_router from "./routes/propietarios.routes.js"
 import propiedades_router from "./routes/propiedades.routes.js"
 import dashboard_router from "./routes/dashboard.routes.js"
 import auth_router from "./routes/auth.routes.js"
-
+import frontend from "./routes/frontend.routes.js"
 
 // Rutas de la aplicacion
+app.use("/", frontend)
 app.use("/admin-ibizapropiedades", auth_router)
 app.use("/admin-ibizapropiedades-dashboard", /* isAuthenticated, */ dashboard_router)
 app.use("/admin-ibizapropiedades-dashboard", /* isAuthenticated, */ usuarios_router)
