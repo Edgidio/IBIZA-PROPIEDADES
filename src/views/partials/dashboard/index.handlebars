@@ -120,13 +120,24 @@
 
             // Agregar un evento click al botón
             botonActualizarCampo.addEventListener('click', () => {
-
-                console.log("emit")
                 
                 socket.emit('cliente_envia_evento');
                 const vistas_ = document.querySelector('.count');
 
                 vistas_.innerHTML = '0';
+
+            });
+
+            // Marcar las notificaciones en visto de corro
+            const botonActualizarCampoCorreo = document.getElementById('notification-correo');
+
+            // Agregar un evento click al botón
+            botonActualizarCampoCorreo.addEventListener('click', () => {
+                
+                socket.emit('cliente_envia_evento_correo');
+                const vistas_correo= document.getElementById('count-correo');
+
+                vistas_correo.innerHTML = '0';
 
             });
 
@@ -159,6 +170,42 @@
                 }
 
             })
+
+                                // Escucha el eventos para el intento o inicio de sesion
+            socket.on("envio_de_correo", (data) => {
+
+                const vistas_correo= document.getElementById('count-correo');
+                vistas_correo.innerHTML = data;
+                const notificaciones = document.querySelector('#array_correos');  
+
+                if (data.N_correos){
+
+                    notificaciones.innerHTML += `                  
+                        <a class="dropdown-item media" href="#">
+                            <span class="photo media-left"><i class="azul-iconos fa fa-envelope"></i></span>
+                            <div class="message media-body">
+                                <span class="name float-left">${N_correos.nombre}</span>
+                                <span class="time float-right">${N_correos.createdAt}</span>
+                                <p>${N_correos.mensaje}</p>
+                            </div>
+                            
+                        </a>                  
+                    `
+
+                }else{
+                    
+                    notificaciones.innerHTML += `                  
+                                     
+                    `
+
+                }
+
+                console.log("Se envio un correo desde el Frontend", data)
+
+            })
         });
+
+
+
     </script>
 

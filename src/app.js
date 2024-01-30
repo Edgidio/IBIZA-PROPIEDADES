@@ -74,14 +74,31 @@ import propiedades_router from "./routes/propiedades.routes.js"
 import dashboard_router from "./routes/dashboard.routes.js"
 import auth_router from "./routes/auth.routes.js"
 import frontend from "./routes/frontend.routes.js"
+import comprar from "./routes/comprar.routes.js"
+import alquilar from "./routes/alquilar.routes.js"
+import sistema_correo from "./routes/correos_sistema.routes.js"
 
 // Rutas de la aplicacion
 app.use("/", frontend)
+app.use("/comprar", comprar)
+app.use("/alquilar", alquilar)
 app.use("/admin-ibizapropiedades", auth_router)
-app.use("/admin-ibizapropiedades-dashboard", /* isAuthenticated, */ dashboard_router)
-app.use("/admin-ibizapropiedades-dashboard", /* isAuthenticated, */ usuarios_router)
-app.use("/admin-ibizapropiedades-dashboard", /* isAuthenticated, */ propietarios_router)
-app.use("/admin-ibizapropiedades-dashboard", /* isAuthenticated, */ propiedades_router)
+app.use("/admin-ibizapropiedades-dashboard", isAuthenticated, dashboard_router)
+app.use("/admin-ibizapropiedades-dashboard", isAuthenticated, sistema_correo)
+app.use("/admin-ibizapropiedades-dashboard", isAuthenticated, usuarios_router)
+app.use("/admin-ibizapropiedades-dashboard", isAuthenticated, propietarios_router)
+app.use("/admin-ibizapropiedades-dashboard", isAuthenticated, propiedades_router)
+
+// Manejo de errores para el código de estado 404 (No encontrado)
+app.use((req, res, next) => {
+
+  res.render('partials/frontend/404', {
+    Titulo: "Ibiza Propiedades | Página no encontrada",
+    rutaIF: "error_404"
+  })
+  
+});
+
 
 
 export default server;

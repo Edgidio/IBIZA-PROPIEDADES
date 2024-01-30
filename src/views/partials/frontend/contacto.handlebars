@@ -1,0 +1,414 @@
+<div class="site-loader"></div>
+  
+    <div class="site-wrap">
+
+        <div class="site-mobile-menu">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div> <!-- .site-mobile-menu -->
+
+        <div class="site-navbar mt-4">
+            <div class="container py-1">
+                <div class="row align-items-center">
+                    <div class="col-8 col-md-8 col-lg-4">
+                        <h1 class="mb-0"><a href="/" class="text-white h2 mb-0"><strong class="text-amarillo">IBIZA PROPIEDADES</strong></a></h1>
+                    </div>
+                    <div class="col-4 col-md-4 col-lg-8">
+                        <nav class="site-navigation text-right text-md-right" role="navigation">
+
+                            <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span style="color: #F3AA08;" class="icon-menu h3"></span></a></div>
+
+                                <ul class="site-menu js-clone-nav d-none d-lg-block">
+                  <li >
+                    <a class="text-amarillo" href="/">Inicio</a>
+                  </li>
+                  <li class="has-children">
+                    <a >Venda su propiedad</a>
+                    <ul class="dropdown arrow-top">
+                      <li><a href="#">Cuanto cuesta mi propiedad</a></li>
+                    </ul>
+                  </li>
+                  <li class="has-children">
+                    <a >Comprar</a>
+                    <ul class="dropdown arrow-top">
+                      <li><a href="/comprar/apartamento">Apartamento</a></li>
+                      <li><a href="/comprar/casa">Casa</a></li>
+                      <li><a href="/comprar/terreno">Terreno</a></li>
+                      <li><a href="/comprar/local-comercial">Local comercial</a></li>
+                      <li><a href="/comprar/oficina">Oficina</a></li>
+                      <li><a href="/comprar/edificio">Edificio</a></li>
+                    </ul>
+                  </li>
+                  <li class="has-children">
+                    <a >Alquilar</a>
+                    <ul class="dropdown arrow-top">
+                      <li><a href="/alquilar/apartamento">Apartamento</a></li>
+                      <li><a href="/alquilar/casa">Casa</a></li>
+                      <li><a href="/alquilar/terreno">Terreno</a></li>
+                      <li><a href="/alquilar/local-comercial">Local comercial</a></li>
+                      <li><a href="/alquilar/oficina">Oficina</a></li>
+                    </ul>
+                  </li>
+                  <li class="has-children active">
+                    <a>Empresa a</a>
+                    <ul class="dropdown arrow-top">
+                      <li><a href="/sobre-nosotros">Acerca de Ibiza propiedades</a></li>
+                      <li ><a href="/contacto">Contacto</a></li>
+                    </ul>
+                  </li>
+
+                </ul>
+                        </nav>
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(/images/hero_bg_1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
+          {{#if correo_enviado}}
+            <div class="custom-alert">
+              <span class="close-btn" onclick="cerrarAlerta()">&times;</span>
+                {{correo_enviado}}
+            </div>
+            <script>
+                function cerrarAlerta() {
+                  var alerta = document.querySelector('.custom-alert');
+                  alerta.style.animation = 'slideOut 0.5s forwards';
+
+                  setTimeout(function() {
+                    alerta.style.display = 'none';
+                  }, 500);
+                }
+
+                setTimeout(function() {
+                  cerrarAlerta();
+                }, 10000); // Cerrar después de 4 segundos
+
+                // Puedes agregar más funciones o personalizar según tus necesidades.
+              </script>
+          {{/if}}
+
+          {{#if correo_no_enviado}}
+            <div style="background-color: #f30808;" class="custom-alert">
+              <span class="close-btn" onclick="cerrarAlerta()">&times;</span>
+                {{correo_no_enviado}}
+            </div>
+            <script>
+                function cerrarAlerta() {
+                  var alerta = document.querySelector('.custom-alert');
+                  alerta.style.animation = 'slideOut 0.5s forwards';
+
+                  setTimeout(function() {
+                    alerta.style.display = 'none';
+                  }, 500);
+                }
+
+                setTimeout(function() {
+                  cerrarAlerta();
+                }, 10000); // Cerrar después de 4 segundos
+
+                // Puedes agregar más funciones o personalizar según tus necesidades.
+              </script>
+          {{/if}}
+          
+          <div id="contacto" class="col-md-10">
+            <h1 class="mb-2">CONTÁCTENOS</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+       
+          <div class="col-md-12 col-lg-8 mb-5">
+          
+              
+            
+              <form action="/contacto" method="post" class="p-5 bg-white border">
+
+                <div class="row form-group">
+                  <div class="col-md-12 mb-3 mb-md-0">
+                    <label class="font-weight-bold" for="nombre">Nombre completo</label>  
+                    <input {{#if errors}}{{#each errors}}{{#eq field "nombre"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.nombre}}"{{/if}}  type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre completo">
+
+                    {{#if errors}}
+                        {{#each errors}}
+                            {{#eq field "nombre"}}
+                              <br>
+                              <div id="alerta" class="alert">
+
+                                <strong>{{message}}</strong>
+                              </div>
+                            {{/eq}}
+                        {{/each}}
+                    {{/if}}
+
+                  </div>
+                </div>
+
+                <div class="row form-group">
+                  <div class="col-md-12">
+                    <label class="font-weight-bold" for="correo">Correo electrónico</label>
+                    <input {{#if errors}}{{#each errors}}{{#eq field "correo"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.correo}}"{{/if}} name="correo" type="email" id="correo" class="form-control" placeholder="Dirección de correo electrónico
+  ">
+                    {{#if errors}}
+                        {{#each errors}}
+                            {{#eq field "correo"}}
+                              <br>
+                              <div id="alerta" class="alert">
+
+                                  {{#eq message '"correo" is not allowed' }}
+                                    El correo electrónico no puede estar vacío.
+                                  {{else}}
+                                    <strong>{{message}}</strong>
+                                  {{/eq}}
+                                
+                              </div>
+                            {{/eq}}
+                        {{/each}}
+                    {{/if}}                  
+                  </div>
+                </div>
+
+                <div class="row form-group">
+                  <div class="col-md-12">
+                    <label class="font-weight-bold" for="asunto">Asunto</label>
+                    <input {{#if errors}}{{#each errors}}{{#eq field "asunto"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.asunto}}"{{/if}} type="text" id="asunto" name="asunto" class="form-control" placeholder="Ingresar Asunto
+  ">
+                    {{#if errors}}
+                        {{#each errors}}
+                            {{#eq field "asunto"}}
+                              <br>
+                              <div id="alerta" class="alert">
+
+                                <strong>{{message}}</strong>
+                              </div>
+                            {{/eq}}
+                        {{/each}}
+                    {{/if}}                  
+                  </div>
+                </div>
+                
+
+                <div class="row form-group">
+                  <div class="col-md-12">
+                    <label class="font-weight-bold" for="mensaje">Mensaje</label> 
+                    <textarea {{#if errors}}{{#each errors}}{{#eq field "mensaje"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} name="mensaje" id="mensaje" cols="30" rows="5" class="form-control" placeholder="Mensaje">{{#if datos_formulario}}{{datos_formulario.mensaje}}{{/if}}</textarea>
+                        
+                    {{#if errors}}
+                        {{#each errors}}
+                            {{#eq field "mensaje"}}
+                              <br>
+                              <div id="alerta" class="alert">
+
+                                <strong>{{message}}</strong>
+                              </div>
+                            {{/eq}}
+                        {{/each}}
+                    {{/if}}                  
+                  </div>
+                </div>
+
+                <div class="row form-group">
+                  <div class="col-md-12">
+                    <input type="submit" value="Enviar mensaje" class="btn btn-primary  py-2 px-4 rounded-0">
+                  </div>
+                </div>
+
+    
+              </form>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="p-4 mb-3 bg-white">
+              <h3 class="h6 text-black mb-3 text-uppercase">DATOS DE CONTACTO</h3>
+              <p class="mb-0 font-weight-bold">DIRECCIÓN</p>
+              <p class="mb-4">Calle Falsa, #123
+Urbanización Imaginaria
+Ciudad Inexistente
+Estado de Sueños
+Venezuela</p>
+
+              <p class="mb-0 font-weight-bold">Teléfono</p>
+              <p class="mb-4"><a href="#">+58 4XX-XXX-XXXX</a></p>
+
+              <p class="mb-0 font-weight-bold">Dirección de correo electrónico</p>
+              <p class="mb-0"><a href="#">nuestrocorreoelectrónico@dominio.com</a></p>
+
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section bg-light">
+    <div class="container">
+      <div class="row mb-5 justify-content-center">
+        <div class="col-md-7">
+          <div class="site-section-title text-center">
+            <h2>NUESTROS AGENTES</h2>
+            <p>Es muy importante que el cliente preste atención al proceso adipiscente. En verdad, los grandes deberes que ella le carga, los huye con el trabajo, y se le escapa con el derecho de la vida; Una opción mínima para algunos, laboriosa.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-md-6 col-lg-4 mb-5 mb-lg-5">
+            <div class="team-member">
+
+              <img src="images/person_1.jpg" alt="Image" class="img-fluid rounded mb-4">
+
+              <div class="text">
+
+                <h2 class="mb-2 font-weight-light text-black h4">Megan Smith</h2>
+                <span class="d-block mb-3 text-white-opacity-05">Agente de bienes raíces</span>
+                <p>Es muy importante que el cliente preste atención al proceso adipiscente. Pensé que nadie podría hacer todo el dolor con los halagos del presente. Excepto en todo y en cuerpo, no perdonaré. ¡A la hora del deseo, los menos cegados por la vida proporcionan lo feliz!</p>
+                <p>
+                  <a href="#" class="text-black p-2"><span class="icon-facebook"></span></a>
+                  <a href="#" class="text-black p-2"><span class="icon-twitter"></span></a>
+                  <a href="#" class="text-black p-2"><span class="icon-linkedin"></span></a>
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 mb-5 mb-lg-5">
+            <div class="team-member">
+
+              <img src="images/person_2.jpg" alt="Image" class="img-fluid rounded mb-4">
+
+              <div class="text">
+
+                <h2 class="mb-2 font-weight-light text-black h4">Brooke Cagle</h2>
+                <span class="d-block mb-3 text-white-opacity-05">Agente de bienes raíces</span>
+                <p>Es muy importante que el cliente preste atención al proceso adipiscente. Todos, independientemente de los placeres de la vida, son culpables de su culpa y cosas similares, y por lo tanto son perdonados por los dolores que han sido claramente vistos, y nada está obligado a seguir, ¡de manera grandiosa!</p>
+                <p>
+                  <a href="#" class="text-black p-2"><span class="icon-facebook"></span></a>
+                  <a href="#" class="text-black p-2"><span class="icon-twitter"></span></a>
+                  <a href="#" class="text-black p-2"><span class="icon-linkedin"></span></a>
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-4 mb-5 mb-lg-5">
+            <div class="team-member">
+
+              <img src="images/person_3.jpg" alt="Image" class="img-fluid rounded mb-4">
+
+              <div class="text">
+
+                <h2 class="mb-2 font-weight-light text-black h4">Philip Martin</h2>
+                <span class="d-block mb-3 text-white-opacity-05">Agente de bienes raíces</span>
+                <p>Es muy importante que el cliente preste atención al proceso adipiscente. Todos, independientemente de los placeres de la vida, son culpables de su culpa y cosas similares, y por lo tanto son perdonados por los dolores que han sido claramente vistos, y nada está obligado a seguir, ¡de manera grandiosa!</p>
+                <p>
+                  <a href="#" class="text-black p-2"><span class="icon-facebook"></span></a>
+                  <a href="#" class="text-black p-2"><span class="icon-twitter"></span></a>
+                  <a href="#" class="text-black p-2"><span class="icon-linkedin"></span></a>
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+          
+
+        </div>
+    </div>
+    </div>
+
+
+
+
+    <!-- Pie de pagina-->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="mb-5">
+              <h3 class="footer-heading mb-4">SOBRE IBIZA PROPIEDADES</h3>
+              <p> IBIZA Propiedades, transformamos sueños en hogares. Descubre nuestro compromiso con la excelencia y la satisfacción del cliente. Tu próximo hogar está a solo un paso de distancia. ¡Bienvenido a IBIZA Propiedades!</p>
+            </div>
+
+            
+            
+          </div>
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <div class="row mb-5">
+              <div class="col-md-12">
+                <h3 class="footer-heading mb-4">NAVEGACIÓN</h3>
+              </div>
+              <div class="col-md-6 col-lg-6">
+                <ul class="list-unstyled">
+                  <li><a href="#">Inicio</a></li>
+                  <li><a href="#">Comprar</a></li>
+                  <li><a href="#">Alquilar</a></li>
+                  <li><a href="#">Propiedades</a></li>
+                </ul>
+              </div>
+              <div class="col-md-6 col-lg-6">
+                <ul class="list-unstyled">
+                  <li><a href="#">Sobre nosotros</a></li>
+                  <li><a href="#">política de privacidad</a></li>
+                  <li><a href="#">Contáctenos</a></li>
+                  <li><a href="#">Términos</a></li>
+                </ul>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <h3 class="footer-heading mb-4">SÍGANOS</h3>
+
+                <div>
+                  <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
+                  <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
+                  <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+                  <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+                </div>
+
+            
+
+          </div>
+          
+        </div>
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> PEVITE Tecnología. Todos los derechos reservados. Prohibida la reproducción total o parcial de cualquier contenido sin el permiso expreso por escrito de PEVITE Tecnología.  by <a href="https://pevite.com.ve/" target="_blank" >PEVITE</a> <i class="icon-heart text-danger" aria-hidden="true"></i>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Espera 500 milisegundos antes de desplazarte hacia la sección "busqueda"
+        setTimeout(function() {
+            document.getElementById("contacto").scrollIntoView({ behavior: "smooth" });
+        }, 100);
+    });
+</script>
+
+{{> "frontend/componentes/scripts" }}

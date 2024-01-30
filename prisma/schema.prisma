@@ -35,7 +35,7 @@ model Propiedades {
   id_propietario   Int 
   propietario      Propietarios @relation(fields: [id_propietario], references: [cedula])
   descripcion      String  @db.VarChar(100)
-  detalles         String  @db.VarChar(100)
+  detalles         String  @db.VarChar(2000)
   estado           String  @default("pendiente") @db.VarChar(100) 
   ubicacion        String  @db.VarChar(100)
   precio           Int?    @default(0)
@@ -62,6 +62,16 @@ model Propiedades_img {
   updatedAt DateTime @updatedAt
 }
 
+model correos_ibiza {
+  id                      Int       @id @default(autoincrement())
+  correo_usuario          String    @db.VarChar(100)
+  nombre                  String    @db.VarChar(50)
+  asunto                  String    @db.VarChar(50)
+  mensaje                 String    @db.VarChar(500)
+  visto                   Boolean   @default(false)
+  createdAt               DateTime? @default(now())
+}
+
 model log_sesiones {
   id                      Int       @id @default(autoincrement())
   direccion_IP            String    @db.VarChar(200)
@@ -69,4 +79,11 @@ model log_sesiones {
   createdAt               DateTime? @default(now())
   sesion                  Boolean
   visto                   Boolean   @default(false)
+}
+
+model log_sistema {
+  id                      Int       @id @default(autoincrement())
+  controlador             String    @db.VarChar(100)
+  error                   String    @db.VarChar(5000)
+  createdAt               DateTime? @default(now())
 }

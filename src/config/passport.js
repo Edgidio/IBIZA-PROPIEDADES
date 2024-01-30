@@ -119,7 +119,6 @@ passport.use(
 
 
 passport.serializeUser((usuario, done) => {
-  console.log( "serializeUser", usuario.id )
   done(null, usuario.id);
 });
 
@@ -128,7 +127,6 @@ passport.deserializeUser(async (id, done) => {
     const Usuario = await db.usuarios.findUnique({
       where: { id },
     });
-    console.log("deserializeUser", Usuario)
     done(null, Usuario);
   } catch (error) {
     done(error);

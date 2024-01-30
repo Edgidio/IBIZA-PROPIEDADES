@@ -39,7 +39,7 @@
         <div class="breadcrumbs">
             {{#if usuarioEliminado}}
             <div style="text-align: center;" id="success-alertt" class="alert alert-success" role="alert">
-                {{usuarioEliminado}}
+            {{usuarioEliminado}}
             </div>
 
             <script>
@@ -104,7 +104,7 @@
                                             <th class="avatar">Incono</th>
                                             <th>ID</th>
                                             <th>Usuario</th>
-                                            <th>Actualizar / Eliminar</th>
+                                            <th>Eliminar</th>
 
                                         </tr>
                                     </thead>
@@ -121,7 +121,6 @@
 
                                                     <td> <span class="product">{{usuario}}</span> </td>
                                                     <td>
-                                                        <a href="" class="badge badge-complete">Actualizar</a>
                                                         <a onclick="editarModal('{{id}}','{{usuario}}')" data-toggle="modal" data-target="#staticModal" href="" style="background-color: red;" class="badge badge-complete">Eliminar</a>
                                                     </td>
                                                 </tr>  

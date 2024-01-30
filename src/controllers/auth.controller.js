@@ -4,6 +4,7 @@ export const loginGET = async (req, res) => {
         res.render('partials/dashboard/login', {
             Titulo: "Ibiza Prop | Inicio de Sesión",
             passU: req.flash('passU'),
+            rutaIF: "Backend"
         });
       
     }catch (error) {

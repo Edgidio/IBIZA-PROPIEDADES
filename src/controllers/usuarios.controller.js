@@ -24,7 +24,8 @@ export const obtenerUsuariosGET = async (req, res) => {
           N_inicios,
           usuarios,
           ruta: "/usuarios",
-          usuarioEliminado: req.flash('usuarioEliminado')
+          usuarioEliminado: req.flash('usuarioEliminado'),
+          rutaIF: "Backend"
         })
 
       } catch (error) {
@@ -56,7 +57,8 @@ export const CrearUsuarioGET = async (req, res) => {
       ruta: "/crear-usuarios",
       req_nuevo_usuario: req.flash("nuevo_usuario"),
       req_usurio_existente: req.flash("usurio_existente"),
-      req_campo_usuario_error: req.flash("campo_usuario_error")
+      req_campo_usuario_error: req.flash("campo_usuario_error"),
+      rutaIF: "Backend"
     })
 
 
@@ -127,29 +129,5 @@ export const eliminarUsuarioPOST = async (req, res) => {
     
     res.status(500).json({ error: 'Se ha detectado un error no validado en tu solicitud HTTP durante la fase de desarrollo de la aplicación. Estamos trabajando activamente para gestionar estas excepciones y garantizar la estabilidad del sistema antes de su implementación final.' });
 
-  }
-};
-
-export const actualizarUsuarioPUT = async (req, res) => {
-  try {
-
-    const usuarioId = parseInt(req.params.id);
-    const { usuario, password } = req.body;
-  
-    const usuarioActualizado = await db.usuarios.update({
-      where: {
-        id: usuarioId,
-      },
-      data: {
-        usuario,
-        password,
-      },
-    });
-  
-    res.json({ mensaje: 'Usuario actualizado con éxito', usuarioActualizado });
-  
-  } catch (error) {
-    console.error('Error al actualizar usuario:', error);
-    res.status(500).json({ error: 'Se ha detectado un error no validado en tu solicitud HTTP durante la fase de desarrollo de la aplicación. Estamos trabajando activamente para gestionar estas excepciones y garantizar la estabilidad del sistema antes de su implementación final.' });
   }
 };

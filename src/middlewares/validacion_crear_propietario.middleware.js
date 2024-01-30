@@ -43,7 +43,8 @@ const validate_crear_propietario = async (req, res, next) => {
             apellidos,
             telefono,
             correo
-        }
+        },
+        rutaIF: "Backend"
     })
 
     
@@ -71,6 +72,7 @@ const validate_crear_propietario = async (req, res, next) => {
           telefono,
           correo
       },
+      rutaIF: "Backend",
       req_propietario_existe:req.flash("req_propietario_existe")
   })
   }

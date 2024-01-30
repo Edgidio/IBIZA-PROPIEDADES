@@ -14,6 +14,31 @@
         <!-- Content -->
         <div class="breadcrumbs">
 
+            {{#if propiedadC}}
+            <div style="text-align: center;" id="success-alertt" class="alert alert-success" role="alert">
+            {{propiedadC}}
+            </div>
+
+            <script>
+                console.log("fuera del script")
+                document.addEventListener("DOMContentLoaded", function() {
+                        // Seleccionar el elemento del alerta
+                        console.log("dentro del script")
+                        var successAlert = document.getElementById("success-alertt");
+                        console.log("despues de la variable del script")
+                        // Esperar 3000 milisegundos (3 segundos) y luego ocultar el alerta
+                        setTimeout(function() {
+                            console.log("dentro de los segundo del script")
+                            console.log(successAlert)
+                            if (successAlert) {
+                                console.log("IF")
+                                successAlert.style.display = "none";
+                            }
+                        }, 2000);
+                    });
+            </script>
+            {{/if}} 
+
             {{#if req_propietario_existe}}
             <div style="text-align: center;" id="success-alertt" class="alert alert-warning" role="alert">
                 {{req_propietario_existe}}

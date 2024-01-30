@@ -38,9 +38,9 @@ router.post('/propietario-crear', validate_crear_propietario , crearPropietarioP
 
 router.get("/propietario-crear/propiedad", crearPropietarioPropiedadGET)
 
-router.post("/propietario-crear/propiedad", upload.array('fotos', 12), /* validacion_crear_propiedad_propietario, */ crearPropietarioPropiedadPOST)
+router.post("/propietario-crear/propiedad", upload.array('fotos', 12), validacion_crear_propiedad_propietario, crearPropietarioPropiedadPOST)
 
-router.delete('/propietario-eliminar/:id', eliminarPropietarioDELETE);
+router.post('/propietario-eliminar/:id', eliminarPropietarioDELETE);
 
 router.put('/propietario-actualizar/:id', actualizarPropietarioPUT);
 

@@ -1,0 +1,240 @@
+
+    <!-- Left Panel -->
+    {{> "dashboard/componentes/aside" }}
+    <!-- /#left-panel -->
+
+    <!-- Right Panel -->
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        {{> "dashboard/componentes/header" }}
+        <!-- /#header -->
+
+        <div class="modal fade" id="staticModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticModalLabel">Inicios de sesiones</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">X</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                              
+                           </p>
+                       </div>
+                       <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <form style="display: inline;" action="" method="post">
+                            <button type="submit" class="btn btn-primary">Aceptar</a>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Content -->
+        <div class="breadcrumbs">
+
+            {{#if usuarioEliminado}}
+            <div style="text-align: center;" id="success-alertt" class="alert alert-success" role="alert">
+            {{usuarioEliminado}}
+            </div>
+
+            <script>
+                console.log("fuera del script")
+                document.addEventListener("DOMContentLoaded", function() {
+                        // Seleccionar el elemento del alerta
+                        var successAlert = document.getElementById("success-alertt");
+            
+                        // Esperar 3000 milisegundos (3 segundos) y luego ocultar el alerta
+                        setTimeout(function() {
+                            
+                           
+                            if (successAlert) {
+                               
+                                successAlert.style.display = "none";
+                            }
+                        }, 2000);
+                    });
+            </script>
+            {{/if}}        
+
+
+            <div class="breadcrumbs-inner">
+                <div class="row m-0">
+                    <div class="col-sm-4">
+                        <div class="page-header float-left">
+                            <div class="page-title">
+                                <h1>Historial inicios de sesion</h1>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <br>
+ 
+
+        <div class="content">
+            
+            <div class="animated fadeIn">
+                                
+                <div class="row">
+
+
+
+                    
+
+                        {{#if sesiones}}
+                            {{#each sesiones}}
+                                <div class="col-md-4">
+                                    <aside class="profile-nav alt">
+                                        <section class="card">
+                                            <div class="card-header user-header alt {{#if sesion}}bg-success{{else}} bg-danger{{/if}}">
+                                                <div class="media">
+                                                    <a href="/admin-ibizapropiedades-dashboard/inicios-de-sesion/informacion/{{id}}">
+                                                        <i style="font-size: 60px; margin-right: 15px; color: white;" class="fa fa-user"></i>
+                                                    </a>
+                                                    <div class="media-body">
+                                                        <h2 class="text-light display-6">{{usuario}}</h2>
+                                                        <p style="color: white;">Usuario usado</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">
+                                                    {{#if sesion}}
+                                                        <a href="/admin-ibizapropiedades-dashboard/inicios-de-sesion/informacion/{{id}}"> <i class="fa fa-envelope-o"></i> Inicio de sesion satisfactorio<i class="fa fa-check pull-right text-success"></i> </a>
+                                                    {{else}} 
+                                                        <a href="/admin-ibizapropiedades-dashboard/inicios-de-sesion/informacion/{{id}}"> <i class="fa fa-envelope-o"></i> Intento de inicio de sesion<i class="fa fa-minus-circle pull-right text-danger"></i> </a>
+                                                    {{/if}}
+                                                    
+                                                    
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <a href="/admin-ibizapropiedades-dashboard/inicios-de-sesion/informacion/{{id}}"> <i class="fa fa-tasks"></i> {{direccion_IP}} </a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <a href="/admin-ibizapropiedades-dashboard/inicios-de-sesion/informacion/{{id}}"> <i class="fa fa-bell-o"></i> Fecha {{formatDate createdAt}} <span class="badge badge-success pull-right">{{11}}</span></a>
+                                                </li>
+                                            </ul>
+
+                                        </section>
+                                    </aside>
+                                </div>
+                            {{/each}}
+                        {{else}}
+
+                        {{/if}}
+
+
+                </div><!-- .row -->
+            </div><!-- .animated -->
+        </div>
+
+        
+
+        <div class="clearfix"></div>
+ 
+
+{{> "dashboard/componentes/scripts" }}
+
+<script>
+    // Función que se ejecuta cuando el modal se muestra
+    function editarModal(id) {
+        // Obtener el enlace "Aceptar"
+        var btnAceptar = document.querySelector("#staticModal .modal-footer a.btn-primary");
+        
+
+        // Verificar si el enlace "Aceptar" existe
+        if (btnAceptar) {
+            // Cambiar la dirección (href) del enlace "Aceptar"
+            btnAceptar.href = `/admin-ibizapropiedades-dashboard/correos/${id}`;
+        }
+
+        // Cambiar el contenido del modal
+        var modalBody = document.querySelector("#staticModal .modal-body p");
+
+        // Verificar si el elemento del modal existe
+        if (modalBody) {
+            modalBody.innerHTML = `
+                            <p>
+                               Estás a punto de eliminar el correo numero <span style="color: red; text-transform: uppercase;">${id}</span>. Esta acción es irreversible y eliminará todos los datos asociados a su cuenta. Por favor, asegúrate de que realmente deseas proceder con la eliminación.
+                            </p>
+            `;
+        }
+
+                // Obtener el formulario dentro del modal
+        var form = document.querySelector("#staticModal form");
+
+        // Verificar si el enlace "Aceptar" y el formulario existen
+        if (form) {
+            // Cambiar el action del formulario
+            form.action = `/admin-ibizapropiedades-dashboard/correos/${id}`;
+        }
+    }
+
+    // Escuchar el evento 'shown.bs.modal' del modal
+    document.getElementById("staticModal").addEventListener("shown.bs.modal", function() {
+        // Puedes llamar a la función editarModal con los parámetros deseados aquí si es necesario
+    });
+</script>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        // Frontend
+        document.addEventListener('DOMContentLoaded', () => {
+            const socket = io();
+
+            // Marcar las notificaciones en visto
+            const botonActualizarCampo = document.getElementById('notification');
+
+            // Agregar un evento click al botón
+            botonActualizarCampo.addEventListener('click', () => {
+
+                console.log("emit")
+                
+                socket.emit('cliente_envia_evento');
+                const vistas_ = document.querySelector('.count');
+
+                vistas_.innerHTML = '0';
+
+            });
+
+            // Escucha el eventos para el intento o inicio de sesion
+            socket.on("inicio_de_sesion", (data) => {
+
+                const vistas_ = document.querySelector('.count');
+                vistas_.innerHTML = data.N_inicios;
+
+                const notificaciones = document.querySelector('#notificaciones_inicios');  
+
+                if (data.Iusuario.sesion){
+
+                    notificaciones.innerHTML += `                  
+                        <a class="dropdown-item media" href="#">
+                            <i style="color: #28A745;" class="fa fa-check"></i>
+                            <p>Inicio de sesion correcto</p>     
+                        </a>                    
+                    `
+
+                }else{
+                    
+                    notificaciones.innerHTML += `                  
+                        <a class="dropdown-item media" href="#">
+                            <i style="color: #DC3545;" class="fa fa-warning"></i>
+                            <p>inicio de sesion fallido</p>
+                        </a>                   
+                    `
+
+                }
+
+            })
+        });
+    </script>

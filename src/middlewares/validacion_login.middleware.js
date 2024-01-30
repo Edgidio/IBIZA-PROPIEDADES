@@ -19,7 +19,8 @@ const validateLogin = (req, res, next) => {
       return res.status(400).render('partials/dashboard/login',
         { 
             message: 'Error de validación',
-            errors 
+            errors,
+            rutaIF: "Backend"
         });
     }
   

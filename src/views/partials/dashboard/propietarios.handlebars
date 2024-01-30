@@ -117,10 +117,10 @@
                                                     <td> <span class="product">{{cedula}}</span> </td>
                                                     <td> <span class="product">{{telefono}}</span> </td>
                                                     <td> <span class="product">{{correo}}</span> </td>
-                                                    <td> <span class="product">{{cantidadPropiedades}}</span> </td>
+                                                    <td> <span class="product">{{numeroDePropiedades}}</span> </td>
                                                     <td>
                                                         <a href="" class="badge badge-complete">Actualizar</a>
-                                                        <a {{!-- onclick="editarModal('{{id}}','{{usuario}}')" --}} data-toggle="modal" data-target="#staticModal" href="" style="background-color: red;" class="badge badge-complete">Eliminar</a>
+                                                        <a onclick="editarModal('{{cedula}}','{{nombres}}')" data-toggle="modal" data-target="#staticModal" href="" style="background-color: red;" class="badge badge-complete">Eliminar</a>
                                                     </td>
                                                 </tr>  
                                             {{/each}}                                        
@@ -166,7 +166,7 @@
         if (modalBody) {
             modalBody.innerHTML = `
                             <p>
-                               Estás a punto de eliminar el usuario <span style="color: red; text-transform: uppercase;">${usuario}</span>. Esta acción es irreversible y eliminará todos los datos asociados a su cuenta. Por favor, asegúrate de que realmente deseas proceder con la eliminación.
+                               Estás a punto de eliminar al propietario <span style="color: red; text-transform: uppercase;">${usuario}</span>. Esta acción es irreversible y eliminará todos los datos asociados a su cuenta. Por favor, asegúrate de que realmente deseas proceder con la eliminación.
                             </p>
             `;
         }
@@ -177,7 +177,7 @@
         // Verificar si el enlace "Aceptar" y el formulario existen
         if (form) {
             // Cambiar el action del formulario
-            form.action = `/admin-ibizapropiedades-dashboard/eliminar-usuario/${id}`;
+            form.action = `/admin-ibizapropiedades-dashboard/propietario-eliminar/${id}`;
         }
     }
 

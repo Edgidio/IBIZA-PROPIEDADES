@@ -48,20 +48,36 @@
                 </div>
 
                 <div class="dropdown for-message">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="message" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="notification-correo" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="azul-iconos fa fa-envelope"></i>
-                        <span style="background-color: #F3AA08 !important;" class="count bg-primary">1</span>
+                        <span style="background-color: #F3AA08 !important;" id="count-correo" class="count bg-primary">{{N_correos}}</span>
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="message">
-                        <p style="color: #0F32A1;" class="red">Tienes 1 correos</p>
-                        <a class="dropdown-item media" href="#">
-                            <span class="photo media-left"><img alt="avatar" src="images/avatar/1.jpg"></span>
-                            <div class="message media-body">
-                                <span class="name float-left">Jonathan Smith</span>
-                                <span class="time float-right">Justo ahora</span>
-                                <p>Hola, este es mi primer correo</p>
-                            </div>
-                        </a>
+                    <div style=" max-height: 500px; overflow-y: auto;" id="array_correos" class="dropdown-menu" aria-labelledby="message">
+                        <p style="color: #0F32A1;" class="red">Tienes {{N_correos}} correos</p>
+
+                        
+
+                        {{#if Correos}}
+                            {{#each Correos}}
+                                <a class="dropdown-item media" href="#">
+                                    <span class="photo media-left"><i class="azul-iconos fa fa-envelope"></i></span>
+                                    <div class="message media-body">
+                                        <span class="name float-left">{{nombre}}</span>
+                                        <span class="time float-right">{{createdAt}}</span>
+                                        <p>{{mensaje}}</p>
+                                    </div>
+                                    
+                                </a>
+                            {{/each}}
+                        {{else}}
+
+
+                        {{/if}}
+
+                        
+
+
+
                     </div>
                 </div>
             </div>
@@ -72,7 +88,7 @@
                 </a>
 
                 <div class="user-menu dropdown-menu">
-                    <a style="color: #0F32A1;" class="nav-link" href="#"><i class="fa fa-power -off"></i>Cerrar sesión</a>
+                    <a style="color: #0F32A1;" class="nav-link" href="/admin-ibizapropiedades/logout"><i class="fa fa-power -off"></i>Cerrar sesión</a>
                 </div>
             </div>
 

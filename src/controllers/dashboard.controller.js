@@ -16,15 +16,27 @@ export const dashboardGET = async (req, res) => {
         visto: false,
         },
     });
-   
 
-/*    console.log(Inicios_de_sesiones) */
+    const Correos = await db.correos_ibiza.findMany({
+        where: {
+            visto: false
+        }
+       });
+    
+    const N_correos = await db.correos_ibiza.count({
+        where: {
+        visto: false,
+        },
+    });
+
     
     res.render('partials/dashboard/index', {
         Titulo: "Ibiza Prop | Dashboard",
         Inicios_de_sesiones: Inicios_de_sesiones,
         N_inicios,
-        rutaIF: "Backend"
+        rutaIF: "Backend",
+        N_correos,
+        Correos
     });
       
     }catch (error) {

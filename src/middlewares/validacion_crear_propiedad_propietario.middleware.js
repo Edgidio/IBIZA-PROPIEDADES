@@ -5,7 +5,7 @@ const db = new PrismaClient();
 // Middleware para validar el formulario de inicio de sesión
 const validacion_crear_propiedad_propietario = async (req, res, next) => {
 
-  const { tipo_propiedad, venta_renta, descripcion, detalles,select_estado , ubicacion, precio, n_habitaciones, n_banos, terreno, superficie, fotos } = req.body;
+  const { tipo_propiedad, venta_renta, descripcion, detalles, estado , ubicacion, precio, n_habitaciones, n_banos, terreno, superficie, fotos } = req.body;
 
   const { error } = crear_propiedad_propietarioSchema.validate(req.body, { abortEarly: false });
 
@@ -31,7 +31,7 @@ const validacion_crear_propiedad_propietario = async (req, res, next) => {
 
     });
 
-    console.log(errors)
+    console.log(errors, "Va")
 
     return res.render("partials/dashboard/crear-propietario-propiedad", {
         Titulo: "Ibiza Prop | Crear propiedad",
@@ -39,7 +39,8 @@ const validacion_crear_propiedad_propietario = async (req, res, next) => {
         N_inicios,
         ruta: "/crear-propietario",
         errors, 
-        datos_formulario: { tipo_propiedad, venta_renta, descripcion, detalles,select_estado , ubicacion, precio, n_habitaciones, n_banos, terreno, superficie, fotos }
+        datos_formulario: { tipo_propiedad, venta_renta, descripcion, detalles,estado , ubicacion, precio, n_habitaciones, n_banos, terreno, superficie },
+        rutaIF: "Backend"
     })
 
     

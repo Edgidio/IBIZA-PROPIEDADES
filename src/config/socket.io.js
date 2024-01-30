@@ -7,13 +7,26 @@ export const connect = (server) => {
   socket.io = new Server(server);
 
   socket.io.on('connection', (socket) => {
-    console.log('Cliente conectado');
   
-  // Escuchar el evento desde el cliente
-  socket.on('cliente_envia_evento',  async () => {
-  
+    // Escuchar el evento desde el cliente
+    socket.on('cliente_envia_evento',  async () => {
+    
+        // Actualizar todos los registros donde el campo visto es false
+        const resultado = await db.log_sesiones.updateMany({
+          where: {
+            visto: false,
+          },
+          data: {
+            visto: true,
+          },
+        });
+        
+    });
+
+    socket.on('cliente_envia_evento_correo',async () => {
+    
       // Actualizar todos los registros donde el campo visto es false
-      const resultado = await db.log_sesiones.updateMany({
+      const resultado = await db.correos_ibiza.updateMany({
         where: {
           visto: false,
         },
@@ -22,7 +35,8 @@ export const connect = (server) => {
         },
       });
       
-  });
+    });
+  
   });
 
 };

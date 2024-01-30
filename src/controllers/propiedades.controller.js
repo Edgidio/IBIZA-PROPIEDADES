@@ -57,13 +57,13 @@ export const obtenerPropiedadesGET = async (req, res) => {
             visto: false,
             },
         });
-        console.log(propiedadesConImagenesYPropietario, "OPOOOOOOOOOOOOOOOOOOOOOOOOO")
-        console.log(propiedadesConImagenesYPropietario[7].fotos[0], "21111111111111111111111111111111")
+
     
         res.render("partials/dashboard/propiedades", {
             Titulo: "Ibiza Prop | Propiedades",
             N_inicios,
             ruta: "/usuarios",
+            rutaIF: "Backend",
             propiedadesConImagenesYPropietario
         })
         

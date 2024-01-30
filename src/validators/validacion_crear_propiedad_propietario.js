@@ -23,6 +23,7 @@ const crear_propiedad_propietarioSchema = Joi.object({
   ubicacion: Joi.string().max(100).messages({
     'string.base': 'La ubicación debe ser una cadena de texto.',
     'string.max': 'La ubicación no puede tener más de {#limit} caracteres.',
+    'string.empty': 'La ubicación no puede estar vacía.',
   }),
 
   precio: Joi.number().default(0).messages({

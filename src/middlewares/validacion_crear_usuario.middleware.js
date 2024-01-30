@@ -39,7 +39,8 @@ const validate_crear_usuaurio = async (req, res, next) => {
             usuario: req.body.usuario,
             password: req.body.password,
             passwordr: req.body.passwordr
-        }
+        },
+        rutaIF: "Backend"
     })
 
 
