@@ -1,0 +1,234 @@
+
+    <!-- Left Panel -->
+    {{> "dashboard/componentes/aside" }}
+    <!-- /#left-panel -->
+
+    <!-- Right Panel -->
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        {{> "dashboard/componentes/header" }}
+        <!-- /#header -->
+
+        
+        <!-- Content -->
+        <div class="breadcrumbs">
+
+            {{#if update_propiedad}}
+            <div style="text-align: center;" id="success-alertt" class="alert alert-success" role="alert">
+                {{update_propiedad}}
+            </div>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                        // Seleccionar el elemento del alerta
+                        console.log("dentro del script")
+                        var successAlert = document.getElementById("success-alertt");
+                        console.log("despues de la variable del script")
+                        // Esperar 3000 milisegundos (3 segundos) y luego ocultar el alerta
+                        setTimeout(function() {
+                            console.log("dentro de los segundo del script")
+                            console.log(successAlert)
+                            if (successAlert) {
+                                console.log("IF")
+                                successAlert.style.display = "none";
+                            }
+                        }, 4000);
+                    });
+            </script>
+            {{/if}} 
+
+        <div class="modal fade" id="staticModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticModalLabel">Eliminar Usuario</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">X</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                              
+                           </p>
+                       </div>
+                       <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <form style="display: inline;" action="" method="post">
+                            <button type="submit" class="btn btn-primary">Aceptar</a>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+            <div class="breadcrumbs-inner">
+                <div class="row m-0">
+                    <div class="col-sm-4">
+                        <div class="page-header float-left">
+                            <div class="page-title">
+                                <h1>Propiedad</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+ 
+
+        <div class="content">
+
+            <div class="animated fadeIn">
+
+                    <div class=".col-md-6 .offset-md-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fa fa-user"></i><strong class="card-title pl-2">Dueño de la propiedad</strong>
+                            </div>
+                            <div class="card-body">
+                                <div class="mx-auto d-block">
+                                    <img class="rounded-circle mx-auto d-block" src="/images/profile.png" alt="Card image cap">
+                                    <h5 class="text-sm-center mt-2 mb-1">Nombre completo: {{propiedadesConImagenesYPropietario.propietario.nombres}} {{propiedadesConImagenesYPropietario.propietario.apellidos}}</h5>
+                                    <div class="location text-sm-center"><img style="margin-bottom: 4px;" width="20" height="20" src="/images/driver-license (1).png" alt=""> Cedula: {{propiedadesConImagenesYPropietario.propietario.cedula}}
+                                </div>
+                                <hr>
+                                <div class="card-text text-sm-center">
+                                    <img src="/images/email (1).png"  width="20" height="20" style="margin-bottom: 4px;"  alt=""> {{propiedadesConImagenesYPropietario.propietario.correo}}
+                                    
+                                    <img src="/images/apple.png" width="20" height="20" style="margin-bottom: 4px;" alt=""> {{propiedadesConImagenesYPropietario.propietario.telefono}}
+
+                                </div>
+                                
+                            </div>
+                            
+                        </div>
+                        <div class="card-footer">
+                                <strong style="font-size: 15px;" class="mb-3">Propiedad creada por el usuario: {{propiedadesConImagenesYPropietario.usuario}}</strong>
+                        </div>
+                    </div>
+
+                    <div class=".col-md-6 .offset-md-3">
+                        <div class="card">
+                            <div class="col-13">
+                                <div class="card-header">
+                                    <i class="fa fa-home"></i><strong class="card-title pl-2">Galería de la propiedad</strong>
+                                </div>
+                                {{#eq propiedadesConImagenesYPropietario.venta_renta "V"}}<div style="background-color: #F3AA08;" class="text-white text-center"><small><span class="badge mb-1 mt-1">Propiedad en venta</span></small></div>{{/eq}}
+                                {{#eq propiedadesConImagenesYPropietario.venta_renta "R"}}<div class="bg-success text-center"><small><span class="badge badge-success mb-1 mt-1">Propiedad en renta</span></small></div>{{/eq}} 
+                                    
+                                <div class="row no-gutters">
+                                    {{#each propiedadesConImagenesYPropietario.imagenes}}
+                                    <div class="col-sm-6 col-md-4 col-lg-3">
+                                        <img style="height:170px !important ; " width="275" src="/images/uploads/propiedades/small/{{this}}" alt="Image" class="img-fluid">
+                                    </div>      
+                                    {{/each}}
+                                </div>   
+                                        <div style="padding-left: 10px !important;" class="card-header">
+                                           <strong class="card-title">Titulo de la propiedad:</strong> <h4 style="display: inline;" class="card-title mb-3">{{propiedadesConImagenesYPropietario.descripcion}}</h4>
+                                        </div>
+                                    <div class="card-body">
+                                        <div class="row mb-5">
+                                            <div class="col-md-6 col-lg-4 text-center border-bottom  py-3">
+                                                <strong class="d-inline-block text-black mb-0">Tipo de inmueble</strong>
+                                                <span class="d-block">{{propiedadesConImagenesYPropietario.tipo_propiedad}}</span>
+                                            </div>
+                                            <div class="col-md-6 col-lg-4 text-center border-bottom  py-3">
+                                                <strong class="d-inline-block text-black mb-0">Estado</strong>
+                                                <span class="d-block">{{propiedadesConImagenesYPropietario.estado}}</span>
+                                            </div>
+                                            <div class="col-md-6 col-lg-4 text-center border-bottom py-3">
+                                                <strong class="d-inline-block text-black mb-0">Ubicacion</strong>
+                                                <span class="d-block">{{propiedadesConImagenesYPropietario.ubicacion}}</span>
+                                            </div>
+                                        </div>
+                                        <h3>Descripcion:</h3>
+                                        <br>
+                                        <p class="card-text">{{propiedadesConImagenesYPropietario.detalles}}</p>
+                                        <hr >
+                                        
+                                        <!-- Agregados botones de Eliminar y Actualizar con alineación a la derecha -->
+                                        <div class="buttons-container text-right mt-3">
+                                            
+                                            <a href="/admin-ibizapropiedades-dashboard/propiedad/actualizar/{{propiedadesConImagenesYPropietario.id}}"  class="btn btn-success btn-actualizar text-white">Actualizar</a>
+                                            <a onclick="editarModal('{{propiedadesConImagenesYPropietario.id}}','{{propiedadesConImagenesYPropietario.descripcion}}')" data-toggle="modal" data-target="#staticModal" style="background-color: red;" class="btn btn-danger text-white">Eliminar</a>
+
+                                        </div>
+                                        <!-- Fin de los botones -->
+                                    </div>
+                                    
+                            </div>
+                            
+                        </div>
+                    
+
+                    </div>
+
+
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="clearfix"></div>
+        
+
+        <!-- /.content -->
+
+        {{> "dashboard/componentes/footer" }}
+
+    </div>
+
+
+
+{{> "dashboard/componentes/scripts" }}
+
+<script>
+    // Función que se ejecuta cuando el modal se muestra
+    function editarModal(id, usuario) {
+        // Obtener el enlace "Aceptar"
+        var btnAceptar = document.querySelector("#staticModal .modal-footer a.btn-primary");
+        
+
+        // Verificar si el enlace "Aceptar" existe
+        if (btnAceptar) {
+            // Cambiar la dirección (href) del enlace "Aceptar"
+            btnAceptar.href = `/admin-ibizapropiedades-dashboard/propiedad/${id}`;
+        }
+
+        // Cambiar el contenido del modal
+        var modalBody = document.querySelector("#staticModal .modal-body p");
+
+        // Verificar si el elemento del modal existe
+        if (modalBody) {
+            modalBody.innerHTML = `
+                            <p>
+                               Estás a punto de la propiedad <span style="color: red; text-transform: uppercase;">${usuario}</span>. Esta acción es irreversible y eliminará todos los datos asociados a su cuenta. Por favor, asegúrate de que realmente deseas proceder con la eliminación.
+                            </p>
+            `;
+        }
+
+                // Obtener el formulario dentro del modal
+        var form = document.querySelector("#staticModal form");
+
+        // Verificar si el enlace "Aceptar" y el formulario existen
+        if (form) {
+            // Cambiar el action del formulario
+            form.action = `/admin-ibizapropiedades-dashboard/propiedad/${id}`;
+        }
+    }
+
+    // Escuchar el evento 'shown.bs.modal' del modal
+    document.getElementById("staticModal").addEventListener("shown.bs.modal", function() {
+        // Puedes llamar a la función editarModal con los parámetros deseados aquí si es necesario
+    });
+</script>
+
+{{> "dashboard/componentes/scripts_socket" }}
+   

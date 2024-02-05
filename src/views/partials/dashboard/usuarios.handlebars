@@ -26,7 +26,7 @@
                        </div>
                        <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <form style="display: inline;" action="/admin-ibizapropiedades-dashboard/eliminar-usuario/:id" method="post">
+                        <form style="display: inline;" action="/admin-ibizapropiedades-dashboard/eliminar-usuario/" method="post">
                             <button type="submit" class="btn btn-primary">Aceptar</a>
                         </form>
                         
@@ -157,7 +157,7 @@
         // Verificar si el enlace "Aceptar" existe
         if (btnAceptar) {
             // Cambiar la dirección (href) del enlace "Aceptar"
-            btnAceptar.href = `admin-ibizapropiedades-dashboard/eliminar-usuario/${id}`;
+            btnAceptar.href = `/admin-ibizapropiedades-dashboard/eliminar-usuario/${id}`;
         }
 
         // Cambiar el contenido del modal
@@ -188,55 +188,4 @@
     });
 </script>
 
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-        // Frontend
-        document.addEventListener('DOMContentLoaded', () => {
-            const socket = io();
-
-            // Marcar las notificaciones en visto
-            const botonActualizarCampo = document.getElementById('notification');
-
-            // Agregar un evento click al botón
-            botonActualizarCampo.addEventListener('click', () => {
-
-                console.log("emit")
-                
-                socket.emit('cliente_envia_evento');
-                const vistas_ = document.querySelector('.count');
-
-                vistas_.innerHTML = '0';
-
-            });
-
-            // Escucha el eventos para el intento o inicio de sesion
-            socket.on("inicio_de_sesion", (data) => {
-
-                const vistas_ = document.querySelector('.count');
-                vistas_.innerHTML = data.N_inicios;
-
-                const notificaciones = document.querySelector('#notificaciones_inicios');  
-
-                if (data.Iusuario.sesion){
-
-                    notificaciones.innerHTML += `                  
-                        <a class="dropdown-item media" href="#">
-                            <i style="color: #28A745;" class="fa fa-check"></i>
-                            <p>Inicio de sesion correcto</p>     
-                        </a>                    
-                    `
-
-                }else{
-                    
-                    notificaciones.innerHTML += `                  
-                        <a class="dropdown-item media" href="#">
-                            <i style="color: #DC3545;" class="fa fa-warning"></i>
-                            <p>inicio de sesion fallido</p>
-                        </a>                   
-                    `
-
-                }
-
-            })
-        });
-    </script>
+{{> "dashboard/componentes/scripts_socket" }}

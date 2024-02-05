@@ -6,69 +6,121 @@ export const obtenerUsuariosGET = async (req, res) => {
 
         const usuarios = await db.usuarios.findMany();
 
+        // Informacion para la navegacion necesaria    
         const Inicios_de_sesiones = await db.log_sesiones.findMany({
-          where: {
-              visto: false
-          }
-         });
-      
-         const N_inicios = await db.log_sesiones.count({
-              where: {
-              visto: false,
-              },
-          });
+            where: {
+                visto: false
+            }
+        });
+
+        const N_inicios = await db.log_sesiones.count({
+                where: {
+                visto: false,
+                },
+        });
+
+        const Correos = await db.correos_ibiza.findMany({
+            where: {
+                visto: false
+            }
+        });
+        
+        const N_correos = await db.correos_ibiza.count({
+            where: {
+            visto: false,
+            },
+        });
+        // FIN Informacion para la navegacion necesaria 
     
-        res.render("partials/dashboard/usuarios", {
-          Titulo: "Ibiza Prop | Usuarios admin",
+        return res.render("partials/dashboard/usuarios", {
+          Titulo: "Ibiza Prop | Usuarios",
           Inicios_de_sesiones: Inicios_de_sesiones,
           N_inicios,
           usuarios,
-          ruta: "/usuarios",
           usuarioEliminado: req.flash('usuarioEliminado'),
-          rutaIF: "Backend"
+          rutaIF: "Backend",
+          Correos,
+          N_correos
         })
 
       } catch (error) {
         
-        res.send(`<h3 style="color: tomato; text-align: center;">Detectamos un error no validado en las respuestas HTTP durante la fase de desarrollo de la aplicación. Estamos trabajando activamente para gestionar estas excepciones y garantizar la estabilidad del sistema antes de su implementación final.</h3> ${error}`)
-           .status(500)
+              // Manejo de errores y redirección en caso de problemas
+              await db.log_sistema.create({
+                  data: {
+                      controlador: "obtenerUsuariosGET",
+                      error: error.toString()
+                  },
+              });
+        
+              req.flash('error_controlador', 'Hubo un problema interno en el servidor');
+      
+              return res.redirect("/admin-ibizapropiedades-dashboard/usuarios");
     }
 };
 
 export const CrearUsuarioGET = async (req, res) => {
   try {
 
-    const Inicios_de_sesiones = await db.log_sesiones.findMany({
-      where: {
-          visto: false
-      }
-     });
-  
-     const N_inicios = await db.log_sesiones.count({
+        // Informacion para la navegacion necesaria    
+      const Inicios_de_sesiones = await db.log_sesiones.findMany({
+          where: {
+              visto: false
+          }
+      });
+
+      const N_inicios = await db.log_sesiones.count({
+              where: {
+              visto: false,
+              },
+      });
+
+      const Correos = await db.correos_ibiza.findMany({
+          where: {
+              visto: false
+          }
+      });
+      
+      const N_correos = await db.correos_ibiza.count({
           where: {
           visto: false,
           },
       });
+      // FIN Informacion para la navegacion necesaria 
 
-    res.render("partials/dashboard/crear-usuario", {
+    return res.render("partials/dashboard/crear-usuario", {
       Titulo: "Ibiza Prop | Crear usuario administrador",
       Inicios_de_sesiones: Inicios_de_sesiones,
       N_inicios,
-      ruta: "/crear-usuarios",
       req_nuevo_usuario: req.flash("nuevo_usuario"),
       req_usurio_existente: req.flash("usurio_existente"),
       req_campo_usuario_error: req.flash("campo_usuario_error"),
-      rutaIF: "Backend"
+      rutaIF: "Backend",
+      Correos,
+      N_correos
     })
 
 
   } catch (error) {
+
+          // Manejo de errores y redirección en caso de problemas
+          await db.log_sistema.create({
+              data: {
+                  controlador: "CrearUsuarioGET",
+                  error: error.toString()
+              },
+          });
+    
+          req.flash('error_controlador', 'Hubo un problema interno en el servidor');
+  
+          return res.redirect("/admin-ibizapropiedades-dashboard/crear-usuario");
 
   }
 
 };
 
 export const CrearUsuarioPOST = async (req, res) => {
+
   try {
 
         // Extraer datos del cuerpo de la solicitud
@@ -87,8 +139,6 @@ export const CrearUsuarioPOST = async (req, res) => {
       return res.redirect("/admin-ibizapropiedades-dashboard/crear-usuario")
     }
 
-    console.log(usuarioExistente)
-
     const nuevo_usuario = await db.usuarios.create({
         
       data: {
@@ -101,11 +151,21 @@ export const CrearUsuarioPOST = async (req, res) => {
 
     req.flash("nuevo_usuario", "Usuario administrador creado satisfactoriamente")
 
-    res.redirect("/admin-ibizapropiedades-dashboard/crear-usuario")
+    return res.redirect("/admin-ibizapropiedades-dashboard/crear-usuario")
 
     } catch (error) {
 
-    res.send(`Se ha detectado un error no validado en tu solicitud HTTP durante la fase de desarrollo de la aplicación. Estamos trabajando activamente para gestionar estas excepciones y garantizar la estabilidad del sistema antes de su implementación final. ${error}`)
+          // Manejo de errores y redirección en caso de problemas
+          await db.log_sistema.create({
+              data: {
+                  controlador: "CrearUsuarioPOST",
+                  error: error.toString()
+              },
+          });
+      
+          req.flash('error_controlador', 'Hubo un problema al procesar su solicitud. Por favor, inténtelo de nuevo más tarde o comuniquese con su desarrollador');
+    
+          return res.redirect("/admin-ibizapropiedades-dashboard/crear-usuario");
     }
 
 };
@@ -115,6 +175,18 @@ export const eliminarUsuarioPOST = async (req, res) => {
 
     const usuarioId = parseInt(req.params.id);
 
+    // Verificar si el usuario existe antes de intentar eliminarlo
+    const usuarioExistente = await db.usuarios.findUnique({
+      where: {
+        id: usuarioId,
+      },
+    });
+
+    if (!usuarioExistente) {
+
+      return res.redirect('/admin-ibizapropiedades-dashboard/usuarios'); 
+    }
+
     const usuarioEliminado = await db.usuarios.delete({
       where: {
         id: usuarioId,
@@ -123,11 +195,20 @@ export const eliminarUsuarioPOST = async (req, res) => {
 
     req.flash('usuarioEliminado', 'Usuario eliminado satisfactoriamente.');
 
-    res.redirect('/admin-ibizapropiedades-dashboard/usuarios')
+    return res.redirect('/admin-ibizapropiedades-dashboard/usuarios')
 
   } catch (error) {
     
-    res.status(500).json({ error: 'Se ha detectado un error no validado en tu solicitud HTTP durante la fase de desarrollo de la aplicación. Estamos trabajando activamente para gestionar estas excepciones y garantizar la estabilidad del sistema antes de su implementación final.' });
+        // Manejo de errores y redirección en caso de problemas
+        await db.log_sistema.create({
+          data: {
+            controlador: "eliminarUsuarioPOST",
+            error: error.toString()
+          },
+        });
+    
+        req.flash('error_controlador', 'Hubo un problema al procesar su solicitud. Por favor, inténtelo de nuevo más tarde.');
+        return res.redirect("/admin-ibizapropiedades-dashboard/usuarios");
 
   }
 };

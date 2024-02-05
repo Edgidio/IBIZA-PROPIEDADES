@@ -4,18 +4,18 @@ const db = new PrismaClient();
 export const dashboardGET = async (req, res) => {
     try {
 
-        
-   const Inicios_de_sesiones = await db.log_sesiones.findMany({
-    where: {
-        visto: false
-    }
-   });
-
-   const N_inicios = await db.log_sesiones.count({
+    // Informacion para la navegacion necesaria    
+    const Inicios_de_sesiones = await db.log_sesiones.findMany({
         where: {
-        visto: false,
-        },
+            visto: false
+        }
     });
+
+    const N_inicios = await db.log_sesiones.count({
+            where: {
+            visto: false,
+            },
+        });
 
     const Correos = await db.correos_ibiza.findMany({
         where: {
@@ -28,20 +28,32 @@ export const dashboardGET = async (req, res) => {
         visto: false,
         },
     });
+    // FIN Informacion para la navegacion necesaria 
 
     
-    res.render('partials/dashboard/index', {
+    return res.render('partials/dashboard/index', {
         Titulo: "Ibiza Prop | Dashboard",
         Inicios_de_sesiones: Inicios_de_sesiones,
         N_inicios,
         rutaIF: "Backend",
         N_correos,
-        Correos
+        Correos,
+        error_controlador: req.flash('error_controlador')
     });
       
     }catch (error) {
         
-        
+        // Manejo de errores y redirección en caso de problemas
+        await db.log_sistema.create({
+            data: {
+                controlador: "dashboardGET",
+                error: error.toString()
+            },
+        });
+  
+        req.flash('error_controlador', 'Hubo un problema interno en el servidor');
+
+        return res.redirect("/admin-ibizapropiedades-dashboard/crear-usuario");
 
     }
 };

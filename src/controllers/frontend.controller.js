@@ -3,15 +3,15 @@ const db = new PrismaClient();
 
 import {socket} from "../config/socket.io.js"
 
-import { EmailMessage } from "cloudflare:email";
+/* import { EmailMessage } from "cloudflare:email";
 import { createMimeMessage } from "mimetext";
 
 import nodemailer from 'nodemailer';
-import { google } from 'googleapis';
+import { google } from 'googleapis'; */
 
 // Configuración de OAuth
 
-const credentials = {
+/* const credentials = {
   web: {
     client_id: "417205431041-l6i4356qko5ejpgskofglocv228iheu9.apps.googleusercontent.com",
     project_id: "prueba-ibiza-propiedades",
@@ -44,7 +44,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-
+ */
 
 export const index = async (req, res) => {
   try {
@@ -282,8 +282,8 @@ export const contacto = async (req, res) => {
   }
 }; */
 
-import { EmailMessage } from "cloudflare:email";
-import { createMimeMessage } from "mimetext";
+
+
 
 export const contactoPOST = async (req, res) => {
   try {
@@ -300,7 +300,7 @@ export const contactoPOST = async (req, res) => {
       },
     });
 
-    // Enviar respuesta automática por correo electrónico al remitente
+    /* // Enviar respuesta automática por correo electrónico al remitente
     const msg = createMimeMessage();
     msg.setHeader("In-Reply-To", "<Message-ID-del-correo-entrante>");
     msg.setSender({ name: "Nombre del Remitente", addr: "<SENDER>@example.com" });
@@ -318,18 +318,29 @@ export const contactoPOST = async (req, res) => {
     );
 
     // Enviar la respuesta automática por correo electrónico
-    await nuevoCorreo.reply(replyMessage);
+    await nuevoCorreo.reply(replyMessage); */
 
     // Resto del código para la gestión de correos y redirección
     req.flash('correo_enviado', `Gracias, ${nombre}. Su correo ha sido enviado correctamente. Nos pondremos en contacto con usted pronto.`);
     
+    const Nn_correos = await db.correos_ibiza.findMany({
+      where: {
+        visto: false,
+      },
+    });
+
     const N_correos = await db.correos_ibiza.count({
       where: {
         visto: false,
       },
     });
 
-    socket.io.emit("envio_de_correo", N_correos)
+    const data = {
+      N_correos,
+      Nn_correos
+    }
+
+    socket.io.emit("envio_de_correo", data)
     
     return res.redirect("/contacto");
   } catch (error) {

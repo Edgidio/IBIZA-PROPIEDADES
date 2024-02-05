@@ -1,0 +1,98 @@
+<script src="/socket.io/socket.io.js"></script>
+    <script>
+        // Frontend
+        document.addEventListener('DOMContentLoaded', () => {
+            const socket = io();
+
+            // Marcar las notificaciones en visto
+            const botonActualizarCampo = document.getElementById('notification');
+
+            // Agregar un evento click al botón
+            botonActualizarCampo.addEventListener('click', () => {
+                
+                socket.emit('cliente_envia_evento');
+                const vistas_ = document.querySelector('.count');
+
+                vistas_.innerHTML = '0';
+
+            });
+
+            // Marcar las notificaciones en visto de corro
+            const botonActualizarCampoCorreo = document.getElementById('notification-correo');
+
+            // Agregar un evento click al botón
+            botonActualizarCampoCorreo.addEventListener('click', () => {
+                
+                socket.emit('cliente_envia_evento_correo');
+                const vistas_correo= document.getElementById('count-correo');
+
+                vistas_correo.innerHTML = '0';
+
+            });
+
+            // Escucha el eventos para el intento o inicio de sesion
+            socket.on("inicio_de_sesion", (data) => {
+
+                const vistas_ = document.querySelector('.count');
+                vistas_.innerHTML = data.N_inicios;
+
+                const notificaciones = document.querySelector('#notificaciones_inicios');  
+
+                if (data.Iusuario.sesion){
+
+                    notificaciones.innerHTML += `                  
+                        <a class="dropdown-item media" href="#">
+                            <i style="color: #28A745;" class="fa fa-check"></i>
+                            <p>Inicio de sesion correcto</p>     
+                        </a>                    
+                    `
+
+                }else{
+                    
+                    notificaciones.innerHTML += `                  
+                        <a class="dropdown-item media" href="#">
+                            <i style="color: #DC3545;" class="fa fa-warning"></i>
+                            <p>inicio de sesion fallido</p>
+                        </a>                   
+                    `
+
+                }
+
+            })
+
+            // Escucha el eventos para el intento o inicio de sesion
+            socket.on("envio_de_correo", (data) => {
+
+                const vistas_correo= document.getElementById('count-correo');
+                vistas_correo.innerHTML = data.N_correos;
+                const notificaciones = document.querySelector('#array_correos');  
+
+                if (data.Nn_correos){
+
+                    for (i in data.Nn_correos){
+                        notificaciones.innerHTML += `                  
+                        <a class="dropdown-item media" href="/admin-ibizapropiedades-dashboard/correos">
+                            <span class="photo media-left"><i class="azul-iconos fa fa-envelope"></i></span>
+                            <div class="message media-body">
+                                <span class="name float-left">${data.Nn_correos[i].nombre}</span>
+                                <span class="time float-right">${data.Nn_correos[i].createdAt}</span>
+                                <p>${data.Nn_correos[i].mensaje}</p>
+                            </div>
+                            
+                        </a>                  
+                    `
+                    }
+
+                }else{
+                    
+                    notificaciones.innerHTML += `                  
+                                     
+                    `
+
+                }
+
+                
+
+            })
+        });
+    </script>
