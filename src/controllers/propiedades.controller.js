@@ -389,8 +389,6 @@ export const actualizarPropiedadesPUT = async (req, res) => {
       // Extrae los campos que se pueden actualizar del cuerpo de la solicitud
       const { descripcion, detalles, ubicacion, precio, n_habitaciones, n_banos, superficie, terreno, tipo_propiedad, vendida, venta_renta, estado } = req.body;
 
-      console.log(parseInt(n_habitaciones))
-
       const propiedadExistente = await db.propiedades.findUnique({
         where: {
           id: propiedadId,
@@ -451,8 +449,20 @@ export const actualizarPropiedadesPUT = async (req, res) => {
       return res.redirect(`/admin-ibizapropiedades-dashboard/propiedades/${tipo_propiedad_c}`)
 
     } catch (error) {
-      console.error('Error al actualizar propiedad:', error);
-      res.status(500).json({ error: 'Error interno del servidor' });
+      
+     // Manejo de errores y redirección en caso de problemas
+        await db.log_sistema.create({
+          data: {
+              controlador: "actualizarPropiedadesPUT",
+              error: error.toString()
+          },
+      });
+
+      req.flash('error_controlador', 'Hubo un problema al procesar su solicitud. Por favor, inténtelo de nuevo más tarde o cominiquese con su desarrollador');
+
+      return res.redirect(`/admin-ibizapropiedades-dashboard/propiedades/${tipo_propiedad_c}`)     
+
+
     }
 };
 
@@ -495,11 +505,31 @@ export const obtenerPropiedadesCasasGET = async (req, res) => {
       };
     });
 
+      // Informacion para la navegacion necesaria    
+      const Inicios_de_sesiones = await db.log_sesiones.findMany({
+        where: {
+            visto: false
+        }
+    });
+
     const N_inicios = await db.log_sesiones.count({
+            where: {
+            visto: false,
+            },
+        });
+
+    const Correos = await db.correos_ibiza.findMany({
+        where: {
+            visto: false
+        }
+      });
+    
+    const N_correos = await db.correos_ibiza.count({
         where: {
         visto: false,
         },
     });
+    // FIN Informacion para la navegacion necesaria 
 
     res.render("partials/dashboard/casas", {
         Titulo: "Ibiza Prop | Propiedades",
@@ -507,12 +537,25 @@ export const obtenerPropiedadesCasasGET = async (req, res) => {
         ruta: "/usuarios",
         rutaIF: "Backend",
         propiedadesConImagenesYPropietario: propiedadesConRutaUnica,
-        update_propiedad: req.flash("update_propiedad")
+        update_propiedad: req.flash("update_propiedad"),
+        N_correos,
+        Correos,
+        Inicios_de_sesiones: Inicios_de_sesiones,
+
     })
     
   } catch (error) {
-    console.error('Error al obtener propiedades:', error);
-    res.status(500).json({ error: 'Error interno del servidor' });
+     // Manejo de errores y redirección en caso de problemas
+     await db.log_sistema.create({
+      data: {
+          controlador: "obtenerPropiedadesCasasGET",
+          error: error.toString()
+      },
+  });
+
+  req.flash('error_controlador', 'Hubo un problema al procesar su solicitud. Por favor, inténtelo de nuevo más tarde o cominiquese con su desarrollador');
+
+  return res.redirect(`/admin-ibizapropiedades-dashboard/propiedades/casas`)     
   }
 };
 
@@ -521,18 +564,65 @@ export const obtenerPropiedadesApartamentoGET = async (req, res) => {
 
   try {
 
-    const propiedadesConImagenesYPropietario = await db.propiedades.findMany({
+    const propiedades = await db.propiedades.findMany({
+      where: {
+        tipo_propiedad: 'A',
+      },
       include: {
         fotos: true,
-        propietario: true,
       },
+    });
+    
+      const propiedadesConRutaUnica = propiedades.map((propiedad) => {
+      const primeraRuta = propiedad.fotos?.[0]?.rutas[0];
+    
+      return {
+        id: propiedad.id,
+        id_propietario: propiedad.id_propietario,
+        descripcion: propiedad.descripcion,
+        detalles: propiedad.detalles,
+        ubicacion: propiedad.ubicacion,
+        precio: propiedad.precio,
+        venta_renta: propiedad.venta_renta,
+        n_habitaciones: propiedad.n_habitaciones,
+        n_banos: propiedad.n_banos,
+        superficie: propiedad.superficie,
+        terreno: propiedad.terreno,
+        tipo_propiedad: propiedad.tipo_propiedad,
+        vendida: propiedad.vendida,
+        createdAt: propiedad.createdAt,
+        updatedAt: propiedad.updatedAt,
+        usuarioId: propiedad.usuarioId,
+        estado: propiedad.estado,
+        rutas: primeraRuta,
+      };
+    });
+
+      // Informacion para la navegacion necesaria    
+      const Inicios_de_sesiones = await db.log_sesiones.findMany({
+        where: {
+            visto: false
+        }
     });
 
     const N_inicios = await db.log_sesiones.count({
+            where: {
+            visto: false,
+            },
+        });
+
+    const Correos = await db.correos_ibiza.findMany({
+        where: {
+            visto: false
+        }
+      });
+    
+    const N_correos = await db.correos_ibiza.count({
         where: {
         visto: false,
         },
     });
+    // FIN Informacion para la navegacion necesaria 
 
 
     res.render("partials/dashboard/apartamentos", {
@@ -540,12 +630,28 @@ export const obtenerPropiedadesApartamentoGET = async (req, res) => {
         N_inicios,
         ruta: "/usuarios",
         rutaIF: "Backend",
-        propiedadesConImagenesYPropietario
+        N_correos,
+        Correos,
+        Inicios_de_sesiones: Inicios_de_sesiones,
+        propiedadesConImagenesYPropietario: propiedadesConRutaUnica,
+        update_propiedad: req.flash("update_propiedad"),
     })
     
   } catch (error) {
-    console.error('Error al obtener propiedades:', error);
-    res.status(500).json({ error: 'Error interno del servidor' });
+
+    console.log(error)
+
+         // Manejo de errores y redirección en caso de problemas
+         await db.log_sistema.create({
+          data: {
+              controlador: "obtenerPropiedadesApartamentoGET",
+              error: error.toString()
+          },
+      });
+    
+      req.flash('error_controlador', 'Hubo un problema al procesar su solicitud. Por favor, inténtelo de nuevo más tarde o cominiquese con su desarrollador');
+    
+      return res.redirect(`/admin-ibizapropiedades-dashboard/propiedades/apartamentos`)  
   }
 };
 
@@ -554,18 +660,65 @@ export const obtenerPropiedadesTerrenosGET = async (req, res) => {
 
   try {
 
-    const propiedadesConImagenesYPropietario = await db.propiedades.findMany({
+    const propiedades = await db.propiedades.findMany({
+      where: {
+        tipo_propiedad: 'T',
+      },
       include: {
         fotos: true,
-        propietario: true,
       },
+    });
+    
+      const propiedadesConRutaUnica = propiedades.map((propiedad) => {
+      const primeraRuta = propiedad.fotos?.[0]?.rutas[0];
+    
+      return {
+        id: propiedad.id,
+        id_propietario: propiedad.id_propietario,
+        descripcion: propiedad.descripcion,
+        detalles: propiedad.detalles,
+        ubicacion: propiedad.ubicacion,
+        precio: propiedad.precio,
+        venta_renta: propiedad.venta_renta,
+        n_habitaciones: propiedad.n_habitaciones,
+        n_banos: propiedad.n_banos,
+        superficie: propiedad.superficie,
+        terreno: propiedad.terreno,
+        tipo_propiedad: propiedad.tipo_propiedad,
+        vendida: propiedad.vendida,
+        createdAt: propiedad.createdAt,
+        updatedAt: propiedad.updatedAt,
+        usuarioId: propiedad.usuarioId,
+        estado: propiedad.estado,
+        rutas: primeraRuta,
+      };
+    });
+
+      // Informacion para la navegacion necesaria    
+      const Inicios_de_sesiones = await db.log_sesiones.findMany({
+        where: {
+            visto: false
+        }
     });
 
     const N_inicios = await db.log_sesiones.count({
+            where: {
+            visto: false,
+            },
+        });
+
+    const Correos = await db.correos_ibiza.findMany({
+        where: {
+            visto: false
+        }
+      });
+    
+    const N_correos = await db.correos_ibiza.count({
         where: {
         visto: false,
         },
     });
+    // FIN Informacion para la navegacion necesaria 
 
 
     res.render("partials/dashboard/terrenos", {
@@ -573,12 +726,25 @@ export const obtenerPropiedadesTerrenosGET = async (req, res) => {
         N_inicios,
         ruta: "/usuarios",
         rutaIF: "Backend",
-        propiedadesConImagenesYPropietario
+        N_correos,
+        Correos,
+        Inicios_de_sesiones: Inicios_de_sesiones,
+        propiedadesConImagenesYPropietario: propiedadesConRutaUnica,
+        update_propiedad: req.flash("update_propiedad"),
     })
     
   } catch (error) {
-    console.error('Error al obtener propiedades:', error);
-    res.status(500).json({ error: 'Error interno del servidor' });
+         // Manejo de errores y redirección en caso de problemas
+         await db.log_sistema.create({
+          data: {
+              controlador: "obtenerPropiedadesTerrenosGET",
+              error: error.toString()
+          },
+      });
+    
+      req.flash('error_controlador', 'Hubo un problema al procesar su solicitud. Por favor, inténtelo de nuevo más tarde o cominiquese con su desarrollador');
+    
+      return res.redirect(`/admin-ibizapropiedades-dashboard/propiedades/terrenos`)  
   }
 };
 
@@ -587,18 +753,65 @@ export const obtenerPropiedadesLocalComercialGET = async (req, res) => {
 
   try {
 
-    const propiedadesConImagenesYPropietario = await db.propiedades.findMany({
+    const propiedades = await db.propiedades.findMany({
+      where: {
+        tipo_propiedad: 'L',
+      },
       include: {
         fotos: true,
-        propietario: true,
       },
+    });
+    
+      const propiedadesConRutaUnica = propiedades.map((propiedad) => {
+      const primeraRuta = propiedad.fotos?.[0]?.rutas[0];
+    
+      return {
+        id: propiedad.id,
+        id_propietario: propiedad.id_propietario,
+        descripcion: propiedad.descripcion,
+        detalles: propiedad.detalles,
+        ubicacion: propiedad.ubicacion,
+        precio: propiedad.precio,
+        venta_renta: propiedad.venta_renta,
+        n_habitaciones: propiedad.n_habitaciones,
+        n_banos: propiedad.n_banos,
+        superficie: propiedad.superficie,
+        terreno: propiedad.terreno,
+        tipo_propiedad: propiedad.tipo_propiedad,
+        vendida: propiedad.vendida,
+        createdAt: propiedad.createdAt,
+        updatedAt: propiedad.updatedAt,
+        usuarioId: propiedad.usuarioId,
+        estado: propiedad.estado,
+        rutas: primeraRuta,
+      };
+    });
+
+      // Informacion para la navegacion necesaria    
+      const Inicios_de_sesiones = await db.log_sesiones.findMany({
+        where: {
+            visto: false
+        }
     });
 
     const N_inicios = await db.log_sesiones.count({
+            where: {
+            visto: false,
+            },
+        });
+
+    const Correos = await db.correos_ibiza.findMany({
+        where: {
+            visto: false
+        }
+      });
+    
+    const N_correos = await db.correos_ibiza.count({
         where: {
         visto: false,
         },
     });
+    // FIN Informacion para la navegacion necesaria 
 
 
     res.render("partials/dashboard/local-comercial", {
@@ -606,12 +819,25 @@ export const obtenerPropiedadesLocalComercialGET = async (req, res) => {
         N_inicios,
         ruta: "/usuarios",
         rutaIF: "Backend",
-        propiedadesConImagenesYPropietario
+        N_correos,
+        Correos,
+        Inicios_de_sesiones: Inicios_de_sesiones,
+        propiedadesConImagenesYPropietario: propiedadesConRutaUnica,
+        update_propiedad: req.flash("update_propiedad"),
     })
     
   } catch (error) {
-    console.error('Error al obtener propiedades:', error);
-    res.status(500).json({ error: 'Error interno del servidor' });
+       // Manejo de errores y redirección en caso de problemas
+       await db.log_sistema.create({
+        data: {
+            controlador: "obtenerPropiedadesLocalComercialGET",
+            error: error.toString()
+        },
+    });
+  
+    req.flash('error_controlador', 'Hubo un problema al procesar su solicitud. Por favor, inténtelo de nuevo más tarde o cominiquese con su desarrollador');
+  
+    return res.redirect(`/admin-ibizapropiedades-dashboard/propiedades/local-comercial`)  
   }
 };
 
@@ -620,18 +846,65 @@ export const obtenerPropiedadesOficinasGET = async (req, res) => {
 
   try {
 
-    const propiedadesConImagenesYPropietario = await db.propiedades.findMany({
+    const propiedades = await db.propiedades.findMany({
+      where: {
+        tipo_propiedad: 'O',
+      },
       include: {
         fotos: true,
-        propietario: true,
       },
+    });
+    
+      const propiedadesConRutaUnica = propiedades.map((propiedad) => {
+      const primeraRuta = propiedad.fotos?.[0]?.rutas[0];
+    
+      return {
+        id: propiedad.id,
+        id_propietario: propiedad.id_propietario,
+        descripcion: propiedad.descripcion,
+        detalles: propiedad.detalles,
+        ubicacion: propiedad.ubicacion,
+        precio: propiedad.precio,
+        venta_renta: propiedad.venta_renta,
+        n_habitaciones: propiedad.n_habitaciones,
+        n_banos: propiedad.n_banos,
+        superficie: propiedad.superficie,
+        terreno: propiedad.terreno,
+        tipo_propiedad: propiedad.tipo_propiedad,
+        vendida: propiedad.vendida,
+        createdAt: propiedad.createdAt,
+        updatedAt: propiedad.updatedAt,
+        usuarioId: propiedad.usuarioId,
+        estado: propiedad.estado,
+        rutas: primeraRuta,
+      };
+    });
+
+      // Informacion para la navegacion necesaria    
+      const Inicios_de_sesiones = await db.log_sesiones.findMany({
+        where: {
+            visto: false
+        }
     });
 
     const N_inicios = await db.log_sesiones.count({
+            where: {
+            visto: false,
+            },
+        });
+
+    const Correos = await db.correos_ibiza.findMany({
+        where: {
+            visto: false
+        }
+      });
+    
+    const N_correos = await db.correos_ibiza.count({
         where: {
         visto: false,
         },
     });
+    // FIN Informacion para la navegacion necesaria 
 
 
     res.render("partials/dashboard/oficinas", {
@@ -639,12 +912,25 @@ export const obtenerPropiedadesOficinasGET = async (req, res) => {
         N_inicios,
         ruta: "/usuarios",
         rutaIF: "Backend",
-        propiedadesConImagenesYPropietario
+        N_correos,
+        Correos,
+        Inicios_de_sesiones: Inicios_de_sesiones,
+        propiedadesConImagenesYPropietario: propiedadesConRutaUnica,
+        update_propiedad: req.flash("update_propiedad"),
     })
     
   } catch (error) {
-    console.error('Error al obtener propiedades:', error);
-    res.status(500).json({ error: 'Error interno del servidor' });
+           // Manejo de errores y redirección en caso de problemas
+           await db.log_sistema.create({
+            data: {
+                controlador: "obtenerPropiedadesOficinasGET",
+                error: error.toString()
+            },
+        });
+      
+        req.flash('error_controlador', 'Hubo un problema al procesar su solicitud. Por favor, inténtelo de nuevo más tarde o cominiquese con su desarrollador');
+      
+        return res.redirect(`/admin-ibizapropiedades-dashboard/propiedades/oficinas`)  
   }
 };
 
@@ -687,11 +973,31 @@ export const obtenerPropiedadesEdificiosGET = async (req, res) => {
       };
     });
 
-    const N_inicios = await db.log_sesiones.count({
-        where: {
-        visto: false,
-        },
-    });
+         // Informacion para la navegacion necesaria    
+         const Inicios_de_sesiones = await db.log_sesiones.findMany({
+          where: {
+              visto: false
+          }
+      });
+    
+      const N_inicios = await db.log_sesiones.count({
+              where: {
+              visto: false,
+              },
+          });
+    
+      const Correos = await db.correos_ibiza.findMany({
+          where: {
+              visto: false
+          }
+        });
+      
+      const N_correos = await db.correos_ibiza.count({
+          where: {
+          visto: false,
+          },
+      });
+      // FIN Informacion para la navegacion necesaria 
 
     res.render("partials/dashboard/edificios", {
         Titulo: "Ibiza Prop | Propiedades",
@@ -699,12 +1005,24 @@ export const obtenerPropiedadesEdificiosGET = async (req, res) => {
         ruta: "/usuarios",
         rutaIF: "Backend",
         propiedadesConImagenesYPropietario: propiedadesConRutaUnica,
-        update_propiedad: req.flash("update_propiedad")
+        update_propiedad: req.flash("update_propiedad"),
+        N_correos,
+        Correos,
+        Inicios_de_sesiones: Inicios_de_sesiones,
     })
     
   } catch (error) {
-    console.error('Error al obtener propiedades:', error);
-    res.status(500).json({ error: 'Error interno del servidor' });
+               // Manejo de errores y redirección en caso de problemas
+               await db.log_sistema.create({
+                data: {
+                    controlador: "obtenerPropiedadesEdificiosGET",
+                    error: error.toString()
+                },
+            });
+          
+            req.flash('error_controlador', 'Hubo un problema al procesar su solicitud. Por favor, inténtelo de nuevo más tarde o cominiquese con su desarrollador');
+          
+            return res.redirect(`/admin-ibizapropiedades-dashboard/propiedades/edificios`)  
   }
 };
     

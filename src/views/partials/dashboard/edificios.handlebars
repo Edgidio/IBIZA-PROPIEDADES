@@ -42,7 +42,7 @@
                 <div class="modal-dialog modal-sm" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="staticModalLabel">Eliminar Usuario</h5>
+                            <h5 class="modal-title" id="staticModalLabel">Eliminar propiedad</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">X</span>
                             </button>
@@ -89,8 +89,14 @@
 
                     <div class="col-md-4">
                         <div class="card">
-                            <small><span class="badge badge-success float-right mt-1">{{venta_renta}}</span></small>
-                            <img class="card-img-top" src="/images/uploads/propiedades/small/{{rutas}}" alt="Card image cap">
+                            
+                            {{#eq venta_renta "V"}}<div style="background-color: #F3AA08;" class="text-white text-center"><small><span class="badge mb-1 mt-1">Propiedad en venta</span></small></div>{{/eq}}
+                            {{#eq venta_renta "R"}}<div class="bg-success text-center"><small><span class="badge badge-success mb-1 mt-1">Propiedad en renta</span></small></div>{{/eq}}
+                                
+                            
+                            
+                            <a href="/admin-ibizapropiedades-dashboard/propiedad/{{id}}"><img style="border-radius: 0px;" class="card-img-top" src="/images/uploads/propiedades/small/{{rutas}}" alt="Card image cap"></a>
+
                             <div class="card-body">
                                 <h4 class="card-title mb-3">{{descripcion}}</h4>
                                 <div class="weather-category twt-category">

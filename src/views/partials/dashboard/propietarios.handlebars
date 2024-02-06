@@ -92,13 +92,15 @@
                                     <thead>
                                         <tr>
                                             <th class="avatar">Incono</th>
+                                            <th>Propiedes</th>
                                             <th>Nombres</th>
                                             <th>Apellidos</th>
                                             <th>Cedula</th>
                                             <th>Telefono</th>
                                             <th>Correo</th>
-                                            <th>N propiedes</th>
-                                            <th>Actualizar / Eliminar</th>
+                                            <th>Propiedad</th>
+                                            <th>Actualizar</th>
+                                            <th>Eliminar</th>
 
                                         </tr>
                                     </thead>
@@ -111,15 +113,18 @@
                                                             <a style="color: #F3AA08 !important; font-size: xx-large;" href="#"><i class="fa fa-user"></i></a>
                                                         </div>
                                                     </td>
+                                                    <td> <span class="product">{{numeroDePropiedades}}</span> </td>
                                                     <td>{{nombres}}</td>
 
                                                     <td> <span class="product">{{apellidos}}</span> </td>
                                                     <td> <span class="product">{{cedula}}</span> </td>
                                                     <td> <span class="product">{{telefono}}</span> </td>
                                                     <td> <span class="product">{{correo}}</span> </td>
-                                                    <td> <span class="product">{{numeroDePropiedades}}</span> </td>
+                                                    
+                                                    <td><a href="" class="btn btn-primary btn-sm">Añadir +</a></td>
+                                                    <td> <a href="" class="badge badge-complete">Actualizar</a></td>
                                                     <td>
-                                                        <a href="" class="badge badge-complete">Actualizar</a>
+                                                       
                                                         <a onclick="editarModal('{{cedula}}','{{nombres}}')" data-toggle="modal" data-target="#staticModal" href="" style="background-color: red;" class="badge badge-complete">Eliminar</a>
                                                     </td>
                                                 </tr>  

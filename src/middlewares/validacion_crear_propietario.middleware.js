@@ -9,17 +9,31 @@ const validate_crear_propietario = async (req, res, next) => {
 
   const { error } = createPropietario.validate(req.body, { abortEarly: false });
 
-  const Inicios_de_sesiones = await db.log_sesiones.findMany({
-    where: {
-        visto: false
-    }
-   });
+ // Informacion para la navegacion necesaria    
+ const Inicios_de_sesiones = await db.log_sesiones.findMany({
+  where: {
+      visto: false
+  }
+});
 
-  const N_inicios = await db.log_sesiones.count({
+const N_inicios = await db.log_sesiones.count({
       where: {
       visto: false,
       },
   });
+
+const Correos = await db.correos_ibiza.findMany({
+  where: {
+      visto: false
+  }
+});
+
+const N_correos = await db.correos_ibiza.count({
+  where: {
+  visto: false,
+  },
+});
+// FIN Informacion para la navegacion necesaria 
 
   if (error) {
     // Hay errores de validación
@@ -44,7 +58,9 @@ const validate_crear_propietario = async (req, res, next) => {
             telefono,
             correo
         },
-        rutaIF: "Backend"
+        rutaIF: "Backend",
+        N_correos,
+        Correos
     })
 
     
@@ -73,7 +89,9 @@ const validate_crear_propietario = async (req, res, next) => {
           correo
       },
       rutaIF: "Backend",
-      req_propietario_existe:req.flash("req_propietario_existe")
+      req_propietario_existe:req.flash("req_propietario_existe"),
+      N_correos,
+      Correos
   })
   }
 

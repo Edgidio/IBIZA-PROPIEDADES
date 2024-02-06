@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/index"
+    "dev": "nodemon src/index",
+    "start": "node src/index"
   },
   "author": "EDGIDIO RANZE LEON FLOREZ",
   "license": "ISC",

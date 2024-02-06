@@ -88,6 +88,7 @@ passport.use(
         req.flash('passU', 'Usuario o contraseña incorrecta');
 
         return done(null, false, { errors });
+        
       }
 
       const Iusuario = await db.log_sesiones.create({

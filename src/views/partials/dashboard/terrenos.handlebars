@@ -14,6 +14,55 @@
         <!-- Content -->
         <div class="breadcrumbs">
 
+            {{#if update_propiedad}}
+            <div style="text-align: center;" id="success-alertt" class="alert alert-success" role="alert">
+                {{update_propiedad}}
+            </div>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                        // Seleccionar el elemento del alerta
+                        console.log("dentro del script")
+                        var successAlert = document.getElementById("success-alertt");
+                        console.log("despues de la variable del script")
+                        // Esperar 3000 milisegundos (3 segundos) y luego ocultar el alerta
+                        setTimeout(function() {
+                            console.log("dentro de los segundo del script")
+                            console.log(successAlert)
+                            if (successAlert) {
+                                console.log("IF")
+                                successAlert.style.display = "none";
+                            }
+                        }, 4000);
+                    });
+            </script>
+            {{/if}} 
+
+        <div class="modal fade" id="staticModal" tabindex="-1" role="dialog" aria-labelledby="staticModalLabel" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticModalLabel">Eliminar propiedad</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">X</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                              
+                           </p>
+                       </div>
+                       <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <form style="display: inline;" action="" method="post">
+                            <button type="submit" class="btn btn-primary">Aceptar</a>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
 
             <div class="breadcrumbs-inner">
@@ -34,47 +83,64 @@
 
         <div class="content">
 
-            {{#each propiedadesConImagenesYPropietario}}
-                <div id="gallery" style="display: flex; overflow-x: auto; white-space: nowrap; transition: transform 1s ease-in-out;">
+            <div class="animated fadeIn">
+                <div class="row">
+                    {{#each propiedadesConImagenesYPropietario}}
 
-                <!-- Propiedad 1 -->
-                <div style="flex: 0 0 100%; box-sizing: border-box; padding: 20px; text-align: center;">
-                    <h2>{{descripcion}}</h2>
-                    <p>{{detalles}}</p>
-                    <p>{{id}}</p>
-                    {{#each fotos}}
-                          
-                    {{#each rutas}}
-                        <div class="item">
-                            <img src="/images/uploads/propiedades/original/{{this}}" alt="Imagen {{@index}}">
+                    <div class="col-md-4">
+                        <div class="card">
+                            
+                            {{#eq venta_renta "V"}}<div style="background-color: #F3AA08;" class="text-white text-center"><small><span class="badge mb-1 mt-1">Propiedad en venta</span></small></div>{{/eq}}
+                            {{#eq venta_renta "R"}}<div class="bg-success text-center"><small><span class="badge badge-success mb-1 mt-1">Propiedad en renta</span></small></div>{{/eq}}
+                                
+                            
+                            
+                            <a href="/admin-ibizapropiedades-dashboard/propiedad/{{id}}"><img style="border-radius: 0px;" class="card-img-top" src="/images/uploads/propiedades/small/{{rutas}}" alt="Card image cap"></a>
+
+                            <div class="card-body">
+                                <h4 class="card-title mb-3">{{descripcion}}</h4>
+                                <div class="weather-category twt-category">
+                                    <ul>
+                                        <li class="active">
+                                            <h5>$ {{precio}}</h5>
+                                            PRECIO
+                                        </li>
+                                        <li>
+                                            <h5>{{superficie}}</h5>
+                                            Superficie
+                                        </li>
+                                        <li>
+                                            <h5>{{terreno}}</h5>
+                                            Terreno
+                                        </li>
+                                    </ul>
+                                </div>
+                                <p class="card-text">{{detalles}}</p>
+                                <footer class="twt-footer">
+                                    <i class="fa fa-map-marker"></i>
+                                    Ubicacion: {{estado}}, {{ubicacion}}
+                                </footer>
+                                
+                                <!-- Agregados botones de Eliminar y Actualizar con alineación a la derecha -->
+                                <div class="buttons-container text-right mt-3">
+                                    
+                                    <a href="/admin-ibizapropiedades-dashboard/propiedad/actualizar/{{id}}"  class="btn btn-success btn-actualizar text-white">Actualizar</a>
+                                    <a onclick="editarModal('{{id}}','{{descripcion}}')" data-toggle="modal" data-target="#staticModal" style="background-color: red;" class="btn btn-danger text-white">Eliminar</a>
+
+                                </div>
+                                <!-- Fin de los botones -->
+                                
+                            </div>
                         </div>
+                    </div>
+                    
                     {{/each}}
-                        
-                    {{/each}}
-                    <!-- Repite para las imágenes restantes -->
-                </div>
 
-                <!-- Repite para las propiedades adicionales -->
+                </div><!-- .row -->
             </div>
-            {{/each}}
-
-            
 
 
-            <script>
-            const gallery = document.getElementById('gallery');
-            const slides = document.querySelectorAll('#gallery > div');
-
-            let currentSlide = 0;
-
-            function moveGallery() {
-                currentSlide = (currentSlide + 1) % slides.length;
-                const translateValue = -currentSlide * 100;
-                gallery.style.transform = `translateX(${translateValue}%)`;
-            }
-
-            setInterval(moveGallery, 3000); // Cambiar de propiedad cada 3 segundos
-            </script>
+    
 
         </div>
 
@@ -90,5 +156,46 @@
 
 
 {{> "dashboard/componentes/scripts" }}
+
+<script>
+    // Función que se ejecuta cuando el modal se muestra
+    function editarModal(id, usuario) {
+        // Obtener el enlace "Aceptar"
+        var btnAceptar = document.querySelector("#staticModal .modal-footer a.btn-primary");
+        
+
+        // Verificar si el enlace "Aceptar" existe
+        if (btnAceptar) {
+            // Cambiar la dirección (href) del enlace "Aceptar"
+            btnAceptar.href = `/admin-ibizapropiedades-dashboard/propiedad/${id}`;
+        }
+
+        // Cambiar el contenido del modal
+        var modalBody = document.querySelector("#staticModal .modal-body p");
+
+        // Verificar si el elemento del modal existe
+        if (modalBody) {
+            modalBody.innerHTML = `
+                            <p>
+                               Estás a punto de la propiedad <span style="color: red; text-transform: uppercase;">${usuario}</span>. Esta acción es irreversible y eliminará todos los datos asociados a su cuenta. Por favor, asegúrate de que realmente deseas proceder con la eliminación.
+                            </p>
+            `;
+        }
+
+                // Obtener el formulario dentro del modal
+        var form = document.querySelector("#staticModal form");
+
+        // Verificar si el enlace "Aceptar" y el formulario existen
+        if (form) {
+            // Cambiar el action del formulario
+            form.action = `/admin-ibizapropiedades-dashboard/propiedad/${id}`;
+        }
+    }
+
+    // Escuchar el evento 'shown.bs.modal' del modal
+    document.getElementById("staticModal").addEventListener("shown.bs.modal", function() {
+        // Puedes llamar a la función editarModal con los parámetros deseados aquí si es necesario
+    });
+</script>
 
 {{> "dashboard/componentes/scripts_socket" }}

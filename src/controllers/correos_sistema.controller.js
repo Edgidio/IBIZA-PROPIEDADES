@@ -45,15 +45,27 @@ export const correo_GET = async (req, res) => {
                 N_correos,
                 Correos,
                 Correos_,
-                correo_delete: req.flash("correo_delete")
+                correo_delete: req.flash("correo_delete"),
+                error_controlador:req.flash('error_controlador')
             });
 
 
       
     }catch (error) {
         
+         // Manejo de errores y redirección en caso de problemas
+         await db.log_sistema.create({
+            data: {
+                controlador: "correo_GET",
+                error: error.toString()
+            },
+        });
+  
+        req.flash('error_controlador', 'Hubo un problema al procesar su solicitud. Por favor, inténtelo de nuevo más tarde o cominiquese con su desarrollador');
+  
+        return res.redirect(`/admin-ibizapropiedades-dashboard/correos`)   
 
-        console.log(error)
+        
     }
 };
 
@@ -74,7 +86,17 @@ export const correoDELETE = async (req, res) => {
       
     }catch (error) {
         
-        console.log(error)
+            // Manejo de errores y redirección en caso de problemas
+            await db.log_sistema.create({
+            data: {
+                controlador: "correoDELETE",
+                error: error.toString()
+            },
+        });
+    
+        req.flash('error_controlador', 'Hubo un problema al procesar su solicitud. Por favor, inténtelo de nuevo más tarde o cominiquese con su desarrollador');
+    
+        return res.redirect(`/admin-ibizapropiedades-dashboard/correos`)   
 
     }
 };
@@ -111,8 +133,6 @@ export const sistemaGET = async (req, res) => {
                   createdAt: 'desc'
                 }
             });
-
-            console.log(sesiones)
         
             
             return res.render('partials/dashboard/inicios_de_sesion', {
@@ -123,13 +143,24 @@ export const sistemaGET = async (req, res) => {
                 N_correos,
                 Correos,
                 sesiones,
+                error_controlador:req.flash('error_controlador')
             });
 
 
       
     }catch (error) {
         
-        
+                 // Manejo de errores y redirección en caso de problemas
+                 await db.log_sistema.create({
+                    data: {
+                        controlador: "sistemaGET",
+                        error: error.toString()
+                    },
+                });
+          
+                req.flash('error_controlador', 'Hubo un problema al procesar su solicitud. Por favor, inténtelo de nuevo más tarde o cominiquese con su desarrollador');
+          
+                return res.redirect(`/admin-ibizapropiedades-dashboard/inicios-de-sesion`)   
 
     }
 };
@@ -190,6 +221,17 @@ export const sistemaInformacionGET = async (req, res) => {
       
     }catch (error) {
         
+            // Manejo de errores y redirección en caso de problemas
+            await db.log_sistema.create({
+            data: {
+                controlador: "sistemaInformacionGET",
+                error: error.toString()
+            },
+        });
+    
+        req.flash('error_controlador', 'Hubo un problema al procesar su solicitud. Por favor, inténtelo de nuevo más tarde o cominiquese con su desarrollador');
+    
+        return res.redirect(`/admin-ibizapropiedades-dashboard/inicios-de-sesion`)   
         
 
     }
