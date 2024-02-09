@@ -1,0 +1,349 @@
+
+    <!-- Left Panel -->
+    {{> "dashboard/componentes/aside" }}
+    <!-- /#left-panel -->
+
+    <!-- Right Panel -->
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        {{> "dashboard/componentes/header" }}
+        <!-- /#header -->
+
+        
+        <!-- Content -->
+        <div class="breadcrumbs">
+
+
+            {{#if update_casa}}
+            <div style="text-align: center;" id="success-alertt" class="alert alert-success" role="alert">
+                {{update_casa}}
+            </div>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                        // Seleccionar el elemento del alerta
+                        console.log("dentro del script")
+                        var successAlert = document.getElementById("success-alertt");
+                        console.log("despues de la variable del script")
+                        // Esperar 3000 milisegundos (3 segundos) y luego ocultar el alerta
+                        setTimeout(function() {
+                            console.log("dentro de los segundo del script")
+                            console.log(successAlert)
+                            if (successAlert) {
+                                console.log("IF")
+                                successAlert.style.display = "none";
+                            }
+                        }, 4000);
+                    });
+            </script>
+            {{/if}} 
+
+            <div class="breadcrumbs-inner">
+                <div class="row m-0">
+                    <div class="col-sm-4">
+                        <div class="page-header float-left">
+                            <div class="page-title">
+                                <h1>Añadir propiedad</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+ 
+
+        <div class="content">
+
+            <div class="animated fadeIn">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong><font style="vertical-align: inherit;"></font></strong><font style="vertical-align: inherit;"><strong><font style="vertical-align: inherit;">Añadir propiedad</font></strong></font></div>
+                            <div class="card-body card-block">
+                                <form action="/admin-ibizapropiedades-dashboard/propietario-add/" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                    {{!-- Tipo propiedad --}}
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="tipo_propiedad" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Tipo de propiedad</font></font></label></div>
+                                        <div class="col-12 col-md-9">
+                                            <select name="tipo_propiedad" id="tipo_propiedad" class="form-control">
+                                                <option value="C" {{#if datos_formulario}}{{#eq datos_formulario.tipo_propiedad "C"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.tipo_propiedad "C"}}selected{{/eq}}>Casa</option>
+                                                <option value="A" {{#if datos_formulario}}{{#eq datos_formulario.tipo_propiedad "A"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.tipo_propiedad "A"}}selected{{/eq}}>Apartamento</option>
+                                                <option value="L" {{#if datos_formulario}}{{#eq datos_formulario.tipo_propiedad "L"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.tipo_propiedad "L"}}selected{{/eq}}>Local comercial</option>
+                                                <option value="O" {{#if datos_formulario}}{{#eq datos_formulario.tipo_propiedad "O"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.tipo_propiedad "O"}}selected{{/eq}}>Oficina</option>
+                                                <option value="T" {{#if datos_formulario}}{{#eq datos_formulario.tipo_propiedad "T"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.tipo_propiedad "T"}}selected{{/eq}}>Terreno</option>
+                                                <option value="E" {{#if datos_formulario}}{{#eq datos_formulario.tipo_propiedad "E"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.tipo_propiedad "E"}}selected{{/eq}}>Edificio</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    {{!-- Venta o renta --}}
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="venta_renta" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Propiedad en:</font></font></label></div>
+                                        <div class="col-12 col-md-9">
+                                            <select name="venta_renta" id="venta_renta" class="form-control">
+                                                <option value="V" {{#if datos_formulario}}{{#eq datos_formulario.venta_renta "V"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.venta_renta "V"}}selected{{/eq}}>Venta</option>
+                                                <option value="R" {{#if datos_formulario}}{{#eq datos_formulario.venta_renta "R"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.venta_renta "R"}}selected{{/eq}}>Renta</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="descripcion" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Titulo de propiedad</font></font></label></div>
+                                        <div class="col-12 col-md-9"><input {{#if propiedadExistente}}value="{{propiedadExistente.descripcion}}"{{/if}} {{#if errors}}{{#each errors}}{{#eq field "descripcion"}} style=" border-color: #F3AA08 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.descripcion}}"{{/if}} type="text" id="descripcion" name="descripcion" placeholder="Descripción" class="form-control"><small class="form-text text-muted"><font style="vertical-align: inherit;"></font></small>
+                                        {{#if errors}}
+                                            {{#each errors}}
+                                                {{#eq field "descripcion"}}
+                                                    <div style="margin-top: 12px;" class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
+                                                        
+                                                            {{message}}
+                                                        
+                                                    </div>
+                                                {{/eq}}
+                                            {{/each}}
+                                        {{/if}}
+                                        </div>
+                                    </div>
+
+
+                                    <input hidden name="id" type="number" value="{{#if propiedadExistente}}{{propiedadExistente.cedula}}{{/if}}{{#if datos_formulario.id}}{{datos_formulario.id}}{{/if}}">
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="detalles" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Detalles</font></font></label></div>
+                                        <div class="col-12 col-md-9"><textarea{{#if errors}}{{#each errors}}{{#eq field "detalles"}} style=" border-color: #F3AA08 !important;"{{/eq}}{{/each}}{{/if}}  name="detalles" id="detalles" rows="9" placeholder="Detalles..." class="form-control" style="height: 127px;">{{#if datos_formulario}}{{datos_formulario.detalles}}{{/if}}{{propiedadExistente.detalles}}</textarea>
+                                        {{#if errors}}
+                                            {{#each errors}}
+                                                {{#eq field "detalles"}}
+                                                    <div style="margin-top: 12px;" class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
+                                                        
+                                                            {{message}}
+                                                        
+                                                    </div>
+                                                {{/eq}}
+                                            {{/each}}
+                                        {{/if}}
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="select_estado" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Estado</font></font></label></div>
+                                        <div class="col-12 col-md-9">
+                                            <select name="estado" id="estado" class="form-control d-block rounded-0">
+                                                <option value="Amazonas" {{#if datos_formulario}}{{#eq datos_formulario.estado "Amazonas"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.estado "Amazonas"}}selected{{/eq}}>Amazonas</option>
+                                                    <option value="Anzoátegui" {{#if datos_formulario}}{{#eq datos_formulario.estado "Anzoátegui"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.estado "Anzoátegui"}}selected{{/eq}}>Anzoátegui</option>
+                                                    <option value="Apure" {{#if datos_formulario}}{{#eq datos_formulario.estado "Apure"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.estado "Apure"}}selected{{/eq}}>Apure</option>
+                                                    <option value="Aragua" {{#if datos_formulario}}{{#eq datos_formulario.estado "Aragua"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.estado "Aragua"}}selected{{/eq}}>Aragua</option>
+                                                    <option value="Barinas" {{#if datos_formulario}}{{#eq datos_formulario.estado "Barinas"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.estado "Barinas"}}selected{{/eq}}>Barinas</option>
+                                                    <option value="Bolívar" {{#if datos_formulario}}{{#eq datos_formulario.estado "Bolívar"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.estado "Bolívar"}}selected{{/eq}}>Bolívar</option>
+                                                    <option value="Carabobo" {{#if datos_formulario}}{{#eq datos_formulario.estado "Carabobo"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.estado "Carabobo"}}selected{{/eq}}>Carabobo</option>
+                                                    <option value="Cojedes" {{#if datos_formulario}}{{#eq datos_formulario.estado "Cojedes"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.estado "Cojedes"}}selected{{/eq}}>Cojedes</option>
+                                                    <option value="Delta Amacuro" {{#if datos_formulario}}{{#eq datos_formulario.estado "Delta Amacuro"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.estado "Delta Amacuro"}}selected{{/eq}}>Delta Amacuro</option>
+                                                    <option value="Falcón" {{#if datos_formulario}}{{#eq datos_formulario.estado "Falcón"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.estado "Falcón"}}selected{{/eq}}>Falcón</option>
+                                                    <option value="Guárico" {{#if datos_formulario}}{{#eq datos_formulario.estado "Guárico"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.estado "Guárico"}}selected{{/eq}}>Guárico</option>
+                                                    <option value="Lara" {{#if datos_formulario}}{{#eq datos_formulario.estado "Lara"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.estado "Lara"}}selected{{/eq}}>Lara</option>
+                                                    <option value="Mérida" {{#if datos_formulario}}{{#eq datos_formulario.estado "Mérida"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.estado "Mérida"}}selected{{/eq}}>Mérida</option>
+                                                    <option value="Miranda" {{#if datos_formulario}}{{#eq datos_formulario.estado "Miranda"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.estado "Miranda"}}selected{{/eq}}>Miranda</option>
+                                                    <option value="Monagas" {{#if datos_formulario}}{{#eq datos_formulario.estado "Monagas"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.estado "Monagas"}}selected{{/eq}}>Monagas</option>
+                                                    <option value="Nueva Esparta" {{#if datos_formulario}}{{#eq datos_formulario.estado "Nueva Esparta"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.estado "Nueva Esparta"}}selected{{/eq}}>Nueva Esparta</option>
+                                                    <option value="Portuguesa" {{#if datos_formulario}}{{#eq datos_formulario.estado "Portuguesa"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.estado "Portuguesa"}}selected{{/eq}}>Portuguesa</option>
+                                                    <option value="Sucre" {{#if datos_formulario}}{{#eq datos_formulario.estado "Sucre"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.estado "Sucre"}}selected{{/eq}}>Sucre</option>
+                                                    <option value="Táchira" {{#if datos_formulario}}{{#eq datos_formulario.estado "Táchira"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.estado "Táchira"}}selected{{/eq}}>Táchira</option>
+                                                    <option value="Trujillo" {{#if datos_formulario}}{{#eq datos_formulario.estado "Trujillo"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.estado "Trujillo"}}selected{{/eq}}>Trujillo</option>
+                                                    <option value="Vargas" {{#if datos_formulario}}{{#eq datos_formulario.estado "Vargas"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.estado "Vargas"}}selected{{/eq}}>Vargas</option>
+                                                    <option value="Yaracuy" {{#if datos_formulario}}{{#eq datos_formulario.estado "Yaracuy"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.estado "Yaracuy"}}selected{{/eq}}>Yaracuy</option>
+                                                    <option value="Zulia" {{#if datos_formulario}}{{#eq datos_formulario.estado "Zulia"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.estado "Zulia"}}selected{{/eq}}>Zulia</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="ubicacion" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ubicacion</font></font></label></div>
+                                        <div class="col-12 col-md-9"><input {{#if propiedadExistente}}value="{{propiedadExistente.ubicacion}}"{{/if}} {{#if errors}}{{#each errors}}{{#eq field "ubicacion"}} style=" border-color: #F3AA08 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.ubicacion}}"{{/if}} {{#if req_campo_usuario_error}}value="{{req_campo_usuario_error}}"{{/if}} type="text" id="ubicacion" name="ubicacion" placeholder="Ubicacion" class="form-control">
+                                        {{#if errors}}
+                                            {{#each errors}}
+                                                {{#eq field "ubicacion"}}
+                                                    <div style="margin-top: 12px;" class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
+                                                        
+                                                            {{message}}
+                                                        
+                                                    </div>
+                                                {{/eq}}
+                                            {{/each}}
+                                        {{/if}}
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="precio" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Precio</font></font></label></div>
+                                        <div class="col-6 col-md-4"><input {{#if propiedadExistente}}value="{{propiedadExistente.precio}}"{{/if}} {{#if errors}}{{#each errors}}{{#eq field "precio"}} style=" border-color: #F3AA08 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.precio}}"{{/if}} {{#if req_campo_usuario_error}}value="{{req_campo_usuario_error}}"{{/if}} type="number" id="precio" name="precio" placeholder="Precio" class="form-control">
+                                        {{#if errors}}
+                                            {{#each errors}}
+                                                {{#eq field "precio"}}
+                                                    <div style="margin-top: 12px;" class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
+                                                        
+                                                            {{message}}
+                                                        
+                                                    </div>
+                                                {{/eq}}
+                                            {{/each}}
+                                        {{/if}}
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="n_habitaciones" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Numero de habitaciones</font></font></label></div>
+                                        <div class="col-6 col-md-4"><input {{#if propiedadExistente}}value="{{propiedadExistente.n_habitaciones}}"{{/if}} {{#if errors}}{{#each errors}}{{#eq field "n_habitaciones"}} style=" border-color: #F3AA08 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.n_habitaciones}}"{{/if}} {{#if req_campo_usuario_error}}value="{{req_campo_usuario_error}}"{{/if}} type="text" id="n_habitaciones" name="n_habitaciones" placeholder="Habitaciones" class="form-control">
+                                        {{#if errors}}
+                                            {{#each errors}}
+                                                {{#eq field "n_habitaciones"}}
+                                                    <div style="margin-top: 12px;" class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
+                                                        
+                                                            {{message}}
+                                                        
+                                                    </div>
+                                                {{/eq}}
+                                            {{/each}}
+                                        {{/if}}
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="n_banos" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Numero de baños</font></font></label></div>
+                                        <div class="col-6 col-md-4"><input {{#if propiedadExistente}}value="{{propiedadExistente.n_banos}}"{{/if}} {{#if errors}}{{#each errors}}{{#eq field "n_banos"}} style=" border-color: #F3AA08 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.n_banos}}"{{/if}} {{#if req_campo_usuario_error}}value="{{req_campo_usuario_error}}"{{/if}} type="text" id="n_banos" name="n_banos" placeholder="Baños" class="form-control">
+                                        {{#if errors}}
+                                            {{#each errors}}
+                                                {{#eq field "n_banos"}}
+                                                    <div style="margin-top: 12px;" class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
+                                                        
+                                                            {{message}}
+                                                        
+                                                    </div>
+                                                {{/eq}}
+                                            {{/each}}
+                                        {{/if}}
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="terreno" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Terreno</font></font></label></div>
+                                        <div class="col-6 col-md-4"><input {{#if propiedadExistente}}value="{{propiedadExistente.terreno}}"{{/if}} {{#if errors}}{{#each errors}}{{#eq field "terreno"}} style=" border-color: #F3AA08 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.terreno}}"{{/if}} {{#if req_campo_usuario_error}}value="{{req_campo_usuario_error}}"{{/if}} type="text" id="terreno" name="terreno" placeholder="Terreno" class="form-control">
+                                        {{#if errors}}
+                                            {{#each errors}}
+                                                {{#eq field "terreno"}}
+                                                    <div style="margin-top: 12px;" class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
+                                                        
+                                                            {{message}}
+                                                        
+                                                    </div>
+                                                {{/eq}}
+                                            {{/each}}
+                                        {{/if}}
+                                        </div>
+                                    </div>                                    
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="superficie" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Superficie</font></font></label></div>
+                                        <div class="col-6 col-md-4"><input {{#if propiedadExistente}}value="{{propiedadExistente.superficie}}"{{/if}} {{#if errors}}{{#each errors}}{{#eq field "superficie"}} style=" border-color: #F3AA08 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.superficie}}"{{/if}} {{#if req_campo_usuario_error}}value="{{req_campo_usuario_error}}"{{/if}} type="text" id="superficie" name="superficie" placeholder="Superficie" class="form-control">
+                                        {{#if errors}}
+                                            {{#each errors}}
+                                                {{#eq field "superficie"}}
+                                                    <div style="margin-top: 12px;" class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
+                                                        
+                                                            {{message}}
+                                                        
+                                                    </div>
+                                                {{/eq}}
+                                            {{/each}}
+                                        {{/if}}
+                                        </div>
+                                    </div>
+                                                                        <div class="row form-group">
+                                        <div class="col col-md-3"><label for="fotos" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cargar imagenes de la propiedad</font></font></label></div>
+                                        <div class="col-12 col-md-9"><input type="file" id="fotos" name="fotos" multiple="" class="form-control-file">
+                                        {{#if datos_formulario.foto}}
+
+                                               
+                                                    <div style="margin-top: 12px;" class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
+                                                        
+                                                            {{datos_formulario.foto}}
+                                                        
+                                                    </div>
+
+                                        {{/if}}</div>
+                                    </div>
+
+                                    <br>
+                                    
+                                    <button style="background-color: #0F32A1; color: white;" id="payment-button" type="submit" class="btn btn-lg  btn-block">
+
+                                        <span id="payment-button-amount">Añadir propiedad</span>
+                                        
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- .animated -->
+        </div>
+
+        <div class="clearfix"></div>
+        
+
+        <!-- /.content -->
+
+        {{> "dashboard/componentes/footer" }}
+
+    </div>
+
+
+
+{{> "dashboard/componentes/scripts" }}
+    <!-- ... Tu código HTML anterior ... -->
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Obtener referencias a los campos a deshabilitar
+        const nHabitacionesInput = document.getElementById("n_habitaciones");
+        const nBanosInput = document.getElementById("n_banos");
+        const superficieInput = document.getElementById("superficie");
+        const terrenoInput = document.getElementById("terreno");
+
+        // Obtener referencia al elemento de tipo de propiedad
+        const tipoPropiedadSelect = document.getElementById("tipo_propiedad");
+
+        // Función para deshabilitar campos según el tipo de propiedad seleccionado
+        function deshabilitarCampos() {
+            const tipoSeleccionado = tipoPropiedadSelect.value;
+
+            // Restablecer la propiedad "disabled" para todos los campos
+            nHabitacionesInput.disabled = false;
+            nBanosInput.disabled = false;
+            superficieInput.disabled = false;
+            terrenoInput.disabled = false;
+
+            // Deshabilitar campos según el tipo de propiedad seleccionado
+            if (tipoSeleccionado === "T") { // Terreno
+                nHabitacionesInput.disabled = true;
+                nBanosInput.disabled = true;
+                superficieInput.disabled = true;
+            } else if (tipoSeleccionado === "O") { // Oficina
+                nHabitacionesInput.disabled = true;
+                terrenoInput.disabled = true;
+            } else if (tipoSeleccionado === "L") { // Local comercial
+                terrenoInput.disabled = true;
+                nHabitacionesInput.disabled = true;
+            } else if (tipoSeleccionado === "A") { // Apartamento
+                terrenoInput.disabled = true;
+            } else if (tipoSeleccionado === "E") { // Edificio
+                terrenoInput.disabled = true;
+            }
+        }
+
+        // Agregar un listener al evento change en el tipo de propiedad
+        tipoPropiedadSelect.addEventListener("change", deshabilitarCampos);
+
+        // Llamar a la función al cargar la página para manejar el estado inicial
+        deshabilitarCampos();
+    });
+</script>
+
+{{> "dashboard/componentes/scripts_socket" }}

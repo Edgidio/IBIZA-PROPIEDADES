@@ -1,5 +1,7 @@
 import express from "express"
 const app = express()
+import 'dotenv/config'
+
 
 // Variables globales
 export const __filename = fileURLToPath(import.meta.url);

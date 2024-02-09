@@ -1,0 +1,162 @@
+
+    <!-- Left Panel -->
+    {{> "dashboard/componentes/aside" }}
+    <!-- /#left-panel -->
+
+    <!-- Right Panel -->
+    <div id="right-panel" class="right-panel">
+
+        <!-- Header-->
+        {{> "dashboard/componentes/header" }}
+        <!-- /#header -->
+
+        
+        <!-- Content -->
+        <div class="breadcrumbs">
+
+
+
+            <div class="breadcrumbs-inner">
+                <div class="row m-0">
+                    <div class="col-sm-4">
+                        <div class="page-header float-left">
+                            <div class="page-title">
+                                <h1>Casas</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+ 
+
+        <div class="content">
+
+            <div class="animated fadeIn">
+
+                    {{#if no_usuarios}}
+
+                        <h1 style="text-align: center;">{{no_usuarios}}</h1>
+
+                    {{/if}} 
+
+                <div class="row">
+
+                    {{#if usuariosPorNombre}}
+                    {{#each usuariosPorNombre}}
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fa fa-user"></i><strong class="card-title pl-2">Propietario</strong>
+                            </div>
+                             <div class="card-body">
+                                <div class="mx-auto d-block">
+                                    <img class="rounded-circle mx-auto d-block" src="/images/profile.png" alt="Card image cap">
+                                    <h5 class="text-sm-center mt-2 mb-1">Nombre: {{nombres}}</h5>
+                                    <div class="location text-sm-center">Apellidos: {{apellidos}}</div>
+                                    <h5 class="text-sm-center mt-2 mb-1">Telefono: {{telefono}}</h5>
+                                    <h5 class="text-sm-center mt-2 mb-1">Correo: {{correo}}</h5>
+                                    <h5 class="text-sm-center mt-2 mb-1">Cedula: {{cedula}}</h5>
+                                </div>
+                                <hr>
+                                <div class="card-text text-sm-center">
+                                    <a href="/admin-ibizapropiedades-dashboard/propietario-add/{{cedula}}" class="btn btn-primary">Añadir propiedad +</a>
+                                    <a href="/admin-ibizapropiedades-dashboard/propietario-actualizar/{{cedula}}" class="btn btn-success">Actualizar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                    {{/if}} 
+
+                    {{#if usuarioPorCedula}}
+
+                    <div class="col-md-6 offset-md-3">
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fa fa-user"></i><strong class="card-title pl-2">Propietario</strong>
+                            </div>
+                            <div class="card-body">
+                                <div class="mx-auto d-block">
+                                    <img class="rounded-circle mx-auto d-block" src="/images/profile.png" alt="Card image cap">
+                                    <h5 class="text-sm-center mt-2 mb-1">Nombre: {{usuarioPorCedula.nombres}}</h5>
+                                    <div class="location text-sm-center">Apellidos: {{usuarioPorCedula.apellidos}}</div>
+                                    <h5 class="text-sm-center mt-2 mb-1">Telefono: {{usuarioPorCedula.telefono}}</h5>
+                                    <h5 class="text-sm-center mt-2 mb-1">Correo: {{usuarioPorCedula.correo}}</h5>
+                                </div>
+                                <hr>
+                                <div class="card-text text-sm-center">
+                                    <a href="/admin-ibizapropiedades-dashboard/propietario-add/{{usuarioPorCedula.cedula}}" class="btn btn-primary">Añadir propiedad +</a>
+                                    <a href="/admin-ibizapropiedades-dashboard/propietario-actualizar/{{usuarioPorCedula.cedula}}" class="btn btn-success">Actualizar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{/if}} 
+
+                </div><!-- .row -->
+            </div>
+
+
+    
+
+        </div>
+
+        <div class="clearfix"></div>
+        
+
+        <!-- /.content -->
+
+        {{> "dashboard/componentes/footer" }}
+
+    </div>
+
+
+
+{{> "dashboard/componentes/scripts" }}
+
+<script>
+    // Función que se ejecuta cuando el modal se muestra
+    function editarModal(id, usuario) {
+        // Obtener el enlace "Aceptar"
+        var btnAceptar = document.querySelector("#staticModal .modal-footer a.btn-primary");
+        
+
+        // Verificar si el enlace "Aceptar" existe
+        if (btnAceptar) {
+            // Cambiar la dirección (href) del enlace "Aceptar"
+            btnAceptar.href = `/admin-ibizapropiedades-dashboard/propiedad/${id}`;
+        }
+
+        // Cambiar el contenido del modal
+        var modalBody = document.querySelector("#staticModal .modal-body p");
+
+        // Verificar si el elemento del modal existe
+        if (modalBody) {
+            modalBody.innerHTML = `
+                            <p>
+                               Estás a punto de la propiedad <span style="color: red; text-transform: uppercase;">${usuario}</span>. Esta acción es irreversible y eliminará todos los datos asociados a su cuenta. Por favor, asegúrate de que realmente deseas proceder con la eliminación.
+                            </p>
+            `;
+        }
+
+                // Obtener el formulario dentro del modal
+        var form = document.querySelector("#staticModal form");
+
+        // Verificar si el enlace "Aceptar" y el formulario existen
+        if (form) {
+            // Cambiar el action del formulario
+            form.action = `/admin-ibizapropiedades-dashboard/propiedad/${id}`;
+        }
+    }
+
+    // Escuchar el evento 'shown.bs.modal' del modal
+    document.getElementById("staticModal").addEventListener("shown.bs.modal", function() {
+        // Puedes llamar a la función editarModal con los parámetros deseados aquí si es necesario
+    });
+</script>
+
+{{> "dashboard/componentes/scripts_socket" }}

@@ -27,7 +27,10 @@ import { validate_crear_propietario } from "../middlewares/validacion_crear_prop
 import { validacion_crear_propiedad_propietario } from "../middlewares/validacion_crear_propiedad_propietario.middleware.js";
 
 // Controllers
-import { actualizarPropietarioPUT, crearPropietarioGET, crearPropietarioPOST, crearPropietarioPropiedadGET, crearPropietarioPropiedadPOST, eliminarPropietarioDELETE, obtenerPropietariosGET } from "../controllers/propietarios.controller.js";
+import { actualizarPropietarioGET, actualizarPropietarioPUT, anadirPropiedadGET, crearPropiedadPOST, crearPropietarioGET, crearPropietarioPOST, crearPropietarioPropiedadGET, crearPropietarioPropiedadPOST, eliminarPropietarioDELETE, obtenerPropietariosGET } from "../controllers/propietarios.controller.js";
+import { validate_actualizar_propietario } from "../middlewares/validacion_actualizar_propietario.middleare.js";
+import { validacion_actualizar_propiedad_propietario } from "../middlewares/validacion_actualizar_propiedad.middleware.js";
+import { validacion_add_propiedad } from "../middlewares/validacion_add_propiedad.middleware.js";
 
 
 router.get("/propietarios", obtenerPropietariosGET)
@@ -39,9 +42,14 @@ router.post('/propietario-crear', validate_crear_propietario , crearPropietarioP
 router.get("/propietario-crear/propiedad", crearPropietarioPropiedadGET)
 
 router.post("/propietario-crear/propiedad", upload.array('fotos', 12), validacion_crear_propiedad_propietario, crearPropietarioPropiedadPOST)
+router.post("/propietario-add/", upload.array('fotos', 12), validacion_add_propiedad, crearPropiedadPOST)
 
 router.post('/propietario-eliminar/:id', eliminarPropietarioDELETE);
 
-router.put('/propietario-actualizar/:id', actualizarPropietarioPUT);
+router.get('/propietario-actualizar/:id', actualizarPropietarioGET);
+
+router.post('/propietario-actualizar/',validate_actualizar_propietario,actualizarPropietarioPUT);
+
+router.get('/propietario-add/:id', anadirPropiedadGET);
 
 export default router;

@@ -1,13 +1,13 @@
-import { crear_propiedad_propietarioSchema } from '../validators/validacion_crear_propiedad_propietario.js'
+import { actualizarPropietario } from '../validators/validacion_actualizar_propietario.js';
 import {PrismaClient} from "@prisma/client"
 const db = new PrismaClient();
 
 // Middleware para validar el formulario de inicio de sesión
-const validacion_crear_propiedad_propietario = async (req, res, next) => {
+const validate_actualizar_propietario = async (req, res, next) => {
 
-  const { tipo_propiedad, venta_renta, descripcion, detalles, estado , ubicacion, precio, n_habitaciones, n_banos, terreno, superficie, fotos } = req.body;
+  const { cedula, nombres, apellidos, telefono, correo } = req.body;
 
-  const { error } = crear_propiedad_propietarioSchema.validate(req.body, { abortEarly: false });
+  const { error } = actualizarPropietario.validate(req.body, { abortEarly: false });
 
  // Informacion para la navegacion necesaria    
  const Inicios_de_sesiones = await db.log_sesiones.findMany({
@@ -45,13 +45,19 @@ const N_correos = await db.correos_ibiza.count({
 
     });
 
-    return res.render("partials/dashboard/crear-propietario-propiedad", {
-        Titulo: "Ibiza Prop | Crear propiedad",
+    return res.render("partials/dashboard/propietario_actualizar", {
+        Titulo: "Ibiza Prop | Actualizar propietario",
         Inicios_de_sesiones: Inicios_de_sesiones,
         N_inicios,
         ruta: "/crear-propietario",
         errors, 
-        datos_formulario: { tipo_propiedad, venta_renta, descripcion, detalles,estado , ubicacion, precio, n_habitaciones, n_banos, terreno, superficie },
+        datos_formulario: {
+            cedula,
+            nombres,
+            apellidos,
+            telefono,
+            correo
+        },
         rutaIF: "Backend",
         N_correos,
         Correos
@@ -62,7 +68,6 @@ const N_correos = await db.correos_ibiza.count({
 
   // La validación fue exitosa, continuar con la ejecución normal
   next();
-  
 };
 
-export { validacion_crear_propiedad_propietario };
+export { validate_actualizar_propietario };
