@@ -15,6 +15,31 @@
         <div class="breadcrumbs">
 
 
+            {{#if propiedad_exhibida_false}}
+            <div style="text-align: center;" id="success-alertt" class="alert alert-warning" role="alert">
+                {{propiedad_exhibida_false}}
+            </div>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                        // Seleccionar el elemento del alerta
+                        console.log("dentro del script")
+                        var successAlert = document.getElementById("success-alertt");
+                        console.log("despues de la variable del script")
+                        // Esperar 3000 milisegundos (3 segundos) y luego ocultar el alerta
+                        setTimeout(function() {
+                            console.log("dentro de los segundo del script")
+                            console.log(successAlert)
+                            if (successAlert) {
+                                console.log("IF")
+                                successAlert.style.display = "none";
+                            }
+                        }, 8000);
+                    });
+            </script>
+            {{/if}} 
+
+
             {{#if update_casa}}
             <div style="text-align: center;" id="success-alertt" class="alert alert-success" role="alert">
                 {{update_casa}}
@@ -44,7 +69,7 @@
                     <div class="col-sm-4">
                         <div class="page-header float-left">
                             <div class="page-title">
-                                <h1>Crear propiedad</h1>
+                                <h1>Actualizar propiedad</h1>
                             </div>
                         </div>
                     </div>
@@ -62,7 +87,7 @@
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong><font style="vertical-align: inherit;"></font></strong><font style="vertical-align: inherit;"><strong><font style="vertical-align: inherit;">Crear propiedad del propietario</font></strong></font></div>
+                                <strong><font style="vertical-align: inherit;"></font></strong><font style="vertical-align: inherit;"><strong><font style="vertical-align: inherit;">Actualizar propiedad</font></strong></font></div>
                             <div class="card-body card-block">
                                 <form action="/admin-ibizapropiedades-dashboard/propiedades/actualizar/{{propiedadExistente.id}}{{#if datos_formulario.id}}{{datos_formulario.id}}{{/if}}" method="post" class="form-horizontal">
                                     {{!-- Tipo propiedad --}}
@@ -259,7 +284,7 @@
                                     
                                     <button style="background-color: #0F32A1; color: white;" id="payment-button" type="submit" class="btn btn-lg  btn-block">
 
-                                        <span id="payment-button-amount">Crear nuevo propietario</span>
+                                        <span id="payment-button-amount">Actualizar propiedad</span>
                                         
                                     </button>
                                 </form>

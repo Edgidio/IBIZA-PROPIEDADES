@@ -46,6 +46,7 @@ model Propiedades {
   terreno          Float?  @default(0) 
   tipo_propiedad   String  @db.VarChar(1)
   vendida          Boolean? @default(false)
+  enExhibicion     Boolean? @default(false)
   fotos            Propiedades_img[]
   usuario          Usuarios? @relation("UsuarioPropiedad", fields: [usuarioId], references: [id])
   usuarioId        Int?

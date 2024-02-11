@@ -14,6 +14,79 @@
         <!-- Content -->
         <div class="breadcrumbs">
 
+
+            {{#if propiedad_exhibida_false}}
+            <div style="text-align: center;" id="success-alertt" class="alert alert-warning" role="alert">
+                {{propiedad_exhibida_false}}
+            </div>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                        // Seleccionar el elemento del alerta
+                        console.log("dentro del script")
+                        var successAlert = document.getElementById("success-alertt");
+                        console.log("despues de la variable del script")
+                        // Esperar 3000 milisegundos (3 segundos) y luego ocultar el alerta
+                        setTimeout(function() {
+                            console.log("dentro de los segundo del script")
+                            console.log(successAlert)
+                            if (successAlert) {
+                                console.log("IF")
+                                successAlert.style.display = "none";
+                            }
+                        }, 8000);
+                    });
+            </script>
+            {{/if}} 
+
+            {{#if propiedad_desmarcar}}
+            <div style="text-align: center;" id="success-alertt" class="alert alert-success" role="alert">
+                {{propiedad_desmarcar}}
+            </div>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                        // Seleccionar el elemento del alerta
+                        console.log("dentro del script")
+                        var successAlert = document.getElementById("success-alertt");
+                        console.log("despues de la variable del script")
+                        // Esperar 3000 milisegundos (3 segundos) y luego ocultar el alerta
+                        setTimeout(function() {
+                            console.log("dentro de los segundo del script")
+                            console.log(successAlert)
+                            if (successAlert) {
+                                console.log("IF")
+                                successAlert.style.display = "none";
+                            }
+                        }, 4000);
+                    });
+            </script>
+            {{/if}} 
+
+            {{#if propiedad_exhibida}}
+            <div style="text-align: center;" id="success-alertt" class="alert alert-success" role="alert">
+                {{propiedad_exhibida}}
+            </div>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                        // Seleccionar el elemento del alerta
+                        console.log("dentro del script")
+                        var successAlert = document.getElementById("success-alertt");
+                        console.log("despues de la variable del script")
+                        // Esperar 3000 milisegundos (3 segundos) y luego ocultar el alerta
+                        setTimeout(function() {
+                            console.log("dentro de los segundo del script")
+                            console.log(successAlert)
+                            if (successAlert) {
+                                console.log("IF")
+                                successAlert.style.display = "none";
+                            }
+                        }, 4000);
+                    });
+            </script>
+            {{/if}} 
+
             {{#if update_propiedad}}
             <div style="text-align: center;" id="success-alertt" class="alert alert-success" role="alert">
                 {{update_propiedad}}
@@ -124,6 +197,19 @@
                                 <!-- Agregados botones de Eliminar y Actualizar con alineación a la derecha -->
                                 <div class="buttons-container text-right mt-3">
                                     
+                                    {{#eq enExhibicion false}}
+                                        <form style="display: inline !important" action="/admin-ibizapropiedades-dashboard/marcar-en-exhibicion/{{id}}" method="post">
+                                            <input hidden type="text" name="tipo_propiedad" value="{{tipo_propiedad}}">
+                                            <button type="submit"  class="btn btn-secondary btn-actualizar text-white">Exhibir</button>
+                                        </form>
+                                    {{/eq}}
+                                    {{#eq enExhibicion true}}
+                                        <form style="display: inline !important" action="/admin-ibizapropiedades-dashboard/desmarcar-en-exhibicion/{{id}}" method="post">
+                                            <input hidden type="text" name="tipo_propiedad" value="{{tipo_propiedad}}">
+                                            <button type="submit" class="btn btn-warning btn-actualizar text-white">Anular</button>
+                                        </form>
+                                    {{/eq}}
+                                   
                                     <a href="/admin-ibizapropiedades-dashboard/propiedad/actualizar/{{id}}"  class="btn btn-success btn-actualizar text-white">Actualizar</a>
                                     <a onclick="editarModal('{{id}}','{{descripcion}}')" data-toggle="modal" data-target="#staticModal" style="background-color: red;" class="btn btn-danger text-white">Eliminar</a>
 

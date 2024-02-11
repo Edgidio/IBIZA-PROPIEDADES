@@ -44,11 +44,48 @@ export const index = async (req, res) => {
     };
   });
 
-    res.render('partials/frontend/index', {
+  const propiedadesEnExhibicion = await db.propiedades.findMany({
+    where: { enExhibicion: true },
+    include: {
+      fotos: true // Incluir todas las imágenes asociadas a la propiedad
+    }
+  });
+
+
+  const propiedadesExhibicion = propiedadesEnExhibicion.map((propiedad) => {
+    const primeraRuta = propiedad.fotos?.[0]?.rutas[0];
+  
+    return {
+      id: propiedad.id,
+      id_propietario: propiedad.id_propietario,
+      descripcion: propiedad.descripcion,
+      detalles: propiedad.detalles,
+      ubicacion: propiedad.ubicacion,
+      precio: propiedad.precio,
+      venta_renta: propiedad.venta_renta,
+      n_habitaciones: propiedad.n_habitaciones,
+      n_banos: propiedad.n_banos,
+      superficie: propiedad.superficie,
+      terreno: propiedad.terreno,
+      tipo_propiedad: propiedad.tipo_propiedad,
+      vendida: propiedad.vendida,
+      createdAt: propiedad.createdAt,
+      updatedAt: propiedad.updatedAt,
+      usuarioId: propiedad.usuarioId,
+      estado: propiedad.estado,
+      rutas: primeraRuta,
+      enExhibicion: propiedad.enExhibicion
+    };
+  });
+
+
+    return res.render('partials/frontend/index', {
       Titulo: "Ibiza Propiedades",
       rutaIF: "Frontend",
-      propiedadesConUnaRutaPorFoto: propiedadesConRutaUnica
+      propiedadesConUnaRutaPorFoto: propiedadesConRutaUnica,
+      propiedadesExhibicion
     });
+
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Error interno del servidor' });

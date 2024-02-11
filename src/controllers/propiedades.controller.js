@@ -502,6 +502,7 @@ export const obtenerPropiedadesCasasGET = async (req, res) => {
         usuarioId: propiedad.usuarioId,
         estado: propiedad.estado,
         rutas: primeraRuta,
+        enExhibicion: propiedad.enExhibicion
       };
     });
 
@@ -541,6 +542,9 @@ export const obtenerPropiedadesCasasGET = async (req, res) => {
         N_correos,
         Correos,
         Inicios_de_sesiones: Inicios_de_sesiones,
+        propiedad_exhibida:req.flash("propiedad_exhibida"),
+        propiedad_desmarcar:req.flash("propiedad_desmarcar"),
+        propiedad_exhibida_false:req.flash("propiedad_exhibida_false")
 
     })
     
@@ -595,6 +599,7 @@ export const obtenerPropiedadesApartamentoGET = async (req, res) => {
         usuarioId: propiedad.usuarioId,
         estado: propiedad.estado,
         rutas: primeraRuta,
+        enExhibicion: propiedad.enExhibicion
       };
     });
 
@@ -635,6 +640,9 @@ export const obtenerPropiedadesApartamentoGET = async (req, res) => {
         Inicios_de_sesiones: Inicios_de_sesiones,
         propiedadesConImagenesYPropietario: propiedadesConRutaUnica,
         update_propiedad: req.flash("update_propiedad"),
+        propiedad_exhibida:req.flash("propiedad_exhibida"),
+        propiedad_desmarcar:req.flash("propiedad_desmarcar"),
+        propiedad_exhibida_false:req.flash("propiedad_exhibida_false")
     })
     
   } catch (error) {
@@ -691,6 +699,7 @@ export const obtenerPropiedadesTerrenosGET = async (req, res) => {
         usuarioId: propiedad.usuarioId,
         estado: propiedad.estado,
         rutas: primeraRuta,
+        enExhibicion: propiedad.enExhibicion
       };
     });
 
@@ -731,6 +740,9 @@ export const obtenerPropiedadesTerrenosGET = async (req, res) => {
         Inicios_de_sesiones: Inicios_de_sesiones,
         propiedadesConImagenesYPropietario: propiedadesConRutaUnica,
         update_propiedad: req.flash("update_propiedad"),
+        propiedad_exhibida:req.flash("propiedad_exhibida"),
+        propiedad_desmarcar:req.flash("propiedad_desmarcar"),
+        propiedad_exhibida_false:req.flash("propiedad_exhibida_false")
     })
     
   } catch (error) {
@@ -784,6 +796,7 @@ export const obtenerPropiedadesLocalComercialGET = async (req, res) => {
         usuarioId: propiedad.usuarioId,
         estado: propiedad.estado,
         rutas: primeraRuta,
+        enExhibicion: propiedad.enExhibicion
       };
     });
 
@@ -824,6 +837,9 @@ export const obtenerPropiedadesLocalComercialGET = async (req, res) => {
         Inicios_de_sesiones: Inicios_de_sesiones,
         propiedadesConImagenesYPropietario: propiedadesConRutaUnica,
         update_propiedad: req.flash("update_propiedad"),
+        propiedad_exhibida:req.flash("propiedad_exhibida"),
+        propiedad_desmarcar:req.flash("propiedad_desmarcar"),
+        propiedad_exhibida_false:req.flash("propiedad_exhibida_false")
     })
     
   } catch (error) {
@@ -877,6 +893,7 @@ export const obtenerPropiedadesOficinasGET = async (req, res) => {
         usuarioId: propiedad.usuarioId,
         estado: propiedad.estado,
         rutas: primeraRuta,
+        enExhibicion: propiedad.enExhibicion
       };
     });
 
@@ -917,6 +934,9 @@ export const obtenerPropiedadesOficinasGET = async (req, res) => {
         Inicios_de_sesiones: Inicios_de_sesiones,
         propiedadesConImagenesYPropietario: propiedadesConRutaUnica,
         update_propiedad: req.flash("update_propiedad"),
+        propiedad_exhibida:req.flash("propiedad_exhibida"),
+        propiedad_desmarcar:req.flash("propiedad_desmarcar"),
+        propiedad_exhibida_false:req.flash("propiedad_exhibida_false")
     })
     
   } catch (error) {
@@ -970,6 +990,7 @@ export const obtenerPropiedadesEdificiosGET = async (req, res) => {
         usuarioId: propiedad.usuarioId,
         estado: propiedad.estado,
         rutas: primeraRuta,
+        enExhibicion: propiedad.enExhibicion
       };
     });
 
@@ -1009,6 +1030,9 @@ export const obtenerPropiedadesEdificiosGET = async (req, res) => {
         N_correos,
         Correos,
         Inicios_de_sesiones: Inicios_de_sesiones,
+        propiedad_exhibida:req.flash("propiedad_exhibida"),
+        propiedad_desmarcar:req.flash("propiedad_desmarcar"),
+        propiedad_exhibida_false:req.flash("propiedad_exhibida_false")
     })
     
   } catch (error) {
@@ -1025,4 +1049,137 @@ export const obtenerPropiedadesEdificiosGET = async (req, res) => {
             return res.redirect(`/admin-ibizapropiedades-dashboard/propiedades/edificios`)  
   }
 };
+
+export const marcarExhibicionPOS = async (req, res) => {
+
+
+  try {
+
+
+    const propiedadId = parseInt(req.params.id);
+
+    let tipo_propiedad_c = req.body.tipo_propiedad
+
+    switch (tipo_propiedad_c) {
+      case 'C':
+          tipo_propiedad_c = 'casas';
+          break;
+      case 'A':
+          tipo_propiedad_c = 'apartamentos';
+          break;
+      case 'L':
+          tipo_propiedad_c = 'local-comercial';
+          break;
+      case 'O':
+          tipo_propiedad_c = 'oficinas';
+          break;
+      case 'T':
+          tipo_propiedad_c = 'terrenos';
+          break;
+      case 'E':
+          tipo_propiedad_c = 'edificios';
+          break;
+      default:
+          tipo_propiedad_c = '/admin-ibizapropiedades-dashboard/';
+    }
     
+    // Antes de marcar una propiedad como en exhibición, verifica si ya hay tres
+    const propiedadesEnExhibicion = await db.propiedades.count({
+      where: { enExhibicion: true }
+    });
+
+    if (propiedadesEnExhibicion >= 3) {
+
+      req.flash("propiedad_exhibida_false", "No se pueden exhibir más de 3 propiedades al mismo tiempo. Por favor, desmarque una propiedad existente en exhibición antes de intentar exhibir esta propiedad. Puede hacerlo haciendo clic en el botón 'Anular' de una propiedad ya marcada.")
+
+      return res.redirect(`/admin-ibizapropiedades-dashboard/propiedades/${tipo_propiedad_c}`)
+
+    } else {
+
+      await db.propiedades.update({
+        where: { id: propiedadId },
+        data: { enExhibicion: true }
+      });
+  
+      req.flash("propiedad_exhibida", "La propiedad ha sido exhibida con éxito.")
+  
+      return res.redirect(`/admin-ibizapropiedades-dashboard/propiedades/${tipo_propiedad_c}`)
+
+    }
+
+    
+  } catch (error) {
+
+    console.log(error)
+
+      // Manejo de errores y redirección en caso de problemas
+      await db.log_sistema.create({
+        data: {
+            controlador: "marcarExhibicionPOS",
+            error: error.toString()
+        },
+      });
+    
+      req.flash('error_controlador', 'Hubo un problema al procesar su solicitud. Por favor, inténtelo de nuevo más tarde o cominiquese con su desarrollador');
+    
+      return res.redirect(`/admin-ibizapropiedades-dashboard/`)  
+  }
+};
+
+export const desmarcarExhibicionPOS = async (req, res) => {
+
+
+  try {
+
+    const propiedadId = parseInt(req.params.id);
+
+    let tipo_propiedad_c = req.body.tipo_propiedad
+
+    switch (tipo_propiedad_c) {
+      case 'C':
+          tipo_propiedad_c = 'casas';
+          break;
+      case 'A':
+          tipo_propiedad_c = 'apartamentos';
+          break;
+      case 'L':
+          tipo_propiedad_c = 'local-comercial';
+          break;
+      case 'O':
+          tipo_propiedad_c = 'oficinas';
+          break;
+      case 'T':
+          tipo_propiedad_c = 'terrenos';
+          break;
+      case 'E':
+          tipo_propiedad_c = 'edificios';
+          break;
+      default:
+          tipo_propiedad_c = '/admin-ibizapropiedades-dashboard/';
+    }
+    
+
+    await db.propiedades.update({
+      where: { id: propiedadId },
+      data: { enExhibicion: false }
+    });
+
+    req.flash("propiedad_desmarcar", "La propiedad ha sido desmarcada con éxito.")
+
+    return res.redirect(`/admin-ibizapropiedades-dashboard/propiedades/${tipo_propiedad_c}`)
+ 
+  } catch (error) {
+
+      // Manejo de errores y redirección en caso de problemas
+      await db.log_sistema.create({
+        data: {
+            controlador: "desmarcarExhibicionPOS",
+            error: error.toString()
+        },
+      });
+    
+      req.flash('error_controlador', 'Hubo un problema al procesar su solicitud. Por favor, inténtelo de nuevo más tarde o cominiquese con su desarrollador');
+    
+      return res.redirect(`/admin-ibizapropiedades-dashboard/`)  
+  }
+};

@@ -2,7 +2,8 @@ import { Router } from 'express';
 const router = Router();
 
 // Controllers
-import { actualizarPropiedadesGET, actualizarPropiedadesPUT, crearPropiedadPOTS, eliminarPropiedadDELETE, 
+import { actualizarPropiedadesGET, actualizarPropiedadesPUT, crearPropiedadPOTS, desmarcarExhibicionPOS, eliminarPropiedadDELETE, 
+    marcarExhibicionPOS, 
 obtenerPropiedadGET, obtenerPropiedadesApartamentoGET, obtenerPropiedadesCasasGET, obtenerPropiedadesDePropietario, obtenerPropiedadesEdificiosGET, obtenerPropiedadesGET, obtenerPropiedadesLocalComercialGET, obtenerPropiedadesOficinasGET, obtenerPropiedadesTerrenosGET } from '../controllers/propiedades.controller.js';
 import { validacion_actualizar_propiedad_propietario } from '../middlewares/validacion_actualizar_propiedad.middleware.js';
 /* router.get('/propiedad/:id', obtenerPropiedadGET); */
@@ -32,5 +33,12 @@ router.get('/propiedades/local-comercial', obtenerPropiedadesLocalComercialGET);
 router.get('/propiedades/oficinas', obtenerPropiedadesOficinasGET);
 
 router.get('/propiedades/edificios', obtenerPropiedadesEdificiosGET);
+
+// Ruta para marcar una propiedad como en exhibición
+router.post('/marcar-en-exhibicion/:id', marcarExhibicionPOS);
+
+// Ruta para desmarcar una propiedad de la exhibición
+router.post('/desmarcar-en-exhibicion/:id', desmarcarExhibicionPOS);
+    
 
 export default router;
