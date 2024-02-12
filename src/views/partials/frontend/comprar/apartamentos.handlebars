@@ -2,39 +2,45 @@
   
   <div class="site-loader"></div>
   
-  <div class="site-wrap">
+    <div class="site-wrap">
 
-    <div class="site-mobile-menu">
-      <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close mt-3">
-          <span class="icon-close2 js-menu-toggle"></span>
-        </div>
-      </div>
-      <div class="site-mobile-menu-body"></div>
-    </div> <!-- .site-mobile-menu -->
-
-    <div class="site-navbar mt-4">
-        <div class="container py-1">
-          <div class="row align-items-center">
-            <div class="col-8 col-md-8 col-lg-4">
-              <h1 class="mb-0"><a href="/" class="text-white h2 mb-0"><strong class="text-amarillo">IBIZA PROPIEDADES</strong></a></h1>
+        <div class="site-mobile-menu">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
             </div>
-            <div class="col-4 col-md-4 col-lg-8">
-              <nav class="site-navigation text-right text-md-right" role="navigation">
+            <div class="site-mobile-menu-body"></div>
+        </div> <!-- .site-mobile-menu -->
 
-                <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span style="color: #F3AA08;" class="icon-menu h3"></span></a></div>
+        <div class="site-navbar mt-4">
+            <div class="container py-1">
+                <div class="row align-items-center">
+                <div class="col-8 col-md-8 col-lg-4">
+                  <h1 class="mb-0">
+                      <a href="/" class="text-white h2 mb-0">
+                          <img style="display: inline; margin-right: 10px; margin-top: -27px;" src="/images/Icono/ibiza-incono.png" width="45" height="50">
+                          <strong style="font-size: 28px;" class="text-amarillo">IBIZA PROPIEDADES</strong>
+                      </a>
+                  </h1>
+                </div>
+
+                    <div class="col-4 col-md-4 col-lg-8">
+                        <nav class="site-navigation text-right text-md-right" role="navigation">
+
+                            <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span style="color: #F3AA08;" class="icon-menu h3"></span></a></div>
 
                                 <ul class="site-menu js-clone-nav d-none d-lg-block">
-                  <li class="active">
+                  <li >
                     <a class="text-amarillo" href="/">Inicio</a>
                   </li>
                   <li class="has-children">
                     <a >Venda su propiedad</a>
                     <ul class="dropdown arrow-top">
-                      <li><a href="#">Cuanto cuesta mi propiedad</a></li>
+                      <li><a href="#">Valorar una propiedad</a></li>
                     </ul>
                   </li>
-                  <li class="has-children">
+                  <li class="has-children active">
                     <a >Comprar</a>
                     <ul class="dropdown arrow-top">
                       <li><a href="/comprar/apartamento">Apartamento</a></li>
@@ -46,7 +52,7 @@
                     </ul>
                   </li>
                   <li class="has-children">
-                    <a >Alquilar</a>
+                    <a>Alquilar</a>
                     <ul class="dropdown arrow-top">
                       <li><a href="/alquilar/apartamento">Apartamento</a></li>
                       <li><a href="/alquilar/casa">Casa</a></li>
@@ -56,51 +62,56 @@
                     </ul>
                   </li>
                   <li class="has-children">
-                    <a >Empresa</a>
+                    <a>Empresa -</a>
                     <ul class="dropdown arrow-top">
                       <li><a href="/sobre-nosotros">Acerca de Ibiza propiedades</a></li>
-                      <li><a href="/contacto">Contacto</a></li>
+                      <li ><a href="/contacto">Contacto</a></li>
                     </ul>
                   </li>
 
                 </ul>
-              </nav>
-            </div>
-           
+                        </nav>
+                    </div>
+                
 
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+
+    <div class="slide-one-item home-slider owl-carousel">
+      {{#if propiedadesExhibicion}}
+      {{#each propiedadesExhibicion}}
+      <div class="site-blocks-cover overlay" style="background-image: url(/images/uploads/propiedades/large/{{rutas}});" data-aos="fade" data-stellar-background-ratio="0.5">
+        <div class="container">
+          <div class="row align-items-center justify-content-center text-center">
+            <div class="col-md-10">
+                {{#eq venta_renta "V"}}<span class="d-inline-block bg-amarillo text-white px-3 mb-3 property-offer-type rounded">EN VENTA</span>{{/eq}}
+                {{#eq venta_renta "R"}}<span class="d-inline-block bg-success text-white px-3 mb-3 property-offer-type rounded">EN RENTA</span>{{/eq}}
+              
+              <h1 class="mb-2">{{descripcion}}</h1>
+              <p class="mb-5"><strong class="h2 text-success font-weight-bold">{{precio}}</strong></p>
+              <p><a href="/propiedad/{{id}}" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">VER DETALLES</a></p>
+            </div>
+          </div>
+        </div>
+      </div>  
+      {{/each}}
+      {{else}}
+      <div class="site-blocks-cover inner-page-cover overlay aos-init aos-animate" style="background-image: url(&quot;/images/hero_bg_1.jpg&quot;); background-position: 50% 0px;" data-aos="fade" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
+
+          
+          <div id="contacto" class="col-md-10">
+            
           </div>
         </div>
       </div>
     </div>
-
-    <div class="slide-one-item home-slider owl-carousel">
-
-      <div class="site-blocks-cover overlay" style="background-image: url(/images/hero_bg_1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
-        <div class="container">
-          <div class="row align-items-center justify-content-center text-center">
-            <div class="col-md-10">
-              <span class="d-inline-block bg-amarillo text-white px-3 mb-3 property-offer-type rounded">EN RENTA</span>
-              <h1 class="mb-2">Casa Tropical 76 Calle Caribe</h1>
-              <p class="mb-5"><strong class="h2 text-success font-weight-bold">$2,250,500</strong></p>
-              <p><a href="#" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">VER DETALLES</a></p>
-            </div>
-          </div>
-        </div>
-      </div>  
-
-      <div class="site-blocks-cover overlay" style="background-image: url(/images/hero_bg_2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
-        <div class="container">
-          <div class="row align-items-center justify-content-center text-center">
-            <div class="col-md-10">
-              <span class="d-inline-block bg-success text-white px-3 mb-3 property-offer-type rounded">EN VENTA</span>
-              <h1 class="mb-2">Rincón Criollo 315 Av. Orinoco</h1>
-              <p class="mb-5"><strong class="h2 text-success font-weight-bold">$1,000,500</strong></p>
-              <p><a href="#" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">VER DETALLES</a></p>
-            </div>
-          </div>
-        </div>
-      </div>  
-
+    {{/if}}
     </div>
 
 
@@ -260,14 +271,14 @@
 
 
     
-
+    <!-- Pie de pagina-->
     <footer class="site-footer">
       <div class="container">
         <div class="row">
           <div class="col-lg-4">
             <div class="mb-5">
               <h3 class="footer-heading mb-4">SOBRE IBIZA PROPIEDADES</h3>
-              <p> IBIZA Propiedades, transformamos sueños en hogares. Descubre nuestro compromiso con la excelencia y la satisfacción del cliente. Tu próximo hogar está a solo un paso de distancia. ¡Bienvenido a IBIZA Propiedades!</p>
+              <p> Nuestro compromiso es premiar su confianza.</p>
             </div>
 
             
@@ -280,20 +291,13 @@
               </div>
               <div class="col-md-6 col-lg-6">
                 <ul class="list-unstyled">
-                  <li><a href="#">Inicio</a></li>
-                  <li><a href="#">Comprar</a></li>
-                  <li><a href="#">Alquilar</a></li>
-                  <li><a href="#">Propiedades</a></li>
+                  <li><a href="/">Inicio</a></li>
+                  <li><a href="#">Venda su propiedad</a></li>
+                  <li><a href="/sobre-nosotros">Acerca de ibiza propiedades</a></li>
+                  <li><a href="/contacto">Contacto</a></li>
                 </ul>
               </div>
-              <div class="col-md-6 col-lg-6">
-                <ul class="list-unstyled">
-                  <li><a href="#">Sobre nosotros</a></li>
-                  <li><a href="#">política de privacidad</a></li>
-                  <li><a href="#">Contáctenos</a></li>
-                  <li><a href="#">Términos</a></li>
-                </ul>
-              </div>
+
             </div>
 
 
@@ -303,10 +307,9 @@
             <h3 class="footer-heading mb-4">SÍGANOS</h3>
 
                 <div>
-                  <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-                  <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-                  <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-                  <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+
+                  <a href="https://www.instagram.com/ibizapropiedades/" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+
                 </div>
 
             
@@ -327,13 +330,11 @@
       </div>
     </footer>
 
-  </div>
-
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         // Espera 500 milisegundos antes de desplazarte hacia la sección "busqueda"
         setTimeout(function() {
-            document.getElementById("busqueda").scrollIntoView({ behavior: "smooth" });
+            document.getElementById("sobre-nosotros").scrollIntoView({ behavior: "smooth" });
         }, 100);
     });
 </script>

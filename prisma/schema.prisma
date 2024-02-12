@@ -67,6 +67,7 @@ model correos_ibiza {
   id                      Int       @id @default(autoincrement())
   correo_usuario          String    @db.VarChar(100)
   nombre                  String    @db.VarChar(50)
+  telefono                  String    @db.VarChar(50)
   asunto                  String    @db.VarChar(50)
   mensaje                 String    @db.VarChar(500)
   visto                   Boolean   @default(false)

@@ -17,6 +17,13 @@ const contactoSchema = Joi.object({
     'any.required': 'El nombre es un campo requerido.',
   }),
 
+  telefono: Joi.string().max(50).required().messages({
+    'string.base': 'El telefono debe ser un numero valido.',
+    'string.empty': 'El telefono no puede estar vacío.',
+    'string.max': 'El telefono no puede tener más de {#limit} caracteres.',
+    'any.required': 'El telefono es un campo requerido.',
+  }),
+
   asunto: Joi.string().max(50).required().messages({
     'string.base': 'El asunto debe ser una cadena de texto.',
     'string.empty': 'El asunto no puede estar vacío.',

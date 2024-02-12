@@ -223,12 +223,13 @@ export const contacto = async (req, res) => {
 export const contactoPOST = async (req, res) => {
   try {
     // Extraer la información del formulario
-    const { nombre, correo, asunto, mensaje } = req.body;
+    const { nombre, correo, asunto, mensaje, telefono } = req.body;
 
     // Crear un registro en la base de datos con la información del formulario
     const nuevoCorreo = await db.correos_ibiza.create({
       data: {
         nombre: nombre,
+        telefono: telefono,
         correo_usuario: correo,
         asunto: asunto,
         mensaje: mensaje,

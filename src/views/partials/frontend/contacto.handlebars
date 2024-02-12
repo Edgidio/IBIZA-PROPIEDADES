@@ -14,9 +14,15 @@
         <div class="site-navbar mt-4">
             <div class="container py-1">
                 <div class="row align-items-center">
-                    <div class="col-8 col-md-8 col-lg-4">
-                        <h1 class="mb-0"><a href="/" class="text-white h2 mb-0"><strong class="text-amarillo">IBIZA PROPIEDADES</strong></a></h1>
-                    </div>
+                <div class="col-8 col-md-8 col-lg-4">
+                  <h1 class="mb-0">
+                      <a href="/" class="text-white h2 mb-0">
+                          <img style="display: inline; margin-right: 10px; margin-top: -27px;" src="/images/Icono/ibiza-incono.png" width="45" height="50">
+                          <strong style="font-size: 28px;" class="text-amarillo">IBIZA PROPIEDADES</strong>
+                      </a>
+                  </h1>
+                </div>
+
                     <div class="col-4 col-md-4 col-lg-8">
                         <nav class="site-navigation text-right text-md-right" role="navigation">
 
@@ -29,7 +35,7 @@
                   <li class="has-children">
                     <a >Venda su propiedad</a>
                     <ul class="dropdown arrow-top">
-                      <li><a href="#">Cuanto cuesta mi propiedad</a></li>
+                      <li><a href="#">Valorar una propiedad</a></li>
                     </ul>
                   </li>
                   <li class="has-children">
@@ -54,7 +60,7 @@
                     </ul>
                   </li>
                   <li class="has-children active">
-                    <a>Empresa a</a>
+                    <a>Empresa -</a>
                     <ul class="dropdown arrow-top">
                       <li><a href="/sobre-nosotros">Acerca de Ibiza propiedades</a></li>
                       <li ><a href="/contacto">Contacto</a></li>
@@ -69,6 +75,7 @@
                 </div>
             </div>
         </div>
+        
     </div>
 
 
@@ -160,6 +167,26 @@
                 </div>
 
                 <div class="row form-group">
+                  <div class="col-md-12 mb-3 mb-md-0">
+                    <label class="font-weight-bold" for="telefono">Telefono</label>  
+                    <input {{#if errors}}{{#each errors}}{{#eq field "telefono"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.telefono}}"{{/if}}  type="text" id="telefono" name="telefono" class="form-control" placeholder="Numero de telefono">
+
+                    {{#if errors}}
+                        {{#each errors}}
+                            {{#eq field "telefono"}}
+                              <br>
+                              <div id="alerta" class="alert">
+
+                                <strong>{{message}}</strong>
+                              </div>
+                            {{/eq}}
+                        {{/each}}
+                    {{/if}}
+
+                  </div>
+                </div>
+
+                <div class="row form-group">
                   <div class="col-md-12">
                     <label class="font-weight-bold" for="correo">Correo electrónico</label>
                     <input {{#if errors}}{{#each errors}}{{#eq field "correo"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.correo}}"{{/if}} name="correo" type="email" id="correo" class="form-control" placeholder="Dirección de correo electrónico
@@ -236,14 +263,12 @@
             <div class="p-4 mb-3 bg-white">
               <h3 class="h6 text-black mb-3 text-uppercase">DATOS DE CONTACTO</h3>
               <p class="mb-0 font-weight-bold">DIRECCIÓN</p>
-              <p class="mb-4">Calle Falsa, #123
-Urbanización Imaginaria
-Ciudad Inexistente
-Estado de Sueños
-Venezuela</p>
+              <p class="mb-4">AV INTERCOMUNAL TURMERO- MARACAY, CALLE ROMAR, GALPÓN 14, PB. MARACAY, ESTADO ARAGUA</p>
 
               <p class="mb-0 font-weight-bold">Teléfono</p>
-              <p class="mb-4"><a href="#">+58 4XX-XXX-XXXX</a></p>
+              <p class="mb-1"><a href="#">+58 0414-0478428</a></p>
+              <p class="mb-1"><a href="#">+58 0424-3408526</a></p>
+              <p class="mb-1"><a href="#">+58 0414-7258320</a></p>
 
               <p class="mb-0 font-weight-bold">Dirección de correo electrónico</p>
               <p class="mb-0"><a href="#">nuestrocorreoelectrónico@dominio.com</a></p>
@@ -335,6 +360,7 @@ Venezuela</p>
 
 
 
+
     <!-- Pie de pagina-->
     <footer class="site-footer">
       <div class="container">
@@ -342,7 +368,7 @@ Venezuela</p>
           <div class="col-lg-4">
             <div class="mb-5">
               <h3 class="footer-heading mb-4">SOBRE IBIZA PROPIEDADES</h3>
-              <p> IBIZA Propiedades, transformamos sueños en hogares. Descubre nuestro compromiso con la excelencia y la satisfacción del cliente. Tu próximo hogar está a solo un paso de distancia. ¡Bienvenido a IBIZA Propiedades!</p>
+              <p> Nuestro compromiso es premiar su confianza.</p>
             </div>
 
             
@@ -355,20 +381,13 @@ Venezuela</p>
               </div>
               <div class="col-md-6 col-lg-6">
                 <ul class="list-unstyled">
-                  <li><a href="#">Inicio</a></li>
-                  <li><a href="#">Comprar</a></li>
-                  <li><a href="#">Alquilar</a></li>
-                  <li><a href="#">Propiedades</a></li>
+                  <li><a href="/">Inicio</a></li>
+                  <li><a href="#">Venda su propiedad</a></li>
+                  <li><a href="/sobre-nosotros">Acerca de ibiza propiedades</a></li>
+                  <li><a href="/contacto">Contacto</a></li>
                 </ul>
               </div>
-              <div class="col-md-6 col-lg-6">
-                <ul class="list-unstyled">
-                  <li><a href="#">Sobre nosotros</a></li>
-                  <li><a href="#">política de privacidad</a></li>
-                  <li><a href="#">Contáctenos</a></li>
-                  <li><a href="#">Términos</a></li>
-                </ul>
-              </div>
+
             </div>
 
 
@@ -378,10 +397,9 @@ Venezuela</p>
             <h3 class="footer-heading mb-4">SÍGANOS</h3>
 
                 <div>
-                  <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-                  <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-                  <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-                  <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+
+                  <a href="https://www.instagram.com/ibizapropiedades/" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+
                 </div>
 
             
@@ -406,9 +424,10 @@ Venezuela</p>
     document.addEventListener("DOMContentLoaded", function() {
         // Espera 500 milisegundos antes de desplazarte hacia la sección "busqueda"
         setTimeout(function() {
-            document.getElementById("contacto").scrollIntoView({ behavior: "smooth" });
+            document.getElementById("sobre-nosotros").scrollIntoView({ behavior: "smooth" });
         }, 100);
     });
 </script>
+
 
 {{> "frontend/componentes/scripts" }}
