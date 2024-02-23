@@ -1,0 +1,730 @@
+<div class="site-loader"></div>
+  
+    <div class="site-wrap">
+
+        <div class="site-mobile-menu">
+            <div class="site-mobile-menu-header">
+                <div class="site-mobile-menu-close mt-3">
+                    <span class="icon-close2 js-menu-toggle"></span>
+                </div>
+            </div>
+            <div class="site-mobile-menu-body"></div>
+        </div> <!-- .site-mobile-menu -->
+
+        <div class="site-navbar mt-4">
+            <div class="container py-1">
+                <div class="row align-items-center">
+                <div class="col-8 col-md-8 col-lg-4">
+                  <h1 class="mb-0">
+                      <a href="/" class="text-white h2 mb-0">
+                          <img style="display: inline; margin-right: 10px; margin-top: -27px;" src="/images/Icono/ibiza-incono.png" width="45" height="50">
+                          <strong style="font-size: 28px;" class="text-amarillo">IBIZA PROPIEDADES</strong>
+                      </a>
+                  </h1>
+                </div>
+
+                    <div class="col-4 col-md-4 col-lg-8">
+                        <nav class="site-navigation text-right text-md-right" role="navigation">
+
+                            <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span style="color: #F3AA08;" class="icon-menu h3"></span></a></div>
+
+                                <ul class="site-menu js-clone-nav d-none d-lg-block">
+                  <li >
+                    <a class="text-amarillo" href="/">Inicio</a>
+                  </li>
+                  <li class="has-children">
+                    <a >Venda su propiedad</a>
+                    <ul class="dropdown arrow-top">
+                      <li><a href="#">Valorar una propiedad</a></li>
+                    </ul>
+                  </li>
+                  <li class="has-children">
+                    <a >Comprar</a>
+                    <ul class="dropdown arrow-top">
+                      <li><a href="/comprar/apartamento">Apartamento</a></li>
+                      <li><a href="/comprar/casa">Casa</a></li>
+                      <li><a href="/comprar/terreno">Terreno</a></li>
+                      <li><a href="/comprar/local-comercial">Local comercial</a></li>
+                      <li><a href="/comprar/oficina">Oficina</a></li>
+                      <li><a href="/comprar/edificio">Edificio</a></li>
+                    </ul>
+                  </li>
+                  <li class="has-children">
+                    <a >Alquilar</a>
+                    <ul class="dropdown arrow-top">
+                      <li><a href="/alquilar/apartamento">Apartamento</a></li>
+                      <li><a href="/alquilar/casa">Casa</a></li>
+                      <li><a href="/alquilar/terreno">Terreno</a></li>
+                      <li><a href="/alquilar/local-comercial">Local comercial</a></li>
+                      <li><a href="/alquilar/oficina">Oficina</a></li>
+                    </ul>
+                  </li>
+                  <li class="has-children active">
+                    <a>Empresa -</a>
+                    <ul class="dropdown arrow-top">
+                      <li><a href="/sobre-nosotros">Acerca de Ibiza propiedades</a></li>
+                      <li ><a href="/contacto">Contacto</a></li>
+                    </ul>
+                  </li>
+
+                </ul>
+                        </nav>
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    
+
+
+
+    <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(/images/hero_bg_1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
+          <div id="sobre-nosotros" class="col-md-10">
+
+            <div style="color: black;" class="signup-container">
+              <header class="signup-header">¿Cuánto vale mi propiedad?</header>
+              <div class="signup-progress-bar">
+                <div class="signup-step">
+                  <p class="signup-step-text">Ubicacion</p>
+                  <div class="signup-bullet">
+                    <span class="signup-bullet-number">1</span>
+                  </div>
+                  <div class="signup-check fas fa-check"></div>
+                </div>
+                <div class="signup-step">
+                  <p class="signup-step-text">Tipo de propiedad</p>
+                  <div class="signup-bullet">
+                    <span class="signup-bullet-number">2</span>
+                  </div>
+                  <div class="signup-check fas fa-check"></div>
+                </div>
+                <div class="signup-step">
+                  <p class="signup-step-text">Información</p>
+                  <div class="signup-bullet">
+                    <span class="signup-bullet-number">3</span>
+                  </div>
+                  <div class="signup-check fas fa-check"></div>
+                </div>
+                <div class="signup-step">
+                  <p class="signup-step-text">Valorar</p>
+                  <div class="signup-bullet">
+                    <span class="signup-bullet-number">4</span>
+                  </div>
+                  <div class="signup-check fas fa-check"></div>
+                </div>
+              </div>
+              <div class="signup-form-outer">
+<form action="/venda-su-propiedad" method="post" id="formulario">
+
+    <div class="signup-page signup-slide-page">
+        <div class="signup-title">información básica</div>
+        <div class="signup-field">
+            <div class="signup-label">Ubicación</div>
+            <input id="ubicacion" name="ubicacion" placeholder="Estado, municipio, ciudad o localidad" type="text">
+            <span id="ubicacionError" class="error-message"></span>
+
+        </div>
+        <div class="signup-field">
+            <div class="signup-label">Número de casa</div>
+            <input id="numeroCasa" name="numeroCasa" placeholder="Número de casa" type="text">
+            <span id="numeroCasaError" class="error-message"></span>
+        </div>
+        <div style="display: inline-block;" class="signup-field">
+            <button class="signup-firstNext signup-next">Siguiente</button>
+        </div>
+    </div>
+
+    <div class="signup-page">
+        <div class="signup-title">Tipo de propiedad:</div>
+        <div class="signup-field">
+            <div class="signup-label">Propiedad</div>
+            <select name="tipoPropiedad" id="tipoPropiedad" onchange="toggleDiv()">
+                <option value="apartamento" selected>Apartamento</option>
+                <option value="casa">Casa</option>
+            </select>
+        </div>
+
+        <div id="one">
+            <div class="signup-field">
+                <div class="signup-label">Planta del apartamento</div>
+                <input id="plantaApartamento" name="plantaApartamento" placeholder="Planta del apartamento" type="text">
+            </div>
+            <div class="signup-field">
+                <div class="signup-label">Puerta / Bloque (opcional)</div>
+                <input id="puertaBloque" name="puertaBloque" placeholder="Puerta / Bloque (opcional)" type="text">
+            </div>
+            <div class="signup-field">
+                <div class="signup-label">Superficie construida</div>
+                <input id="superficieConstruidaApartamento" name="superficieConstruidaApartamento" placeholder="Superficie construida" type="text">
+            </div>
+        </div>
+
+        <div id="dos">                      
+            <div class="signup-field">
+                <div class="signup-label">Superficie construida</div>
+                <input id="superficieConstruida" name="superficieConstruida" placeholder="Superficie construida" type="text">
+            </div>
+            <div class="signup-field">
+                <div class="signup-label">Área del terreno</div>
+                <input id="areaTerreno" name="areaTerreno" placeholder="Tamaño del terreno" type="text">
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; display: inline-block;" class="signup-field signup-btns">
+            <button class="signup-prev-1 signup-prev">Anterior</button>
+            <button class="signup-next-1 signup-next">Siguiente</button>
+        </div>
+    </div>
+
+    <div class="signup-page apartamento-page">
+        <div class="signup-title">Introduzca la siguiente información:</div>
+        <div class="signup-field">
+            <div class="signup-label">Número de habitaciones</div>
+            <input id="numHabitaciones" name="numHabitaciones" placeholder="Número de habitaciones" type="text">
+        </div>
+        <div class="signup-field">
+            <div class="signup-label">Número de baños</div>
+            <input id="numBanios" name="numBanios" placeholder="Número de baños" type="password">
+        </div>
+        <div class="signup-field">
+            <div class="signup-label">Estado de la propiedad</div>
+            <select name="EstadoPropiedad" id="EstadoPropiedad">
+                <option value="Obra nueva">Obra nueva</option>
+                <option value="Buen estado">Buen estado</option>
+                <option value="A reformar">A reformar</option>
+            </select>
+        </div>
+
+        <div class="signup-field">    
+            <div class="signup-label">Seleccione las características</div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="caracteristica" value="Piscina">
+                <label class="form-check-label" for="inlineCheckbox1">Piscina</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="caracteristica" value="Terraza">
+                <label class="form-check-label" for="inlineCheckbox2">Terraza</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="caracteristica" value="Garaje">
+                <label class="form-check-label" for="inlineCheckbox3">Garaje</label>
+            </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; display: inline-block;" class="signup-field signup-btns">
+            <button class="signup-prev-2 signup-prev">Anterior</button>
+            <button class="signup-next-2 signup-next">Siguiente</button>
+        </div>
+    </div>
+
+    <div class="signup-page">
+        <div class="signup-title">¿Cómo podemos contactarle?</div>
+        <div class="signup-field">
+            <div style="display: contents;" class="form-row ">
+                <div class="form-group col">
+                    <div class="signup-label">Nombre</div>
+                    <input id="nombre" name="nombre" placeholder="Nombre" type="text">
+                </div>
+                <div class="form-group col">
+                    <div style="display: inline-block;" class="signup-label">Apellidos</div>
+                    <input id="Apellidos" name="Apellidos" placeholder="Apellidos">
+                </div>
+            </div>
+        </div>
+        <div class="signup-field">
+            <div style="display: contents;" class="form-row ">
+                <div class="form-group col">
+                    <div class="signup-label">Correo</div>
+                    <input id="correo" name="correo" placeholder="Correo" type="text">
+                </div>
+                <div class="form-group col">
+                    <div style="display: inline-block;" class="signup-label">Número de teléfono</div>
+                    <input id="telefono" name="telefono" placeholder="Número de teléfono">
+                </div>
+            </div>
+        </div>
+        <div class="signup-field">    
+            <div class="signup-label">¿Cuándo podemos contactarle?</div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="Manana" value="Manana" name="Manana">
+                <label class="form-check-label" for="Manana">Mañana</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" name="Tarde" id="Tarde" value="Tarde">
+                <label class="form-check-label" for="Tarde">Tarde</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="Noche" name="Noche" value="Noche">
+                <label class="form-check-label" for="Noche">Noche</label>
+            </div>
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="consentimiento">
+            <label class="form-check-label" name="consentimiento" for="consentimiento">Doy mi consentimiento para el tratamiento de mis datos con el fin de determinar el valor de mercado y ser contactado de Ibiza propiedades. Mis datos anteriores se pueden pasar en el socio de licencia local de Ibiza propiedades de acuerdo con la dirección de mi propiedad con el propósito de contactarme.</label>
+        </div>
+        <div style="display: flex; justify-content: space-between; display: inline-block;" class="signup-field signup-btns">
+            <button class="signup-prev-3 signup-prev">Anterior</button>
+            <button class="signup-submit">Valorar</button>
+        </div>
+    </div>
+
+</form>
+              </div>
+            </div>
+
+           
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+      <div style="" class="container">
+
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-7 text-center">
+            <div class="site-section-title">
+              <h2>Valoración online de su vivienda con Ibiza propiedades</h2>
+              <br>
+              <br>
+              <p>¿Quiere vender su propiedad y sacarle el máximo partido? Una valoración correcta de su inmueble es el primer paso para una venta rápida y exitosa.</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="container" style="width: 70% !important;">
+
+          <div style="display: flex; flex-direction: row; -webkit-box-align: center; align-items: center" class="container ml-5">
+            <img style="margin: 0rem 4.375rem 0rem 0rem;" width="15" height="15" src="/images/flecha-correcta-(1).png" alt="checklist icon" class="sc-hRwTwm hWDotO">
+            <div class="">
+              <a  href="#la-valoracion-online" style="font-size: 20px; font-weight: bold; color: #6c757d" class="">¿Qué es mejor: la valoración online o la cita presencial?</a>
+            </div>
+          </div>
+
+          <br>
+                    
+          <div style="display: flex; flex-direction: row; -webkit-box-align: center; align-items: center" class="container ml-5">
+            <img style="margin: 0rem 4.375rem 0rem 0rem;" width="15" height="15" src="/images/flecha-correcta-(1).png" alt="checklist icon" class="sc-hRwTwm hWDotO">
+            <div class="">
+              <a href="#como-es-el-proceso" style="font-size: 20px; font-weight: bold;color: #6c757d" class="">¿Cómo es el proceso de valoración de una vivienda?</a>
+            </div>
+          </div>
+
+          <br>
+
+          <div style="display: flex; flex-direction: row; -webkit-box-align: center; align-items: center" class="container ml-5">
+            <img style="margin: 0rem 4.375rem 0rem 0rem;" width="15" height="15" src="/images/flecha-correcta-(1).png" alt="checklist icon" class="sc-hRwTwm hWDotO">
+            <div class="">
+              <a href="#cuanto-cuesta-la-valoracion" style="font-size: 20px; font-weight: bold; color: #6c757d;" class="">¿Cuánto cuesta la valoración online por parte de Ibiza propiedades?</a>
+            </div>
+          </div>
+
+          <br>
+
+          <div style="display: flex; flex-direction: row; -webkit-box-align: center; align-items: center" class="container ml-5">
+            <img style="margin: 0rem 4.375rem 0rem 0rem;" width="15" height="15" src="/images/flecha-correcta-(1).png" alt="checklist icon" class="sc-hRwTwm hWDotO">
+            <div class="">
+              <a href="#preguntas" style="font-size: 20px; font-weight: bold; color: #6c757d;" class="">Preguntas frecuentes</a>
+            </div>
+          </div>
+      
+        </div>
+
+
+      
+
+    </div>
+
+        <br>
+    <br>
+    <br>
+
+  <div class="site-blocks-cover inner-page-cover-dos overlay" style="background-image: url(/images/2.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
+          <div id="sobre-nosotros" class="col-md-10">
+            <h1 class="mb-2">¿Está pensando en alquilar?</h1>
+            <br>
+            <br>
+            <h3 style="color: aliceblue;" class="mb-2">Consulte nuestro catálogo de propiedades en alquiler</h3>
+            <br>
+            <a href="/alquilar/casa" style="background-color: #F3AA08; border-color: #F3AA08; padding: 12px 80px !important" class="btn btn-primary  py-2 px-4 rounded-0">Buscar</a>
+          </div>
+        </div>
+      </div>
+        
+  </div>
+
+      <div id="la-valoracion-online" class="site-section">
+        <div class="container">
+            <div class="row">
+
+            <div  class="col-md-5 ml-auto"  data-aos="fade-up" data-aos-delay="200">
+                <div class="site-section-title ">
+                <h2>¿Qué es mejor: la valoración online o la cita presencial?</h2>
+                </div>
+                <p class="lead">Basándose en algunas características de su propiedad, nuestra herramienta de valoración de propiedades online calcula una estimación inicial del precio de su inmueble, comparando datos de miles de propiedades vendidas y ofrecidas. En una valoración detallada in situ realizada por uno de nuestros consultores inmobiliarios, se tienen en cuenta todas las características de la propiedad, lo que no ocurre en una valoración online.</p>
+
+                <p>Una valoración de la vivienda es útil si: </p>
+
+                <div class="container">
+                  <p>• Está pensando en venderla y desea obtener una visión general del mercado.</p>
+                  <p>• Si necesita información más concreta y consejo profesional, le recomendamos tener una visita con nuestros consultores expertos.</p>
+                </div>
+              
+                <p>Es aconsejable una valoración del inmueble in situ por parte de un consultor inmobiliario si: </p>
+                
+                <div class="container">
+                  <p>• desea conocer el valor exacto de su vivienda, teniendo en cuenta todas sus características.</p>
+                  <p>• concede gran importancia a la transparencia en la valoración de su inmueble.</p>
+                  <p>• le gustaría que nuestros expertos le proporcionen una estrategia de venta individualizada para conseguir el mejor precio posible para su propiedad.</p>
+                </div>
+
+            </div>
+
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <img src="images/1.jpeg" alt="Image" class="img-fluid">
+                </div>
+            
+            </div>
+            
+        </div>
+    </div>  
+            
+    <div style="width: 20% !important;" class="container">
+      <hr style="border-color: #F3AA08;">
+    </div>
+
+    <br>
+
+
+
+
+    <div id="cuanto-cuesta-la-valoracion" class="site-section">
+        <div class="container">
+            <div class="row">
+            <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <img src="images/3.webp" alt="Image" class="img-fluid">
+            </div>
+            <div class="col-md-5 ml-auto"  data-aos="fade-up" data-aos-delay="200">
+                <div class="site-section-title ">
+                <h2  >¿Cuánto cuesta la valoración online por parte de Ibiza propiedades</h2>
+                </div>
+                <p class="lead">La valoración de la vivienda mediante nuestra herramienta online y la posterior valoración personal por parte de nuestro consultor inmobiliario in situ es totalmente gratuita y sin compromiso para usted. Y lo mejor: en Ibiza propiedades, todas las medidas para la posterior comercialización de su propiedad ya están incluidas en la comisión del consultor. A diferencia de muchos otros proveedores, ¡Usted no paga ninguna tarifa adicional por la creación de visitas virtuales en 3D o exposés! </p>
+
+            </div>
+            
+            </div>
+            
+        </div>
+    </div>    
+
+    <br>
+
+    <div style="width: 20% !important;" class="container">
+      <hr style="border-color: #F3AA08;">
+    </div>
+
+    <br>
+
+    <div id="como-es-el-proceso" style="" class="container">
+
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-7 text-center">
+            <div class="site-section-title">
+              <h2>¿Cómo es el proceso de valoración de una vivienda?</h2>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="container" style="width: 70% !important;">
+
+          <div style="display: flex; flex-direction: row; -webkit-box-align: center; align-items: center" class="container ml-5">
+            <img style="margin: 0rem 4.375rem 0rem 0rem;" width="60" height="60" src="/images/Descripción-el-nmueble.png" alt="checklist icon" class="sc-hRwTwm hWDotO">
+            <div class="">
+              <h3 style="font-size: 20px; font-weight: bold;" class="">Descripción del inmueble a valorar</h3>
+              <p style="display: block; font-size: 1rem; line-height: 1.63; margin: 0px; font-size: 15px;" class="">Nuestra valoración de propiedades online le proporciona una estimación del precio inicial de su propiedad en función de los datos que nos facilite. </p>
+            </div>
+          </div>
+
+          <br>
+                    
+          <div style="display: flex; flex-direction: row; -webkit-box-align: center; align-items: center" class="container ml-5">
+            <img style="margin: 0rem 4.375rem 0rem 0rem;" width="60" height="60" src="/images/discusion.png" alt="checklist icon" class="sc-hRwTwm hWDotO">
+            <div class="">
+              <h3 style="font-size: 20px; font-weight: bold;" class="">Nos pondremos en contacto con usted tan pronto como sea posible</h3>
+              <p style="display: block; font-size: 1rem; line-height: 1.63; margin: 0px; font-size: 15px;" class="">Tras la valoración online, nuestros expertos consultores inmobiliarios le contactarán para una visita y atención más personalizada. </p>
+            </div>
+          </div>
+
+          <br>
+
+          <div style="display: flex; flex-direction: row; -webkit-box-align: center; align-items: center" class="container ml-5">
+            <img style="margin: 0rem 4.375rem 0rem 0rem;" width="60" height="60" src="/images/comprar-casa.png" alt="checklist icon" class="sc-hRwTwm hWDotO">
+            <div class="">
+              <h3 style="font-size: 20px; font-weight: bold;" class="">Valoración online sin compromiso</h3>
+              <p style="display: block; font-size: 1rem; line-height: 1.63; margin: 0px; font-size: 15px;" class="">Nuestros consultores inmobiliarios le ayudarán a calcular el valor de su vivienda de forma transparente y gratuita y, por lo tanto, lo ayudarán a determinar el precio de venta ideal para su propiedad.</p>
+            </div>
+          </div>
+
+          <br>
+
+          <div style="display: flex; flex-direction: row; -webkit-box-align: center; align-items: center" class="container ml-5">
+            <img style="margin: 0rem 4.375rem 0rem 0rem;" width="60" height="60" src="/images/prestamo.png" alt="checklist icon" class="sc-hRwTwm hWDotO">
+            <div class="">
+              <h3 style="font-size: 20px; font-weight: bold;" class="">Venderemos su propiedad</h3>
+              <p style="display: block; font-size: 1rem; line-height: 1.63; margin: 0px; font-size: 15px;" class="">Ibiza propiedades inicia ahora la comercialización de su propiedad. Estaremos encantados de acompañarle en cada paso del proceso de venta y comercialización de su propiedad de forma profesional y siempre de acuerdo con su criterio. </p>
+            </div>
+          </div>
+      
+        </div>
+
+
+      
+
+    </div>
+    <br>
+    <br>
+
+    <div style="width: 20% !important;" class="container">
+      <hr style="border-color: #F3AA08;">
+    </div>
+
+
+    <div id="preguntas" class="site-section">
+      <div class="container">
+
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-7 text-center">
+            <div class="site-section-title">
+              <h2>PREGUNTAS FRECUENTES</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center" data-aos="fade" data-aos-delay="100">
+          <div class="col-md-8">
+            <div class="accordion unit-8" id="accordion">
+            <div class="accordion-item">
+              <h3 class="mb-0 heading">
+                <a class="btn-block" data-toggle="collapse" href="#collapseOne" role="button" aria-expanded="true" aria-controls="collapseOne">¿Cómo determino el valor de mi propiedad?<span class="icon"></span></a>
+              </h3>
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="body-text">
+                  <p>Básicamente, existen dos formas de determinar el valor de su propiedad: Por un lado, puede obtener la valoración de su vivienda online para obtener una primera evaluación. Además, si quiere algo más personalizado, le ofrecemos la posibilidad de solicitar una tasación de bienes inmuebles con nuestros consultores inmobiliarios expertos en su zona. Simplemente contáctenos para concertar una visita. Ambos servicios son, por supuesto, gratuitos y sin compromiso para usted.</p>
+                  </p>
+                </div>
+              </div>
+            </div> <!-- .accordion-item -->
+            
+            <div class="accordion-item">
+              <h3 class="mb-0 heading">
+                <a class="btn-block" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">¿Qué factores influyen en el valor de mi vivienda?<span class="icon"></span></a>
+              </h3>
+              <div id="collapseTwo" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="body-text">
+                  <p>
+                    Son muchos los factores que influyen en el precio de mercado de una vivienda. Estos incluyen:
+
+                    <p>• La ubicación de la propiedad</p>
+                    <p>• El área habitable y el tamaño de la parcela</p>
+                    <p>• La fecha de construcción y la condición estructural Las comodidades de la propiedad (por ejemplo, número de habitaciones, piscina, bodega o terraza en la azotea)</p>
+                    <p>• La oferta y demanda en el mercado inmobiliario local</p>
+
+                  </p>
+            
+                </div>
+              </div>
+            </div> 
+
+            <div class="accordion-item">
+              <h3 class="mb-0 heading">
+                <a class="btn-block" data-toggle="collapse" href="#collapseThree" role="button" aria-expanded="false" aria-controls="collapseThree">¿Qué factores se tienen en cuenta para la valoración online?<span class="icon"></span></a>
+              </h3>
+              <div id="collapseThree" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="body-text">
+                  <p>La valoración online de Ibiza propiedades se basa en los factores más importantes que influyen en el valor de una vivienda:
+                    <p>• El tipo de propiedad - ¿es, por ejemplo, una casa para una o dos familias o un condominio?</p>
+                    <p>• El área habitable y el tamaño de la propiedad</p>
+                    <p>• El año de construcción</p>
+                    <p>• La macro-ubicación - el entorno más amplio y la región de su propiedad</p>
+                    <p>• La micro-ubicación - el distrito/parte del municipio en el que se encuentra su propiedad</p>
+                  </p>
+                </div>
+              </div>
+            </div> <!-- .accordion-item -->
+
+            
+
+            <div class="accordion-item">
+              <h3 class="mb-0 heading">
+                <a class="btn-block" data-toggle="collapse" href="#collapseFour" role="button" aria-expanded="false" aria-controls="collapseFour">¿Cómo de precisa es la valoración online?<span class="icon"></span></a>
+              </h3>
+              <div id="collapseFour" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="body-text">
+                  <p>La valoración de la vivienda online es ideal para que los propietarios obtengan una estimación del precio inicial de su propiedad. Todo lo que necesita hacer es ingresar cierta información básica, como la ubicación y el tipo de propiedad. Nuestra valoración online analiza estos datos y los compara con una selección de propiedades comparables y los complementa con información del mercado local. Luego, el algoritmo calcula el rango de valor de mercado de su inmueble a partir de estos datos. El valor indicado en nuestra valoración online no es, por tanto, un valor medio para las propiedades en su ubicación. Siempre se basa en las características individuales de su propiedad.</p>
+                </div>
+              </div>
+            </div> <!-- .accordion-item -->
+
+                        <div class="accordion-item">
+              <h3 class="mb-0 heading">
+                <a class="btn-block" data-toggle="collapse" href="#collapseSix" role="button" aria-expanded="false" aria-controls="collapseSix">¿Cómo puedo aumentar el valor de mi inmueble?<span class="icon"></span></a>
+              </h3>
+              <div id="collapseSix" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="body-text">
+                  <p>Puede tomar una serie de medidas para aumentar el valor de su propiedad antes de la venta. Estas incluyen:
+
+                    <div class="body-text">
+                      <p>• Trabajos de renovación que mejorarán estéticamente la apariencia de la propiedad (por ejemplo, empapelado, colocación de alfombras, renovación de las fachadas exteriores, etc). Por lo general, es más fácil encontrar un comprador si la propiedad está bien cuidada.</p>
+                      <p>• Medidas de renovación relacionadas con la energía (por ejemplo, instalación de nuevas ventanas, sistemas de calefacción, etc.) Cuanto más moderna y eficiente es una propiedad, mayor será su valor.</p>
+                      <p>• Cree espacio habitable: convierta el ático o cree espacio habitable adicional en el sótano. Las salas especiales, como un estudio o un cine en casa, no solo son exclusivas, sino que son aspectos destacados para los compradores potenciales.</p>
+                      <p>• Instale un sistema de seguridad: invierta en protección contra intrusos, un sistema de alarma, sensores de luz o medidas de seguridad similares.</p>
+                      <p>• Cree un entorno sin barreras: Agrande las puertas o instale un salvaescaleras. Esto le permite llegar a un grupo objetivo más amplio y una mejora la valoración.</p>
+                    </div>
+                  </p>
+                </div>
+              </div>
+            </div> <!-- .accordion-item -->
+
+          </div>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+
+
+    <!-- Pie de pagina-->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <div class="mb-5">
+              <h3 class="footer-heading mb-4">SOBRE IBIZA PROPIEDADES</h3>
+              <p> Nuestro compromiso es premiar su confianza.</p>
+            </div>
+
+            
+            
+          </div>
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <div class="row mb-5">
+              <div class="col-md-12">
+                <h3 class="footer-heading mb-4">NAVEGACIÓN</h3>
+              </div>
+              <div class="col-md-6 col-lg-6">
+                <ul class="list-unstyled">
+                  <li><a href="/">Inicio</a></li>
+                  <li><a href="#">Venda su propiedad</a></li>
+                  <li><a href="/sobre-nosotros">Acerca de ibiza propiedades</a></li>
+                  <li><a href="/contacto">Contacto</a></li>
+                </ul>
+              </div>
+
+            </div>
+
+
+          </div>
+
+          <div class="col-lg-4 mb-5 mb-lg-0">
+            <h3 class="footer-heading mb-4">SÍGANOS</h3>
+
+                <div>
+
+                  <a href="https://www.instagram.com/ibizapropiedades/" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+
+                </div>
+
+            
+
+          </div>
+          
+        </div>
+        <div class="row pt-5 mt-5 text-center">
+          <div class="col-md-12">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> PEVITE Tecnología. Todos los derechos reservados. Prohibida la reproducción total o parcial de cualquier contenido sin el permiso expreso por escrito de PEVITE Tecnología.  by <a href="https://pevite.com.ve/" target="_blank" >PEVITE</a> <i class="icon-heart text-danger" aria-hidden="true"></i>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+          </div>
+          
+        </div>
+      </div>
+    </footer>
+
+
+
+
+<script>
+        document.addEventListener("DOMContentLoaded", function () {
+            toggleDiv();
+            document.getElementById("tipoPropiedad").addEventListener("change", toggleDiv);
+        });
+
+        function toggleDiv() {
+            var tipoPropiedad = document.getElementById("tipoPropiedad").value;
+            var oneDiv = document.getElementById("one");
+            var dosDiv = document.getElementById("dos");
+
+            if (tipoPropiedad === "apartamento") {
+                oneDiv.style.display = "block";
+                dosDiv.style.display = "none";
+            } else if (tipoPropiedad === "casa") {
+                oneDiv.style.display = "none";
+                dosDiv.style.display = "block";
+            }
+        }
+
+        function validarFormulario(pagina) {
+            // Reiniciar mensajes de error
+            document.getElementById("ubicacionError").textContent = "";
+            document.getElementById("numeroCasaError").textContent = "";
+
+            var ubicacion = document.getElementById("ubicacion").value;
+            var numeroCasa = document.getElementById("numeroCasa").value;
+
+            // Validación Ubicación
+            if (pagina === 'pagina1' && ubicacion.trim() === "") {
+                document.getElementById("ubicacionError").textContent = "Por favor, ingresa la ubicación.";
+                return false;
+            }
+
+            // Validación Número de Casa
+            if (pagina === 'pagina1' && numeroCasa.trim() === "") {
+                document.getElementById("numeroCasaError").textContent = "Por favor, ingresa el número de casa.";
+                return false;
+            }
+
+            // Agregar más validaciones según sea necesario...
+
+            // Si todas las validaciones son exitosas, puedes avanzar al siguiente paso
+            // Agrega aquí la lógica para pasar al siguiente paso si es necesario
+
+            return true;
+        }
+    </script>
+
+
+
+
+
+
+
+
+<script src="/assets/frontend/form/script.js"></script>
+{{> "frontend/componentes/scripts" }}

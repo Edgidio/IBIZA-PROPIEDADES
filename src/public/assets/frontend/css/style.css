@@ -543,8 +543,11 @@ a {
     min-height: 600px;
     height: calc(100vh); }
   .site-blocks-cover.inner-page-cover, .site-blocks-cover.inner-page-cover .row {
-    min-height: 600px;
+    min-height: 1250px;
     height: calc(30vh); }
+    .site-blocks-cover.inner-page-cover-dos, .site-blocks-cover.inner-page-cover-dos .row {
+      min-height: 500px;
+      height: calc(30vh); }
   .site-blocks-cover .sub-text {
     font-size: 1.1rem;
     text-transform: uppercase;

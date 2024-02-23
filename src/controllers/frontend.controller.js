@@ -408,3 +408,31 @@ export const busquedaPropiedades = async (req, res) => {
     return res.redirect("/")
   }
 };
+
+export const valore_su_propiedad_GET = async (req, res) => {
+
+  try {
+
+    return res.render('partials/frontend/venda_su_propiedad', {
+      Titulo: "Ibiza Propiedades | Venda su propiedad",
+      rutaIF: "Frontend"
+    });
+
+  } catch (error) {
+    return res.redirect("/")
+  }
+};
+
+export const valore_su_propiedad_POST = async (req, res) => {
+
+  try {
+
+    console.log(req.body)
+
+    return res.redirect("/venda-su-propiedad")
+
+
+  } catch (error) {
+    return res.redirect("/")
+  }
+};
