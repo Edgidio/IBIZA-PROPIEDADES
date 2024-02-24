@@ -541,13 +541,20 @@ a {
       background: rgba(0, 0, 0, 0.4); }
   .site-blocks-cover, .site-blocks-cover .row {
     min-height: 600px;
-    height: calc(100vh); }
+    height: calc(70vh); }
   .site-blocks-cover.inner-page-cover, .site-blocks-cover.inner-page-cover .row {
-    min-height: 1250px;
+    min-height: 700px;
     height: calc(30vh); }
+    
     .site-blocks-cover.inner-page-cover-dos, .site-blocks-cover.inner-page-cover-dos .row {
       min-height: 500px;
       height: calc(30vh); }
+
+      .site-blocks-cover.inner-page-cover-form, .site-blocks-cover.inner-page-cover-form .row {
+        min-height: 1250px;
+        height: calc(30vh); }
+
+
   .site-blocks-cover .sub-text {
     font-size: 1.1rem;
     text-transform: uppercase;
