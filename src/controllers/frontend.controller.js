@@ -40,7 +40,8 @@ export const index = async (req, res) => {
       updatedAt: propiedad.updatedAt,
       usuarioId: propiedad.usuarioId,
       estado: propiedad.estado,
-      rutas: propiedad.ruta_unica[0],
+      rutas: propiedad.ruta_unica ? propiedad.ruta_unica[0] : null,
+
     };
   });
 
