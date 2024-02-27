@@ -169,3 +169,108 @@
   display: block;
   color: #fff;
 }
+
+
+/* Media queries para ajustar estilos en diferentes tamaños de pantalla */
+@media only screen and (max-width: 447px) {
+
+  #ubi{
+    
+    margin-left: -18px;
+    
+  }
+  
+
+  .signup-progress-bar .signup-step .signup-bullet {
+    height: 20px;
+    width: 20px;
+    border: 2px solid #000;
+    display: inline-block;
+    border-radius: 50%;
+    position: relative;
+    transition: 0.2s;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 20px;
+    font-size: 13px;
+}
+
+  .signup-container .signup-progress-bar .signup-step .signup-step-text {
+    font-weight: 500;
+    font-size: 15px;
+    color: #000;
+    margin-bottom: 9px;
+}
+
+.signup-container .signup-progress-bar .signup-step {
+  text-align: center;
+  width: 100%;
+  position: relative;
+  margin-left: 10px;
+}
+
+  .signup-container {
+    background: #ffffff99;
+  }
+
+  .signup-container .signup-header {
+    font-size: 6vw;
+  }
+
+
+  .p-proceso{
+    width: 250px !important;
+  }
+
+  .pregun{
+    width: 100% !important;
+  }
+}
+
+/* Media queries para ajustar estilos en diferentes tamaños de pantalla */
+@media only screen and (max-width: 2000px) {
+
+  .pregun{
+    width: 70% !important;
+  }
+
+  #proceso-de{
+    width: 70% !important;
+    
+/*       padding-right: 15px;
+      padding-left: 15px; */
+      margin-right: auto;
+      margin-left: auto;
+      /* background-color: #F3AA08; */
+  
+  }
+}
+
+/* Media queries para ajustar estilos en diferentes tamaños de pantalla */
+@media only screen and (max-width: 771px) {
+
+  .img-img{
+    margin: 0rem 1.375rem 0rem -1rem !important;
+  }
+
+  #proceso-de{
+    width: -webkit-fill-available !important;
+    padding-left: 0px !important;
+    padding-right: 0px;
+  
+  
+  }
+
+  .p-proceso{
+    width: 369px;
+  }
+
+  .pregun{
+    width: 100% !important;
+  }
+}
+
+
+
+
+

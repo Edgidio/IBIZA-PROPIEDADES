@@ -324,11 +324,11 @@ export const busquedaPropiedades = async (req, res) => {
     }
 
     let propiedades;
-    
-    if (inmueble === 'Propiedad Terreno') {
+
+    if (inmueble.includes('Apartamento')) {
       propiedades = await db.propiedades.findMany({
         where: {
-          tipo_propiedad: 'T',
+          tipo_propiedad: 'A', // o el valor correspondiente para Apartamento
           venta_renta: venta_renta,
           estado: estado,
         },
@@ -336,10 +336,10 @@ export const busquedaPropiedades = async (req, res) => {
           fotos: true,
         },
       });
-    } else if (inmueble === 'Condominio') {
+    } else if (inmueble.includes('Casa')) {
       propiedades = await db.propiedades.findMany({
         where: {
-          tipo_propiedad: { in: ['A', 'C', 'E'] },
+          tipo_propiedad: 'C', // o el valor correspondiente para Casa
           venta_renta: venta_renta,
           estado: estado,
         },
@@ -347,10 +347,43 @@ export const busquedaPropiedades = async (req, res) => {
           fotos: true,
         },
       });
-    } else if (inmueble === 'Edificio comercial') {
+    } else if (inmueble.includes('Terreno')) {
       propiedades = await db.propiedades.findMany({
         where: {
-          tipo_propiedad: { in: ['LC', 'OF'] },
+          tipo_propiedad: 'T', // o el valor correspondiente para Terreno
+          venta_renta: venta_renta,
+          estado: estado,
+        },
+        include: {
+          fotos: true,
+        },
+      });
+    } else if (inmueble.includes('Local comercial')) {
+      propiedades = await db.propiedades.findMany({
+        where: {
+          tipo_propiedad: 'LC', // o el valor correspondiente para Local comercial
+          venta_renta: venta_renta,
+          estado: estado,
+        },
+        include: {
+          fotos: true,
+        },
+      });
+    } else if (inmueble.includes('Oficina')) {
+      propiedades = await db.propiedades.findMany({
+        where: {
+          tipo_propiedad: 'OF', // o el valor correspondiente para Oficina
+          venta_renta: venta_renta,
+          estado: estado,
+        },
+        include: {
+          fotos: true,
+        },
+      });
+    } else if (inmueble.includes('Edificio')) {
+      propiedades = await db.propiedades.findMany({
+        where: {
+          tipo_propiedad: 'E', // o el valor correspondiente para Edificio
           venta_renta: venta_renta,
           estado: estado,
         },

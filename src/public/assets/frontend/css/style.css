@@ -543,7 +543,7 @@ a {
     min-height: 600px;
     height: calc(70vh); }
   .site-blocks-cover.inner-page-cover, .site-blocks-cover.inner-page-cover .row {
-    min-height: 700px;
+    min-height: 540px;
     height: calc(30vh); }
     
     .site-blocks-cover.inner-page-cover-dos, .site-blocks-cover.inner-page-cover-dos .row {
