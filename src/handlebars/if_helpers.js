@@ -37,5 +37,14 @@ handlebars.registerHelper('formatFecha', function (fecha) {
   return moment(fecha).format('dddd, MMMM D, YYYY h:mm A');
 });
 
+handlebars.registerHelper('formatTexto', function (texto) {
+  // Limitar el texto a 300 caracteres y añadir puntos suspensivos al final
+  if (texto.length > 300) {
+      return texto.substring(0, 100) + '...';
+  } else {
+      return texto;
+  }
+});
+
 export default handlebars;
 

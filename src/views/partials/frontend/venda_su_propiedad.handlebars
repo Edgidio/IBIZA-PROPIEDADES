@@ -120,7 +120,7 @@
                 </div>
               </div>
               <div class="signup-form-outer">
-<form action="/venda-su-propiedad" method="post" id="formulario">
+<form action="/venda-su-propiedadd" method="post" id="formulario">
 
     <div class="signup-page signup-slide-page">
         <div class="signup-title">información básica</div>
@@ -249,29 +249,39 @@
                 </div>
             </div>
         </div>
-        <div class="signup-field">    
-            <div class="signup-label">¿Cuándo podemos contactarle?</div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="Manana" value="Manana" name="Manana">
-                <label class="form-check-label" for="Manana">Mañana</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" name="Tarde" id="Tarde" value="Tarde">
-                <label class="form-check-label" for="Tarde">Tarde</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="Noche" name="Noche" value="Noche">
-                <label class="form-check-label" for="Noche">Noche</label>
-            </div>
+
+        <div class="signup-field">  
+
+          <div class="signup-label">¿Cuándo podemos contactarle?</div>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox11" name="contactar" value="Mañana">
+              <label class="form-check-label" for="inlineCheckbox11">Mañana</label>
+          </div>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox22" name="contactar" value="Tarde">
+              <label class="form-check-label" for="inlineCheckbox22">Terde</label>
+          </div>
+          <div class="form-check form-check-inline">
+              <input class="form-check-input" type="checkbox" id="inlineCheckbox33" name="contactar" value="Noche">
+              <label class="form-check-label" for="inlineCheckbox33">Noche</label>
+          </div>
+
         </div>
-        <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="consentimiento">
+
+{{!--         <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" value="consentimiento" id="consentimiento">
             <label class="form-check-label" name="consentimiento" for="consentimiento">Doy mi consentimiento para el tratamiento de mis datos con el fin de determinar el valor de mercado y ser contactado de Ibiza propiedades. Mis datos anteriores se pueden pasar en el socio de licencia local de Ibiza propiedades de acuerdo con la dirección de mi propiedad con el propósito de contactarme.</label>
-        </div>
+        </div> --}}
+          
+        <div class="signup-field">  
+
         <div style="display: flex; justify-content: space-between; display: inline-block;" class="signup-field signup-btns">
             <button class="signup-prev-3 signup-prev">Anterior</button>
-            <button class="signup-submit">Valorar</button>
+            <button type="submit" class="signup-submit">Valorar</button>
         </div>
+
+        </div>div>  
+
     </div>
 
 </form>
@@ -692,33 +702,7 @@
             }
         }
 
-        function validarFormulario(pagina) {
-            // Reiniciar mensajes de error
-            document.getElementById("ubicacionError").textContent = "";
-            document.getElementById("numeroCasaError").textContent = "";
-
-            var ubicacion = document.getElementById("ubicacion").value;
-            var numeroCasa = document.getElementById("numeroCasa").value;
-
-            // Validación Ubicación
-            if (pagina === 'pagina1' && ubicacion.trim() === "") {
-                document.getElementById("ubicacionError").textContent = "Por favor, ingresa la ubicación.";
-                return false;
-            }
-
-            // Validación Número de Casa
-            if (pagina === 'pagina1' && numeroCasa.trim() === "") {
-                document.getElementById("numeroCasaError").textContent = "Por favor, ingresa el número de casa.";
-                return false;
-            }
-
-            // Agregar más validaciones según sea necesario...
-
-            // Si todas las validaciones son exitosas, puedes avanzar al siguiente paso
-            // Agrega aquí la lógica para pasar al siguiente paso si es necesario
-
-            return true;
-        }
+        
     </script>
 
 <script>

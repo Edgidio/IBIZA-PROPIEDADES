@@ -69,6 +69,95 @@ export const correo_GET = async (req, res) => {
     }
 };
 
+export const valora_su_propiedad_GET = async (req, res) => {
+    try {
+
+        const Inicios_de_sesiones = await db.log_sesiones.findMany({
+            where: {
+                visto: false
+            }
+           });
+        
+           const N_inicios = await db.log_sesiones.count({
+                where: {
+                visto: false,
+                },
+            });
+        
+            const Correos = await db.correos_ibiza.findMany({
+                where: {
+                    visto: false
+                }
+               });
+            
+            const N_correos = await db.correos_ibiza.count({
+                where: {
+                visto: false,
+                },
+            });
+
+            const Correos_ = await db.correos_ibiza.findMany({
+                orderBy: {
+                  createdAt: 'desc'
+                }
+              });
+        
+            
+            return res.render('partials/dashboard/valora_su_propiedad', {
+                Titulo: "Ibiza Prop | Valorar propiedad",
+                Inicios_de_sesiones: Inicios_de_sesiones,
+                N_inicios,
+                rutaIF: "Backend",
+                N_correos,
+                Correos,
+                Correos_,
+                correo_delete: req.flash("correo_delete"),
+                error_controlador:req.flash('error_controlador')
+            });
+
+
+      
+    }catch (error) {
+        
+         // Manejo de errores y redirección en caso de problemas
+         await db.log_sistema.create({
+            data: {
+                controlador: "valora_su_propiedad_GET",
+                error: error.toString()
+            },
+        });
+  
+        req.flash('error_controlador', 'Hubo un problema al procesar su solicitud. Por favor, inténtelo de nuevo más tarde o cominiquese con su desarrollador');
+  
+        return res.redirect(`/admin-ibizapropiedades-dashboard/`)   
+
+        
+    }
+};
+
+export const valora_su_propiedad_POST = async (req, res) => {
+    try {
+
+        console.log(req.body)
+      
+    }catch (error) {
+        
+         // Manejo de errores y redirección en caso de problemas
+         await db.log_sistema.create({
+            data: {
+                controlador: "valora_su_propiedad_POST",
+                error: error.toString()
+            },
+        });
+  
+        req.flash('error_controlador', 'Hubo un problema al procesar su solicitud. Por favor, inténtelo de nuevo más tarde o cominiquese con su desarrollador');
+  
+        return res.redirect(`/admin-ibizapropiedades-dashboard/`)   
+
+        
+    }
+};
+
 export const correoDELETE = async (req, res) => {
     try {
 

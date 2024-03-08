@@ -17,6 +17,6 @@ router.get("/contacto", contacto);
 router.post("/contacto", validacion_contacto, contactoPOST);
 router.post("/busqueda/propiedades", busquedaPropiedades);
 router.get("/venda-su-propiedad", valore_su_propiedad_GET);
-router.post("/venda-su-propiedad", valore_su_propiedad_POST);
+router.post("/venda-su-propiedadd", valore_su_propiedad_POST);
 
 export default router;

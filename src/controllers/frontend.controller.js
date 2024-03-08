@@ -460,7 +460,8 @@ export const valore_su_propiedad_GET = async (req, res) => {
 export const valore_su_propiedad_POST = async (req, res) => {
 
   try {
-
+    console.log("PASOOOOOo")
+    console.log(req.body.consentimiento)
     console.log(req.body)
 
     return res.redirect("/venda-su-propiedad")

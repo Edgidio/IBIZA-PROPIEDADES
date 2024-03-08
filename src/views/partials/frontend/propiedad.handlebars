@@ -80,7 +80,7 @@
 
 
 
-    <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(/images/uploads/propiedades/medium/{{primeraFotoS}});" data-aos="fade" data-stellar-background-ratio="0.5">
+    <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(/images/uploads/propiedades/original/{{primeraFotoS}});" data-aos="fade" data-stellar-background-ratio="0.5">
       <div class="container">
         <div class="row align-items-center justify-content-center text-center">
           <div class="col-md-10">
@@ -99,7 +99,7 @@
           <div class="col-lg-8">
             <div>
               <div class="slide-one-item home-slider owl-carousel">
-                {{#each fotosLimitadas}}
+                {{#each fotosPropiedad}}
                   <div><img src="/images/uploads/propiedades/medium/{{this}}" alt="Image" class="img-fluid"></div>
                 {{/each}}
                 
@@ -127,15 +127,15 @@
                   {{/esMayorQueCero}}
                   {{#esMayorQueCero propiedadConFotos.terreno}}
                   <li>
-                    <span class="property-specs">Metros cuadrados</span>
-                    <span class="property-specs-number">{{formatNumber propiedadConFotos.terreno}}</span>
+                    <span class="property-specs">Terreno</span>
+                    <span class="property-specs-number">{{formatNumber propiedadConFotos.terreno}} m<sup>2</sup></span>
                     
                   </li>
                   {{/esMayorQueCero}}
                   {{#esMayorQueCero propiedadConFotos.superficie}}
                   <li>
-                    <span class="property-specs">Metros cuadrados</span>
-                    <span class="property-specs-number">{{formatNumber propiedadConFotos.superficie}}</span>
+                    <span class="property-specs">Superficie</span>
+                    <span class="property-specs-number">{{formatNumber propiedadConFotos.superficie}} m<sup>2</sup></span>
                     
                   </li>
                   {{/esMayorQueCero}}
@@ -191,6 +191,11 @@
           <div class="col-lg-4">
 
             <div class="bg-white widget border rounded">
+              <h3 class="h4 text-black widget-title mb-3">PÁRRAFO</h3>
+              <p>Es muy importante que el cliente preste atención al proceso adipiscente. ¿Quién quiere explicar, porque soy libre de elegir a menudo? Estaba preocupado por la confusión de las cosas. Muchas veces, menos frecuentemente, rechazamos cualquier ejercicio. Él, cualquiera, de la verdad.</p>
+            </div>
+
+            <div class="bg-white widget border rounded">
 
               <h3 class="h4 text-black widget-title mb-3">AGENTE DE CONTACTO</h3>
               <form action="" class="form-contact-agent">
@@ -210,11 +215,6 @@
                   <input type="submit" id="phone" class="btn btn-primary" value="Enviar mensaje">
                 </div>
               </form>
-            </div>
-
-            <div class="bg-white widget border rounded">
-              <h3 class="h4 text-black widget-title mb-3">PÁRRAFO</h3>
-              <p>Es muy importante que el cliente preste atención al proceso adipiscente. ¿Quién quiere explicar, porque soy libre de elegir a menudo? Estaba preocupado por la confusión de las cosas. Muchas veces, menos frecuentemente, rechazamos cualquier ejercicio. Él, cualquiera, de la verdad.</p>
             </div>
 
           </div>
@@ -246,7 +246,7 @@
                 <img src="/images/uploads/propiedades/medium/{{rutas}}" alt="Image" class="img-fluid">
               </a>
               <div class="p-4 property-body">
-                <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
+               
                 <h2 class="property-title"><a href="/propiedad/{{id}}">{{descripcion}}</a></h2>
                 <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span> {{estado}}</span>
                 <strong class="property-price text-primary mb-3 d-block text-success">${{formatNumber precio}}</strong>
@@ -267,14 +267,14 @@
                   {{#esMayorQueCero terreno}}
                   <li>
                     <span class="property-specs">Terreno</span>
-                    <span class="property-specs-number">MT {{formatNumber terreno}}</span>
+                    <span class="property-specs-number">{{formatNumber terreno}} m<sup>2</sup></span>
                     
                   </li>
                   {{/esMayorQueCero}}
                   {{#esMayorQueCero superficie}}
                   <li>
                     <span class="property-specs">Superficie</span>
-                    <span class="property-specs-number">MT {{formatNumber superficie}}</span>
+                    <span class="property-specs-number">{{formatNumber superficie}} m<sup>2</sup></span>
                     
                   </li>
                   {{/esMayorQueCero}}

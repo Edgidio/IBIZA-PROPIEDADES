@@ -91,7 +91,7 @@
                 {{#eq venta_renta "R"}}<span class="d-inline-block bg-success text-white px-3 mb-3 property-offer-type rounded">EN RENTA</span>{{/eq}}
               
               <h1 class="mb-2">{{descripcion}}</h1>
-              <p class="mb-5"><strong class="h2 text-success font-weight-bold">{{precio}}</strong></p>
+              <p class="mb-5"><strong class="h2 text-success font-weight-bold">$ {{precio}}</strong></p>
               <p><a href="/propiedad/{{id}}" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">VER DETALLES</a></p>
             </div>
           </div>
@@ -151,7 +151,7 @@
                     <option value="Amazonas">Amazonas</option>
                     <option value="Anzoátegui">Anzoátegui</option>
                     <option value="Apure">Apure</option>
-                    <option value="Aragua">Aragua</option>
+                    <option value="Aragua" selected>Aragua</option>
                     <option value="Barinas">Barinas</option>
                     <option value="Bolívar">Bolívar</option>
                     <option value="Carabobo">Carabobo</option>
@@ -204,26 +204,50 @@
             
               </a>
               <div class="p-4 property-body">
-                <a href="#" class="property-favorite"><span class="icon-heart-o"></span></a>
-                <h2 class="property-title"><a href="#">{{descripcion}}</a></h2>
+        
+                <h2 class="property-title"><a href="propiedad/{{id}}">{{descripcion}}</a></h2>
                 <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>{{estado}}</span>
-                <strong class="property-price text-primary mb-3 d-block text-success">{{formatNumber precio}}</strong>
+                <strong class="property-price text-primary mb-3 d-block text-success">$ {{formatNumber precio}}</strong>
                 <ul class="property-specs-wrap mb-3 mb-lg-0">
+                  {{#eq n_habitaciones 0}}
+
+                  {{else}}
                   <li>
                     <span class="property-specs">Habitaciones</span>
                     <span class="property-specs-number">{{n_habitaciones}} <sup>+</sup></span>
                     
                   </li>
+                  {{/eq}}
+
+                  {{#eq n_banos 0}}
+
+                  {{else}}
                   <li>
                     <span class="property-specs">Baños</span>
                     <span class="property-specs-number">{{n_banos}}</span>
                     
                   </li>
+                  {{/eq}}
+
+                  {{#eq superficie 0}}
+
+                  {{else}}
                   <li>
-                    <span class="property-specs">Metros Cuadrados</span>
-                    <span class="property-specs-number">{{superficie}}</span>
+                    <span class="property-specs">Superficie</span>
+                    <span class="property-specs-number">{{formatNumber superficie}} m<sup>2</sup></span>
                     
                   </li>
+                  {{/eq}}
+
+                  {{#eq terreno 0}}
+
+                  {{else}}
+                  <li>
+                    <span class="property-specs">Terreno</span>
+                    <span class="property-specs-number">{{formatNumber terreno}} m<sup>2</sup></span>
+                    
+                  </li>
+                  {{/eq}}
                 </ul>
 
               </div>
