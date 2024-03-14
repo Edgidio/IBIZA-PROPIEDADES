@@ -204,6 +204,43 @@
             
               </a>
               <div class="p-4 property-body">
+
+                                <a class="share-btn property-favorite">
+                    <i class="fas fa-share-alt"></i>
+                </a>
+
+                <div class="share-options">
+                    <p class="title">Compartir</p>
+                    <div class="social-media">
+                  
+                        <button onclick="compartirWhatsApp_{{id}}()" style="background-color:#25D366" class="social-media-btn"><i class="fab fa-whatsapp"></i></button>
+                        <button onclick="compartirTwitter_{{id}}()" style="background-color: #1DA1F2;" class="social-media-btn"><i class="fab fa-twitter"></i></button>
+                        <button onclick="compartirFacebook_{{id}}()" style="background-color: #1877F2;" class="social-media-btn"><i class="fab fa-facebook-f"></i></button>
+                        
+                        <script>
+
+                            function compartirWhatsApp_{{id}}() {
+                                var url = encodeURIComponent("https://ibizapropiedades.com.ve/propiedad/{{id}}" );
+                                window.open('whatsapp://send?text=' + url);
+                            }
+                            function compartirTwitter_{{id}}() {
+                                var url = encodeURIComponent("https://ibizapropiedades.com.ve/propiedad/{{id}}");
+                                var texto = encodeURIComponent("Mira esta hermosa propiedad en Ibiza Propiedades. Descubre un lugar único para llamar hogar, rodeado de belleza natural y comodidades modernas. ¡No te pierdas esta oportunidad de vivir tu sueño! Contáctanos para más información.");
+                                window.location.href = 'https://twitter.com/intent/tweet?url=' + url + '&text=' + texto;
+                            }
+                            function compartirFacebook_{{id}}() {
+                                var url = encodeURIComponent("https://ibizapropiedades.com.ve/propiedad/{{id}}");
+                                window.open('https://www.facebook.com/sharer/sharer.php?u=' + url);
+                            }
+                        </script>
+
+                    </div>
+                    <div class="link-container">
+                      <input style="border: none;" class="link" type="text" value="https://ibizapropiedades.com.ve/propiedad/{{id}}">
+                        
+                        <button class="copy-btn">Copiar</button>
+                    </div>
+                </div>
         
                 <h2 class="property-title"><a href="propiedad/{{id}}">{{descripcion}}</a></h2>
                 <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>{{estado}}</span>
@@ -359,6 +396,31 @@
     </footer>
 
 <script>
+
+      const copyBtns = document.querySelectorAll('.copy-btn');
+
+    copyBtns.forEach(copyBtn => {
+        copyBtn.addEventListener('click', () => {
+            const input = copyBtn.previousElementSibling;
+            input.select();
+            document.execCommand('copy');
+            
+            // Agregar clase para cambiar el color de fondo a verde
+            copyBtn.classList.add('copied');
+        });
+    });
+
+
+    const shareBtns = document.querySelectorAll('.share-btn');
+
+    shareBtns.forEach(shareBtn => {
+        shareBtn.addEventListener('click', () => {
+            const shareOptions = shareBtn.nextElementSibling;
+            shareOptions.classList.toggle('active');
+        });
+    });
+
+  
     document.addEventListener("DOMContentLoaded", function() {
         // Espera 500 milisegundos antes de desplazarte hacia la sección "busqueda"
         setTimeout(function() {

@@ -290,6 +290,7 @@ export const sistemaInformacionGET = async (req, res) => {
         });
 
         const respuesta = await axios.get(`https://ipinfo.io/${sesiones.direccion_IP}/json`);
+        
         const datosUbicacion = respuesta.data;
 
         console.log(datosUbicacion)
