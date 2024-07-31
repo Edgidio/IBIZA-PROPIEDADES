@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="{{lang}}">
 
 {{#eq rutaIF "Backend"}}
   {{> "dashboard/componentes/head" }}
@@ -21,10 +21,30 @@
  </style>  
 
 <body class="">
-
+  <div id="google_translate_element" style="display: none;"></div>
 
     {{{body}}}
 
-
+<script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+            const lang = '{{lang}}';
+            if (lang === 'en') {
+                setTimeout(function() {
+                    var translateElement = document.getElementById('google_translate_element');
+                    if (translateElement) {
+                        var iframe = translateElement.querySelector('iframe');
+                        if (iframe) {
+                            var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+                            var select = innerDoc.querySelector('select');
+                            if (select) {
+                                select.value = 'en';
+                                select.dispatchEvent(new Event('change'));
+                            }
+                        }
+                    }
+                }, 500); // Esperar un poco para asegurarse de que el elemento se haya cargado
+            }
+        });
+    </script>
 </body>
 </html>

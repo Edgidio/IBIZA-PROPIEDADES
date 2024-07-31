@@ -52,7 +52,6 @@ export const index = async (req, res) => {
     }
   });
 
-
   const propiedadesExhibicion = propiedadesEnExhibicion.map((propiedad) => {
     const primeraRuta = propiedad.fotos?.[0]?.rutas[0];
   
@@ -78,13 +77,13 @@ export const index = async (req, res) => {
       enExhibicion: propiedad.enExhibicion
     };
   });
-
-
+  
     return res.render('partials/frontend/index', {
       Titulo: "Ibiza Propiedades",
       rutaIF: "Frontend",
       propiedadesConUnaRutaPorFoto: propiedadesConRutaUnica,
-      propiedadesExhibicion
+      propiedadesExhibicion,
+      lang: req.cookies.lang,
     });
 
   } catch (error) {
@@ -92,6 +91,8 @@ export const index = async (req, res) => {
     res.status(500).json({ error: 'Error interno del servidor' });
   }
 };
+
+/*  */
 
 export const propiedad = async (req, res) => {
 
