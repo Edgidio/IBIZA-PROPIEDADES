@@ -79,10 +79,7 @@ import frontend from "./routes/frontend.routes.js"
 import comprar from "./routes/comprar.routes.js"
 import alquilar from "./routes/alquilar.routes.js"
 import sistema_correo from "./routes/correos_sistema.routes.js"
-import i18nRouter from './middlewares/i18n.js';
 
-// Usar el middleware de i18n
-app.use(i18nRouter);
 
 // Rutas de la aplicacion
 app.use("/", frontend)

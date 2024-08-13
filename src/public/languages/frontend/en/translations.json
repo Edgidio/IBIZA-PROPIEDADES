@@ -1,0 +1,82 @@
+{
+    "loader": "Loading...",
+    "logo": "IBIZA PROPERTIES",
+    "menu": {
+      "home": "Home",
+      "sell": "Sell your property",
+      "sell_property": "Value a property",
+      "buy": "Buy",
+      "buy_apartment": "Apartment",
+      "buy_house": "House",
+      "buy_land": "Land",
+      "buy_commercial": "Commercial space",
+      "buy_office": "Office",
+      "buy_building": "Building",
+      "rent": "Rent",
+      "rent_apartment": "Apartment",
+      "rent_house": "House",
+      "rent_land": "Land",
+      "rent_commercial": "Commercial space",
+      "rent_office": "Office",
+      "company": "Company -",
+      "about_us": "About Ibiza Properties",
+      "contact": "Contact"
+    },
+    "about": {
+      "section_title": "About Us",
+      "our_company": "OUR COMPANY",
+      "our_company_description": "IBIZA PROPERTIES, we are a company created to offer humanistic and comprehensive legal and commercial advice to support our clients in their various requirements, whether it be acquiring a residential property or a property intended for growing a commercial enterprise.",
+      "special_care": "At IBIZA PROPERTIES, we take special care of the clients who trust us exclusively to manage their property in the Venezuelan market. We offer a real comparative market analysis of the property, along with an exhaustive documentary review. This helps us foresee any future issues that might delay the operation or confirm the legal clearance of the property to begin its promotion safely for both the property owner and potential buyer.",
+      "trust_formula": "For IBIZA PROPERTIES, it is essential that our clients feel comfortable and 100% confident they are in the best hands. It is crucial for us to GAIN YOUR TRUST first before gaining your property; there is no other formula for us.",
+      "experience": "We offer all our experience without reservation and do everything humanly possible to fulfill our commission, with our real estate advisors fully understanding the concept of humanism by exclusively attending to your property entrusted to our project."
+    },
+    "humanism": {
+      "section_title": "HUMANISM",
+      "description": "For IBIZA PROPERTIES, the priority is to do everything humanly possible to ensure that the person (client) who has trusted our project realizes their dream of acquiring or selling their property. Only after verifying that both parties are satisfied do our fees become due. NOT BEFORE."
+    },
+    "agents": {
+      "section_title": "OUR AGENTS",
+      "agent_1": "Ing. Marinés Capriles",
+      "agent_2": "Lic. Mariana Pereira",
+      "agent_3": "Abg. Jair Torres"
+    },
+    "faq": {
+      "section_title": "FREQUENTLY ASKED QUESTIONS",
+      "description": "For IBIZA PROPERTIES, it is always an honor to address all your concerns and doubts that may arise regarding one of the most significant operations in a person's life, such as BUYING or SELLING a home.",
+      "faq_1": {
+        "question": "What are the main documents I need to have to sell my property?",
+        "answer": [
+          "Ownership document preferably registered",
+          "Updated cadastral sheet",
+          "Valid identity cards of the property owners",
+          "Municipal clearance for property sales",
+          "Primary residence registration or Form 33",
+          "Article 91"
+        ]
+      },
+      "faq_2": {
+        "question": "My house is not registered as a primary residence, what should I do?",
+        "answer": [
+          "A good real estate advisor pays attention to all details when reviewing the property's documentation. If we notice that the property owner has not registered the house as a primary residence, there are two options:",
+          "1- Immediately process it before the SENIAT of the jurisdiction where the property is located, presenting the necessary requirements.",
+          "2- Pay the national treasury 0.5% of the amount established in the purchase-sale operation using Form F33, which can be downloaded from the SENIAT user as a natural person."
+        ]
+      },
+      "faq_3": {
+        "question": "I'm unsure about the value of my property, do I need to pay to get this price analysis?",
+        "answer": "IBIZA PROPERTIES has two engineers specialized in price analysis among its staff of real estate advisors. They offer free on-site inspections of the property, and within a maximum of 24 hours, the property owner receives the comparative market analysis for free and without obligation."
+      },
+      "faq_4": {
+        "question": "If I am a property owner and contract a real estate service, what happens if the buyer retracts during the purchase-sale operation and does not pay the agreed price?",
+        "answer": "IBIZA PROPERTIES has a legal advisor specializing in tenancy law within its staff of real estate advisors. Their main goal is to legally shield the client from everything they have to sign in a purchase-sale operation. In this specific case, the parties can agree on a penalty clause percentage, which can be between 20% and 40% of the amount given in advance to celebrate the Purchase Sale Reservation. If the buyer does not comply, the seller is protected by the penalty clause percentage to the point where they can retain the agreed percentage, and from that retained amount, they only have to pay the 1% company commission for administrative expenses."
+      }
+    },
+    "footer": {
+      "about": "ABOUT IBIZA PROPERTIES",
+      "about_description": "Our commitment is to reward your trust.",
+      "navigation": "NAVIGATION",
+      "follow_us": "FOLLOW US",
+      "rights_reserved": "Copyright &copy;<script data-cfasync=\"false\" src=\"/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js\"></script><script>document.write(new Date().getFullYear());</script> PEVITE Technology. All rights reserved. Total or partial reproduction of any content is prohibited without express written permission from PEVITE Technology.  by <a href=\"https://pevite.com.ve/\" target=\"_blank\" >PEVITE</a> <i class=\"icon-heart text-danger\" aria-hidden=\"true\"></i>"
+    }
+  }
+  

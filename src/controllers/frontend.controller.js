@@ -277,9 +277,10 @@ export const contactoPOST = async (req, res) => {
   }
 };
 
-export const sobre_Nosotros = async (req, res) => {
+/* export const sobre_Nosotros = async (req, res) => {
 
   try {
+
 
 
 
@@ -288,6 +289,21 @@ export const sobre_Nosotros = async (req, res) => {
       rutaIF: "Frontend",
     });
 
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+}; */
+
+// controllers/frontendController.js
+
+export const sobre_Nosotros = async (req, res) => {
+  try {
+
+    res.render('partials/frontend/sobre_nosotros', {
+      Titulo: 'Ibiza Propiedades | Sobre nosotros',
+      rutaIF: 'Frontend',
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Error interno del servidor' });
