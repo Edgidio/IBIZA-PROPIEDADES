@@ -8,13 +8,13 @@
                 <div class="nav__menu" id="nav-menu">
                     <ul class="nav__list">
                         <li class="nav__item">
-                            <a href="/" class="nav__link">Inicio</a>
+                            <a href="/" class="nav__link">{{t.header.nav.inicio}}</a>
                         </li>
                         <li class="nav__item">
-                            <a href="/sobre-nosotros" class="nav__link">Sobre nosotros</a>
+                            <a href="/sobre-nosotros" class="nav__link">{{t.header.nav.sobreNosotros}}</a>
                         </li>
                         <li class="nav__item">
-                            <a href="contacto" class="nav__link">Contácto</a>
+                            <a href="/contacto" class="nav__link">{{t.header.nav.contacto}}</a>
                         </li>
                     </ul>
 
@@ -36,14 +36,13 @@
             <section class="home">
                 <div class="home__container container">
                     <div class="home__data">
-                        <span class="home__subtitle">Error 404</span>
-                        <h1 class="home__title">Hey amigo</h1>
+                        <span class="home__subtitle">{{t.main.home.error}}</span>
+                        <h1 class="home__title">{{t.main.home.title}}</h1>
                         <p class="home__description">
-                            Parece que no podemos encontrar la página
-que estás buscando.
+                            {{t.main.home.description}}
                         </p>
                         <a href="/" class="home__button">
-                            Ir al inicio 
+                            {{t.main.home.button}} 
                         </a>
                     </div>
 
@@ -56,7 +55,7 @@ que estás buscando.
                 <footer class="home__footer">
                     <p>
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright ©<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> PEVITE Tecnología. 
+                    {{t.footer.copyright}} 
                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </p>
                 </footer>

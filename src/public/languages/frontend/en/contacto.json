@@ -1,0 +1,66 @@
+{
+    "brand": {
+    "name": "IBIZA PROPERTIES"
+  },
+  "navbar": {
+    "home": "Home",
+    "sell": "Sell your property",
+    "buy": "Buy",
+    "rent": "Rent",
+    "valuate": "Valuate a property",
+    "apartment": "Apartment",
+    "house": "House",
+    "land": "Land",
+    "commercial": "Commercial property",
+    "office": "Office",
+    "building": "Building",
+    "company": "Company",
+    "about": "About Ibiza Properties",
+    "contact": "Contact"
+  },
+  "contact": {
+    "title": "CONTACT US",
+    "email_sent": "Email sent successfully!",
+    "email_not_sent": "Error sending the email. Please try again."
+  },"contact_section": {
+    "form": {
+      "name": "Full Name",
+      "phone": "Phone",
+      "email": "Email Address",
+      "subject": "Subject",
+      "message": "Message",
+      "send": "Send Message"
+    },
+    "contact_info": {
+      "contact_details": "CONTACT INFORMATION",
+      "address": "ADDRESS",
+      "address_details": "AV INTERCOMUNAL TURMERO- MARACAY, CALLE ROMAR, GALPÓN 14, PB. MARACAY, ESTADO ARAGUA",
+      "phone": "Phone",
+      "email": "Email Address"
+    }
+  }, "agents_section": {
+    "title": "OUR AGENTS",
+    "description": "Discover the passionate and dedicated team behind Ibiza Properties. Our real estate agents are committed to providing you with exceptional service and guiding you through every step of your property search. With experience in the local market, they are here to make your real estate experience smooth and successful. Learn more about who makes up our team and trust us to find the perfect property for you.",
+    "agents": {
+      "marine_name": "Eng. Marinés Capriles",
+      "marine_alt": "Image of Marinés Capriles",
+      "mariana_name": "Lic. Mariana Pereira",
+      "mariana_alt": "Image of Mariana Pereira",
+      "jair_name": "Atty. Jair Torres",
+      "jair_alt": "Image of Jair Torres"
+    }
+  },
+    "footer": {
+        "about_us": "ABOUT IBIZA PROPIEDADES",
+        "about_us_description": "Our commitment is to reward your trust.",
+        "navigation": "NAVIGATION",
+        "nav_home": "Home",
+        "nav_sell_property": "Sell Your Property",
+        "nav_about_us": "About Ibiza Properties",
+        "nav_contact": "Contact",
+        "follow_us": "FOLLOW US",
+        "instagram": "https://www.instagram.com/ibizapropiedades/",
+        "derechos_reservados": "All rights reserved. Total or partial reproduction of any content is prohibited without the express written permission of PEVITE Technology."
+      }
+  }
+  

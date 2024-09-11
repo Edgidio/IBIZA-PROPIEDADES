@@ -1,9 +1,13 @@
 import {PrismaClient} from "@prisma/client"
 const db = new PrismaClient();
 
+import { lenguaje } from "../helpers/languaje.js";
+
 export const casa = async (req, res) => {
 
     try {
+
+      const t = await lenguaje(req, "comprar.casa.json")
 
       const propiedades = await db.propiedades.findMany({
         where: {
@@ -44,7 +48,8 @@ export const casa = async (req, res) => {
       res.render('partials/frontend/comprar/casas', {
         Titulo: "Ibiza Propiedades | Casas",
         rutaIF: "Frontend",
-        propiedadesConUnaRutaPorFoto: propiedadesConRutaUnica
+        propiedadesConUnaRutaPorFoto: propiedadesConRutaUnica,
+        t
       });
       
   
@@ -57,6 +62,8 @@ export const casa = async (req, res) => {
   export const apartamento = async (req, res) => {
 
     try {
+
+      const t = await lenguaje(req, "comprar.apartamento.json")
   
 
       const propiedades = await db.propiedades.findMany({
@@ -98,7 +105,8 @@ export const casa = async (req, res) => {
       res.render('partials/frontend/comprar/apartamentos', {
         Titulo: "Ibiza Propiedades | Apartamentos",
         rutaIF: "Frontend",
-        propiedadesConUnaRutaPorFoto: propiedadesConRutaUnica
+        propiedadesConUnaRutaPorFoto: propiedadesConRutaUnica,
+        t
       });
       
   
@@ -111,6 +119,8 @@ export const casa = async (req, res) => {
   export const local_comercial = async (req, res) => {
 
     try {
+
+      const t = await lenguaje(req, "comprar.local_comercial.json")
   
       const propiedades = await db.propiedades.findMany({
         where: {
@@ -151,7 +161,8 @@ export const casa = async (req, res) => {
       res.render('partials/frontend/comprar/local-comercial', {
         Titulo: "Ibiza Propiedades | Locales comercial",
         rutaIF: "Frontend",
-        propiedadesConUnaRutaPorFoto: propiedadesConRutaUnica
+        propiedadesConUnaRutaPorFoto: propiedadesConRutaUnica,
+        t
       });
       
   
@@ -164,6 +175,8 @@ export const casa = async (req, res) => {
   export const oficina = async (req, res) => {
 
     try {
+
+      const t = await lenguaje(req, "comprar.oficina.json")
   
       const propiedades = await db.propiedades.findMany({
         where: {
@@ -204,7 +217,8 @@ export const casa = async (req, res) => {
       res.render('partials/frontend/comprar/oficinas', {
         Titulo: "Ibiza Propiedades | Oficinas",
         rutaIF: "Frontend",
-        propiedadesConUnaRutaPorFoto: propiedadesConRutaUnica
+        propiedadesConUnaRutaPorFoto: propiedadesConRutaUnica,
+        t
       });
       
   
@@ -217,6 +231,8 @@ export const casa = async (req, res) => {
   export const edificio = async (req, res) => {
 
     try {
+
+      const t = await lenguaje(req, "comprar.edificio.json")
   
       const propiedades = await db.propiedades.findMany({
         where: {
@@ -257,7 +273,8 @@ export const casa = async (req, res) => {
       res.render('partials/frontend/comprar/edificios', {
         Titulo: "Ibiza Propiedades | Edificios",
         rutaIF: "Frontend",
-        propiedadesConUnaRutaPorFoto: propiedadesConRutaUnica
+        propiedadesConUnaRutaPorFoto: propiedadesConRutaUnica,
+        t
       });
       
   
@@ -270,6 +287,8 @@ export const casa = async (req, res) => {
   export const terreno = async (req, res) => {
 
     try {
+
+      const t = await lenguaje(req, "comprar.terreno.json")
   
       const propiedades = await db.propiedades.findMany({
         where: {
@@ -310,7 +329,8 @@ export const casa = async (req, res) => {
       res.render('partials/frontend/comprar/terrenos', {
         Titulo: "Ibiza Propiedades | Terrenos",
         rutaIF: "Frontend",
-        propiedadesConUnaRutaPorFoto: propiedadesConRutaUnica
+        propiedadesConUnaRutaPorFoto: propiedadesConRutaUnica,
+        t
       });
       
   

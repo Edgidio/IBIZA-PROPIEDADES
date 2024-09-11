@@ -1,4 +1,4 @@
-import Joi from 'joi';
+/* import Joi from 'joi';
 
 const contactoSchema = Joi.object({
   correo: Joi.string().email().max(100).required().messages({
@@ -36,6 +36,45 @@ const contactoSchema = Joi.object({
     'string.empty': 'El mensaje no puede estar vacío.',
     'string.max': 'El mensaje no puede tener más de {#limit} caracteres.',
     'any.required': 'El mensaje es un campo requerido.',
+  }),
+});
+
+export { contactoSchema }; */
+
+import Joi from 'joi';
+
+const contactoSchema = (messages) => Joi.object({
+  correo: Joi.string().email().max(100).required().messages({
+    'string.base': messages.correo.base,
+    'string.email': messages.correo.email,
+    'string.max': messages.correo.max,
+    'any.required': messages.correo.required,
+    'any.unknown': messages.correo.unknown,
+    'string.empty': messages.correo.empty,
+  }),
+  nombre: Joi.string().max(50).required().messages({
+    'string.base': messages.nombre.base,
+    'string.empty': messages.nombre.empty,
+    'string.max': messages.nombre.max,
+    'any.required': messages.nombre.required,
+  }),
+  telefono: Joi.string().max(50).required().messages({
+    'string.base': messages.telefono.base,
+    'string.empty': messages.telefono.empty,
+    'string.max': messages.telefono.max,
+    'any.required': messages.telefono.required,
+  }),
+  asunto: Joi.string().max(50).required().messages({
+    'string.base': messages.asunto.base,
+    'string.empty': messages.asunto.empty,
+    'string.max': messages.asunto.max,
+    'any.required': messages.asunto.required,
+  }),
+  mensaje: Joi.string().max(500).required().messages({
+    'string.base': messages.mensaje.base,
+    'string.empty': messages.mensaje.empty,
+    'string.max': messages.mensaje.max,
+    'any.required': messages.mensaje.required,
   }),
 });
 

@@ -1,0 +1,35 @@
+{
+    "correo": {
+      "base": "The email must be a string.",
+      "email": "Please enter a valid email address.",
+      "max": "The email cannot exceed {#limit} characters.",
+      "required": "The email is a required field.",
+      "unknown": "The field \"{#label}\" is not allowed or is invalid.",
+      "empty": "The email cannot be empty."
+    },
+    "nombre": {
+      "base": "The name must be a string.",
+      "empty": "The name cannot be empty.",
+      "max": "The name cannot exceed {#limit} characters.",
+      "required": "The name is a required field."
+    },
+    "telefono": {
+      "base": "The phone number must be valid.",
+      "empty": "The phone number cannot be empty.",
+      "max": "The phone number cannot exceed {#limit} characters.",
+      "required": "The phone number is a required field."
+    },
+    "asunto": {
+      "base": "The subject must be a string.",
+      "empty": "The subject cannot be empty.",
+      "max": "The subject cannot exceed {#limit} characters.",
+      "required": "The subject is a required field."
+    },
+    "mensaje": {
+      "base": "The message must be a string.",
+      "empty": "The message cannot be empty.",
+      "max": "The message cannot exceed {#limit} characters.",
+      "required": "The message is a required field."
+    }
+  }
+  

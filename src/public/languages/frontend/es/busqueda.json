@@ -1,0 +1,48 @@
+{
+    "menu": {
+      "inicio": "Inicio",
+      "venda_su_propiedad": "Venda su propiedad",
+      "valorar_propiedad": "Valorar una propiedad",
+      "comprar": "Comprar",
+      "apartamento": "Apartamento",
+      "casa": "Casa",
+      "terreno": "Terreno",
+      "local_comercial": "Local comercial",
+      "oficina": "Oficina",
+      "edificio": "Edificio",
+      "alquilar": "Alquilar",
+      "empresa": "Empresa -",
+      "acerca_de": "Acerca de Ibiza propiedades",
+      "contacto": "Contacto"
+    },
+    "propiedad": {
+      "en_venta": "EN VENTA",
+      "en_renta": "EN RENTA",
+      "ver_detalles": "VER DETALLES",
+      "tipo_inmueble": "TIPO DE INMUEBLE",
+      "tipo_oferta": "TIPO DE OFERTA",
+      "estado": "ESTADO",
+      "buscar": "Buscar",
+      "share": "Compartir",
+      "copy": "Copiar",
+      "venta": "Venta",
+      "renta": "Renta",
+      "habitaciones": "Habitaciones",
+      "banos": "Baños",
+      "superficie": "Superficie",
+      "terreno": "Terreno",
+      "lo_siento": "Lo sentimos, no se encontraron propiedades que coincidan con tu búsqueda"
+    },
+    "footer": {
+    "sobre_ibiza_propiedades": "SOBRE IBIZA PROPIEDADES",
+    "nuestro_compromiso": "Nuestro compromiso es premiar su confianza.",
+    "navegacion": "NAVEGACIÓN",
+    "inicio": "Inicio",
+    "venda_su_propiedad": "Venda su propiedad",
+    "acerca_de_ibiza_propiedades": "Acerca de ibiza propiedades",
+    "contacto": "Contacto",
+    "siganos": "SÍGANOS",
+    "derechos_reservados": "Copyright &copy; {year} PEVITE Tecnología. Todos los derechos reservados. Prohibida la reproducción total o parcial de cualquier contenido sin el permiso expreso por escrito de PEVITE Tecnología. by <a href=\"https://pevite.com.ve/\" target=\"_blank\">PEVITE</a> <i class=\"icon-heart text-danger\" aria-hidden=\"true\"></i>"
+  }
+  }
+  

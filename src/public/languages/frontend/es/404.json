@@ -1,0 +1,22 @@
+{
+    "header": {
+      "logo": "IBIZA PROPIEDADES",
+      "nav": {
+        "inicio": "Inicio",
+        "sobreNosotros": "Sobre nosotros",
+        "contacto": "Contácto"
+      }
+    },
+    "main": {
+      "home": {
+        "error": "Error 404",
+        "title": "Hey amigo",
+        "description": "Parece que no podemos encontrar la página que estás buscando.",
+        "button": "Ir al inicio"
+      }
+    },
+    "footer": {
+      "copyright": "Copyright © PEVITE Tecnología."
+    }
+  }
+  

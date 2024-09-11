@@ -1,0 +1,48 @@
+{
+    "menu": {
+      "inicio": "Home",
+      "venda_su_propiedad": "Sell your property",
+      "valorar_propiedad": "Appraise a property",
+      "comprar": "Buy",
+      "apartamento": "Apartment",
+      "casa": "House",
+      "terreno": "Land",
+      "local_comercial": "Commercial premises",
+      "oficina": "Office",
+      "edificio": "Building",
+      "alquilar": "Rent",
+      "empresa": "Company -",
+      "acerca_de": "About Ibiza propiedades",
+      "contacto": "Contact"
+    },
+    "propiedad": {
+      "en_venta": "FOR SALE",
+      "en_renta": "FOR RENT",
+      "ver_detalles": "VIEW DETAILS",
+      "tipo_inmueble": "PROPERTY TYPE",
+      "tipo_oferta": "OFFER TYPE",
+      "estado": "STATE",
+      "buscar": "Search",
+      "share": "Share",
+      "copy": "copy",
+      "venta": "Sale",
+      "renta": "Rent",
+      "habitaciones": "Rooms",
+      "banos": "Bathrooms",
+      "superficie": "Area",
+      "terreno": "Land",
+      "lo_siento": "Sorry, no properties matching your search were found"
+    },
+    "footer": {
+    "sobre_ibiza_propiedades": "ABOUT IBIZA PROPERTIES",
+    "nuestro_compromiso": "Our commitment is to reward your trust.",
+    "navegacion": "NAVIGATION",
+    "inicio": "Home",
+    "venda_su_propiedad": "Sell your property",
+    "acerca_de_ibiza_propiedades": "About Ibiza properties",
+    "contacto": "Contact",
+    "siganos": "FOLLOW US",
+    "derechos_reservados": "Copyright &copy; {year} PEVITE Technology. All rights reserved. Reproduction of any content in whole or in part is prohibited without the express written permission of PEVITE Technology. by <a href=\"https://pevite.com.ve/\" target=\"_blank\">PEVITE</a> <i class=\"icon-heart text-danger\" aria-hidden=\"true\"></i>"
+  }
+  }
+  

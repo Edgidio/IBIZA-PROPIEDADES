@@ -1,0 +1,60 @@
+{
+    "nav": {
+      "inicio": "Home",
+      "venda_su_propiedad": "Sell your property",
+      "valorar_una_propiedad": "Evaluate a property",
+      "comprar": "Buy",
+      "apartamento": "Apartment",
+      "casa": "House",
+      "terreno": "Land",
+      "local_comercial": "Commercial premises",
+      "oficina": "Office",
+      "edificio": "Building",
+      "alquilar": "Rent",
+      "empresa": "Company",
+      "acerca_de_ibiza_propiedades": "About Ibiza properties",
+      "contacto": "Contact"
+    },
+    "property_details": {
+      "detalles_de_la_propiedad": "PROPERTY DETAILS",
+      "precio": "Price",
+      "banos": "Bathrooms",
+      "habitaciones": "Rooms",
+      "terreno": "Land",
+      "superficie": "Area",
+      "tipo_de_inmuebles": "TYPE OF properties",
+      "estado": "State",
+      "ubicacion": "Location",
+      "mas_informacion": "More information",
+      "galeria": "Gallery"
+    },
+    "agent_contact": {
+      "parrafo": "It is very important that the client pays attention to the process. Who wants to explain, because I am free to choose often? I was worried about the confusion of things. Many times, less frequently, we reject any exercise. He, anyone, of the truth.",
+      "agente_de_contacto": "CONTACT AGENT",
+      "nombre": "Name",
+      "correo": "Email",
+      "telefono": "Phone",
+      "enviar_mensaje": "Send message"
+    },
+    "related_properties": {
+    "propiedades_relacionadas": "Related Properties",
+    "venta": "Sale",
+    "renta": "Rent",
+    "banos": "Bathrooms",
+    "habitaciones": "Rooms",
+    "terreno": "Land",
+    "superficie": "Area"
+  },
+    "footer": {
+    "sobre_ibiza": "ABOUT IBIZA PROPERTIES",
+    "compromiso": "Our commitment is to reward your trust.",
+    "navegacion": "NAVIGATION",
+    "inicio": "Home",
+    "venda_propiedad": "Sell your property",
+    "acerca_ibiza": "About Ibiza Properties",
+    "contacto": "Contact",
+    "siguenos": "FOLLOW US",
+    "derechos_reservados": "All rights reserved. Total or partial reproduction of any content is prohibited without the express written permission of PEVITE Technology."
+  }
+  }
+  

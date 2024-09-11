@@ -1,406 +1,357 @@
 <div class="site-loader"></div>
   
-    <div class="site-wrap">
+<div class="site-wrap">
 
-        <div class="site-mobile-menu">
-            <div class="site-mobile-menu-header">
-                <div class="site-mobile-menu-close mt-3">
-                    <span class="icon-close2 js-menu-toggle"></span>
-                </div>
+    <div class="site-mobile-menu">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
             </div>
-            <div class="site-mobile-menu-body"></div>
-        </div> <!-- .site-mobile-menu -->
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
 
-        <div class="site-navbar mt-4">
-            <div class="container py-1">
-                <div class="row align-items-center">
+    <div class="site-navbar mt-4">
+        <div class="container py-1">
+            <div class="row align-items-center">
                 <div class="col-8 col-md-8 col-lg-4">
                   <h1 class="mb-0">
                       <a href="/" class="text-white h2 mb-0">
                           <img style="display: inline; margin-right: 10px; margin-top: -27px;" src="/images/Icono/ibiza-incono.png" width="45" height="50">
-                          <strong style="font-size: 28px;" class="text-amarillo">IBIZA PROPIEDADES</strong>
+                          <strong style="font-size: 28px;" class="text-amarillo">{{t.brand.name}}</strong>
                       </a>
                   </h1>
                 </div>
 
-                    <div class="col-4 col-md-4 col-lg-8">
-                        <nav class="site-navigation text-right text-md-right" role="navigation">
+                <div class="col-4 col-md-4 col-lg-8">
+                    <nav class="site-navigation text-right text-md-right" role="navigation">
 
-                            <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span style="color: #F3AA08;" class="icon-menu h3"></span></a></div>
+                        <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3">
+                            <a href="#" class="site-menu-toggle js-menu-toggle text-white">
+                                <span style="color: #F3AA08;" class="icon-menu h3"></span>
+                            </a>
+                        </div>
 
-                                <ul class="site-menu js-clone-nav d-none d-lg-block">
-                  <li >
-                    <a class="text-amarillo" href="/">Inicio</a>
-                  </li>
-                  <li class="has-children">
-                    <a >Venda su propiedad</a>
-                    <ul class="dropdown arrow-top">
-                      <li><a href="/venda-su-propiedad">Valorar una propiedad</a></li>
-                    </ul>
-                  </li>
-                  <li class="has-children">
-                    <a >Comprar</a>
-                    <ul class="dropdown arrow-top">
-                      <li><a href="/comprar/apartamento">Apartamento</a></li>
-                      <li><a href="/comprar/casa">Casa</a></li>
-                      <li><a href="/comprar/terreno">Terreno</a></li>
-                      <li><a href="/comprar/local-comercial">Local comercial</a></li>
-                      <li><a href="/comprar/oficina">Oficina</a></li>
-                      <li><a href="/comprar/edificio">Edificio</a></li>
-                    </ul>
-                  </li>
-                  <li class="has-children">
-                    <a >Alquilar</a>
-                    <ul class="dropdown arrow-top">
-                      <li><a href="/alquilar/apartamento">Apartamento</a></li>
-                      <li><a href="/alquilar/casa">Casa</a></li>
-                      <li><a href="/alquilar/terreno">Terreno</a></li>
-                      <li><a href="/alquilar/local-comercial">Local comercial</a></li>
-                      <li><a href="/alquilar/oficina">Oficina</a></li>
-                    </ul>
-                  </li>
-                  <li class="has-children active">
-                    <a>Empresa -</a>
-                    <ul class="dropdown arrow-top">
-                      <li><a href="/sobre-nosotros">Acerca de Ibiza propiedades</a></li>
-                      <li ><a href="/contacto">Contacto</a></li>
-                    </ul>
-                  </li>
-
-                </ul>
-                        </nav>
-                    </div>
-                
-
+                        <ul class="site-menu js-clone-nav d-none d-lg-block">
+                            <li>
+                                <a class="text-amarillo" href="/">{{t.navbar.home}}</a>
+                            </li>
+                            <li class="has-children">
+                                <a>{{t.navbar.sell}}</a>
+                                <ul class="dropdown arrow-top">
+                                    <li><a href="/venda-su-propiedad">{{t.navbar.valuate}}</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-children">
+                                <a>{{t.navbar.buy}}</a>
+                                <ul class="dropdown arrow-top">
+                                    <li><a href="/comprar/apartamento">{{t.navbar.apartment}}</a></li>
+                                    <li><a href="/comprar/casa">{{t.navbar.house}}</a></li>
+                                    <li><a href="/comprar/terreno">{{t.navbar.land}}</a></li>
+                                    <li><a href="/comprar/local-comercial">{{t.navbar.commercial}}</a></li>
+                                    <li><a href="/comprar/oficina">{{t.navbar.office}}</a></li>
+                                    <li><a href="/comprar/edificio">{{t.navbar.building}}</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-children">
+                                <a>{{t.navbar.rent}}</a>
+                                <ul class="dropdown arrow-top">
+                                    <li><a href="/alquilar/apartamento">{{t.navbar.apartment}}</a></li>
+                                    <li><a href="/alquilar/casa">{{t.navbar.house}}</a></li>
+                                    <li><a href="/alquilar/terreno">{{t.navbar.land}}</a></li>
+                                    <li><a href="/alquilar/local-comercial">{{t.navbar.commercial}}</a></li>
+                                    <li><a href="/alquilar/oficina">{{t.navbar.office}}</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-children active">
+                                <a>{{t.navbar.company}}</a>
+                                <ul class="dropdown arrow-top">
+                                    <li><a href="/sobre-nosotros">{{t.navbar.about}}</a></li>
+                                    <li><a href="/contacto">{{t.navbar.contact}}</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
-        
     </div>
-
-
-    <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(/images/hero_bg_1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
-      <div class="container">
-        <div class="row align-items-center justify-content-center text-center">
-          {{#if correo_enviado}}
-            <div class="custom-alert">
-              <span class="close-btn" onclick="cerrarAlerta()">&times;</span>
-                {{correo_enviado}}
-            </div>
-            <script>
-                function cerrarAlerta() {
-                  var alerta = document.querySelector('.custom-alert');
-                  alerta.style.animation = 'slideOut 0.5s forwards';
-
-                  setTimeout(function() {
-                    alerta.style.display = 'none';
-                  }, 500);
-                }
-
-                setTimeout(function() {
-                  cerrarAlerta();
-                }, 10000); // Cerrar después de 4 segundos
-
-                // Puedes agregar más funciones o personalizar según tus necesidades.
-              </script>
-          {{/if}}
-
-          {{#if correo_no_enviado}}
-            <div style="background-color: #f30808;" class="custom-alert">
-              <span class="close-btn" onclick="cerrarAlerta()">&times;</span>
-                {{correo_no_enviado}}
-            </div>
-            <script>
-                function cerrarAlerta() {
-                  var alerta = document.querySelector('.custom-alert');
-                  alerta.style.animation = 'slideOut 0.5s forwards';
-
-                  setTimeout(function() {
-                    alerta.style.display = 'none';
-                  }, 500);
-                }
-
-                setTimeout(function() {
-                  cerrarAlerta();
-                }, 10000); // Cerrar después de 4 segundos
-
-                // Puedes agregar más funciones o personalizar según tus necesidades.
-              </script>
-          {{/if}}
-          
-          <div id="contacto" class="col-md-10">
-            <h1 class="mb-2">CONTÁCTENOS</h1>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="site-section">
-      <div class="container">
-        <div class="row">
-       
-          <div class="col-md-12 col-lg-8 mb-5">
-          
-              
-            
-              <form action="/contacto" method="post" class="p-5 bg-white border">
-
-                <div class="row form-group">
-                  <div class="col-md-12 mb-3 mb-md-0">
-                    <label class="font-weight-bold" for="nombre">Nombre completo</label>  
-                    <input {{#if errors}}{{#each errors}}{{#eq field "nombre"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.nombre}}"{{/if}}  type="text" id="nombre" name="nombre" class="form-control" placeholder="Nombre completo">
-
-                    {{#if errors}}
-                        {{#each errors}}
-                            {{#eq field "nombre"}}
-                              <br>
-                              <div id="alerta" class="alert">
-
-                                <strong>{{message}}</strong>
-                              </div>
-                            {{/eq}}
-                        {{/each}}
-                    {{/if}}
-
-                  </div>
-                </div>
-
-                <div class="row form-group">
-                  <div class="col-md-12 mb-3 mb-md-0">
-                    <label class="font-weight-bold" for="telefono">Telefono</label>  
-                    <input {{#if errors}}{{#each errors}}{{#eq field "telefono"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.telefono}}"{{/if}}  type="text" id="telefono" name="telefono" class="form-control" placeholder="Numero de telefono">
-
-                    {{#if errors}}
-                        {{#each errors}}
-                            {{#eq field "telefono"}}
-                              <br>
-                              <div id="alerta" class="alert">
-
-                                <strong>{{message}}</strong>
-                              </div>
-                            {{/eq}}
-                        {{/each}}
-                    {{/if}}
-
-                  </div>
-                </div>
-
-                <div class="row form-group">
-                  <div class="col-md-12">
-                    <label class="font-weight-bold" for="correo">Correo electrónico</label>
-                    <input {{#if errors}}{{#each errors}}{{#eq field "correo"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.correo}}"{{/if}} name="correo" type="email" id="correo" class="form-control" placeholder="Dirección de correo electrónico
-  ">
-                    {{#if errors}}
-                        {{#each errors}}
-                            {{#eq field "correo"}}
-                              <br>
-                              <div id="alerta" class="alert">
-
-                                  {{#eq message '"correo" is not allowed' }}
-                                    El correo electrónico no puede estar vacío.
-                                  {{else}}
-                                    <strong>{{message}}</strong>
-                                  {{/eq}}
-                                
-                              </div>
-                            {{/eq}}
-                        {{/each}}
-                    {{/if}}                  
-                  </div>
-                </div>
-
-                <div class="row form-group">
-                  <div class="col-md-12">
-                    <label class="font-weight-bold" for="asunto">Asunto</label>
-                    <input {{#if errors}}{{#each errors}}{{#eq field "asunto"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.asunto}}"{{/if}} type="text" id="asunto" name="asunto" class="form-control" placeholder="Ingresar Asunto
-  ">
-                    {{#if errors}}
-                        {{#each errors}}
-                            {{#eq field "asunto"}}
-                              <br>
-                              <div id="alerta" class="alert">
-
-                                <strong>{{message}}</strong>
-                              </div>
-                            {{/eq}}
-                        {{/each}}
-                    {{/if}}                  
-                  </div>
-                </div>
-                
-
-                <div class="row form-group">
-                  <div class="col-md-12">
-                    <label class="font-weight-bold" for="mensaje">Mensaje</label> 
-                    <textarea {{#if errors}}{{#each errors}}{{#eq field "mensaje"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} name="mensaje" id="mensaje" cols="30" rows="5" class="form-control" placeholder="Mensaje">{{#if datos_formulario}}{{datos_formulario.mensaje}}{{/if}}</textarea>
-                        
-                    {{#if errors}}
-                        {{#each errors}}
-                            {{#eq field "mensaje"}}
-                              <br>
-                              <div id="alerta" class="alert">
-
-                                <strong>{{message}}</strong>
-                              </div>
-                            {{/eq}}
-                        {{/each}}
-                    {{/if}}                  
-                  </div>
-                </div>
-
-                <div class="row form-group">
-                  <div class="col-md-12">
-                    <input type="submit" value="Enviar mensaje" class="btn btn-primary  py-2 px-4 rounded-0">
-                  </div>
-                </div>
-
     
-              </form>
+</div>
+
+
+
+<div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(/images/hero_bg_1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+  <div class="container">
+    <div class="row align-items-center justify-content-center text-center">
+      
+      {{#if correo_enviado}}
+        <div class="custom-alert">
+          <span class="close-btn" onclick="cerrarAlerta()">&times;</span>
+            {{t.contact.email_sent}}
+        </div>
+        <script>
+            function cerrarAlerta() {
+              var alerta = document.querySelector('.custom-alert');
+              alerta.style.animation = 'slideOut 0.5s forwards';
+
+              setTimeout(function() {
+                alerta.style.display = 'none';
+              }, 500);
+            }
+
+            setTimeout(function() {
+              cerrarAlerta();
+            }, 10000); // Cerrar después de 4 segundos
+        </script>
+      {{/if}}
+
+      {{#if correo_no_enviado}}
+        <div style="background-color: #f30808;" class="custom-alert">
+          <span class="close-btn" onclick="cerrarAlerta()">&times;</span>
+            {{t.contact.email_not_sent}}
+        </div>
+        <script>
+            function cerrarAlerta() {
+              var alerta = document.querySelector('.custom-alert');
+              alerta.style.animation = 'slideOut 0.5s forwards';
+
+              setTimeout(function() {
+                alerta.style.display = 'none';
+              }, 500);
+            }
+
+            setTimeout(function() {
+              cerrarAlerta();
+            }, 10000); // Cerrar después de 4 segundos
+        </script>
+      {{/if}}
+      
+      <div id="contacto" class="col-md-10">
+        <h1 class="mb-2">{{t.contact.title}}</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="site-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-lg-8 mb-5">
+        <form action="/contacto" method="post" class="p-5 bg-white border">
+
+          <div class="row form-group">
+            <div class="col-md-12 mb-3 mb-md-0">
+              <label class="font-weight-bold" for="nombre">{{t.contact_section.form.name}}</label>
+              <input {{#if errors}}{{#each errors}}{{#eq field "nombre"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.nombre}}"{{/if}} type="text" id="nombre" name="nombre" class="form-control" placeholder="{{t.contact_section.form.name}}">
+
+              {{#if errors}}
+                {{#each errors}}
+                  {{#eq field "nombre"}}
+                    <br>
+                    <div id="alerta" class="alert">
+                      <strong>{{message}}</strong>
+                    </div>
+                  {{/eq}}
+                {{/each}}
+              {{/if}}
+            </div>
           </div>
 
-          <div class="col-lg-4">
-            <div class="p-4 mb-3 bg-white">
-              <h3 class="h6 text-black mb-3 text-uppercase">DATOS DE CONTACTO</h3>
-              <p class="mb-0 font-weight-bold">DIRECCIÓN</p>
-              <p class="mb-4">AV INTERCOMUNAL TURMERO- MARACAY, CALLE ROMAR, GALPÓN 14, PB. MARACAY, ESTADO ARAGUA</p>
+          <div class="row form-group">
+            <div class="col-md-12 mb-3 mb-md-0">
+              <label class="font-weight-bold" for="telefono">{{t.contact_section.form.phone}}</label>
+              <input {{#if errors}}{{#each errors}}{{#eq field "telefono"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.telefono}}"{{/if}} type="text" id="telefono" name="telefono" class="form-control" placeholder="{{t.contact_section.form.phone}}">
 
-              <p class="mb-0 font-weight-bold">Teléfono</p>
-              <p class="mb-1"><a href="#">+58 0414-0478428</a></p>
-              <p class="mb-1"><a href="#">+58 0424-3408526</a></p>
-              <p class="mb-1"><a href="#">+58 0414-7258320</a></p>
-
-              <p class="mb-0 font-weight-bold">Dirección de correo electrónico</p>
-              <p class="mb-0"><a href="#">nuestrocorreoelectrónico@dominio.com</a></p>
-
+              {{#if errors}}
+                {{#each errors}}
+                  {{#eq field "telefono"}}
+                    <br>
+                    <div id="alerta" class="alert">
+                      <strong>{{message}}</strong>
+                    </div>
+                  {{/eq}}
+                {{/each}}
+              {{/if}}
             </div>
-            
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-12">
+              <label class="font-weight-bold" for="correo">{{t.contact_section.form.email}}</label>
+              <input {{#if errors}}{{#each errors}}{{#eq field "correo"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.correo}}"{{/if}} name="correo" type="email" id="correo" class="form-control" placeholder="{{t.contact_section.form.email}}">
+
+              {{#if errors}}
+                {{#each errors}}
+                  {{#eq field "correo"}}
+                    <br>
+                    <div id="alerta" class="alert">
+                      {{#eq message '"correo" is not allowed'}}
+                        {{t.contact_section.form.email_required}}
+                      {{else}}
+                        <strong>{{message}}</strong>
+                      {{/eq}}
+                    </div>
+                  {{/eq}}
+                {{/each}}
+              {{/if}}
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-12">
+              <label class="font-weight-bold" for="asunto">{{t.contact_section.form.subject}}</label>
+              <input {{#if errors}}{{#each errors}}{{#eq field "asunto"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.asunto}}"{{/if}} type="text" id="asunto" name="asunto" class="form-control" placeholder="{{t.contact_section.form.subject}}">
+
+              {{#if errors}}
+                {{#each errors}}
+                  {{#eq field "asunto"}}
+                    <br>
+                    <div id="alerta" class="alert">
+                      <strong>{{message}}</strong>
+                    </div>
+                  {{/eq}}
+                {{/each}}
+              {{/if}}
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-12">
+              <label class="font-weight-bold" for="mensaje">{{t.contact_section.form.message}}</label>
+              <textarea {{#if errors}}{{#each errors}}{{#eq field "mensaje"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} name="mensaje" id="mensaje" cols="30" rows="5" class="form-control" placeholder="{{t.contact_section.form.message}}">{{#if datos_formulario}}{{datos_formulario.mensaje}}{{/if}}</textarea>
+
+              {{#if errors}}
+                {{#each errors}}
+                  {{#eq field "mensaje"}}
+                    <br>
+                    <div id="alerta" class="alert">
+                      <strong>{{message}}</strong>
+                    </div>
+                  {{/eq}}
+                {{/each}}
+              {{/if}}
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-md-12">
+              <input type="submit" value="{{t.contact_section.form.send}}" class="btn btn-primary py-2 px-4 rounded-0">
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="p-4 mb-3 bg-white">
+          <h3 class="h6 text-black mb-3 text-uppercase">{{t.contact_section.contact_info.contact_details}}</h3>
+          <p class="mb-0 font-weight-bold">{{t.contact_section.contact_info.address}}</p>
+          <p class="mb-4">{{t.contact_section.contact_info.address_details}}</p>
+
+          <p class="mb-0 font-weight-bold">{{t.contact_section.contact_info.phone}}</p>
+          <p class="mb-1"><a href="#">+58 0414-0478428</a></p>
+          <p class="mb-1"><a href="#">+58 0424-3408526</a></p>
+          <p class="mb-1"><a href="#">+58 0414-7258320</a></p>
+
+          <p class="mb-0 font-weight-bold">{{t.contact_section.contact_info.email}}</p>
+          <p class="mb-0"><a href="#">nuestrocorreoelectrónico@dominio.com</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="site-section bg-light">
+  <div class="container">
+    <div class="row mb-5 justify-content-center">
+      <div class="col-md-7">
+        <div class="site-section-title text-center">
+          <h2>{{t.agents_section.title}}</h2>
+          <p>{{t.agents_section.description}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-lg-4 mb-5 mb-lg-5">
+        <div class="team-member">
+          <img src="images/marines.jpeg" alt="{{t.agents_section.agents.marine_alt}}" class="img-fluid rounded mb-4">
+          <div class="text">
+            <h2 class="mb-2 font-weight-light text-black h4">{{t.agents_section.agents.marine_name}}</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-5 mb-lg-5">
+        <div class="team-member">
+          <img src="images/mariana.jpeg" alt="{{t.agents_section.agents.mariana_alt}}" class="img-fluid rounded mb-4">
+          <div class="text">
+            <h2 class="mb-2 font-weight-light text-black h4">{{t.agents_section.agents.mariana_name}}</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-5 mb-lg-5">
+        <div class="team-member">
+          <img src="images/Jair.jpeg" alt="{{t.agents_section.agents.jair_alt}}" class="img-fluid rounded mb-4">
+          <div class="text">
+            <h2 class="mb-2 font-weight-light text-black h4">{{t.agents_section.agents.jair_name}}</h2>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <div class="site-section bg-light">
-    <div class="container">
-      <div class="row mb-5 justify-content-center">
-        <div class="col-md-7">
-          <div class="site-section-title text-center">
-            <h2>NUESTROS AGENTES</h2>
-            <p>Descubre el equipo apasionado y dedicado detrás de Ibiza Propiedades. Nuestros agentes inmobiliarios están comprometidos con brindarte un servicio excepcional y guiarte en cada paso de tu búsqueda de propiedad. Con experiencia en el mercado local, están aquí para hacer que tu experiencia inmobiliaria sea fluida y exitosa. Explora más sobre quienes conforman nuestro equipo y confía en nosotros para encontrar la propiedad perfecta para ti.</p>
-          </div>
+
+
+
+
+
+<!-- Pie de pagina-->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="mb-5">
+          <h3 class="footer-heading mb-4">{{t.footer.about_us}}</h3>
+          <p>{{t.footer.about_us_description}}</p>
         </div>
       </div>
-      <div class="row">
-          <div class="col-md-6 col-lg-4 mb-5 mb-lg-5">
-            <div class="team-member">
-
-              <img src="images/marines.jpeg" alt="Image" class="img-fluid rounded mb-4">
-
-              <div class="text">
-
-                <h2 class="mb-2 font-weight-light text-black h4">Ing. Marinés Capriles</h2>
-            
-              </div>
-
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-5 mb-lg-5">
-            <div class="team-member">
-
-              <img src="images/mariana.jpeg" alt="Image" class="img-fluid rounded mb-4">
-
-              <div class="text">
-
-                <h2 class="mb-2 font-weight-light text-black h4">Lic. Mariana Pereira</h2>
-              
-              </div>
-
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-4 mb-5 mb-lg-5">
-            <div class="team-member">
-
-              <img src="images/Jair.jpeg" alt="Image" class="img-fluid rounded mb-4">
-
-              <div class="text">
-
-                <h2 class="mb-2 font-weight-light text-black h4">Abg. Jair Torres</h2>
-                
-              </div>
-
-            </div>
-          </div>
-
-          
-
-        </div>
-    </div>
-    </div>
-
-
-
-
-
-    <!-- Pie de pagina-->
-    <footer class="site-footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="mb-5">
-              <h3 class="footer-heading mb-4">SOBRE IBIZA PROPIEDADES</h3>
-              <p> Nuestro compromiso es premiar su confianza.</p>
-            </div>
-
-            
-            
-          </div>
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <div class="row mb-5">
-              <div class="col-md-12">
-                <h3 class="footer-heading mb-4">NAVEGACIÓN</h3>
-              </div>
-              <div class="col-md-6 col-lg-6">
-                <ul class="list-unstyled">
-                  <li><a href="/">Inicio</a></li>
-                  <li><a href="/venda-su-propiedad">Venda su propiedad</a></li>
-                  <li><a href="/sobre-nosotros">Acerca de ibiza propiedades</a></li>
-                  <li><a href="/contacto">Contacto</a></li>
-                </ul>
-              </div>
-
-            </div>
-
-
-          </div>
-
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <h3 class="footer-heading mb-4">SÍGANOS</h3>
-
-                <div>
-
-                  <a href="https://www.instagram.com/ibizapropiedades/" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-
-                </div>
-
-            
-
-          </div>
-          
-        </div>
-        <div class="row pt-5 mt-5 text-center">
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <div class="row mb-5">
           <div class="col-md-12">
-            <p>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> PEVITE Tecnología. Todos los derechos reservados. Prohibida la reproducción total o parcial de cualquier contenido sin el permiso expreso por escrito de PEVITE Tecnología.  by <a href="https://pevite.com.ve/" target="_blank" >PEVITE</a> <i class="icon-heart text-danger" aria-hidden="true"></i>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
+            <h3 class="footer-heading mb-4">{{t.footer.navigation}}</h3>
           </div>
-          
+          <div class="col-md-6 col-lg-6">
+            <ul class="list-unstyled">
+              <li><a href="/">{{t.footer.nav_home}}</a></li>
+              <li><a href="/venda-su-propiedad">{{t.footer.nav_sell_property}}</a></li>
+              <li><a href="/sobre-nosotros">{{t.footer.nav_about_us}}</a></li>
+              <li><a href="/contacto">{{t.footer.nav_contact}}</a></li>
+            </ul>
+          </div>
         </div>
       </div>
-    </footer>
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <h3 class="footer-heading mb-4">{{t.footer.follow_us}}</h3>
+        <div>
+          <a href="{{t.footer.instagram}}" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+        </div>
+      </div>
+    </div>
+    <div class="row pt-5 mt-5 text-center">
+      <div class="col-md-12">
+        <p>
+          Copyright &copy;<script>document.write(new Date().getFullYear());</script> PEVITE Tecnología. {{t.footer.derechos_reservados}} by <a href="https://pevite.com.ve/" target="_blank" >PEVITE</a> <i class="icon-heart text-danger" aria-hidden="true"></i>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {

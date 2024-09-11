@@ -12,6 +12,7 @@ import http from 'http';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import fs from 'fs';
 
 // FIN Importaciones de paquetes NODE
 
@@ -79,6 +80,7 @@ import frontend from "./routes/frontend.routes.js"
 import comprar from "./routes/comprar.routes.js"
 import alquilar from "./routes/alquilar.routes.js"
 import sistema_correo from "./routes/correos_sistema.routes.js"
+import {lenguaje} from "./helpers/languaje.js"
 
 
 // Rutas de la aplicacion
@@ -93,11 +95,14 @@ app.use("/admin-ibizapropiedades-dashboard", /* isAuthenticated, */ propietarios
 app.use("/admin-ibizapropiedades-dashboard", /* isAuthenticated, */ propiedades_router)
 
 // Manejo de errores para el código de estado 404 (No encontrado)
-app.use((req, res, next) => {
+app.use( async (req, res, next) => {
+
+  const t = await lenguaje(req, "404.json")
 
   res.render('partials/frontend/404', {
     Titulo: "Ibiza Propiedades | Página no encontrada",
-    rutaIF: "error_404"
+    rutaIF: "error_404",
+    t
   })
   
 });

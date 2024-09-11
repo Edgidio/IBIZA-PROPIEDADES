@@ -1,0 +1,112 @@
+{
+    "navbar": {
+      "home": "Inicio",
+      "sell_property": "Venda su propiedad",
+      "evaluate_property": "Valorar una propiedad",
+      "buy": "Comprar",
+      "apartment": "Apartamento",
+      "house": "Casa",
+      "land": "Terreno",
+      "commercial_space": "Local comercial",
+      "office": "Oficina",
+      "building": "Edificio",
+      "rent": "Alquilar",
+      "company": "Empresa",
+      "about_us": "Acerca de Ibiza propiedades",
+      "contact": "Contacto"
+    },
+    "property_slider": {
+      "for_sale": "EN VENTA",
+      "for_rent": "EN RENTA",
+      "view_details": "VER DETALLES"
+    },
+    "search_form": {
+      "property_type": "TIPO DE INMUEBLE",
+      "offer_type": "TIPO DE OFERTA",
+      "state": "ESTADO",
+      "search_button": "Buscar",
+      "states": {
+        "amazonas": "Amazonas",
+        "anzoategui": "Anzoátegui",
+        "apure": "Apure",
+        "aragua": "Aragua",
+        "barinas": "Barinas",
+        "bolivar": "Bolívar",
+        "carabobo": "Carabobo",
+        "cojedes": "Cojedes",
+        "delta_amacuro": "Delta Amacuro",
+        "falcon": "Falcón",
+        "guarico": "Guárico",
+        "lara": "Lara",
+        "merida": "Mérida",
+        "miranda": "Miranda",
+        "monagas": "Monagas",
+        "nueva_esparta": "Nueva Esparta",
+        "portuguesa": "Portuguesa",
+        "sucre": "Sucre",
+        "tachira": "Táchira",
+        "trujillo": "Trujillo",
+        "vargas": "Vargas",
+        "yaracuy": "Yaracuy",
+        "zulia": "Zulia"
+      }
+    },
+    "property_card": {
+      "sale": "Venta",
+      "rent": "Renta",
+      "share": "Compartir",
+      "copy": "copy",
+      "property_title": "Habitaciones",
+      "property_location": "Ubicación",
+      "property_price": "Precio",
+      "rooms": "Habitaciones",
+      "bathrooms": "Baños",
+      "area": "Superficie",
+      "land": "Terreno"
+    },
+    "why_choose_us": {
+      "title": "¿POR QUÉ ELEGIRNOS?",
+      "text": "Nuestra misión es simplificar y enriquecer tu viaje inmobiliario. Nos enorgullece ofrecer un servicio personalizado que se adapta a tus necesidades únicas. Con un profundo conocimiento local, nuestro equipo te guiará a través de un abanico diverso de propiedades, desde hogares familiares hasta oportunidades comerciales."
+    },
+    "services": {
+      "research_suburbs": {
+        "title": "Suburbios de investigación",
+        "text": "Sumérgete en la esencia de la vida moderna en los selectos suburbios de IBIZA Propiedades. Te invitamos a explorar entornos que equilibran tranquilidad y conectividad, fusionando naturaleza y comodidades urbanas. Encuentra tu hogar en un entorno diseñado para elevar tu experiencia de vida. ¡Bienvenido a un nuevo estándar de vivir con IBIZA Propiedades!"
+      },
+      "sold_homes": {
+        "title": "Casas vendidas",
+        "text": "En IBIZA Propiedades, celebramos el éxito de cada venta como una historia de hogares felices. Nuestras casas vendidas cuentan historias de sueños realizados, vidas transformadas y clientes satisfechos. Cada transacción no es solo un cierre; es el inicio de un nuevo capítulo para quienes confían en nosotros. Únete a la lista de propietarios felices y descubre cómo hacemos realidad tus metas inmobiliarias en IBIZA Propiedades."
+      },
+      "safety_priority": {
+        "title": "Prioridad de seguridad",
+        "text": "En IBIZA Propiedades, tu seguridad es nuestra máxima prioridad. Nos dedicamos a proporcionar un entorno seguro y tranquilo para cada propiedad que manejamos. Desde la selección cuidadosa de ubicaciones hasta medidas de seguridad avanzadas, trabajamos incansablemente para ofrecerte la tranquilidad que mereces en tu nuevo hogar. Confía en IBIZA Propiedades para un ambiente donde la seguridad es más que una prioridad; es nuestro compromiso constante contigo."
+      }
+    },
+    "agents": {
+      "title": "NUESTROS AGENTES",
+      "text": "En IBIZA Propiedades, nuestros agentes no solo venden propiedades; construyen relaciones duraderas. Conoce a nuestro talentoso equipo de agentes, dedicados a comprender tus necesidades y guiarte en cada paso del proceso inmobiliario. Profesionales apasionados que transformarán tus sueños de hogar en una realidad. Descubre la diferencia que hace la dedicación y experiencia de Nuestros Agentes en IBIZA Propiedades. Tu viaje hacia el hogar perfecto comienza con un equipo comprometido."
+    },    
+    "footer": {
+      "about": {
+        "title": "SOBRE IBIZA PROPIEDADES",
+        "description": "Nuestro compromiso es premiar su confianza."
+      },
+      "navigation": {
+        "title": "NAVEGACIÓN",
+        "home": "Inicio",
+        "sell_property": "Venda su propiedad",
+        "about_us": "Acerca de ibiza propiedades",
+        "contact": "Contacto"
+      },
+      "follow_us": {
+        "title": "SÍGANOS"
+      },
+      "copyright": {
+        "text": "Copyright &copy;<script data-cfasync=\"false\" src=\"/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js\"></script><script>document.write(new Date().getFullYear());</script> PEVITE Tecnología. Todos los derechos reservados. Prohibida la reproducción total o parcial de cualquier contenido sin el permiso expreso por escrito de PEVITE Tecnología.  by <a href=\"https://pevite.com.ve/\" target=\"_blank\" >PEVITE</a> <i class=\"icon-heart text-danger\" aria-hidden=\"true\"></i>"
+      }
+    }
+    
+    
+    
+  }
+  

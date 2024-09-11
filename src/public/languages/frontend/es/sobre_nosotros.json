@@ -1,0 +1,81 @@
+{
+    "nav": {
+    "inicio": "Inicio",
+    "venda_su_propiedad": "Venda su propiedad",
+    "valorar_una_propiedad": "Valorar una propiedad",
+    "comprar": "Comprar",
+    "apartamento": "Apartamento",
+    "casa": "Casa",
+    "terreno": "Terreno",
+    "local_comercial": "Local comercial",
+    "oficina": "Oficina",
+    "edificio": "Edificio",
+    "alquilar": "Alquilar",
+    "empresa": "Empresa",
+    "acerca_de_ibiza_propiedades": "Acerca de Ibiza propiedades",
+    "contacto": "Contacto"
+  },
+  "div": {
+    "sobre_nosotros": "Sobre nosotros"
+  },
+  "section": {
+    "our_company": "NUESTRA COMPAÑÍA",
+    "company_description": "IBIZA PROPIEDADES, somos una empresa que nace para ofrecer de forma humanista e integral, toda la asesoría tanto legal así como comercial para apoyar a nuestros clientes en sus distintos requerimientos, sea en la adquisición de un inmueble con fin residencial o muy bien un inmueble destinado a ver crecer su emprendimiento comercial.",
+    "client_care": "En IBIZA PROPIEDADES, prestamos un especial cuidado para los clientes que depositan sú confianza de forma exclusiva para gestionar su propiedad en el mercado venezolano, en ese sentido, ofrecemos un real análisis de mercado comparativo de su propiedad, pasando por una exhaustiva revisión documental de la propiedad, de esta manera podemos preveer cualquier situación a futuro que pueda retrasar la operación o en efecto confirmar el saneamiento legal de la propiedad para iniciar la promoción del inmueble de forma segura tanto para el cliente propietario como para el (la) potencial comprador (a).",
+    "trust_and_confidence": "Para IBIZA PROPIEDADES, es importante que nuestros clientes se sientan agradados y 100% conscientes que se encuentran en las mejores manos y para nosotros es importante CAPTAR SU CONFIANZA para luego por consecuencia CAPTAR SU INMUEBLE, no existe otra fórmula para nosotros.",
+    "experience_offer": "Ofrecemos sin reserva, toda nuestra experiencia y hacemos lo humanamente posible por ver materializado ese encargo, teniendo nuestro Staff de asesores inmobiliarios muy claro el concepto de humanismo atendiendo de forma exclusiva su propiedad confiada en nuestro proyecto."
+  },
+  "section_2": {
+    "humanismo": "HUMANISMO",
+    "descripcion_humanismo": "Para IBIZA PROPIEDADES primero está hacer todo lo humanamente posible para que la persona (cliente) que ha depositado su confianza en nuestro proyecto materialice su sueño de adquirir o vender su propiedad, después de verificar que ambas partes estén satisfechas es solo en ese momento que inicia la obligación de nuestros honorarios. NO ANTES."
+  },
+  "section_agents": {
+    "titulo": "NUESTROS AGENTES",
+    "agente_1": "Ing. Marinés Capriles",
+    "agente_2": "Lic. Mariana Pereira",
+    "agente_3": "Abg. Jair Torres"
+  },
+  "section_faq": {
+    "titulo": "PREGUNTAS FRECUENTES",
+    "descripcion": "Para IBIZA PROPIEDADES será siempre un honor responder a todas sus inquietudes y todas las dudas que puede generar una de las operaciones mas importantes en la vida de una persona, como lo es COMPRAR una vivienda y/o VENDER la misma.",
+    "pregunta_1": {
+      "titulo": "¿Qué documentos principales debo poseer para vender mi inmueble?",
+      "respuesta": [
+        "Documento de propiedad preferiblemente registrado",
+        "Ficha catastral actualizada",
+        "Cédulas de identidad vigentes de los propietarios del inmueble",
+        "Solvencia Municipal para ventas de inmueble",
+        "Registro de vivienda principal o Planilla Forma 33",
+        "Artículo 91"
+      ]
+    },
+    "pregunta_2": {
+      "titulo": "¿No tengo registrada mi casa como vivienda principal, qué debo hacer?",
+      "respuesta": [
+        "Un buen asesor inmobiliario es cuidadoso en todos los detalles en el momento de la revisión documental de la propiedad, en ese sentido si notamos que el propietario del inmueble no posee registrada la casa como vivienda principal tiene 2 opciones:",
+        "1- Tramitar de forma inmediata ante el SENIAT de la jurisdicción donde se encuentre ubicado el inmueble presentando los requisitos necesarios.",
+        "2- Pagar al tesoro nacional el 0,5% del monto que se establezca en la operación de compra venta, mediante planilla F33 que puede descargar desde el usuario SENIAT como persona natural."
+      ]
+    },
+    "pregunta_3": {
+      "titulo": "¿No estoy seguro (a) del valor de mi inmueble, debo pagar para obtener ese análisis del precio?",
+      "respuesta": "IBIZA PROPIEDADES en su staff de asesores inmobiliarios cuenta con 2 ingenieros especialistas en el análisis del precio, el cual de forma gratuita se realiza la inspección in situ del inmueble y en máximo 24 horas ya el propietario del inmueble de forma gratuita y sin compromiso tiene el análisis de mercado comparativo en su poder."
+    },
+    "pregunta_4": {
+      "titulo": "¿Si soy propietario de un inmueble y contrato un servicio inmobiliario, qué ocurre si en el transcurso de la operación compra venta se retracta el comprador y no paga el precio convenido?",
+      "respuesta": "IBIZA PROPIEDADES cuenta dentro de su staff de asesores inmobiliarios, un abogado especialista en derecho inquilinario, el cual en esencia, su objetivo es blindar legalmente al cliente de todo lo que deba firmar en una operación compra venta. En este caso específico, entre las partes pueden acordar un porcentaje de cláusula penal que puede estar entre 20% y 40% del monto entregado en arras para celebrar la Reserva de Compra Venta. Si el comprador no cumple, el vendedor queda protegido en el porcentaje de la cláusula penal al punto que puede retener el porcentaje acordado y de ese monto retenido solo debe pagar el 1% de la comisión de la empresa inmobiliaria por conceptos de gastos administrativos."
+    }
+  },
+  "footer": {
+    "about_us": "SOBRE IBIZA PROPIEDADES",
+    "about_us_description": "Nuestro compromiso es premiar su confianza.",
+    "navigation": "NAVEGACIÓN",
+    "nav_home": "Inicio",
+    "nav_sell_property": "Venda su propiedad",
+    "nav_about_us": "Acerca de ibiza propiedades",
+    "nav_contact": "Contacto",
+    "follow_us": "SÍGANOS",
+    "instagram": "https://www.instagram.com/ibizapropiedades/",
+    "derechos_reservados": "Todos los derechos reservados. Prohibida la reproducción total o parcial de cualquier contenido sin el permiso expreso por escrito de PEVITE Tecnología."
+  }
+}

@@ -1,0 +1,82 @@
+{
+    "nav": {
+    "inicio": "Home",
+    "venda_su_propiedad": "Sell your property",
+    "valorar_una_propiedad": "Appraise a property",
+    "comprar": "Buy",
+    "apartamento": "Apartment",
+    "casa": "House",
+    "terreno": "Land",
+    "local_comercial": "Commercial premises",
+    "oficina": "Office",
+    "edificio": "Building",
+    "alquilar": "Rent",
+    "empresa": "Company",
+    "acerca_de_ibiza_propiedades": "About Ibiza properties",
+    "contacto": "Contact"
+  },
+  "div": {
+    "sobre_nosotros": "About us"
+  },
+  "section": {
+    "our_company": "OUR COMPANY",
+    "company_description": "IBIZA PROPERTIES, we are a company that was created to offer humanistic and comprehensive legal and commercial advice to support our clients in their various requirements, whether it is the acquisition of a property for residential purposes or a property intended to grow their commercial venture.",
+    "client_care": "At IBIZA PROPERTIES, we take special care for clients who exclusively entrust us with managing their property in the Venezuelan market. In this regard, we offer a real comparative market analysis of their property, along with a thorough documentary review. This way, we can anticipate any future situation that may delay the operation or confirm the legal clearance of the property to start promoting it safely, both for the property owner and the potential buyer.",
+    "trust_and_confidence": "For IBIZA PROPERTIES, it is important that our clients feel pleased and 100% aware that they are in the best hands. It is crucial for us to GAIN YOUR TRUST so that, as a consequence, we can MANAGE YOUR PROPERTY. There is no other formula for us.",
+    "experience_offer": "We offer without reservation all our experience and do everything humanly possible to fulfill your request, with our team of real estate advisors clearly understanding the concept of humanism, exclusively managing the property entrusted to our project."
+  },
+  "section_2": {
+    "humanismo": "HUMANISM",
+    "descripcion_humanismo": "For IBIZA PROPIEDADES, the top priority is to do everything humanly possible to ensure that the person (client) who has entrusted their confidence in our project realizes their dream of acquiring or selling their property. Only after both parties are satisfied does our obligation to fees begin. NOT BEFORE."
+  },
+  "section_agents": {
+    "titulo": "OUR AGENTS",
+    "agente_1": "Ing. Marinés Capriles",
+    "agente_2": "Lic. Mariana Pereira",
+    "agente_3": "Abg. Jair Torres"
+  },
+
+  "section_faq": {
+    "titulo": "FREQUENTLY ASKED QUESTIONS",
+    "descripcion": "For IBIZA PROPIEDADES, it is always an honor to address all your concerns and any doubts that may arise during one of the most important transactions in a person's life, such as BUYING a home and/or SELLING it.",
+    "pregunta_1": {
+      "titulo": "What main documents should I have to sell my property?",
+      "respuesta": [
+        "Property document preferably registered",
+        "Updated cadastral file",
+        "Current identity cards of the property owners",
+        "Municipal solvency for property sales",
+        "Principal residence registration or Form 33",
+        "Article 91"
+      ]
+    },
+    "pregunta_2": {
+      "titulo": "What if my house is not registered as a principal residence, what should I do?",
+      "respuesta": [
+        "A good real estate advisor is meticulous about all the details during the property document review. If we find that the property owner does not have the house registered as a principal residence, there are 2 options:",
+        "1- Process immediately with the SENIAT of the jurisdiction where the property is located, presenting the necessary requirements.",
+        "2- Pay 0.5% of the amount established in the purchase-sale transaction to the national treasury, using Form F33 which can be downloaded from the SENIAT user account as an individual."
+      ]
+    },
+    "pregunta_3": {
+      "titulo": "If I am not sure about the value of my property, do I need to pay for that price analysis?",
+      "respuesta": "IBIZA PROPIEDADES, with its team of real estate advisors, includes 2 engineers specializing in price analysis. A free on-site inspection of the property is conducted, and within a maximum of 24 hours, the property owner receives a free and non-binding market comparative analysis"
+    },
+    "pregunta_4": {
+      "titulo": "If I am a property owner and hire a real estate service, what happens if, during the purchase-sale process, the buyer retracts and does not pay the agreed price?",
+      "respuesta": "IBIZA PROPIEDADES has a real estate team, including a lawyer specializing in tenant law, whose goal is to legally protect the client in all agreements during a purchase-sale transaction. In this specific case, the parties can agree on a penalty clause percentage between 20% and 40% of the amount given as a deposit for the Purchase-Sale Reservation. If the buyer does not comply, the seller is protected by the penalty clause to the extent that they can retain the agreed percentage, and from that retained amount, only 1% of the real estate company's commission needs to be paid for administrative expenses."
+    }   
+    },
+    "footer": {
+        "about_us": "ABOUT IBIZA PROPIEDADES",
+        "about_us_description": "Our commitment is to reward your trust.",
+        "navigation": "NAVIGATION",
+        "nav_home": "Home",
+        "nav_sell_property": "Sell Your Property",
+        "nav_about_us": "About Ibiza Properties",
+        "nav_contact": "Contact",
+        "follow_us": "FOLLOW US",
+        "instagram": "https://www.instagram.com/ibizapropiedades/",
+        "derechos_reservados": "All rights reserved. Total or partial reproduction of any content is prohibited without the express written permission of PEVITE Technology."
+      }
+}

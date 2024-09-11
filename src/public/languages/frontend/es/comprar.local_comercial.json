@@ -1,0 +1,63 @@
+{
+  "menu": {
+    "home": "Inicio",
+    "sell_property": "Venda su propiedad",
+    "value_property": "Valorar una propiedad",
+    "buy": "Comprar",
+    "apartment": "Apartamento",
+    "house": "Casa",
+    "land": "Terreno",
+    "commercial_space": "Local comercial",
+    "office": "Oficina",
+    "building": "Edificio",
+    "rent": "Alquilar",
+    "about_us": "Acerca de Ibiza propiedades",
+    "contact": "Contacto"
+  },
+  "brand": {
+    "name": "IBIZA PROPIEDADES"
+  },
+  "property": {
+  "sale": "EN VENTA",
+  "rent": "EN RENTA",
+  "details": "VER DETALLES"
+},
+"search": {
+  "propertyType": "TIPO DE INMUEBLE",
+  "apartment": "Apartamento",
+  "house": "Casa",
+  "land": "Terreno",
+  "commercialSpace": "Local comercial",
+  "office": "Oficina",
+  "building": "Edificio",
+  "offerType": "TIPO DE OFERTA",
+  "forSale": "En venta",
+  "forRent": "En renta",
+  "state": "ESTADO",
+  "search": "Buscar"
+},
+"property_": {
+  "sale": "Venta",
+  "rent": "Renta",
+  "share": "Compartir",
+  "copyLink": "Copiar",
+  "rooms": "Habitaciones",
+  "bathrooms": "Baños",
+  "surface": "Superficie",
+  "land": "Terreno",
+  "noResults": "Lo sentimos, no se encontraron propiedades que coincidan con tu búsqueda",
+  "twitterText": "Mira esta hermosa propiedad en Ibiza Propiedades. Descubre un lugar único para llamar hogar, rodeado de belleza natural y comodidades modernas. ¡No te pierdas esta oportunidad!"
+},
+"footer": {
+  "about_us": "SOBRE IBIZA PROPIEDADES",
+  "about_us_description": "Nuestro compromiso es premiar su confianza.",
+  "navigation": "NAVEGACIÓN",
+  "nav_home": "Inicio",
+  "nav_sell_property": "Venda su propiedad",
+  "nav_about_us": "Acerca de ibiza propiedades",
+  "nav_contact": "Contacto",
+  "follow_us": "SÍGANOS",
+  "instagram": "https://www.instagram.com/ibizapropiedades/",
+  "derechos_reservados": "Todos los derechos reservados. Prohibida la reproducción total o parcial de cualquier contenido sin el permiso expreso por escrito de PEVITE Tecnología."
+}
+}

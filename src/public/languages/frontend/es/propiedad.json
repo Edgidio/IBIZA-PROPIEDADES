@@ -1,0 +1,60 @@
+{
+    "nav": {
+      "inicio": "Inicio",
+      "venda_su_propiedad": "Venda su propiedad",
+      "valorar_una_propiedad": "Valorar una propiedad",
+      "comprar": "Comprar",
+      "apartamento": "Apartamento",
+      "casa": "Casa",
+      "terreno": "Terreno",
+      "local_comercial": "Local comercial",
+      "oficina": "Oficina",
+      "edificio": "Edificio",
+      "alquilar": "Alquilar",
+      "empresa": "Empresa",
+      "acerca_de_ibiza_propiedades": "Acerca de Ibiza propiedades",
+      "contacto": "Contacto"
+    },
+    "property_details": {
+      "detalles_de_la_propiedad": "DETALLES DE LA PROPIEDAD",
+      "precio": "Precio",
+      "banos": "Baños",
+      "habitaciones": "Habitaciones",
+      "terreno": "Terreno",
+      "superficie": "Superficie",
+      "tipo_de_inmuebles": "TIPO DE inmuebles",
+      "estado": "Estado",
+      "ubicacion": "Ubicación",
+      "mas_informacion": "Más información",
+      "galeria": "Galería"
+    },
+    "agent_contact": {
+      "parrafo": "Es muy importante que el cliente preste atención al proceso adipiscente. ¿Quién quiere explicar, porque soy libre de elegir a menudo? Estaba preocupado por la confusión de las cosas. Muchas veces, menos frecuentemente, rechazamos cualquier ejercicio. Él, cualquiera, de la verdad.",
+      "agente_de_contacto": "AGENTE DE CONTACTO",
+      "nombre": "Nombre",
+      "correo": "Correo",
+      "telefono": "Teléfono",
+      "enviar_mensaje": "Enviar mensaje"
+    },
+    "related_properties": {
+    "propiedades_relacionadas": "Propiedades Relacionadas",
+    "venta": "Venta",
+    "renta": "Renta",
+    "banos": "Baños",
+    "habitaciones": "Habitaciones",
+    "terreno": "Terreno",
+    "superficie": "Superficie"
+  },
+    "footer": {
+    "sobre_ibiza": "SOBRE IBIZA PROPIEDADES",
+    "compromiso": "Nuestro compromiso es premiar su confianza.",
+    "navegacion": "NAVEGACIÓN",
+    "inicio": "Inicio",
+    "venda_propiedad": "Venda su propiedad",
+    "acerca_ibiza": "Acerca de ibiza propiedades",
+    "contacto": "Contacto",
+    "siguenos": "SÍGANOS",
+    "derechos_reservados": "Todos los derechos reservados. Prohibida la reproducción total o parcial de cualquier contenido sin el permiso expreso por escrito de PEVITE Tecnología."
+  }
+  }
+  

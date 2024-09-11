@@ -2,6 +2,7 @@ import {PrismaClient} from "@prisma/client"
 const db = new PrismaClient();
 
 import {socket} from "../config/socket.io.js"
+import { lenguaje } from "../helpers/languaje.js";
 
 export const index = async (req, res) => {
   try {
@@ -77,13 +78,17 @@ export const index = async (req, res) => {
       enExhibicion: propiedad.enExhibicion
     };
   });
+
+    const t = await lenguaje(req, "index.json")
+
+    console.log(t.services.sold_homes)
   
     return res.render('partials/frontend/index', {
       Titulo: "Ibiza Propiedades",
       rutaIF: "Frontend",
       propiedadesConUnaRutaPorFoto: propiedadesConRutaUnica,
       propiedadesExhibicion,
-      lang: req.cookies.lang,
+      t
     });
 
   } catch (error) {
@@ -188,6 +193,8 @@ export const propiedad = async (req, res) => {
       };
   });
 
+  const t = await lenguaje(req, "propiedad.json")
+
   res.render('partials/frontend/propiedad', {
     Titulo: "Ibiza Propiedades | Propiedad",
     rutaIF: "Frontend",
@@ -195,7 +202,8 @@ export const propiedad = async (req, res) => {
     propiedadConFotos,
     fotosLimitadas,
     fotosPropiedad: todasLasFotos,
-    propiedadesConRutaUnica
+    propiedadesConRutaUnica,
+    t
   });
 
   } catch (error) {
@@ -209,11 +217,14 @@ export const contacto = async (req, res) => {
 
   try {
 
+    const t = await lenguaje(req, "contacto.json")
+
     res.render('partials/frontend/contacto', {
       Titulo: "Ibiza Propiedades | Contacto",
       rutaIF: "Frontend",
       correo_enviado: req.flash('correo_enviado'),
-      correo_no_enviado:req.flash('correo_no_enviado')
+      correo_no_enviado:req.flash('correo_no_enviado'),
+      t
     });
 
   } catch (error) {
@@ -277,32 +288,15 @@ export const contactoPOST = async (req, res) => {
   }
 };
 
-/* export const sobre_Nosotros = async (req, res) => {
-
-  try {
-
-
-
-
-    res.render('partials/frontend/sobre_nosotros', {
-      Titulo: "Ibiza Propiedades | Sobre nosotros",
-      rutaIF: "Frontend",
-    });
-
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Error interno del servidor' });
-  }
-}; */
-
-// controllers/frontendController.js
-
 export const sobre_Nosotros = async (req, res) => {
   try {
+
+    const t = await lenguaje(req, "sobre_nosotros.json")
 
     res.render('partials/frontend/sobre_nosotros', {
       Titulo: 'Ibiza Propiedades | Sobre nosotros',
       rutaIF: 'Frontend',
+      t
     });
   } catch (error) {
     console.error(error);
@@ -448,11 +442,14 @@ export const busquedaPropiedades = async (req, res) => {
       };
     });
 
+    const t = await lenguaje(req, "busqueda.json")
+
 
     return res.render('partials/frontend/busqueda', {
       Titulo: "Ibiza Propiedades | Busqueda",
       rutaIF: "Frontend",
-      propiedadesConUnaRutaPorFoto: propiedadesConRutaUnica
+      propiedadesConUnaRutaPorFoto: propiedadesConRutaUnica,
+      t
     });
 
   } catch (error) {

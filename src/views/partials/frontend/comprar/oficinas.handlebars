@@ -2,399 +2,354 @@
   
   <div class="site-loader"></div>
   
-    <div class="site-wrap">
+<div class="site-wrap">
 
-        <div class="site-mobile-menu">
-            <div class="site-mobile-menu-header">
-                <div class="site-mobile-menu-close mt-3">
-                    <span class="icon-close2 js-menu-toggle"></span>
-                </div>
+    <div class="site-mobile-menu">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
             </div>
-            <div class="site-mobile-menu-body"></div>
-        </div> <!-- .site-mobile-menu -->
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
 
-        <div class="site-navbar mt-4">
-            <div class="container py-1">
-                <div class="row align-items-center">
+    <div class="site-navbar mt-4">
+        <div class="container py-1">
+            <div class="row align-items-center">
                 <div class="col-8 col-md-8 col-lg-4">
-                  <h1 class="mb-0">
-                      <a href="/" class="text-white h2 mb-0">
-                          <img style="display: inline; margin-right: 10px; margin-top: -27px;" src="/images/Icono/ibiza-incono.png" width="45" height="50">
-                          <strong style="font-size: 28px;" class="text-amarillo">IBIZA PROPIEDADES</strong>
-                      </a>
-                  </h1>
+                    <h1 class="mb-0">
+                        <a href="/" class="text-white h2 mb-0">
+                            <img style="display: inline; margin-right: 10px; margin-top: -27px;" src="/images/Icono/ibiza-incono.png" width="45" height="50">
+                            <strong style="font-size: 28px;" class="text-amarillo">{{t.brand.name}}</strong>
+                        </a>
+                    </h1>
                 </div>
 
-                    <div class="col-4 col-md-4 col-lg-8">
-                        <nav class="site-navigation text-right text-md-right" role="navigation">
+                <div class="col-4 col-md-4 col-lg-8">
+                    <nav class="site-navigation text-right text-md-right" role="navigation">
 
-                            <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span style="color: #F3AA08;" class="icon-menu h3"></span></a></div>
+                        <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3">
+                            <a href="#" class="site-menu-toggle js-menu-toggle text-white">
+                                <span style="color: #F3AA08;" class="icon-menu h3"></span>
+                            </a>
+                        </div>
 
-                                <ul class="site-menu js-clone-nav d-none d-lg-block">
-                  <li >
-                    <a class="text-amarillo" href="/">Inicio</a>
-                  </li>
-                  <li class="has-children">
-                    <a >Venda su propiedad</a>
-                    <ul class="dropdown arrow-top">
-                      <li><a href="#">Valorar una propiedad</a></li>
-                    </ul>
-                  </li>
-                  <li class="has-children active">
-                    <a >Comprar</a>
-                    <ul class="dropdown arrow-top">
-                      <li><a href="/comprar/apartamento">Apartamento</a></li>
-                      <li><a href="/comprar/casa">Casa</a></li>
-                      <li><a href="/comprar/terreno">Terreno</a></li>
-                      <li><a href="/comprar/local-comercial">Local comercial</a></li>
-                      <li><a href="/comprar/oficina">Oficina</a></li>
-                      <li><a href="/comprar/edificio">Edificio</a></li>
-                    </ul>
-                  </li>
-                  <li class="has-children">
-                    <a>Alquilar</a>
-                    <ul class="dropdown arrow-top">
-                      <li><a href="/alquilar/apartamento">Apartamento</a></li>
-                      <li><a href="/alquilar/casa">Casa</a></li>
-                      <li><a href="/alquilar/terreno">Terreno</a></li>
-                      <li><a href="/alquilar/local-comercial">Local comercial</a></li>
-                      <li><a href="/alquilar/oficina">Oficina</a></li>
-                    </ul>
-                  </li>
-                  <li class="has-children">
-                    <a>Empresa -</a>
-                    <ul class="dropdown arrow-top">
-                      <li><a href="/sobre-nosotros">Acerca de Ibiza propiedades</a></li>
-                      <li ><a href="/contacto">Contacto</a></li>
-                    </ul>
-                  </li>
-
-                </ul>
-                        </nav>
-                    </div>
-                
-
+                        <ul class="site-menu js-clone-nav d-none d-lg-block">
+                            <li>
+                                <a class="text-amarillo" href="/">{{t.menu.home}}</a>
+                            </li>
+                            <li class="has-children">
+                                <a>{{t.menu.sell_property}}</a>
+                                <ul class="dropdown arrow-top">
+                                    <li><a href="/venda-su-propiedad">{{t.menu.value_property}}</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-children active">
+                                <a>{{t.menu.buy}}</a>
+                                <ul class="dropdown arrow-top">
+                                    <li><a href="/comprar/apartamento">{{t.menu.apartment}}</a></li>
+                                    <li><a href="/comprar/casa">{{t.menu.house}}</a></li>
+                                    <li><a href="/comprar/terreno">{{t.menu.land}}</a></li>
+                                    <li><a href="/comprar/local-comercial">{{t.menu.commercial_space}}</a></li>
+                                    <li><a href="/comprar/oficina">{{t.menu.office}}</a></li>
+                                    <li><a href="/comprar/edificio">{{t.menu.building}}</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-children">
+                                <a>{{t.menu.rent}}</a>
+                                <ul class="dropdown arrow-top">
+                                    <li><a href="/alquilar/apartamento">{{t.menu.apartment}}</a></li>
+                                    <li><a href="/alquilar/casa">{{t.menu.house}}</a></li>
+                                    <li><a href="/alquilar/terreno">{{t.menu.land}}</a></li>
+                                    <li><a href="/alquilar/local-comercial">{{t.menu.commercial_space}}</a></li>
+                                    <li><a href="/alquilar/oficina">{{t.menu.office}}</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-children">
+                                <a>{{t.menu.about_us}}</a>
+                                <ul class="dropdown arrow-top">
+                                    <li><a href="/sobre-nosotros">{{t.menu.about_us}}</a></li>
+                                    <li><a href="/contacto">{{t.menu.contact}}</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
+
             </div>
         </div>
-        
     </div>
 
-    <div class="slide-one-item home-slider owl-carousel">
-      {{#if propiedadesExhibicion}}
-      {{#each propiedadesExhibicion}}
-      <div class="site-blocks-cover overlay" style="background-image: url(/images/uploads/propiedades/large/{{rutas}});" data-aos="fade" data-stellar-background-ratio="0.5">
-        <div class="container">
-          <div class="row align-items-center justify-content-center text-center">
-            <div class="col-md-10">
-                {{#eq venta_renta "V"}}<span class="d-inline-block bg-amarillo text-white px-3 mb-3 property-offer-type rounded">EN VENTA</span>{{/eq}}
-                {{#eq venta_renta "R"}}<span class="d-inline-block bg-success text-white px-3 mb-3 property-offer-type rounded">EN RENTA</span>{{/eq}}
-              
-              <h1 class="mb-2">{{descripcion}}</h1>
-              <p class="mb-5"><strong class="h2 text-success font-weight-bold">$ {{precio}}</strong></p>
-              <p><a href="/propiedad/{{id}}" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">VER DETALLES</a></p>
-            </div>
-          </div>
-        </div>
-      </div>  
-      {{/each}}
-      {{else}}
-      <div class="site-blocks-cover inner-page-cover overlay aos-init aos-animate" style="background-image: url(&quot;/images/hero_bg_1.jpg&quot;); background-position: 50% 0px;" data-aos="fade" data-stellar-background-ratio="0.5">
-      <div class="container">
-        <div class="row align-items-center justify-content-center text-center">
+</div>
 
+
+
+<div class="slide-one-item home-slider owl-carousel">
+  {{#if propiedadesExhibicion}}
+  {{#each propiedadesExhibicion}}
+  <div class="site-blocks-cover overlay" style="background-image: url(/images/uploads/propiedades/large/{{rutas}});" data-aos="fade" data-stellar-background-ratio="0.5">
+    <div class="container">
+      <div class="row align-items-center justify-content-center text-center">
+        <div class="col-md-10">
+          {{#eq venta_renta "V"}}
+            <span class="d-inline-block bg-amarillo text-white px-3 mb-3 property-offer-type rounded">{{@root.t.property.sale}}</span>
+          {{/eq}}
+          {{#eq venta_renta "R"}}
+            <span class="d-inline-block bg-success text-white px-3 mb-3 property-offer-type rounded">{{@root.t.property.rent}}</span>
+          {{/eq}}
           
-          <div id="contacto" class="col-md-10">
-            
-          </div>
+          <h1 class="mb-2">{{descripcion}}</h1>
+          <p class="mb-5"><strong class="h2 text-success font-weight-bold">$ {{precio}}</strong></p>
+          <p><a href="/propiedad/{{id}}" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">{{@root.t.property.details}}</a></p>
         </div>
       </div>
     </div>
-    {{/if}}
-    </div>
+  </div>  
+  {{/each}}
+  {{else}}
+  <div class="site-blocks-cover inner-page-cover overlay aos-init aos-animate" style="background-image: url(&quot;/images/hero_bg_1.jpg&quot;); background-position: 50% 0px;" data-aos="fade" data-stellar-background-ratio="0.5">
+    <div class="container">
+      <div class="row align-items-center justify-content-center text-center">
 
-
-    <div class="site-section site-section-sm pb-0">
-      <div class="container">
-        <div class="row">
-          <form action="/busqueda/propiedades" method="post"  class="form-search col-md-12" style="margin-top: -100px;">
-            <div class="row  align-items-end">
-              <div class="col-md-3">
-                <label for="inmueble">TIPO DE INMUEBLE</label>
-                <div class="select-wrap">
-                  <span class="icon icon-arrow_drop_down"></span>
-                  <select name="inmueble" id="inmueble" class="form-control d-block rounded-0">
-                    <option value="Apartamento">Apartamento</option>
-                    <option value="Casa">Casa</option>
-                    <option value="Terreno">Terreno</option>
-                    <option value="Local comercial">Local comercial</option>
-                    <option value="Oficina">Oficina</option>
-                    <option value="Edificio">Edificio</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <label for="venta_renta">TIPO DE OFERTA</label>
-                <div class="select-wrap">
-                  <span class="icon icon-arrow_drop_down"></span>
-                  <select name="venta_renta" id="venta_renta" class="form-control d-block rounded-0">
-                    <option value="V">En venta</option>
-                    <option value="R">En renta</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <label for="estado">ESTADO</label>
-                <div class="select-wrap">
-                  <span class="icon icon-arrow_drop_down"></span>
-                  <select name="estado" id="estado" class="form-control d-block rounded-0">
-                    <option value="Amazonas">Amazonas</option>
-                    <option value="Anzoátegui">Anzoátegui</option>
-                    <option value="Apure">Apure</option>
-                    <option value="Aragua" selected>Aragua</option>
-                    <option value="Barinas">Barinas</option>
-                    <option value="Bolívar">Bolívar</option>
-                    <option value="Carabobo">Carabobo</option>
-                    <option value="Cojedes">Cojedes</option>
-                    <option value="Delta Amacuro">Delta Amacuro</option>
-                    <option value="Falcón">Falcón</option>
-                    <option value="Guárico">Guárico</option>
-                    <option value="Lara">Lara</option>
-                    <option value="Mérida">Mérida</option>
-                    <option value="Miranda">Miranda</option>
-                    <option value="Monagas">Monagas</option>
-                    <option value="Nueva Esparta">Nueva Esparta</option>
-                    <option value="Portuguesa">Portuguesa</option>
-                    <option value="Sucre">Sucre</option>
-                    <option value="Táchira">Táchira</option>
-                    <option value="Trujillo">Trujillo</option>
-                    <option value="Vargas">Vargas</option>
-                    <option value="Yaracuy">Yaracuy</option>
-                    <option value="Zulia">Zulia</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <input type="submit" class="btn  text-white btn-block rounded-0" value="Buscar">
-              </div>
-            </div>
-          </form>
-        </div>  
-
-
-       
+        <div id="contacto" class="col-md-10">
+          
+        </div>
       </div>
     </div>
+  </div>
+  {{/if}}
+</div>
 
-    <div class="site-section site-section-sm bg-light">
-      <div class="container">
 
-      {{#if propiedadesConUnaRutaPorFoto}}
-        <div class="row mb-5">
-          {{#each propiedadesConUnaRutaPorFoto}}
-          <div class="col-md-6 col-lg-4 mb-4">
-            <div class="property-entry h-100">
-              <a href="/propiedad/{{id}}" class="property-thumbnail">
-                <div class="offer-type-wrap">
-                  {{#eq venta_renta "V"}}<span class="offer-type bg-amarillo">Venta</span>{{/eq}}
-                  {{#eq venta_renta "R"}}<span class="offer-type bg-success">Renta</span>{{/eq}}
-                </div>
 
-                    <img loading="lazy" src="/images/uploads/propiedades/medium/{{rutas}}" alt="Image" class="img-fluid">
-            
-              </a>
-              <div class="p-4 property-body">
-
-                                <a class="share-btn property-favorite">
-                    <i class="fas fa-share-alt"></i>
-                </a>
-
-                <div class="share-options">
-                    <p class="title">Compartir</p>
-                    <div class="social-media">
-                  
-                        <button onclick="compartirWhatsApp_{{id}}()" style="background-color:#25D366" class="social-media-btn"><i class="fab fa-whatsapp"></i></button>
-                        <button onclick="compartirTwitter_{{id}}()" style="background-color: #1DA1F2;" class="social-media-btn"><i class="fab fa-twitter"></i></button>
-                        <button onclick="compartirFacebook_{{id}}()" style="background-color: #1877F2;" class="social-media-btn"><i class="fab fa-facebook-f"></i></button>
-                        
-                        <script>
-
-                            function compartirWhatsApp_{{id}}() {
-                                var url = encodeURIComponent("https://ibizapropiedades.com.ve/propiedad/{{id}}" );
-                                window.open('whatsapp://send?text=' + url);
-                            }
-                            function compartirTwitter_{{id}}() {
-                                var url = encodeURIComponent("https://ibizapropiedades.com.ve/propiedad/{{id}}");
-                                var texto = encodeURIComponent("Mira esta hermosa propiedad en Ibiza Propiedades. Descubre un lugar único para llamar hogar, rodeado de belleza natural y comodidades modernas. ¡No te pierdas esta oportunidad de vivir tu sueño! Contáctanos para más información.");
-                                window.location.href = 'https://twitter.com/intent/tweet?url=' + url + '&text=' + texto;
-                            }
-                            function compartirFacebook_{{id}}() {
-                                var url = encodeURIComponent("https://ibizapropiedades.com.ve/propiedad/{{id}}");
-                                window.open('https://www.facebook.com/sharer/sharer.php?u=' + url);
-                            }
-                        </script>
-
-                    </div>
-                    <div class="link-container">
-                      <input style="border: none;" class="link" type="text" value="https://ibizapropiedades.com.ve/propiedad/{{id}}">
-                        
-                        <button class="copy-btn">Copiar</button>
-                    </div>
-                </div>
-                
-                <h2 class="property-title"><a href="propiedad/{{id}}">{{descripcion}}</a></h2>
-                <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>{{estado}}</span>
-                <strong class="property-price text-primary mb-3 d-block text-success">$ {{formatNumber precio}}</strong>
-                <ul class="property-specs-wrap mb-3 mb-lg-0">
-                  {{#eq n_habitaciones 0}}
-
-                  {{else}}
-                  <li>
-                    <span class="property-specs">Habitaciones</span>
-                    <span class="property-specs-number">{{n_habitaciones}} <sup>+</sup></span>
-                    
-                  </li>
-                  {{/eq}}
-
-                  {{#eq n_banos 0}}
-
-                  {{else}}
-                  <li>
-                    <span class="property-specs">Baños</span>
-                    <span class="property-specs-number">{{n_banos}}</span>
-                    
-                  </li>
-                  {{/eq}}
-
-                  {{#eq superficie 0}}
-
-                  {{else}}
-                  <li>
-                    <span class="property-specs">Superficie</span>
-                    <span class="property-specs-number">{{formatNumber superficie}} m<sup>2</sup></span>
-                    
-                  </li>
-                  {{/eq}}
-
-                  {{#eq terreno 0}}
-
-                  {{else}}
-                  <li>
-                    <span class="property-specs">Terreno</span>
-                    <span class="property-specs-number">{{formatNumber terreno}} m<sup>2</sup></span>
-                    
-                  </li>
-                  {{/eq}}
-                </ul>
-
-              </div>
+<div class="site-section site-section-sm pb-0">
+  <div class="container">
+    <div class="row">
+      <form action="/busqueda/propiedades" method="post" class="form-search col-md-12" style="margin-top: -100px;">
+        <div class="row align-items-end">
+          <div class="col-md-3">
+            <label for="inmueble">{{t.search.propertyType}}</label>
+            <div class="select-wrap">
+              <span class="icon icon-arrow_drop_down"></span>
+              <select name="inmueble" id="inmueble" class="form-control d-block rounded-0">
+                <option value="Apartamento">{{t.search.apartment}}</option>
+                <option value="Casa">{{t.search.house}}</option>
+                <option value="Terreno">{{t.search.land}}</option>
+                <option value="Local comercial">{{t.search.commercialSpace}}</option>
+                <option value="Oficina">{{t.search.office}}</option>
+                <option value="Edificio">{{t.search.building}}</option>
+              </select>
             </div>
           </div>
-          {{/each}}
-        
-
+          <div class="col-md-3">
+            <label for="venta_renta">{{t.search.offerType}}</label>
+            <div class="select-wrap">
+              <span class="icon icon-arrow_drop_down"></span>
+              <select name="venta_renta" id="venta_renta" class="form-control d-block rounded-0">
+                <option value="V">{{t.search.forSale}}</option>
+                <option value="R">{{t.search.forRent}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <label for="estado">{{t.search.state}}</label>
+            <div class="select-wrap">
+              <span class="icon icon-arrow_drop_down"></span>
+              <select name="estado" id="estado" class="form-control d-block rounded-0">
+                <option value="Amazonas">Amazonas</option>
+                <option value="Anzoátegui">Anzoátegui</option>
+                <option value="Apure">Apure</option>
+                <option value="Aragua" selected>Aragua</option>
+                <option value="Barinas">Barinas</option>
+                <option value="Bolívar">Bolívar</option>
+                <option value="Carabobo">Carabobo</option>
+                <option value="Cojedes">Cojedes</option>
+                <option value="Delta Amacuro">Delta Amacuro</option>
+                <option value="Falcón">Falcón</option>
+                <option value="Guárico">Guárico</option>
+                <option value="Lara">Lara</option>
+                <option value="Mérida">Mérida</option>
+                <option value="Miranda">Miranda</option>
+                <option value="Monagas">Monagas</option>
+                <option value="Nueva Esparta">Nueva Esparta</option>
+                <option value="Portuguesa">Portuguesa</option>
+                <option value="Sucre">Sucre</option>
+                <option value="Táchira">Táchira</option>
+                <option value="Trujillo">Trujillo</option>
+                <option value="Vargas">Vargas</option>
+                <option value="Yaracuy">Yaracuy</option>
+                <option value="Zulia">Zulia</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <input type="submit" class="btn text-white btn-block rounded-0" value="{{t.search.search}}">
+          </div>
         </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="site-section site-section-sm bg-light">
+  <div class="container">
+
+    {{#if propiedadesConUnaRutaPorFoto}}
+    <div class="row mb-5">
+      {{#each propiedadesConUnaRutaPorFoto}}
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="property-entry h-100">
+          <a href="/propiedad/{{id}}" class="property-thumbnail">
+            <div class="offer-type-wrap">
+              {{#eq venta_renta "V"}}<span class="offer-type bg-amarillo">{{@root.t.property_.sale}}</span>{{/eq}}
+              {{#eq venta_renta "R"}}<span class="offer-type bg-success">{{@root.t.property_.rent}}</span>{{/eq}}
+            </div>
+
+            <img loading="lazy" src="/images/uploads/propiedades/medium/{{rutas}}" alt="Image" class="img-fluid">
+          </a>
+          <div class="p-4 property-body">
+
+            <a class="share-btn property-favorite">
+              <i class="fas fa-share-alt"></i>
+            </a>
+
+            <div class="share-options">
+              <p class="title">{{@root.t.property_.share}}</p>
+              <div class="social-media">
+
+                <button onclick="compartirWhatsApp_{{id}}()" style="background-color:#25D366" class="social-media-btn"><i class="fab fa-whatsapp"></i></button>
+                <button onclick="compartirTwitter_{{id}}()" style="background-color: #1DA1F2;" class="social-media-btn"><i class="fab fa-twitter"></i></button>
+                <button onclick="compartirFacebook_{{id}}()" style="background-color: #1877F2;" class="social-media-btn"><i class="fab fa-facebook-f"></i></button>
+
+                <script>
+                  function compartirWhatsApp_{{id}}() {
+                    var url = encodeURIComponent("https://ibizapropiedades.com.ve/propiedad/{{id}}");
+                    window.open('whatsapp://send?text=' + url);
+                  }
+
+                  function compartirTwitter_{{id}}() {
+                    var url = encodeURIComponent("https://ibizapropiedades.com.ve/propiedad/{{id}}");
+                    var texto = encodeURIComponent("{{t.property_.twitterText}}");
+                    window.location.href = 'https://twitter.com/intent/tweet?url=' + url + '&text=' + texto;
+                  }
+
+                  function compartirFacebook_{{id}}() {
+                    var url = encodeURIComponent("https://ibizapropiedades.com.ve/propiedad/{{id}}");
+                    window.open('https://www.facebook.com/sharer/sharer.php?u=' + url);
+                  }
+                </script>
+              </div>
+              <div class="link-container">
+                <input style="border: none;" class="link" type="text" value="https://ibizapropiedades.com.ve/propiedad/{{id}}">
+                <button class="copy-btn">{{@root.t.property_.copyLink}}</button>
+              </div>
+            </div>
+
+            <h2 class="property-title"><a href="propiedad/{{id}}">{{descripcion}}</a></h2>
+            <span class="property-location d-block mb-3"><span class="property-icon icon-room"></span>{{estado}}</span>
+            <strong class="property-price text-primary mb-3 d-block text-success">$ {{formatNumber precio}}</strong>
+            <ul class="property-specs-wrap mb-3 mb-lg-0">
+
+              {{#if n_habitaciones}}
+              <li>
+                <span class="property-specs">{{@root.t.property_.rooms}}</span>
+                <span class="property-specs-number">{{n_habitaciones}} <sup>+</sup></span>
+              </li>
+              {{/if}}
+
+              {{#if n_banos}}
+              <li>
+                <span class="property-specs">{{@root.t.property_.bathrooms}}</span>
+                <span class="property-specs-number">{{n_banos}}</span>
+              </li>
+              {{/if}}
+
+              {{#if superficie}}
+              <li>
+                <span class="property-specs">{{@root.t.property_.surface}}</span>
+                <span class="property-specs-number">{{formatNumber superficie}} m<sup>2</sup></span>
+              </li>
+              {{/if}}
+
+              {{#if terreno}}
+              <li>
+                <span class="property-specs">{{@root.t.property_.land}}</span>
+                <span class="property-specs-number">{{formatNumber terreno}} m<sup>2</sup></span>
+              </li>
+              {{/if}}
+            </ul>
+
+          </div>
+        </div>
+      </div>
+      {{/each}}
+
+    </div>
 
     {{else}}
-    
+
     <div class="site-section">
-        <div class="container">
-
-            <div class="row justify-content-center">
-                <div class="col-md-7 text-center">
-                        <div style="color: #000;font-weight: 700;font-size: 2rem;">
-                        <h2>Lo sentimos, no se encontraron propiedades que coincidan con tu búsqueda</h2>
-                        </div>
-                </div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-7 text-center">
+            <div style="color: #000;font-weight: 700;font-size: 2rem;">
+              <h2>{{@root.t.property_.noResults}}</h2>
             </div>
-
-
+          </div>
         </div>
+      </div>
     </div>
 
     {{/if}}
 
-
-
-
-{{!--         <div class="row">
-          <div class="col-md-12 text-center">
-            <div class="site-pagination">
-              <a href="#" class="active">1</a>
-              <a href="#">2</a>
-              <a href="#">3</a>
-              <a href="#">4</a>
-              <a href="#">5</a>
-              <span>...</span>
-              <a href="#">10</a>
-            </div>
-          </div>  
-        </div> --}}
-        
-      </div>
-    </div>
+  </div>
+</div>
 
 
     
 
-    <!-- Pie de pagina-->
-    <footer class="site-footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4">
-            <div class="mb-5">
-              <h3 class="footer-heading mb-4">SOBRE IBIZA PROPIEDADES</h3>
-              <p> Nuestro compromiso es premiar su confianza.</p>
-            </div>
-
-            
-            
-          </div>
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <div class="row mb-5">
-              <div class="col-md-12">
-                <h3 class="footer-heading mb-4">NAVEGACIÓN</h3>
-              </div>
-              <div class="col-md-6 col-lg-6">
-                <ul class="list-unstyled">
-                  <li><a href="/">Inicio</a></li>
-                  <li><a href="/venda-su-propiedad">Venda su propiedad</a></li>
-                  <li><a href="/sobre-nosotros">Acerca de ibiza propiedades</a></li>
-                  <li><a href="/contacto">Contacto</a></li>
-                </ul>
-              </div>
-
-            </div>
-
-
-          </div>
-
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <h3 class="footer-heading mb-4">SÍGANOS</h3>
-
-                <div>
-
-                  <a href="https://www.instagram.com/ibizapropiedades/" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-
-                </div>
-
-            
-
-          </div>
-          
-        </div>
-        <div class="row pt-5 mt-5 text-center">
-          <div class="col-md-12">
-            <p>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> PEVITE Tecnología. Todos los derechos reservados. Prohibida la reproducción total o parcial de cualquier contenido sin el permiso expreso por escrito de PEVITE Tecnología.  by <a href="https://pevite.com.ve/" target="_blank" >PEVITE</a> <i class="icon-heart text-danger" aria-hidden="true"></i>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
-          </div>
-          
+<!-- Pie de pagina-->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="mb-5">
+          <h3 class="footer-heading mb-4">{{t.footer.about_us}}</h3>
+          <p>{{t.footer.about_us_description}}</p>
         </div>
       </div>
-    </footer>
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <div class="row mb-5">
+          <div class="col-md-12">
+            <h3 class="footer-heading mb-4">{{t.footer.navigation}}</h3>
+          </div>
+          <div class="col-md-6 col-lg-6">
+            <ul class="list-unstyled">
+              <li><a href="/">{{t.footer.nav_home}}</a></li>
+              <li><a href="/venda-su-propiedad">{{t.footer.nav_sell_property}}</a></li>
+              <li><a href="/sobre-nosotros">{{t.footer.nav_about_us}}</a></li>
+              <li><a href="/contacto">{{t.footer.nav_contact}}</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <h3 class="footer-heading mb-4">{{t.footer.follow_us}}</h3>
+        <div>
+          <a href="{{t.footer.instagram}}" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+        </div>
+      </div>
+    </div>
+    <div class="row pt-5 mt-5 text-center">
+      <div class="col-md-12">
+        <p>
+          Copyright &copy;<script>document.write(new Date().getFullYear());</script> PEVITE Tecnología. {{t.footer.derechos_reservados}} by <a href="https://pevite.com.ve/" target="_blank" >PEVITE</a> <i class="icon-heart text-danger" aria-hidden="true"></i>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
 
 <script>
 

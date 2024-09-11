@@ -1,0 +1,69 @@
+{
+"brand": {
+    "name": "IBIZA PROPIEDADES"
+  },
+  "navbar": {
+    "home": "Inicio",
+    "sell": "Venda su propiedad",
+    "buy": "Comprar",
+    "rent": "Alquilar",
+    "valuate": "Valorar una propiedad",
+    "apartment": "Apartamento",
+    "house": "Casa",
+    "land": "Terreno",
+    "commercial": "Local comercial",
+    "office": "Oficina",
+    "building": "Edificio",
+    "company": "Empresa",
+    "about": "Acerca de Ibiza propiedades",
+    "contact": "Contacto"
+  },
+  
+    "contact": {
+      "title": "CONTÁCTENOS",
+      "email_sent": "¡Correo enviado exitosamente!",
+      "email_not_sent": "Error al enviar el correo. Inténtelo de nuevo."
+    }
+  ,
+  
+
+"contact_section": {
+    "form": {
+      "name": "Nombre completo",
+      "phone": "Teléfono",
+      "email": "Correo electrónico",
+      "subject": "Asunto",
+      "message": "Mensaje",
+      "send": "Enviar mensaje"
+    },
+    "contact_info": {
+      "contact_details": "DATOS DE CONTACTO",
+      "address": "DIRECCIÓN",
+      "address_details": "AV INTERCOMUNAL TURMERO- MARACAY, CALLE ROMAR, GALPÓN 14, PB. MARACAY, ESTADO ARAGUA",
+      "phone": "Teléfono",
+      "email": "Dirección de correo electrónico"
+    }
+  },"agents_section": {
+    "title": "NUESTROS AGENTES",
+    "description": "Descubre el equipo apasionado y dedicado detrás de Ibiza Propiedades...",
+    "agents": {
+      "marine_name": "Ing. Marinés Capriles",
+      "marine_alt": "Imagen de Marinés Capriles",
+      "mariana_name": "Lic. Mariana Pereira",
+      "mariana_alt": "Imagen de Mariana Pereira",
+      "jair_name": "Abg. Jair Torres",
+      "jair_alt": "Imagen de Jair Torres"
+    }
+  },"footer": {
+    "about_us": "SOBRE IBIZA PROPIEDADES",
+    "about_us_description": "Nuestro compromiso es premiar su confianza.",
+    "navigation": "NAVEGACIÓN",
+    "nav_home": "Inicio",
+    "nav_sell_property": "Venda su propiedad",
+    "nav_about_us": "Acerca de ibiza propiedades",
+    "nav_contact": "Contacto",
+    "follow_us": "SÍGANOS",
+    "instagram": "https://www.instagram.com/ibizapropiedades/",
+    "derechos_reservados": "Todos los derechos reservados. Prohibida la reproducción total o parcial de cualquier contenido sin el permiso expreso por escrito de PEVITE Tecnología."
+  }
+  }

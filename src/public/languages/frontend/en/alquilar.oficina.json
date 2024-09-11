@@ -1,0 +1,63 @@
+{
+    "menu": {
+      "home": "Home",
+      "sell_property": "Sell your property",
+      "value_property": "Value a property",
+      "buy": "Buy",
+      "apartment": "Apartment",
+      "house": "House",
+      "land": "Land",
+      "commercial_space": "Commercial space",
+      "office": "Office",
+      "building": "Building",
+      "rent": "Rent",
+      "about_us": "About Ibiza Properties",
+      "contact": "Contact"
+    },
+    "brand": {
+      "name": "IBIZA PROPERTIES"
+    },
+    "property": {
+    "sale": "FOR SALE",
+    "rent": "FOR RENT",
+    "details": "VIEW DETAILS"
+  },
+  "search": {
+    "propertyType": "PROPERTY TYPE",
+    "apartment": "Apartment",
+    "house": "House",
+    "land": "Land",
+    "commercialSpace": "Commercial Space",
+    "office": "Office",
+    "building": "Building",
+    "offerType": "OFFER TYPE",
+    "forSale": "For Sale",
+    "forRent": "For Rent",
+    "state": "STATE",
+    "search": "Search"
+  },
+  "property_": {
+    "sale": "For Sale",
+    "rent": "For Rent",
+    "share": "Share",
+    "copyLink": "Copy",
+    "rooms": "Rooms",
+    "bathrooms": "Bathrooms",
+    "surface": "Surface",
+    "land": "Land",
+    "noResults": "Sorry, no properties matching your search were found",
+    "twitterText": "Check out this beautiful property at Ibiza Properties. Discover a unique place to call home, surrounded by natural beauty and modern amenities. Don't miss this opportunity!"
+  },
+  "footer": {
+        "about_us": "ABOUT IBIZA PROPIEDADES",
+        "about_us_description": "Our commitment is to reward your trust.",
+        "navigation": "NAVIGATION",
+        "nav_home": "Home",
+        "nav_sell_property": "Sell Your Property",
+        "nav_about_us": "About Ibiza Properties",
+        "nav_contact": "Contact",
+        "follow_us": "FOLLOW US",
+        "instagram": "https://www.instagram.com/ibizapropiedades/",
+        "derechos_reservados": "All rights reserved. Total or partial reproduction of any content is prohibited without the express written permission of PEVITE Technology."
+      }
+  }

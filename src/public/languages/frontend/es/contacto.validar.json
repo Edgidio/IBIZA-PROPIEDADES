@@ -1,0 +1,35 @@
+{
+    "correo": {
+      "base": "El correo electrónico debe ser una cadena de texto.",
+      "email": "Ingrese un correo electrónico válido.",
+      "max": "El correo electrónico no puede tener más de {#limit} caracteres.",
+      "required": "El correo electrónico es un campo requerido.",
+      "unknown": "El campo \"{#label}\" no está permitido o no es válido.",
+      "empty": "El correo electrónico no puede estar vacío."
+    },
+    "nombre": {
+      "base": "El nombre debe ser una cadena de texto.",
+      "empty": "El nombre no puede estar vacío.",
+      "max": "El nombre no puede tener más de {#limit} caracteres.",
+      "required": "El nombre es un campo requerido."
+    },
+    "telefono": {
+      "base": "El teléfono debe ser un número válido.",
+      "empty": "El teléfono no puede estar vacío.",
+      "max": "El teléfono no puede tener más de {#limit} caracteres.",
+      "required": "El teléfono es un campo requerido."
+    },
+    "asunto": {
+      "base": "El asunto debe ser una cadena de texto.",
+      "empty": "El asunto no puede estar vacío.",
+      "max": "El asunto no puede tener más de {#limit} caracteres.",
+      "required": "El asunto es un campo requerido."
+    },
+    "mensaje": {
+      "base": "El mensaje debe ser una cadena de texto.",
+      "empty": "El mensaje no puede estar vacío.",
+      "max": "El mensaje no puede tener más de {#limit} caracteres.",
+      "required": "El mensaje es un campo requerido."
+    }
+  }
+  
