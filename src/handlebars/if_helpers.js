@@ -9,6 +9,10 @@ handlebars.registerHelper('eq', function (a, b, options) {
   return a === b ? options.fn(this) : options.inverse(this);
 });
 
+handlebars.registerHelper('eqq', function (a, b, options) {
+  return a === b;
+});
+
 handlebars.registerHelper('formatNumber', function (number) {
   if (!Number.isInteger(number)) {
     return number;
@@ -29,10 +33,30 @@ handlebars.registerHelper('esMayorQueCero', function(valor, opciones) {
 });
 
 handlebars.registerHelper('formatDate', function (date) {
-  return moment(date).format('MM/DD/YYYY');
+
+  const ahora = moment();
+  const fechaMoment = moment(date);
+  
+  // Calcula la diferencia total en milisegundos
+  const duracion = moment.duration(ahora.diff(fechaMoment));
+
+  // Obtén los días, horas y minutos de la duración
+  const dias = Math.floor(duracion.asDays());
+  const horas = Math.floor(duracion.asHours()) % 24;
+  const minutos = Math.floor(duracion.asMinutes()) % 60;
+
+  // Decide qué unidad mostrar
+  if (dias > 0) {
+    return dias + (dias === 1 ? ' día' : ' días');
+  } else if (horas > 0) {
+    return horas + (horas === 1 ? ' hora' : ' horas');
+  } else {
+    return minutos + (minutos === 1 ? ' minuto' : ' minutos');
+  }
 });
 
 handlebars.registerHelper('formatFecha', function (fecha) {
+  
   // Devuelve el formato deseado
   return moment(fecha).format('dddd, MMMM D, YYYY h:mm A');
 });

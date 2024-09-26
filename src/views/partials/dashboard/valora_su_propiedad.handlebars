@@ -93,36 +93,38 @@
             <div class="animated fadeIn">
                 <div class="row">
 
+                {{#if valoraciones_propiedades}}
+                {{#each valoraciones_propiedades}}
                     <div class="col-lg-6">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Propiedad a valorar<span class="badge badge-success float-right">Success</span></h4>
+                                <h4>Propiedad a valorar<span class="badge badge-success float-right">Hace {{formatDate createdAt}}</span></h4>
                             </div>
                             <div class="card-body">
-                                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                <ul class="nav nav-pills mb-3" id="pills-tab-{{id}}" role="tablist">
                                     <li style=" margin-left: 5px; padding: 4px;" class="nav-item">
-                                        <a class="nav-link active show" id="ubicacion-tab" data-toggle="pill" href="#ubicacion" role="tab" aria-controls="ubicacion" aria-selected="false">Ubicación</a>
+                                        <a class="nav-link active show" id="ubicacion-tab-{{id}}" data-toggle="pill" href="#ubicacion-{{id}}" role="tab" aria-controls="ubicacion-{{id}}" aria-selected="false">Ubicación</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="propiedad-tab" data-toggle="pill" href="#propiedad" role="tab" aria-controls="propiedad" aria-selected="false">Propiedad</a>
+                                        <a class="nav-link" id="propiedad-tab-{{id}}" data-toggle="pill" href="#propiedad-{{id}}" role="tab" aria-controls="propiedad-{{id}}" aria-selected="false">Propiedad</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="informacion-tab" data-toggle="pill" href="#informacion" role="tab" aria-controls="informacion" aria-selected="true">Información</a>
+                                        <a class="nav-link" id="informacion-tab-{{id}}" data-toggle="pill" href="#informacion-{{id}}" role="tab" aria-controls="informacion-{{id}}" aria-selected="true">Información</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link " id="contacto-tab" data-toggle="pill" href="#contacto" role="tab" aria-controls="contacto" aria-selected="true">Contacto</a>
+                                        <a class="nav-link " id="contacto-tab-{{id}}" data-toggle="pill" href="#contacto-{{id}}" role="tab" aria-controls="contacto-{{id}}" aria-selected="true">Contacto</a>
                                     </li>
                                 </ul>
 
-                                <div class="tab-content" id="pills-tabContent">
-                                    <div class="tab-pane fade active show" id="ubicacion" role="tabpanel" aria-labelledby="ubicacion-tab">
+                                <div class="tab-content" id="pills-tabContent-{{id}}">
+                                    <div class="tab-pane fade active show" id="ubicacion-{{id}}" role="tabpanel" aria-labelledby="ubicacion-tab-{{id}}">
                                         <div class="form-group has-success">
                                             <label for="ubicacion" class="control-label mb-1">Ubicación de la propiedad</label>
-                                            <input disabled value="Santa maria, los gomez" id="ubicacion" name="ubicacion" type="text" class="form-control cc-name valid" data-val="true" data-val-required="" autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="ubicacion">
+                                            <input disabled value="{{ubicacion}}" id="ubicacion" name="ubicacion" type="text" class="form-control cc-name valid" data-val="true" data-val-required="" autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="ubicacion">
                                         </div>
                                         <div class="form-group">
                                             <label for="numero-casa" class="control-label mb-1">Número de casa</label>
-                                            <input id="numero-casa" name="numero-casa" type="number" class="form-control cc-number identified visa" value="19" disabled>
+                                            <input id="numero-casa" name="numero-casa" type="number" class="form-control cc-number identified visa" value="{{numeroCasa}}" disabled>
                                             <span class="help-block" data-valmsg-for="numero-casa" data-valmsg-replace="true"></span>
                                         </div>
                                         <form action="#" method="post" novalidate="novalidate"></form>
@@ -136,70 +138,117 @@
                                         </form>
                                     </div>
 
-                                    <div class="tab-pane fade" id="propiedad" role="tabpanel" aria-labelledby="propiedad-tab">
+                                    <div class="tab-pane fade" id="propiedad-{{id}}" role="tabpanel" aria-labelledby="propiedad-tab-{{id}}">
                                         <div class="card-body card-block">
-                                            <div class="form-group"><label for="tipo-propiedad" class=" form-control-label">Tipo de propiedad</label><input type="text" id="tipo-propiedad" value="Apartamento" disabled class="form-control"></div>
-                                            <div class="form-group"><label for="planta-apartamento" class=" form-control-label">Planta del apartamento</label><input type="text" id="planta-apartamento" disabled class="form-control" value="12"></div>
-                                            <div class="form-group"><label for="puerta-bloque" class=" form-control-label">Puerta / Bloque (opcional)</label><input type="text" id="puerta-bloque" disabled value="24" class="form-control"></div>
-                                            <div class="form-group"><label for="superficie-construida" class=" form-control-label">Superficie construida</label><input type="text" id="superficie-construida" value="1" disabled class="form-control"></div>
+                                            <div class="form-group"><label for="tipo-propiedad" class=" form-control-label">Tipo de propiedad</label><input type="text" id="tipo-propiedad" value="{{tipoPropiedad}}" disabled class="form-control"></div>
+                                            <div class="form-group"><label for="planta-apartamento" class=" form-control-label">Planta del apartamento</label><input type="text" id="planta-apartamento" disabled class="form-control" value="{{plantaApartamento}}"></div>
+                                            <div class="form-group"><label for="puerta-bloque" class=" form-control-label">Puerta / Bloque (opcional)</label><input type="text" id="puerta-bloque" disabled value="{{puertaBloque}}" class="form-control"></div>
+                                            <div class="form-group"><label for="superficie-construida" class=" form-control-label">Superficie construida</label><input type="text" id="superficie-construida" value="{{superficieConstruidaApartamento}}" disabled class="form-control"></div>
+                                            <div class="form-group"><label for="superficie-construida" class=" form-control-label">Area del terreno</label><input type="text" id="superficie-construida" value="{{areaTerreno}}" disabled class="form-control"></div>                                            
                                         </div>
                                     </div>
 
-                                    <div class="tab-pane fade" id="informacion" role="tabpanel" aria-labelledby="informacion-tab">
+                                    <div class="tab-pane fade" id="informacion-{{id}}" role="tabpanel" aria-labelledby="informacion-tab-{{id}}">
                                         <div class="card-body card-block">
-                                            <div class="form-group"><label for="num-habitaciones" class=" form-control-label">Número de habitaciones</label><input type="text" id="num-habitaciones" value="Apartamento" disabled class="form-control"></div>
-                                            <div class="form-group"><label for="num-banos" class=" form-control-label">Número de baños</label><input type="text" id="num-banos" disabled class="form-control" value="12"></div>
-                                            <div class="form-group"><label for="estado-propiedad" class=" form-control-label">Estado de la propiedad</label><input type="text" id="estado-propiedad" disabled value="24" class="form-control"></div>
+                                            <div class="form-group"><label for="num-habitaciones" class=" form-control-label">Número de habitaciones</label><input type="text" id="num-habitaciones" value="{{numHabitaciones}}" disabled class="form-control"></div>
+                                            <div class="form-group"><label for="num-banos" class=" form-control-label">Número de baños</label><input type="text" id="num-banos" disabled class="form-control" value="{{numBanios}}"></div>
+                                            <div class="form-group"><label for="estado-propiedad" class=" form-control-label">Estado de la propiedad</label><input type="text" id="estado-propiedad" disabled value="{{EstadoPropiedad}}" class="form-control"></div>
+                                            {{#each caracteristica}}
+                                            {{#if (eqq this "Piscina")}}
+                                                {{this}}
+                                            {{/if}}
+                                            {{/each}}
                                             <div class="signup-field">
-                                                <div class="signup-label">Características</div>
+                                                <div class="signup-label">Características 
+                                                     
+                                                </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input disabled class="form-check-input" type="checkbox" id="piscina" name="caracteristica" value="Piscina">
+                                                    <input disabled class="form-check-input" type="checkbox" id="piscina" name="caracteristica"
+                                                    {{#each caracteristica}}
+                                                    {{#if (eqq this "Piscina")}}
+                                                        checked
+                                                    {{/if}}
+                                                    {{/each}}                                                     
+                                                     value="Piscina">
                                                     <label class="form-check-label" for="piscina">Piscina</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input disabled class="form-check-input" type="checkbox" id="terraza" name="caracteristica" value="Terraza">
+                                                    <input disabled class="form-check-input" type="checkbox" id="terraza" name="caracteristica"
+                                                    {{#each caracteristica}}
+                                                    {{#if (eqq this "Terraza")}}
+                                                        checked
+                                                    {{/if}}
+                                                    {{/each}} 
+                                                     value="Terraza">
                                                     <label class="form-check-label" for="terraza">Terraza</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input disabled class="form-check-input" type="checkbox" id="garaje" name="caracteristica" value="Garaje">
+                                                    <input disabled class="form-check-input" type="checkbox" id="garaje" name="caracteristica" 
+                                                    
+                                                    {{#each caracteristica}}
+                                                    {{#if (eqq this "Garaje")}}
+                                                        checked
+                                                    {{/if}}
+                                                    {{/each}} 
+                                                     value="Garaje">
                                                     <label class="form-check-label" for="garaje">Garaje</label>
                                                 </div>
                                             </div>
+                                            
                                         </div>
                                     </div>
 
-                                    <div class="tab-pane fade" id="contacto" role="tabpanel" aria-labelledby="contacto-tab">
+                                    <div class="tab-pane fade" id="contacto-{{id}}" role="tabpanel" aria-labelledby="contacto-tab-{{id}}">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="nombre">Nombre</label>
-                                                <input disabled type="email" class="form-control" id="nombre" placeholder="Email">
+                                                <input disabled type="email" class="form-control" id="nombre" placeholder="{{nombre}}">
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="apellido">Apellido</label>
-                                                <input disabled type="text" class="form-control" id="apellido" placeholder="Password">
+                                                <input disabled type="text" class="form-control" id="apellido" placeholder="{{Apellidos}}">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="correo">Correo</label>
-                                            <input disabled type="text" class="form-control" id="correo" placeholder="1234 Main St">
+                                            <input disabled type="text" class="form-control" id="correo" placeholder="{{correo}}">
                                         </div>
                                         <div class="form-group">
                                             <label for="telefono">Telefono</label>
-                                            <input disabled type="text" class="form-control" id="telefono" placeholder="Apartment, studio, or floor">
+                                            <input disabled type="text" class="form-control" id="telefono" placeholder="{{telefono}}">
                                         </div>
 
                                         <div class="signup-field">
                                             <div class="signup-label">Contactarle</div>
                                             <div class="form-check form-check-inline">
-                                                <input disabled class="form-check-input" type="checkbox" id="manana" value="Manana" name="Manana">
+                                                <input disabled class="form-check-input" type="checkbox" id="manana" value="Manana" 
+                                                    {{#each contactar}}
+                                                    {{#if (eqq this "Mañana")}}
+                                                        checked
+                                                    {{/if}}
+                                                    {{/each}} 
+
+                                                 name="Manana">
                                                 <label class="form-check-label" for="manana">Mañana</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input disabled class="form-check-input" type="checkbox" name="tarde" id="tarde" value="Tarde">
+                                                <input disabled class="form-check-input" type="checkbox" name="tarde" id="tarde"
+                                                    {{#each contactar}}
+                                                    {{#if (eqq this "Tarde")}}
+                                                        checked
+                                                    {{/if}}
+                                                    {{/each}}
+                                                 value="Tarde">
                                                 <label class="form-check-label" for="tarde">Tarde</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input disabled class="form-check-input" type="checkbox" id="noche" name="Noche" value="Noche">
+                                                <input disabled class="form-check-input" type="checkbox" id="noche" name="Noche"
+                                                    {{#each contactar}}
+                                                    {{#if (eqq this "Noche")}}
+                                                        checked
+                                                    {{/if}}
+                                                    {{/each}}
+                                                 value="Noche">
                                                 <label class="form-check-label" for="noche">Noche</label>
                                             </div>
                                         </div>
@@ -208,123 +257,9 @@
                             </div>
                         </div>
                     </div>
-
-                                        <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Propiedad a valorar<span class="badge badge-success float-right">Success</span></h4>
-                            </div>
-                            <div class="card-body">
-                                <ul class="nav nav-pills mb-3" id="pills-tab-1" role="tablist">
-                                    <li style=" margin-left: 5px; padding: 4px;" class="nav-item">
-                                        <a class="nav-link active show" id="ubicacion-tab-1" data-toggle="pill" href="#ubicacion-1" role="tab" aria-controls="ubicacion-1" aria-selected="false">Ubicación</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="propiedad-tab-1" data-toggle="pill" href="#propiedad-1" role="tab" aria-controls="propiedad-1" aria-selected="false">Propiedad</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" id="informacion-tab" data-toggle="pill" href="#informacion" role="tab" aria-controls="informacion" aria-selected="true">Información</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link " id="contacto-tab" data-toggle="pill" href="#contacto" role="tab" aria-controls="contacto" aria-selected="true">Contacto</a>
-                                    </li>
-                                </ul>
-
-                                <div class="tab-content" id="pills-tabContent-1">
-                                    <div class="tab-pane fade active show" id="ubicacion-1" role="tabpanel" aria-labelledby="ubicacion-tab">
-                                        <div class="form-group has-success">
-                                            <label for="ubicacion" class="control-label mb-1">Ubicación de la propiedad</label>
-                                            <input disabled value="Santa maria, los gomez" id="ubicacion" name="ubicacion" type="text" class="form-control cc-name valid" data-val="true" data-val-required="" autocomplete="cc-name" aria-required="true" aria-invalid="false" aria-describedby="ubicacion">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="numero-casa" class="control-label mb-1">Número de casa</label>
-                                            <input id="numero-casa" name="numero-casa" type="number" class="form-control cc-number identified visa" value="19" disabled>
-                                            <span class="help-block" data-valmsg-for="numero-casa" data-valmsg-replace="true"></span>
-                                        </div>
-                                        <form action="#" method="post" novalidate="novalidate"></form>
-                                        <br>
-                                        <br>
-                                        <div>
-                                            <button id="eliminar-valoracion" type="submit" class="btn btn-lg btn-info btn-block">
-                                                <span id="eliminar-valoracion-amount">Eliminar la valoración</span>
-                                            </button>
-                                        </div>
-                                        </form>
-                                    </div>
-
-                                    <div class="tab-pane fade" id="propiedad-1" role="tabpanel" aria-labelledby="propiedad-tab-1">
-                                        <div class="card-body card-block">
-                                            <div class="form-group"><label for="tipo-propiedad" class=" form-control-label">Tipo de propiedad</label><input type="text" id="tipo-propiedad" value="Apartamento" disabled class="form-control"></div>
-                                            <div class="form-group"><label for="planta-apartamento" class=" form-control-label">Planta del apartamento</label><input type="text" id="planta-apartamento" disabled class="form-control" value="12"></div>
-                                            <div class="form-group"><label for="puerta-bloque" class=" form-control-label">Puerta / Bloque (opcional)</label><input type="text" id="puerta-bloque" disabled value="24" class="form-control"></div>
-                                            <div class="form-group"><label for="superficie-construida" class=" form-control-label">Superficie construida</label><input type="text" id="superficie-construida" value="1" disabled class="form-control"></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="tab-pane fade" id="informacion" role="tabpanel" aria-labelledby="informacion-tab">
-                                        <div class="card-body card-block">
-                                            <div class="form-group"><label for="num-habitaciones" class=" form-control-label">Número de habitaciones</label><input type="text" id="num-habitaciones" value="Apartamento" disabled class="form-control"></div>
-                                            <div class="form-group"><label for="num-banos" class=" form-control-label">Número de baños</label><input type="text" id="num-banos" disabled class="form-control" value="12"></div>
-                                            <div class="form-group"><label for="estado-propiedad" class=" form-control-label">Estado de la propiedad</label><input type="text" id="estado-propiedad" disabled value="24" class="form-control"></div>
-                                            <div class="signup-field">
-                                                <div class="signup-label">Características</div>
-                                                <div class="form-check form-check-inline">
-                                                    <input disabled class="form-check-input" type="checkbox" id="piscina" name="caracteristica" value="Piscina">
-                                                    <label class="form-check-label" for="piscina">Piscina</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input disabled class="form-check-input" type="checkbox" id="terraza" name="caracteristica" value="Terraza">
-                                                    <label class="form-check-label" for="terraza">Terraza</label>
-                                                </div>
-                                                <div class="form-check form-check-inline">
-                                                    <input disabled class="form-check-input" type="checkbox" id="garaje" name="caracteristica" value="Garaje">
-                                                    <label class="form-check-label" for="garaje">Garaje</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="tab-pane fade" id="contacto" role="tabpanel" aria-labelledby="contacto-tab">
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="nombre">Nombre</label>
-                                                <input disabled type="email" class="form-control" id="nombre" placeholder="Email">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="apellido">Apellido</label>
-                                                <input disabled type="text" class="form-control" id="apellido" placeholder="Password">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="correo">Correo</label>
-                                            <input disabled type="text" class="form-control" id="correo" placeholder="1234 Main St">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="telefono">Telefono</label>
-                                            <input disabled type="text" class="form-control" id="telefono" placeholder="Apartment, studio, or floor">
-                                        </div>
-
-                                        <div class="signup-field">
-                                            <div class="signup-label">Contactarle</div>
-                                            <div class="form-check form-check-inline">
-                                                <input disabled class="form-check-input" type="checkbox" id="manana" value="Manana" name="Manana">
-                                                <label class="form-check-label" for="manana">Mañana</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input disabled class="form-check-input" type="checkbox" name="tarde" id="tarde" value="Tarde">
-                                                <label class="form-check-label" for="tarde">Tarde</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input disabled class="form-check-input" type="checkbox" id="noche" name="Noche" value="Noche">
-                                                <label class="form-check-label" for="noche">Noche</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                {{/each}}
+                {{else}}
+                {{/if}}
                     
 
                 </div>

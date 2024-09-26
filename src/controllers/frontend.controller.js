@@ -203,8 +203,46 @@ export const propiedad = async (req, res) => {
     fotosLimitadas,
     fotosPropiedad: todasLasFotos,
     propiedadesConRutaUnica,
-    t
+    t,
+    correo_propiedad_enviado: req.flash('correo_propiedad_enviado')
   });
+
+  } catch (error) {
+
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+
+};
+
+export const propiedadPOST = async (req, res) => {
+
+  try {
+    const id = req.params.id;
+    const {...datosFormulario} = req.body;
+
+    // Buscar la propiedad por id en la base de datos usando Prisma Client
+    const propiedad = await db.propiedades.findUnique({
+      where: {
+        id: parseInt(id), // Asegúrate de convertir 'id' a un número
+      },
+    });
+
+    if (!propiedad) {
+      req.flash('correo_propiedad_no_enviado', 'Correo no enviado');
+      return res.redirect(`/propiedadssssssssss/${id}`);
+    }
+
+    const newCorreoPropiedad = await db.correos_propiedad.create({
+      data: {
+        correo: datosFormulario.email,
+        nombre: datosFormulario.name,
+        telefono: datosFormulario.phone,
+        idPropiedad: id,
+      },
+    });
+
+    req.flash('correo_propiedad_enviado', 'Correo enviado');
+    return res.redirect(`/propiedad/${id}`);
 
   } catch (error) {
 
@@ -471,17 +509,57 @@ export const valore_su_propiedad_GET = async (req, res) => {
   }
 };
 
+
 export const valore_su_propiedad_POST = async (req, res) => {
 
   try {
-    console.log("PASOOOOOo")
-    console.log(req.body.consentimiento)
-    console.log(req.body)
-
-    return res.redirect("/venda-su-propiedad")
+   
+    const {
+      ubicacion,
+      numeroCasa,
+      tipoPropiedad,
+      plantaApartamento,
+      puertaBloque,
+      superficieConstruidaApartamento,
+      superficieConstruida,
+      areaTerreno,
+      numHabitaciones,
+      numBanios,
+      EstadoPropiedad,
+      caracteristica,
+      nombre,
+      Apellidos,
+      correo,
+      telefono,
+      contactar,
+    } = req.body;
+  
+      const nuevaPropiedad = await db.valorarPropiedades.create({
+        data: {
+          ubicacion,
+          numeroCasa: numeroCasa ? parseInt(numeroCasa) : null,
+          tipoPropiedad,
+          plantaApartamento,
+          puertaBloque,
+          superficieConstruidaApartamento: superficieConstruidaApartamento ? parseFloat(superficieConstruidaApartamento) : null,
+          superficieConstruida: superficieConstruida ? parseFloat(superficieConstruida) : null,
+          areaTerreno: areaTerreno ? parseFloat(areaTerreno) : null,
+          numHabitaciones: numHabitaciones ? parseInt(numHabitaciones) : null,
+          numBanios: numBanios ? parseInt(numBanios) : null,
+          EstadoPropiedad,
+          caracteristica,
+          nombre,
+          Apellidos,
+          correo,
+          telefono,
+          contactar,
+        },
+      });
+  
+      return res.status(201).json({ message: 'Propiedad guardada con éxito', propiedad: nuevaPropiedad });
 
 
   } catch (error) {
-    return res.redirect("/")
+    console.log(error)
   }
 };

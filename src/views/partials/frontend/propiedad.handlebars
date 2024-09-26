@@ -1,6 +1,38 @@
 <div class="site-loader"></div>
+
+    {{#if errors}}
+              <script>
+
+                setTimeout(function() {
+            document.getElementById("Formulario-c").scrollIntoView({ behavior: "smooth" });
+        }, 100);
+
+
+        </script>
+    {{/if}}
   
     <div class="site-wrap">
+
+            {{#if correo_propiedad_enviado}}
+        <div class="custom-alert">
+          <span class="close-btn" onclick="cerrarAlerta()">&times;</span>
+            {{correo_propiedad_enviado}}
+        </div>
+        <script>
+            function cerrarAlerta() {
+              var alerta = document.querySelector('.custom-alert');
+              alerta.style.animation = 'slideOut 0.5s forwards';
+
+              setTimeout(function() {
+                alerta.style.display = 'none';
+              }, 500);
+            }
+
+            setTimeout(function() {
+              cerrarAlerta();
+            }, 10000); // Cerrar después de 4 segundos
+        </script>
+      {{/if}}
 
         <div class="site-mobile-menu">
             <div class="site-mobile-menu-header">
@@ -197,22 +229,54 @@
 
             <div class="bg-white widget border rounded">
 
-              <h3 class="h4 text-black widget-title mb-3">{{t.agent_contact.agente_de_contacto}}</h3>
-              <form action="" class="form-contact-agent">
+
+
+              <h3 id="Formulario-c" class="h4 text-black widget-title mb-3">{{t.agent_contact.agente_de_contacto}}</h3>
+              <form action="/propiedad/{{propiedadConFotos.id}}" method="post" class="form-contact-agent">
                 <div class="form-group">
                   <label for="name">{{t.agent_contact.nombre}}</label>
-                  <input type="text" id="name" class="form-control">
+                  <input type="text" id="name" name="name" class="form-control" {{#if errors}}{{#each errors}}{{#eq field "name"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.name}}"{{/if}}>
+                  {{#if errors}}
+                    {{#each errors}}
+                      {{#eq field "name"}}
+                        <br>
+                        <div id="alerta" class="alert">
+                          <strong>{{message}}</strong>
+                        </div>
+                      {{/eq}}
+                    {{/each}}
+                  {{/if}}
                 </div>
                 <div class="form-group">
                   <label for="email">{{t.agent_contact.correo}}</label>
-                  <input type="email" id="email" class="form-control">
+                  <input  id="email" name="email" class="form-control" {{#if errors}}{{#each errors}}{{#eq field "email"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.email}}"{{/if}}>
+                  {{#if errors}}
+                    {{#each errors}}
+                      {{#eq field "email"}}
+                        <br>
+                        <div id="alerta" class="alert">
+                          <strong>{{message}}</strong>
+                        </div>
+                      {{/eq}}
+                    {{/each}}
+                  {{/if}}
                 </div>
                 <div class="form-group">
                   <label for="phone">{{t.agent_contact.telefono}}</label>
-                  <input type="text" id="phone" class="form-control">
+                  <input type="text" id="phone" name="phone" class="form-control" {{#if errors}}{{#each errors}}{{#eq field "phone"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.phone}}"{{/if}}>
+                  {{#if errors}}
+                    {{#each errors}}
+                      {{#eq field "phone"}}
+                        <br>
+                        <div id="alerta" class="alert">
+                          <strong>{{message}}</strong>
+                        </div>
+                      {{/eq}}
+                    {{/each}}
+                  {{/if}}
                 </div>
                 <div class="form-group">
-                  <input type="submit" id="phone" class="btn btn-primary" value="{{t.agent_contact.enviar_mensaje}}">
+                  <button type="submit" class="btn btn-primary">{{t.agent_contact.enviar_mensaje}}</button>
                 </div>
               </form>
             </div>
