@@ -170,6 +170,38 @@
   color: #fff;
 }
 
+.espacios {
+  margin-bottom: 110px !important;
+}
+
+/* Media queries para ajustar estilos en diferentes tamaños de pantalla */
+@media only screen and (max-width: 350px) {
+
+  #ubi{
+    
+    margin-left: -18px;
+    
+  }
+
+  .espacios {
+    margin-bottom: 180px !important;
+  }
+  
+
+  .signup-progress-bar .signup-step .signup-bullet {
+    height: 20px;
+    width: 20px;
+    border: 2px solid #000;
+    display: inline-block;
+    border-radius: 50%;
+    position: relative;
+    transition: 0.2s;
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 20px;
+    font-size: 13px;
+}
+
 
 /* Media queries para ajustar estilos en diferentes tamaños de pantalla */
 @media only screen and (max-width: 447px) {
@@ -178,6 +210,10 @@
     
     margin-left: -18px;
     
+  }
+
+  .espacios {
+    margin-bottom: 180px !important;
   }
   
 
@@ -267,10 +303,4 @@
 
   .pregun{
     width: 100% !important;
-  }
-}
-
-
-
-
-
+  }}}

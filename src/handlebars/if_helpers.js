@@ -32,6 +32,10 @@ handlebars.registerHelper('esMayorQueCero', function(valor, opciones) {
   }
 });
 
+handlebars.registerHelper('includes', function(array, value) {
+  return array && array.includes(value);
+});
+
 handlebars.registerHelper('formatDate', function (date) {
 
   const ahora = moment();

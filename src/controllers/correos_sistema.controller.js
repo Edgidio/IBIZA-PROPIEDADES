@@ -109,6 +109,7 @@ export const valora_su_propiedad_GET = async (req, res) => {
                     },
                 }
             );
+
  
             return res.render('partials/dashboard/valora_su_propiedad', {
                 Titulo: "Ibiza Prop | Valorar propiedad",
@@ -120,7 +121,8 @@ export const valora_su_propiedad_GET = async (req, res) => {
                 Correos_,
                 correo_delete: req.flash("correo_delete"),
                 error_controlador:req.flash('error_controlador'),
-                valoraciones_propiedades
+                valoraciones_propiedades,
+                valoracion_propiedad: req.flash("valoracion_propiedad")
             });
 
 
@@ -143,12 +145,24 @@ export const valora_su_propiedad_GET = async (req, res) => {
     }
 };
 
-export const valora_su_propiedad_POST = async (req, res) => {
+export const valora_su_propiedad_DELETE = async (req, res) => {
     try {
 
-        console.log(req.body)
+        const id = req.params.id
+
+        const propiedadBorrada = await db.valorarPropiedades.delete({
+            where: {
+                id: parseInt(id), // Suponiendo que 'id' es el campo clave primaria
+            },
+        });
+
+        req.flash("valoracion_propiedad", "La valoración fue eliminada")
+
+        return res.redirect("/admin-ibizapropiedades-dashboard/valora-su-propiedad"); // Devuelve el registro borrado
       
     }catch (error) {
+
+        console.log(error)
         
          // Manejo de errores y redirección en caso de problemas
          await db.log_sistema.create({

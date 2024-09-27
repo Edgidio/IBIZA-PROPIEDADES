@@ -79,7 +79,26 @@
     </div>
 
     
+      {{#if valoracion_enviada}}
+        <div class="custom-alert">
+          <span class="close-btn" onclick="cerrarAlerta()">&times;</span>
+            {{valoracion_enviada}}
+        </div>
+        <script>
+            function cerrarAlerta() {
+              var alerta = document.querySelector('.custom-alert');
+              alerta.style.animation = 'slideOut 0.5s forwards';
 
+              setTimeout(function() {
+                alerta.style.display = 'none';
+              }, 500);
+            }
+
+            setTimeout(function() {
+              cerrarAlerta();
+            }, 10000); // Cerrar después de 4 segundos
+        </script>
+      {{/if}}
 
 
     <div  class="site-blocks-cover inner-page-cover-form overlay" style="background-image: url(/images/hero_bg_1.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
@@ -120,21 +139,38 @@
                 </div>
               </div>
               <div class="signup-form-outer">
-<form action="/venda-su-propiedadd" method="post" id="formulario">
+<form action="/venda-su-propiedad" method="post" id="formulario">
 
     <div class="signup-page signup-slide-page">
         <div class="signup-title">información básica</div>
         <div class="signup-field">
             <div class="signup-label">Ubicación</div>
-            <input id="ubicacion" name="ubicacion" placeholder="Estado, municipio, ciudad o localidad" type="text">
-            <span id="ubicacionError" class="error-message"></span>
-
+            <input {{#if errors}}{{#each errors}}{{#eq field "ubicacion"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.ubicacion}}"{{/if}} id="ubicacion" name="ubicacion" placeholder="Estado, municipio, ciudad o localidad" type="text">
         </div>
+              {{#if errors}}
+                {{#each errors}}
+                  {{#eq field "ubicacion"}}
+                    <br>
+                    <div id="alerta" style="padding: 11px; margin-top: -63px;" class="alert">
+                      <strong>{{message}}</strong>
+                    </div>
+                  {{/eq}}
+                {{/each}}
+              {{/if}}
         <div class="signup-field">
             <div class="signup-label">Número de casa</div>
-            <input id="numeroCasa" name="numeroCasa" placeholder="Número de casa" type="text">
-            <span id="numeroCasaError" class="error-message"></span>
+            <input {{#if errors}}{{#each errors}}{{#eq field "numeroCasa"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.numeroCasa}}"{{/if}} id="numeroCasa" name="numeroCasa" placeholder="Número de casa" type="number">
         </div>
+              {{#if errors}}
+                {{#each errors}}
+                  {{#eq field "numeroCasa"}}
+                    <br>
+                    <div id="alerta" style="padding: 11px; margin-top: -63px;" class="alert">
+                      <strong>{{message}}</strong>
+                    </div>
+                  {{/eq}}
+                {{/each}}
+              {{/if}} 
         <div style="display: inline-block;" class="signup-field">
             <button class="signup-firstNext signup-next">Siguiente</button>
         </div>
@@ -144,36 +180,88 @@
         <div class="signup-title">Tipo de propiedad:</div>
         <div class="signup-field">
             <div class="signup-label">Propiedad</div>
+            
             <select name="tipoPropiedad" id="tipoPropiedad" onchange="toggleDiv()">
-                <option value="apartamento" selected>Apartamento</option>
-                <option value="casa">Casa</option>
+                <option {{#if errors}} {{#eq datos_formulario.tipoPropiedad "apartamento"}} selected {{/eq}}{{/if}}  value="apartamento" >Apartamento</option>
+                <option {{#if errors}} {{#eq datos_formulario.tipoPropiedad "casa"}} selected {{/eq}}{{/if}} value="casa">Casa</option>
             </select>
         </div>
 
         <div id="one">
             <div class="signup-field">
                 <div class="signup-label">Planta del apartamento</div>
-                <input id="plantaApartamento" name="plantaApartamento" placeholder="Planta del apartamento" type="text">
+                <input {{#if errors}}{{#each errors}}{{#eq field "plantaApartamento"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.plantaApartamento}}"{{/if}} id="plantaApartamento" name="plantaApartamento" placeholder="Planta del apartamento" type="number">
             </div>
+              {{#if errors}}
+                {{#each errors}}
+                  {{#eq field "plantaApartamento"}}
+                    <br>
+                    <div id="alerta" style="padding: 11px; margin-top: -63px;" class="alert">
+                      <strong>{{message}}</strong>
+                    </div>
+                  {{/eq}}
+                {{/each}}
+              {{/if}} 
             <div class="signup-field">
                 <div class="signup-label">Puerta / Bloque (opcional)</div>
-                <input id="puertaBloque" name="puertaBloque" placeholder="Puerta / Bloque (opcional)" type="text">
+                <input {{#if errors}}{{#each errors}}{{#eq field "puertaBloque"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.puertaBloque}}"{{/if}} id="puertaBloque" name="puertaBloque" placeholder="Puerta / Bloque (opcional)" value="" type="number">
             </div>
+              {{#if errors}}
+                {{#each errors}}
+                  {{#eq field "puertaBloque"}}
+                    <br>
+                    <div id="alerta" style="padding: 11px; margin-top: -63px;" class="alert">
+                      <strong>{{message}}</strong>
+                    </div>
+                  {{/eq}}
+                {{/each}}
+              {{/if}} 
             <div class="signup-field">
                 <div class="signup-label">Superficie construida</div>
-                <input id="superficieConstruidaApartamento" name="superficieConstruidaApartamento" placeholder="Superficie construida" type="text">
+                <input {{#if errors}}{{#each errors}}{{#eq field "superficieConstruidaApartamento"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.superficieConstruidaApartamento}}"{{/if}} id="superficieConstruidaApartamento" name="superficieConstruidaApartamento" placeholder="Superficie construida" type="number">
             </div>
+              {{#if errors}}
+                {{#each errors}}
+                  {{#eq field "superficieConstruidaApartamento"}}
+                    <br>
+                    <div id="alerta" style="padding: 11px; margin-top: -63px;" class="alert">
+                      <strong>{{message}}</strong>
+                    </div>
+                  {{/eq}}
+                {{/each}}
+              {{/if}} 
         </div>
 
         <div id="dos">                      
             <div class="signup-field">
                 <div class="signup-label">Superficie construida</div>
-                <input id="superficieConstruida" name="superficieConstruida" placeholder="Superficie construida" type="text">
+                <input {{#if errors}}{{#each errors}}{{#eq field "superficieConstruida"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.superficieConstruida}}"{{/if}} id="superficieConstruida" name="superficieConstruida" placeholder="Superficie construida" type="number">
             </div>
+            {{#if errors}}
+                {{#each errors}}
+                  {{#eq field "superficieConstruida"}}
+                    <br>
+                    <div id="alerta" style="padding: 11px; margin-top: -63px;" class="alert">
+                      <strong>{{message}}</strong>
+                    </div>
+                  {{/eq}}
+                {{/each}}
+              {{/if}}
             <div class="signup-field">
                 <div class="signup-label">Área del terreno</div>
-                <input id="areaTerreno" name="areaTerreno" placeholder="Tamaño del terreno" type="text">
+                <input {{#if errors}}{{#each errors}}{{#eq field "areaTerreno"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.areaTerreno}}"{{/if}} id="areaTerreno" name="areaTerreno" placeholder="Tamaño del terreno" type="number">
             </div>
+
+            {{#if errors}}
+                {{#each errors}}
+                  {{#eq field "areaTerreno"}}
+                    <br>
+                    <div id="alerta" style="padding: 11px; margin-top: -63px;" class="alert">
+                      <strong>{{message}}</strong>
+                    </div>
+                  {{/eq}}
+                {{/each}}
+              {{/if}}
         </div>
 
         <div style="display: flex; justify-content: space-between; display: inline-block;" class="signup-field signup-btns">
@@ -186,36 +274,62 @@
         <div class="signup-title">Introduzca la siguiente información:</div>
         <div class="signup-field">
             <div class="signup-label">Número de habitaciones</div>
-            <input id="numHabitaciones" name="numHabitaciones" placeholder="Número de habitaciones" type="text">
+            <input {{#if errors}}{{#each errors}}{{#eq field "numHabitaciones"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.numHabitaciones}}"{{/if}} id="numHabitaciones" name="numHabitaciones" placeholder="Número de habitaciones" type="number">
         </div>
+        {{#if errors}}
+                {{#each errors}}
+                  {{#eq field "numHabitaciones"}}
+                    <br>
+                    <div id="alerta" style="padding: 11px; margin-top: -63px;" class="alert">
+                      <strong>{{message}}</strong>
+                    </div>
+                  {{/eq}}
+                {{/each}}
+              {{/if}}
         <div class="signup-field">
             <div class="signup-label">Número de baños</div>
-            <input id="numBanios" name="numBanios" placeholder="Número de baños" type="password">
+            <input {{#if errors}}{{#each errors}}{{#eq field "numBanios"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.numBanios}}"{{/if}} id="numBanios" name="numBanios" placeholder="Número de baños" type="number">
         </div>
+        {{#if errors}}
+                {{#each errors}}
+                  {{#eq field "numBanios"}}
+                    <br>
+                    <div id="alerta" style="padding: 11px; margin-top: -63px;" class="alert">
+                      <strong>{{message}}</strong>
+                    </div>
+                  {{/eq}}
+                {{/each}}
+              {{/if}}
         <div class="signup-field">
             <div class="signup-label">Estado de la propiedad</div>
             <select name="EstadoPropiedad" id="EstadoPropiedad">
-                <option value="Obra nueva">Obra nueva</option>
-                <option value="Buen estado">Buen estado</option>
-                <option value="A reformar">A reformar</option>
+                <option {{#if errors}} {{#eq datos_formulario.EstadoPropiedad "Obra nueva"}} selected {{/eq}}{{/if}} value="Obra nueva">Obra nueva</option>
+                <option {{#if errors}} {{#eq datos_formulario.EstadoPropiedad "Buen estado"}} selected {{/eq}}{{/if}} value="Buen estado">Buen estado</option>
+                <option {{#if errors}} {{#eq datos_formulario.EstadoPropiedad "A reformar"}} selected {{/eq}}{{/if}} value="A reformar">A reformar</option>
             </select>
         </div>
 
-        <div class="signup-field">    
-            <div class="signup-label">Seleccione las características</div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="caracteristica" value="Piscina">
-                <label class="form-check-label" for="inlineCheckbox1">Piscina</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="caracteristica" value="Terraza">
-                <label class="form-check-label" for="inlineCheckbox2">Terraza</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="caracteristica" value="Garaje">
-                <label class="form-check-label" for="inlineCheckbox3">Garaje</label>
-            </div>
-        </div>
+<div class="signup-field">    
+    <div class="signup-label">Seleccione las características</div>
+
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="caracteristica" value="Piscina" 
+        {{#if errors}} {{#if (includes datos_formulario.caracteristica "Piscina")}} checked {{/if}} {{/if}}>
+        <label class="form-check-label" for="inlineCheckbox1">Piscina</label>
+    </div>
+    
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="caracteristica" value="Terraza" 
+        {{#if errors}} {{#if (includes datos_formulario.caracteristica "Terraza")}} checked {{/if}} {{/if}}>
+        <label class="form-check-label" for="inlineCheckbox2">Terraza</label>
+    </div>
+
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="caracteristica" value="Garaje" 
+        {{#if errors}} {{#if (includes datos_formulario.caracteristica "Garaje")}} checked {{/if}} {{/if}}>
+        <label class="form-check-label" for="inlineCheckbox3">Garaje</label>
+    </div>
+</div>
 
         <div style="display: flex; justify-content: space-between; display: inline-block;" class="signup-field signup-btns">
             <button class="signup-prev-2 signup-prev">Anterior</button>
@@ -225,62 +339,121 @@
 
     <div class="signup-page">
         <div class="signup-title">¿Cómo podemos contactarle?</div>
-        <div class="signup-field">
+        <div class="espacios signup-field">
             <div style="display: contents;" class="form-row ">
                 <div class="form-group col">
                     <div class="signup-label">Nombre</div>
-                    <input id="nombre" name="nombre" placeholder="Nombre" type="text">
+                    <input {{#if errors}}{{#each errors}}{{#eq field "nombre"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.nombre}}"{{/if}} id="nombre" name="nombre" placeholder="Nombre" type="text">
+                {{#if errors}}
+                {{#each errors}}
+                  {{#eq field "nombre"}}
+                    <br>
+                    <div id="alerta" style="padding: 8px; margin-top: 7px;" class="alert">
+                      <strong>{{message}}</strong>
+                    </div>
+                  {{/eq}}
+                {{/each}}
+              {{/if}}                    
                 </div>
+
                 <div class="form-group col">
                     <div style="display: inline-block;" class="signup-label">Apellidos</div>
-                    <input id="Apellidos" name="Apellidos" placeholder="Apellidos">
+                    <input {{#if errors}}{{#each errors}}{{#eq field "Apellidos"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.Apellidos}}"{{/if}} id="Apellidos" name="Apellidos" type="text" placeholder="Apellidos">
+                {{#if errors}}
+                {{#each errors}}
+                  {{#eq field "Apellidos"}}
+                    <br>
+                    <div id="alerta" style="padding: 8px; margin-top: 7px;" class="alert">
+                      <strong>{{message}}</strong>
+                    </div>
+                  {{/eq}}
+                {{/each}}
+              {{/if}}
+
                 </div>
+
             </div>
         </div>
-        <div class="signup-field">
+        <div class="espacios signup-field">
             <div style="display: contents;" class="form-row ">
                 <div class="form-group col">
                     <div class="signup-label">Correo</div>
-                    <input id="correo" name="correo" placeholder="Correo" type="text">
+                    <input {{#if errors}}{{#each errors}}{{#eq field "correo"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.correo}}"{{/if}} id="correo" name="correo" placeholder="Correo" type="email">
+                {{#if errors}}
+                {{#each errors}}
+                  {{#eq field "correo"}}
+                    <br>
+                    <div id="alerta" style="padding: 8px; margin-top: 7px;" class="alert">
+                      <strong>{{message}}</strong>
+                    </div>
+                  {{/eq}}
+                {{/each}}
+              {{/if}}
+
                 </div>
+
                 <div class="form-group col">
                     <div style="display: inline-block;" class="signup-label">Teléfono</div>
-                    <input id="telefono" name="telefono" placeholder="Número de teléfono">
+                    <input {{#if errors}}{{#each errors}}{{#eq field "telefono"}} style=" border-color: #f30808 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.telefono}}"{{/if}} id="telefono" name="telefono" type="number" placeholder="Número de teléfono">
+                {{#if errors}}
+                {{#each errors}}
+                  {{#eq field "telefono"}}
+                    <br>
+                    <div id="alerta" style="padding: 8px; margin-top: 7px;" class="alert">
+                      <strong>{{message}}</strong>
+                    </div>
+                  {{/eq}}
+                {{/each}}
+              {{/if}}
+
                 </div>
+
             </div>
         </div>
 
-        <div class="signup-field">  
+<div class="signup-field">  
+  <div class="signup-label">¿Cuándo podemos contactarle?</div>
+  
+  <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox11" name="contactar" value="Mañana" 
+      {{#if errors}} {{#if (includes datos_formulario.contactar "Mañana")}} checked {{/if}} {{/if}}>
+      <label class="form-check-label" for="inlineCheckbox11">Mañana</label>
+  </div>
 
-          <div class="signup-label">¿Cuándo podemos contactarle?</div>
-          <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox11" name="contactar" value="Mañana">
-              <label class="form-check-label" for="inlineCheckbox11">Mañana</label>
-          </div>
-          <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox22" name="contactar" value="Tarde">
-              <label class="form-check-label" for="inlineCheckbox22">Terde</label>
-          </div>
-          <div class="form-check form-check-inline">
-              <input class="form-check-input" type="checkbox" id="inlineCheckbox33" name="contactar" value="Noche">
-              <label class="form-check-label" for="inlineCheckbox33">Noche</label>
-          </div>
+  <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox22" name="contactar" value="Tarde" 
+      {{#if errors}} {{#if (includes datos_formulario.contactar "Tarde")}} checked {{/if}} {{/if}}>
+      <label class="form-check-label" for="inlineCheckbox22">Tarde</label>
+  </div>
 
-        </div>
+  <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="inlineCheckbox33" name="contactar" value="Noche" 
+      {{#if errors}} {{#if (includes datos_formulario.contactar "Noche")}} checked {{/if}} {{/if}}>
+      <label class="form-check-label" for="inlineCheckbox33">Noche</label>
+  </div>
+</div>
 
-{{!--         <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" value="consentimiento" id="consentimiento">
-            <label class="form-check-label" name="consentimiento" for="consentimiento">Doy mi consentimiento para el tratamiento de mis datos con el fin de determinar el valor de mercado y ser contactado de Ibiza propiedades. Mis datos anteriores se pueden pasar en el socio de licencia local de Ibiza propiedades de acuerdo con la dirección de mi propiedad con el propósito de contactarme.</label>
-        </div> --}}
+        {{#if errors}}
+                {{#each errors}}
+                  {{#eq field "contactar"}}
+                    <br>
+                    <div id="alerta" style="padding: 11px; margin-top: -63px;" class="alert">
+                      <strong>{{message}}</strong>
+                    </div>
+                  {{/eq}}
+                {{/each}}
+              {{/if}}
+
+
           
-        <div class="signup-field">  
+        <div class="signup-field" style="display: initial;">  
 
-        <div style="display: flex; justify-content: space-between; display: inline-block;" class="signup-field signup-btns">
-            <button class="signup-prev-3 signup-prev">Anterior</button>
-            <button type="submit" class="signup-submit">Valorar</button>
-        </div>
+          <div style="display: flex; justify-content: space-between; display: inline-block;" class="signup-field signup-btns">
+              <button class="signup-prev-3 signup-prev">Anterior</button>
+              <button type="submit" class="signup-submit">Valorar</button>
+          </div>
 
-        </div>div>  
+        </div>  
 
     </div>
 

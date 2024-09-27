@@ -501,7 +501,8 @@ export const valore_su_propiedad_GET = async (req, res) => {
 
     return res.render('partials/frontend/venda_su_propiedad', {
       Titulo: "Ibiza Propiedades | Venda su propiedad",
-      rutaIF: "Frontend"
+      rutaIF: "Frontend",
+      valoracion_enviada: req.flash("valoracion_enviada")
     });
 
   } catch (error) {
@@ -533,6 +534,11 @@ export const valore_su_propiedad_POST = async (req, res) => {
       telefono,
       contactar,
     } = req.body;
+
+    if (!Array.isArray(contactar)) {
+      // Si contactar es un string, lo convertimos en un array
+      contactar = [contactar];
+    }
   
       const nuevaPropiedad = await db.valorarPropiedades.create({
         data: {
@@ -555,8 +561,11 @@ export const valore_su_propiedad_POST = async (req, res) => {
           contactar,
         },
       });
-  
-      return res.status(201).json({ message: 'Propiedad guardada con éxito', propiedad: nuevaPropiedad });
+
+      console.log("guardo")
+
+      req.flash("valoracion_enviada", "La valoración fue enviada")  
+      return res.redirect("/venda-su-propiedad");
 
 
   } catch (error) {

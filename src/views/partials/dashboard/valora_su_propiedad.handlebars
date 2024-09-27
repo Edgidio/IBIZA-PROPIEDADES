@@ -37,9 +37,9 @@
         
         <!-- Content -->
         <div class="breadcrumbs">
-            {{#if usuarioEliminado}}
+            {{#if valoracion_propiedad}}
             <div style="text-align: center;" id="success-alertt" class="alert alert-success" role="alert">
-            {{usuarioEliminado}}
+            {{valoracion_propiedad}}
             </div>
 
             <script>
@@ -127,7 +127,7 @@
                                             <input id="numero-casa" name="numero-casa" type="number" class="form-control cc-number identified visa" value="{{numeroCasa}}" disabled>
                                             <span class="help-block" data-valmsg-for="numero-casa" data-valmsg-replace="true"></span>
                                         </div>
-                                        <form action="#" method="post" novalidate="novalidate"></form>
+                                        <form action="/admin-ibizapropiedades-dashboard/valora-su-propiedad/{{id}}" method="post" >
                                         <br>
                                         <br>
                                         <div>
