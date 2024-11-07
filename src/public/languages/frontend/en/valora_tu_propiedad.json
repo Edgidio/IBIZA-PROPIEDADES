@@ -1,0 +1,224 @@
+{
+    "menu": {
+      "inicio": "Home",
+      "venda_su_propiedad": "Sell your property",
+      "valorar_una_propiedad": "Appraise a property",
+      "comprar": "Buy",
+      "apartamento": "Apartment",
+      "casa": "House",
+      "terreno": "Land",
+      "local_comercial": "Commercial space",
+      "oficina": "Office",
+      "edificio": "Building",
+      "alquilar": "Rent",
+      "empresa": "Company",
+      "acerca_de": "About Ibiza Properties",
+      "contacto": "Contact"
+    },
+
+    "header": {
+    "titulo": "How much is my property worth?"
+  },
+  "progressBar": {
+    "ubicacion": "Location",
+    "propiedad": "Property",
+    "informacion": "Information",
+    "valorar": "Evaluate"
+  },
+  "formulario": {
+    "informacionBasica": {
+      "titulo": "Basic Information",
+      "ubicacion": {
+        "label": "Location",
+        "placeholder": "State, municipality, city or locality"
+      },
+      "numeroCasa": {
+        "label": "House Number",
+        "placeholder": "House number"
+      }
+    },
+    "tipoPropiedad": {
+      "titulo": "Type of Property",
+      "opciones": {
+        "apartamento": "Apartment",
+        "casa": "House"
+      },
+      "plantaApartamento": {
+        "label": "Apartment Floor",
+        "placeholder": "Apartment floor"
+      },
+      "puertaBloque": {
+        "label": "Door / Block (optional)",
+        "placeholder": "Door / Block"
+      },
+      "superficieConstruida": {
+        "label": "Built Area",
+        "placeholder": "Built area"
+      },
+      "areaTerreno": {
+        "label": "Land Area",
+        "placeholder": "Land size"
+      }
+    },
+    "detallesPropiedad": {
+      "numHabitaciones": {
+        "label": "Number of Rooms",
+        "placeholder": "Number of rooms"
+      },
+      "numBanios": {
+        "label": "Number of Bathrooms",
+        "placeholder": "Number of bathrooms"
+      },
+      "estadoPropiedad": {
+        "label": "Property Condition",
+        "opciones": {
+          "obraNueva": "New construction",
+          "buenEstado": "Good condition",
+          "aReformar": "Needs renovation"
+        }
+      },
+      "caracteristicas": {
+        "titulo": "Select features",
+        "piscina": "Pool",
+        "terraza": "Terrace",
+        "garaje": "Garage"
+      }
+    },
+    "contacto": {
+      "titulo": "How can we contact you?",
+      "nombre": {
+        "label": "Name",
+        "placeholder": "Name"
+      },
+      "apellidos": {
+        "label": "Last Name",
+        "placeholder": "Last name"
+      },
+      "correo": {
+        "label": "Email",
+        "placeholder": "Email"
+      },
+      "telefono": {
+        "label": "Phone",
+        "placeholder": "Phone number"
+      },
+      "cuandoContactar": {
+        "titulo": "When can we contact you?",
+        "manana": "Morning",
+        "tarde": "Afternoon",
+        "noche": "Evening"
+      }
+    },
+    "botones": {
+      "anterior": "Previous",
+      "siguiente": "Next",
+      "enviar": "Submit"
+    }
+  },
+
+  "section": {
+    "title": "Online valuation of your property with Ibiza properties",
+    "description": "Do you want to sell your property and make the most of it? A correct valuation of your property is the first step to a quick and successful sale.",
+    "link1": {
+      "text": "What is better: online valuation or an in-person appointment?",
+      "href": "#the-online-valuation"
+    },
+    "link2": {
+      "text": "What is the process of valuing a property?",
+      "href": "#how-is-the-process"
+    },
+    "link3": {
+      "text": "How much does the online valuation by Ibiza properties cost?",
+      "href": "#how-much-does-the-valuation-cost"
+    },
+    "link4": {
+      "text": "Frequently asked questions",
+      "href": "#faq"
+    }
+  },
+
+  "heading": "Are you thinking of renting?",
+  "subheading": "Check out our catalog of rental properties",
+  "button": {
+    "text": "Search"
+  },
+
+  "valuation_section": {
+    "heading": "What is better: online valuation or in-person appointment?",
+    "lead": "Based on some features of your property, our online property valuation tool calculates an initial estimate of your property's price by comparing data from thousands of sold and offered properties. In a detailed on-site valuation conducted by one of our real estate consultants, all property characteristics are taken into account, which does not happen in an online valuation.",
+    "usefulness": "A property valuation is useful if:",
+    "recommendation_1": "You are thinking of selling it and want to get an overview of the market.",
+    "recommendation_2": "If you need more specific information and professional advice, we recommend scheduling a visit with our expert consultants.",
+    "advice": "An on-site valuation of the property by a real estate consultant is advisable if:",
+    "importance_1": "you want to know the exact value of your home, considering all its features.",
+    "importance_2": "you place great importance on transparency in the valuation of your property.",
+    "importance_3": "you would like our experts to provide you with a personalized sales strategy to achieve the best possible price for your property."
+  },
+
+  "process_section": {
+    "heading": "How is the process of valuing a property?",
+    "steps": {
+      "step_1": {
+        "title": "Description of the property to be valued",
+        "description": "Our online property valuation provides you with an initial price estimate for your property based on the information you provide."
+      },
+      "step_2": {
+        "title": "We will contact you as soon as possible",
+        "description": "After the online valuation, our expert real estate consultants will contact you for a visit and more personalized attention."
+      },
+      "step_3": {
+        "title": "No-obligation online valuation",
+        "description": "Our real estate consultants will help you calculate the value of your home transparently and for free, thereby assisting you in determining the ideal selling price for your property."
+      },
+      "step_4": {
+        "title": "We will sell your property",
+        "description": "Ibiza Properties is now starting the marketing of your property. We will be delighted to accompany you at every step of the selling and marketing process in a professional manner and always in accordance with your criteria."
+      }
+    }
+  },
+
+  "valuation_cost": {
+    "heading": "How much does the online valuation by Ibiza Properties cost?",
+    "lead": "The valuation of the property using our online tool and the subsequent personal valuation by our in-house real estate consultant is completely free and without obligation for you. And the best part: at Ibiza Properties, all measures for the subsequent marketing of your property are already included in the consultant's commission. Unlike many other providers, you don't pay any additional fees for creating 3D virtual tours or exposés!"
+  },
+
+  "faq": {
+    "heading": "FREQUENTLY ASKED QUESTIONS",
+    "questions": {
+      "question_one": {
+        "title": "How do I determine the value of my property?",
+        "answer": "Basically, there are two ways to determine the value of your property: On one hand, you can get an online valuation of your home to get an initial assessment. Additionally, if you want something more personalized, we offer the possibility of requesting a property appraisal with our real estate consultants who are experts in your area. Just contact us to schedule a visit. Both services are, of course, free of charge and without obligation."
+      },
+      "question_two": {
+        "title": "What factors influence the value of my home?",
+        "answer": "Many factors influence the market price of a home. These include: • The location of the property • The living area and the size of the plot • The date of construction and the structural condition • The amenities of the property (e.g., number of rooms, pool, cellar, or rooftop terrace) • Supply and demand in the local real estate market."
+      },
+      "question_three": {
+        "title": "What factors are considered for the online valuation?",
+        "answer": "The online valuation from Ibiza properties is based on the most important factors influencing the value of a home: • The type of property - is it, for example, a single-family or multi-family home or a condo? • The living area and the size of the property • The year of construction • The macro-location - the broader environment and region of your property • The micro-location - the district/part of the municipality where your property is located."
+      },
+      "question_four": {
+        "title": "How accurate is the online valuation?",
+        "answer": "The online home valuation is ideal for homeowners to get an estimate of the initial price of their property. All you need to do is enter some basic information, such as location and type of property. Our online valuation analyzes this data and compares it with a selection of comparable properties, complementing it with local market information. Then, the algorithm calculates the market value range of your property based on this data. The value indicated in our online valuation is therefore not an average value for properties in your location. It is always based on the individual characteristics of your property."
+      },
+      "question_five": {
+        "title": "How can I increase the value of my property?",
+        "answer": "You can take a number of steps to increase the value of your property before selling. These include: • Renovation work that will aesthetically improve the appearance of the property (e.g., wallpapering, laying carpets, renovating the exterior facades, etc.). Generally, it is easier to find a buyer if the property is well maintained. • Energy-related renovation measures (e.g., installing new windows, heating systems, etc.). The more modern and efficient a property is, the higher its value. • Create living space: convert the attic or create additional living space in the basement. Special rooms, such as a study or home theater, are not only exclusive but are highlights for potential buyers. • Install a security system: invest in intruder protection, an alarm system, light sensors, or similar security measures. • Create a barrier-free environment: widen doors or install a stairlift. This allows you to reach a wider target group and improves the valuation."
+      }
+    }
+  },
+
+  "footer": {
+        "about_us": "ABOUT IBIZA PROPIEDADES",
+        "about_us_description": "Our commitment is to reward your trust.",
+        "navigation": "NAVIGATION",
+        "nav_home": "Home",
+        "nav_sell_property": "Sell Your Property",
+        "nav_about_us": "About Ibiza Properties",
+        "nav_contact": "Contact",
+        "follow_us": "FOLLOW US",
+        "instagram": "https://www.instagram.com/ibizapropiedades/",
+        "derechos_reservados": "All rights reserved. Total or partial reproduction of any content is prohibited without the express written permission of PEVITE Technology."
+      }
+       
+  }

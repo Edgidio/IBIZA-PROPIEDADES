@@ -1,0 +1,77 @@
+{
+  "ubicacion": {
+    "min": "The location must have more than 5 characters.",
+    "empty": "The location cannot be empty.",
+    "max": "The location cannot have more than {#limit} characters.",
+    "required": "The location is a required field."
+  },
+  "numeroCasa": {
+    "base": "The house number must be a number.",
+    "positive": "The house number must be positive."
+  },
+  "tipoPropiedad": {
+    "only": "The property type must be either \"casa\" or \"apartamento\".",
+    "required": "The property type is a required field."
+  },
+  "plantaApartamento": {
+    "max": "The apartment floor cannot have more than {#limit} characters."
+  },
+  "puertaBloque": {
+    "max": "The door or block cannot have more than {#limit} characters."
+  },
+  "superficieConstruidaApartamento": {
+    "base": "The apartment built surface area must be a number.",
+    "positive": "The apartment built surface area must be positive."
+  },
+  "superficieConstruida": {
+    "base": "The built surface area must be a number.",
+    "positive": "The built surface area must be positive."
+  },
+  "areaTerreno": {
+    "base": "The land area must be a number.",
+    "positive": "The land area must be positive."
+  },
+  "numHabitaciones": {
+    "base": "The number of rooms must be an integer.",
+    "min": "The number of rooms cannot be negative."
+  },
+  "numBanios": {
+    "base": "The number of bathrooms must be an integer.",
+    "min": "The number of bathrooms cannot be negative."
+  },
+  "EstadoPropiedad": {
+    "empty": "The property state cannot be empty.",
+    "max": "The property state cannot have more than {#limit} characters.",
+    "required": "The property state is a required field."
+  },
+  "caracteristica": {
+    "base": "The features must be an array.",
+    "only": "The allowed features are \"Piscina\", \"Terraza\" or \"Garaje\"."
+  },
+  "nombre": {
+    "empty": "The name cannot be empty.",
+    "max": "The name cannot have more than {#limit} characters.",
+    "required": "The name is a required field."
+  },
+  "Apellidos": {
+    "empty": "The last name cannot be empty.",
+    "max": "The last name cannot have more than {#limit} characters.",
+    "required": "The last name is a required field."
+  },
+  "correo": {
+    "email": "The email must be valid.",
+    "empty": "The email cannot be empty.",
+    "required": "The email is a required field."
+  },
+  "telefono": {
+    "pattern": "The phone number must contain between 7 and 15 digits.",
+    "empty": "The phone number cannot be empty.",
+    "required": "The phone number is a required field."
+  },
+  "contactar": {
+    "base": "The contact time must be an array.",
+    "only": "The allowed contact times are \"Mañana\", \"Tarde\", or \"Noche\".",
+    "required": "The contact time is a required field.",
+    "sparse": "The contact field is required."
+  }
+}

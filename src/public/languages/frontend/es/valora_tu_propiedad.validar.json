@@ -1,0 +1,77 @@
+{
+  "ubicacion": {
+    "min": "La ubicación tiene que tener más de 5 caracteres.",
+    "empty": "La ubicación no puede estar vacía.",
+    "max": "La ubicación no puede tener más de {#limit} caracteres.",
+    "required": "La ubicación es un campo requerido."
+  },
+  "numeroCasa": {
+    "base": "El número de casa debe ser un número.",
+    "positive": "El número de casa debe ser positivo."
+  },
+  "tipoPropiedad": {
+    "only": "El tipo de propiedad debe ser \"casa\" o \"apartamento\".",
+    "required": "El tipo de propiedad es un campo requerido."
+  },
+  "plantaApartamento": {
+    "max": "La planta del apartamento no puede tener más de {#limit} caracteres."
+  },
+  "puertaBloque": {
+    "max": "La puerta o bloque no puede tener más de {#limit} caracteres."
+  },
+  "superficieConstruidaApartamento": {
+    "base": "La superficie construida del apartamento debe ser un número.",
+    "positive": "La superficie construida del apartamento debe ser positiva."
+  },
+  "superficieConstruida": {
+    "base": "La superficie construida debe ser un número.",
+    "positive": "La superficie construida debe ser positiva."
+  },
+  "areaTerreno": {
+    "base": "El área del terreno debe ser un número.",
+    "positive": "El área del terreno debe ser positiva."
+  },
+  "numHabitaciones": {
+    "base": "El número de habitaciones debe ser un número entero.",
+    "min": "El número de habitaciones no puede ser negativo."
+  },
+  "numBanios": {
+    "base": "El número de baños debe ser un número entero.",
+    "min": "El número de baños no puede ser negativo."
+  },
+  "EstadoPropiedad": {
+    "empty": "El estado de la propiedad no puede estar vacío.",
+    "max": "El estado de la propiedad no puede tener más de {#limit} caracteres.",
+    "required": "El estado de la propiedad es un campo requerido."
+  },
+  "caracteristica": {
+    "base": "Las características deben ser un arreglo.",
+    "only": "Las características permitidas son \"Piscina\", \"Terraza\" o \"Garaje\"."
+  },
+  "nombre": {
+    "empty": "El nombre no puede estar vacío.",
+    "max": "El nombre no puede tener más de {#limit} caracteres.",
+    "required": "El nombre es un campo requerido."
+  },
+  "Apellidos": {
+    "empty": "Los apellidos no pueden estar vacíos.",
+    "max": "Los apellidos no pueden tener más de {#limit} caracteres.",
+    "required": "Los apellidos son un campo requerido."
+  },
+  "correo": {
+    "email": "El correo debe ser un email válido.",
+    "empty": "El correo no puede estar vacío.",
+    "required": "El correo es un campo requerido."
+  },
+  "telefono": {
+    "pattern": "El teléfono debe contener entre 7 y 15 dígitos.",
+    "empty": "El teléfono no puede estar vacío.",
+    "required": "El teléfono es un campo requerido."
+  },
+  "contactar": {
+    "base": "El horario de contacto debe ser un arreglo.",
+    "only": "Los horarios de contacto permitidos son \"Mañana\", \"Tarde\" o \"Noche\".",
+    "required": "El horario de contacto es un campo requerido.",
+    "sparse": "El campo contactar es requerido."
+  }
+}

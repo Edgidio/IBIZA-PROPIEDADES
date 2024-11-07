@@ -79,6 +79,9 @@
                       <li><a href="/comprar/local-comercial">{{t.nav.local_comercial}}</a></li>
                       <li><a href="/comprar/oficina">{{t.nav.oficina}}</a></li>
                       <li><a href="/comprar/edificio">{{t.nav.apartamento}}</a></li>
+                      <li><a href="/comprar/penthouses">Penthouses</a></li>
+                      <li><a href="/comprar/townhouses">Townhouses</a></li>
+                      <li><a href="/comprar/galpones">Galpones</a></li>
                     </ul>
                   </li>
                   <li class="has-children">
@@ -89,6 +92,9 @@
                       <li><a href="/alquilar/terreno">{{t.nav.terreno}}</a></li>
                       <li><a href="/alquilar/local-comercial">{{t.nav.local_comercial}}</a></li>
                       <li><a href="/alquilar/oficina">{{t.nav.oficina}}</a></li>
+                      <li><a href="/alquilar/penthouses">Penthouses</a></li>
+                      <li><a href="/alquilar/townhouses">Townhouses</a></li>
+                      <li><a href="/alquilar/galpones">Galpones</a></li>
                     </ul>
                   </li>
                   <li class="has-children">
@@ -150,6 +156,22 @@
                     <span class="property-specs-number">{{propiedadConFotos.n_banos}}</span>      
                   </li>
                   {{/esMayorQueCero}}
+
+                  {{#esMayorQueCero propiedadConFotos.maletero}}
+                  <li>
+                    <span class="property-specs">Maletero</span>
+                    <span class="property-specs-number">{{propiedadConFotos.maletero}}</span>      
+                  </li>
+                  {{/esMayorQueCero}}
+
+                  {{#esMayorQueCero propiedadConFotos.estacionamiento}}
+                  <li>
+                    <span class="property-specs">Estacionamiento</span>
+                    <span class="property-specs-number">{{propiedadConFotos.estacionamiento}}</span>      
+                  </li>
+                  {{/esMayorQueCero}}
+                  
+
                   {{#esMayorQueCero propiedadConFotos.n_habitaciones}}
                   <li>
                     <span class="property-specs">{{t.property_details.Habitaciones}}</span>
@@ -194,6 +216,15 @@
                   {{/eq}}
                   {{#eq propiedadConFotos.tipo_propiedad "E"}}
                   <strong class="d-block">{{t.nav.edificio}}</strong>
+                  {{/eq}}
+                  {{#eq propiedadConFotos.tipo_propiedad "G"}}
+                  <strong class="d-block">Galpon</strong>
+                  {{/eq}}
+                  {{#eq propiedadConFotos.tipo_propiedad "H"}}
+                  <strong class="d-block">Townhouse</strong>
+                  {{/eq}}
+                  {{#eq propiedadConFotos.tipo_propiedad "P"}}
+                  <strong class="d-block">Penthouses</strong>
                   {{/eq}}
                 </div>
                 <div class="col-md-6 col-lg-4 text-center border-bottom border-top py-3">

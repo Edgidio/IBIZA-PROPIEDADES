@@ -5,7 +5,7 @@ const db = new PrismaClient();
 // Middleware para validar el formulario de inicio de sesión
 const  validacion_add_propiedad = async (req, res, next) => {
 
-  const { id, tipo_propiedad, venta_renta, descripcion, detalles, estado , ubicacion, precio, n_habitaciones, n_banos, terreno, superficie,} = req.body;
+  const { id, tipo_propiedad, venta_renta, descripcion, detalles, estado , ubicacion, precio, n_habitaciones, n_banos, terreno, superficie, maletero, estacionamiento} = req.body;
 
 
   const { error } = add_propiedadSchema.validate(req.body, { abortEarly: false });
@@ -54,7 +54,7 @@ const N_correos = await db.correos_ibiza.count({
         N_inicios,
         ruta: "/crear-propietario",
         errors, 
-        datos_formulario: { id, tipo_propiedad, venta_renta, descripcion, detalles,estado , ubicacion, precio, n_habitaciones, n_banos, terreno, superficie },
+        datos_formulario: { id, tipo_propiedad, venta_renta, descripcion, detalles,estado , ubicacion, precio, n_habitaciones, n_banos, terreno, superficie, estacionamiento, maletero},
         rutaIF: "Backend",
         N_correos,
         Correos

@@ -810,7 +810,7 @@ export const crearPropietarioPropiedadPOST = async (req, res) => {
 
 export const crearPropiedadPOST = async (req, res) => {
   try {
-    const { id, tipo_propiedad, venta_renta, descripcion, detalles, estado, ubicacion, precio, n_habitaciones, n_banos, terreno, superficie } = req.body;
+    const { id, tipo_propiedad, venta_renta, descripcion, detalles, estado, ubicacion, precio, n_habitaciones, n_banos, terreno, superficie, maletero, estacionamiento } = req.body;
     const userId = req.user.id;
     const files = req.files;
 
@@ -857,7 +857,7 @@ export const crearPropiedadPOST = async (req, res) => {
         Correos,
         N_correos,
         Inicios_de_sesiones: Inicios_de_sesiones,
-        datos_formulario: { id, tipo_propiedad, venta_renta, descripcion, detalles, estado, ubicacion, precio, n_habitaciones, n_banos, terreno, superficie, foto: "No ha seleccionado ninguna imagen para la propiedad" }
+        datos_formulario: { id, tipo_propiedad, venta_renta, descripcion, detalles, estado, ubicacion, precio, n_habitaciones, n_banos, terreno, superficie, maletero, estacionamiento, foto: "No ha seleccionado ninguna imagen para la propiedad" }
       });
     }
 
@@ -949,7 +949,7 @@ export const crearPropiedadPOST = async (req, res) => {
           Inicios_de_sesiones: Inicios_de_sesiones,
           Correos,
           N_correos,
-          datos_formulario: { id, tipo_propiedad, venta_renta, descripcion, detalles, estado, ubicacion, precio, n_habitaciones, n_banos, terreno, superficie, foto: "Por favor, selecciona archivos de imagen válidos." }
+          datos_formulario: { id, tipo_propiedad, venta_renta, descripcion, detalles, estado, ubicacion, precio, n_habitaciones, n_banos, terreno, superficie,maletero, estacionamiento , foto: "Por favor, selecciona archivos de imagen válidos." }
         });
       }
     }
@@ -971,6 +971,8 @@ export const crearPropiedadPOST = async (req, res) => {
         n_banos: parseFloat(n_banos) || 0,
         terreno: parseFloat(terreno) || 0,
         superficie: parseFloat(superficie) || 0,
+        maletero: parseFloat(maletero) || 0,
+        estacionamiento: parseFloat(estacionamiento) || 0,
       },
     });
 

@@ -283,6 +283,15 @@ export const eliminarPropiedadDELETE = async (req, res) => {
         case 'E':
             tipo_propiedad_c = 'edificios';
             break;
+        case 'P':
+            tipo_propiedad_c = 'penthouses';
+            break;
+        case 'H':
+            tipo_propiedad_c = 'townhouses';
+            break;
+        case 'G':
+            tipo_propiedad_c = 'galpones';
+            break;
         default:
             tipo_propiedad_c = '/admin-ibizapropiedades-dashboard/';
       }
@@ -292,6 +301,8 @@ export const eliminarPropiedadDELETE = async (req, res) => {
       return res.redirect(`/admin-ibizapropiedades-dashboard/propiedades/${tipo_propiedad_c}`)
 
   } catch (error) {
+
+      console.log(error, "El errror")
     
        // Manejo de errores y redirección en caso de problemas
        await db.log_sistema.create({
@@ -362,6 +373,7 @@ export const actualizarPropiedadesGET = async (req, res) => {
         Correos,
         N_correos,
         Inicios_de_sesiones: Inicios_de_sesiones,
+        propiedadId
 
     })
 
@@ -381,13 +393,15 @@ export const actualizarPropiedadesGET = async (req, res) => {
 };
 
 export const actualizarPropiedadesPUT = async (req, res) => {
+
+  console.log("ACTUALZIAR LLEGO")
   
     try {
 
       const propiedadId = parseInt(req.params.id); 
       
       // Extrae los campos que se pueden actualizar del cuerpo de la solicitud
-      const { descripcion, detalles, ubicacion, precio, n_habitaciones, n_banos, superficie, terreno, tipo_propiedad, vendida, venta_renta, estado } = req.body;
+      const { descripcion, detalles, ubicacion, precio, n_habitaciones, n_banos, superficie, terreno, tipo_propiedad, vendida, venta_renta, estado, maletero, estacionamiento } = req.body;
 
       const propiedadExistente = await db.propiedades.findUnique({
         where: {
@@ -415,7 +429,9 @@ export const actualizarPropiedadesPUT = async (req, res) => {
           superficie: isNaN(parseFloat(superficie)) ? null : parseFloat(superficie),
           terreno: isNaN(parseFloat(terreno)) ? null : parseFloat(terreno),
           tipo_propiedad,
-          vendida,   
+          vendida,
+          maletero: parseFloat(maletero) || 0,
+          estacionamiento: parseFloat(estacionamiento) || 0,   
         },
       });
 
@@ -440,8 +456,17 @@ export const actualizarPropiedadesPUT = async (req, res) => {
         case 'E':
             tipo_propiedad_c = 'edificios';
             break;
+        case 'P':
+              tipo_propiedad_c = 'penthouses';
+              break;
+        case 'H':
+              tipo_propiedad_c = 'townhouses';
+              break;
+        case 'G':
+              tipo_propiedad_c = 'galpones';
+              break;
         default:
-            tipo_propiedad_c = '/admin-ibizapropiedades-dashboard/';
+              tipo_propiedad_c = '/admin-ibizapropiedades-dashboard/';
       }
 
       req.flash("update_propiedad", "La propiedad ha sido actualizada con éxito.")
@@ -647,7 +672,7 @@ export const obtenerPropiedadesApartamentoGET = async (req, res) => {
     
   } catch (error) {
 
-    console.log(error)
+    console.log(error, )
 
          // Manejo de errores y redirección en caso de problemas
          await db.log_sistema.create({
@@ -1050,6 +1075,296 @@ export const obtenerPropiedadesEdificiosGET = async (req, res) => {
   }
 };
 
+export const obtenerPropiedadesTownhousesGET = async (req, res) => {
+
+
+  try {
+
+    const propiedades = await db.propiedades.findMany({
+      where: {
+        tipo_propiedad: 'H',
+      },
+      include: {
+        fotos: true,
+      },
+    });
+    
+      const propiedadesConRutaUnica = propiedades.map((propiedad) => {
+      const primeraRuta = propiedad.fotos?.[0]?.rutas[0];
+    
+      return {
+        id: propiedad.id,
+        id_propietario: propiedad.id_propietario,
+        descripcion: propiedad.descripcion,
+        detalles: propiedad.detalles,
+        ubicacion: propiedad.ubicacion,
+        precio: propiedad.precio,
+        venta_renta: propiedad.venta_renta,
+        n_habitaciones: propiedad.n_habitaciones,
+        n_banos: propiedad.n_banos,
+        superficie: propiedad.superficie,
+        terreno: propiedad.terreno,
+        tipo_propiedad: propiedad.tipo_propiedad,
+        vendida: propiedad.vendida,
+        createdAt: propiedad.createdAt,
+        updatedAt: propiedad.updatedAt,
+        usuarioId: propiedad.usuarioId,
+        estado: propiedad.estado,
+        rutas: primeraRuta,
+        enExhibicion: propiedad.enExhibicion
+      };
+    });
+
+         // Informacion para la navegacion necesaria    
+         const Inicios_de_sesiones = await db.log_sesiones.findMany({
+          where: {
+              visto: false
+          }
+      });
+    
+      const N_inicios = await db.log_sesiones.count({
+              where: {
+              visto: false,
+              },
+          });
+    
+      const Correos = await db.correos_ibiza.findMany({
+          where: {
+              visto: false
+          }
+        });
+      
+      const N_correos = await db.correos_ibiza.count({
+          where: {
+          visto: false,
+          },
+      });
+      // FIN Informacion para la navegacion necesaria 
+
+    res.render("partials/dashboard/townhouse", {
+        Titulo: "Ibiza Prop | Propiedades",
+        N_inicios,
+        ruta: "/usuarios",
+        rutaIF: "Backend",
+        propiedadesConImagenesYPropietario: propiedadesConRutaUnica,
+        update_propiedad: req.flash("update_propiedad"),
+        N_correos,
+        Correos,
+        Inicios_de_sesiones: Inicios_de_sesiones,
+        propiedad_exhibida:req.flash("propiedad_exhibida"),
+        propiedad_desmarcar:req.flash("propiedad_desmarcar"),
+        propiedad_exhibida_false:req.flash("propiedad_exhibida_false")
+    })
+    
+  } catch (error) {
+               // Manejo de errores y redirección en caso de problemas
+               await db.log_sistema.create({
+                data: {
+                    controlador: "obtenerPropiedadesEdificiosGET",
+                    error: error.toString()
+                },
+            });
+          
+            req.flash('error_controlador', 'Hubo un problema al procesar su solicitud. Por favor, inténtelo de nuevo más tarde o cominiquese con su desarrollador');
+          
+            return res.redirect(`/admin-ibizapropiedades-dashboard/propiedades/edificios`)  
+  }
+};
+
+export const obtenerPropiedadesPenthousesGET = async (req, res) => {
+
+
+  try {
+
+    const propiedades = await db.propiedades.findMany({
+      where: {
+        tipo_propiedad: 'P',
+      },
+      include: {
+        fotos: true,
+      },
+    });
+    
+      const propiedadesConRutaUnica = propiedades.map((propiedad) => {
+      const primeraRuta = propiedad.fotos?.[0]?.rutas[0];
+    
+      return {
+        id: propiedad.id,
+        id_propietario: propiedad.id_propietario,
+        descripcion: propiedad.descripcion,
+        detalles: propiedad.detalles,
+        ubicacion: propiedad.ubicacion,
+        precio: propiedad.precio,
+        venta_renta: propiedad.venta_renta,
+        n_habitaciones: propiedad.n_habitaciones,
+        n_banos: propiedad.n_banos,
+        superficie: propiedad.superficie,
+        terreno: propiedad.terreno,
+        tipo_propiedad: propiedad.tipo_propiedad,
+        vendida: propiedad.vendida,
+        createdAt: propiedad.createdAt,
+        updatedAt: propiedad.updatedAt,
+        usuarioId: propiedad.usuarioId,
+        estado: propiedad.estado,
+        rutas: primeraRuta,
+        enExhibicion: propiedad.enExhibicion
+      };
+    });
+
+         // Informacion para la navegacion necesaria    
+         const Inicios_de_sesiones = await db.log_sesiones.findMany({
+          where: {
+              visto: false
+          }
+      });
+    
+      const N_inicios = await db.log_sesiones.count({
+              where: {
+              visto: false,
+              },
+          });
+    
+      const Correos = await db.correos_ibiza.findMany({
+          where: {
+              visto: false
+          }
+        });
+      
+      const N_correos = await db.correos_ibiza.count({
+          where: {
+          visto: false,
+          },
+      });
+      // FIN Informacion para la navegacion necesaria 
+
+    res.render("partials/dashboard/penthouses", {
+        Titulo: "Ibiza Prop | Propiedades",
+        N_inicios,
+        ruta: "/usuarios",
+        rutaIF: "Backend",
+        propiedadesConImagenesYPropietario: propiedadesConRutaUnica,
+        update_propiedad: req.flash("update_propiedad"),
+        N_correos,
+        Correos,
+        Inicios_de_sesiones: Inicios_de_sesiones,
+        propiedad_exhibida:req.flash("propiedad_exhibida"),
+        propiedad_desmarcar:req.flash("propiedad_desmarcar"),
+        propiedad_exhibida_false:req.flash("propiedad_exhibida_false")
+    })
+    
+  } catch (error) {
+               // Manejo de errores y redirección en caso de problemas
+               await db.log_sistema.create({
+                data: {
+                    controlador: "obtenerPropiedadesEdificiosGET",
+                    error: error.toString()
+                },
+            });
+          
+            req.flash('error_controlador', 'Hubo un problema al procesar su solicitud. Por favor, inténtelo de nuevo más tarde o cominiquese con su desarrollador');
+          
+            return res.redirect(`/admin-ibizapropiedades-dashboard/propiedades/edificios`)  
+  }
+};
+
+export const obtenerPropiedadesGalponesGET = async (req, res) => {
+
+
+  try {
+
+    const propiedades = await db.propiedades.findMany({
+      where: {
+        tipo_propiedad: 'G',
+      },
+      include: {
+        fotos: true,
+      },
+    });
+    
+      const propiedadesConRutaUnica = propiedades.map((propiedad) => {
+      const primeraRuta = propiedad.fotos?.[0]?.rutas[0];
+    
+      return {
+        id: propiedad.id,
+        id_propietario: propiedad.id_propietario,
+        descripcion: propiedad.descripcion,
+        detalles: propiedad.detalles,
+        ubicacion: propiedad.ubicacion,
+        precio: propiedad.precio,
+        venta_renta: propiedad.venta_renta,
+        n_habitaciones: propiedad.n_habitaciones,
+        n_banos: propiedad.n_banos,
+        superficie: propiedad.superficie,
+        terreno: propiedad.terreno,
+        tipo_propiedad: propiedad.tipo_propiedad,
+        vendida: propiedad.vendida,
+        createdAt: propiedad.createdAt,
+        updatedAt: propiedad.updatedAt,
+        usuarioId: propiedad.usuarioId,
+        estado: propiedad.estado,
+        rutas: primeraRuta,
+        enExhibicion: propiedad.enExhibicion
+      };
+    });
+
+         // Informacion para la navegacion necesaria    
+         const Inicios_de_sesiones = await db.log_sesiones.findMany({
+          where: {
+              visto: false
+          }
+      });
+    
+      const N_inicios = await db.log_sesiones.count({
+              where: {
+              visto: false,
+              },
+          });
+    
+      const Correos = await db.correos_ibiza.findMany({
+          where: {
+              visto: false
+          }
+        });
+      
+      const N_correos = await db.correos_ibiza.count({
+          where: {
+          visto: false,
+          },
+      });
+      // FIN Informacion para la navegacion necesaria 
+
+    res.render("partials/dashboard/galpones", {
+        Titulo: "Ibiza Prop | Propiedades",
+        N_inicios,
+        ruta: "/usuarios",
+        rutaIF: "Backend",
+        propiedadesConImagenesYPropietario: propiedadesConRutaUnica,
+        update_propiedad: req.flash("update_propiedad"),
+        N_correos,
+        Correos,
+        Inicios_de_sesiones: Inicios_de_sesiones,
+        propiedad_exhibida:req.flash("propiedad_exhibida"),
+        propiedad_desmarcar:req.flash("propiedad_desmarcar"),
+        propiedad_exhibida_false:req.flash("propiedad_exhibida_false")
+    })
+    
+  } catch (error) {
+               // Manejo de errores y redirección en caso de problemas
+               await db.log_sistema.create({
+                data: {
+                    controlador: "obtenerPropiedadesEdificiosGET",
+                    error: error.toString()
+                },
+            });
+          
+            req.flash('error_controlador', 'Hubo un problema al procesar su solicitud. Por favor, inténtelo de nuevo más tarde o cominiquese con su desarrollador');
+          
+            return res.redirect(`/admin-ibizapropiedades-dashboard/propiedades/edificios`)  
+  }
+};
+
+
+
 export const marcarExhibicionPOS = async (req, res) => {
 
 
@@ -1078,6 +1393,15 @@ export const marcarExhibicionPOS = async (req, res) => {
           break;
       case 'E':
           tipo_propiedad_c = 'edificios';
+          break;
+      case 'P':
+          tipo_propiedad_c = 'penthouses';
+          break;
+      case 'H':
+          tipo_propiedad_c = 'townhouses';
+          break;
+      case 'G':
+          tipo_propiedad_c = 'galpones';
           break;
       default:
           tipo_propiedad_c = '/admin-ibizapropiedades-dashboard/';
@@ -1153,6 +1477,15 @@ export const desmarcarExhibicionPOS = async (req, res) => {
           break;
       case 'E':
           tipo_propiedad_c = 'edificios';
+          break;
+      case 'P':
+          tipo_propiedad_c = 'penthouses';
+          break;
+      case 'H':
+          tipo_propiedad_c = 'townhouses';
+          break;
+      case 'G':
+          tipo_propiedad_c = 'galpones';
           break;
       default:
           tipo_propiedad_c = '/admin-ibizapropiedades-dashboard/';

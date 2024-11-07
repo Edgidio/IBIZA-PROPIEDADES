@@ -499,10 +499,15 @@ export const valore_su_propiedad_GET = async (req, res) => {
 
   try {
 
+    console.log("PETICION")
+
+    const t = await lenguaje(req, "valora_tu_propiedad.json")
+
     return res.render('partials/frontend/venda_su_propiedad', {
       Titulo: "Ibiza Propiedades | Venda su propiedad",
       rutaIF: "Frontend",
-      valoracion_enviada: req.flash("valoracion_enviada")
+      valoracion_enviada: req.flash("valoracion_enviada"),
+      t
     });
 
   } catch (error) {

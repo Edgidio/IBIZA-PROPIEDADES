@@ -339,3 +339,171 @@ export const casa = async (req, res) => {
       res.status(500).json({ error: 'Error interno del servidor' });
     }
   };
+
+  export const penthouses = async (req, res) => {
+
+    try {
+
+      const t = await lenguaje(req, "comprar.terreno.json")
+  
+      const propiedades = await db.propiedades.findMany({
+        where: {
+          tipo_propiedad: 'P',
+          venta_renta: 'V',
+        },
+        include: {
+          fotos: true,
+        },
+      });
+      
+      const propiedadesConRutaUnica = propiedades.map((propiedad) => {
+        const primeraRuta = propiedad.fotos?.[0]?.rutas[0];
+      
+        return {
+          id: propiedad.id,
+          id_propietario: propiedad.id_propietario,
+          descripcion: propiedad.descripcion,
+          detalles: propiedad.detalles,
+          ubicacion: propiedad.ubicacion,
+          precio: propiedad.precio,
+          venta_renta: propiedad.venta_renta,
+          n_habitaciones: propiedad.n_habitaciones,
+          n_banos: propiedad.n_banos,
+          superficie: propiedad.superficie,
+          terreno: propiedad.terreno,
+          tipo_propiedad: propiedad.tipo_propiedad,
+          vendida: propiedad.vendida,
+          createdAt: propiedad.createdAt,
+          updatedAt: propiedad.updatedAt,
+          usuarioId: propiedad.usuarioId,
+          estado: propiedad.estado,
+          rutas: primeraRuta,
+        };
+      });
+      
+  
+      res.render('partials/frontend/comprar/penthouses', {
+        Titulo: "Ibiza Propiedades | penthouses",
+        rutaIF: "Frontend",
+        propiedadesConUnaRutaPorFoto: propiedadesConRutaUnica,
+        t
+      });
+      
+  
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Error interno del servidor' });
+    }
+  };
+
+  export const townhouses = async (req, res) => {
+
+    try {
+
+      const t = await lenguaje(req, "comprar.terreno.json")
+  
+      const propiedades = await db.propiedades.findMany({
+        where: {
+          tipo_propiedad: 'H',
+          venta_renta: 'V',
+        },
+        include: {
+          fotos: true,
+        },
+      });
+      
+      const propiedadesConRutaUnica = propiedades.map((propiedad) => {
+        const primeraRuta = propiedad.fotos?.[0]?.rutas[0];
+      
+        return {
+          id: propiedad.id,
+          id_propietario: propiedad.id_propietario,
+          descripcion: propiedad.descripcion,
+          detalles: propiedad.detalles,
+          ubicacion: propiedad.ubicacion,
+          precio: propiedad.precio,
+          venta_renta: propiedad.venta_renta,
+          n_habitaciones: propiedad.n_habitaciones,
+          n_banos: propiedad.n_banos,
+          superficie: propiedad.superficie,
+          terreno: propiedad.terreno,
+          tipo_propiedad: propiedad.tipo_propiedad,
+          vendida: propiedad.vendida,
+          createdAt: propiedad.createdAt,
+          updatedAt: propiedad.updatedAt,
+          usuarioId: propiedad.usuarioId,
+          estado: propiedad.estado,
+          rutas: primeraRuta,
+        };
+      });
+      
+  
+      res.render('partials/frontend/comprar/townhouses', {
+        Titulo: "Ibiza Propiedades | townhouses",
+        rutaIF: "Frontend",
+        propiedadesConUnaRutaPorFoto: propiedadesConRutaUnica,
+        t
+      });
+      
+  
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Error interno del servidor' });
+    }
+  };
+
+  export const galpones = async (req, res) => {
+
+    try {
+
+      const t = await lenguaje(req, "comprar.terreno.json")
+  
+      const propiedades = await db.propiedades.findMany({
+        where: {
+          tipo_propiedad: 'G',
+          venta_renta: 'V',
+        },
+        include: {
+          fotos: true,
+        },
+      });
+      
+      const propiedadesConRutaUnica = propiedades.map((propiedad) => {
+        const primeraRuta = propiedad.fotos?.[0]?.rutas[0];
+      
+        return {
+          id: propiedad.id,
+          id_propietario: propiedad.id_propietario,
+          descripcion: propiedad.descripcion,
+          detalles: propiedad.detalles,
+          ubicacion: propiedad.ubicacion,
+          precio: propiedad.precio,
+          venta_renta: propiedad.venta_renta,
+          n_habitaciones: propiedad.n_habitaciones,
+          n_banos: propiedad.n_banos,
+          superficie: propiedad.superficie,
+          terreno: propiedad.terreno,
+          tipo_propiedad: propiedad.tipo_propiedad,
+          vendida: propiedad.vendida,
+          createdAt: propiedad.createdAt,
+          updatedAt: propiedad.updatedAt,
+          usuarioId: propiedad.usuarioId,
+          estado: propiedad.estado,
+          rutas: primeraRuta,
+        };
+      });
+      
+  
+      res.render('partials/frontend/comprar/galpones', {
+        Titulo: "Ibiza Propiedades | galpones",
+        rutaIF: "Frontend",
+        propiedadesConUnaRutaPorFoto: propiedadesConRutaUnica,
+        t
+      });
+      
+  
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Error interno del servidor' });
+    }
+  };

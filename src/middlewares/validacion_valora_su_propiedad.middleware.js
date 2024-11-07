@@ -9,11 +9,10 @@ const db = new PrismaClient();
 // Middleware para validar el formulario de inicio de sesión
 const validacion_valora_su_propiedd = async (req, res, next) => {
 
-  /* const tt = await lenguaje(req, "contacto.validar.json") */
+  const tt = await lenguaje(req, "valora_tu_propiedad.validar.json")
 
   const { ...datos_formulario } = req.body;
 
-  console.log(datos_formulario.contactar)
 
   if (!Array.isArray(datos_formulario.contactar)) {
 
@@ -32,8 +31,9 @@ const validacion_valora_su_propiedd = async (req, res, next) => {
   }
 
   // Validar con Joi usando los mensajes correspondientes al idioma
-  const { error } = valorarPropiedadesSchema(/* tt */).validate(req.body, { abortEarly: false });
+  const { error } = valorarPropiedadesSchema(tt).validate(req.body, { abortEarly: false });
 
+  
   if (error) {
     const errors = error.details.map((err) => {
       return {
@@ -42,15 +42,18 @@ const validacion_valora_su_propiedd = async (req, res, next) => {
       };
     });
 
-    /* const t = await lenguaje(req, "contacto.json") */
+    const t = await lenguaje(req, "valora_tu_propiedad.json")
 
-    console.log("ERRORRRRR", errors)
+    
+
+    console.log("ERRORRRRR", errors[7].field,)
 
     return res.render('partials/frontend/venda_su_propiedad', {
         Titulo: "Ibiza Propiedades | Venda su propiedad",
         rutaIF: "Frontend",
         errors,
-        datos_formulario: datos_formulario
+        datos_formulario: datos_formulario,
+        t
       });
   }
   // La validación fue exitosa, continuar con la ejecución normal

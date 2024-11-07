@@ -30,6 +30,14 @@ const add_propiedadSchema = Joi.object({
     'number.base': 'El precio debe ser un número.',
   }),
 
+  estacionamiento: Joi.number().default(0).messages({
+    'number.base': 'El estacionamiento debe ser un número.',
+  }),
+
+  maletero: Joi.number().default(0).messages({
+    'number.base': 'El maletero debe ser un número.',
+  }),
+
   venta_renta: Joi.string().max(1).default('V').messages({
     'string.base': 'La opción de venta/renta debe ser una cadena de texto.',
     'string.max': 'La opción de venta/renta no puede tener más de {#limit} caracteres.',

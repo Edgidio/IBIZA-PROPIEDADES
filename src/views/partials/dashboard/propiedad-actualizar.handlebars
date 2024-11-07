@@ -101,6 +101,11 @@
                                                 <option value="O" {{#if datos_formulario}}{{#eq datos_formulario.tipo_propiedad "O"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.tipo_propiedad "O"}}selected{{/eq}}>Oficina</option>
                                                 <option value="T" {{#if datos_formulario}}{{#eq datos_formulario.tipo_propiedad "T"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.tipo_propiedad "T"}}selected{{/eq}}>Terreno</option>
                                                 <option value="E" {{#if datos_formulario}}{{#eq datos_formulario.tipo_propiedad "E"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.tipo_propiedad "E"}}selected{{/eq}}>Edificio</option>
+                                                <option value="T" {{#if datos_formulario}}{{#eq datos_formulario.tipo_propiedad "T"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.tipo_propiedad "T"}}selected{{/eq}}>Terreno</option>
+                                                <option value="P" {{#if datos_formulario}}{{#eq datos_formulario.tipo_propiedad "P"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.tipo_propiedad "P"}}selected{{/eq}}>Penthouses</option>                                             
+                                                <option value="H" {{#if datos_formulario}}{{#eq datos_formulario.tipo_propiedad "H"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.tipo_propiedad "H"}}selected{{/eq}}>Townhouse</option>
+               
+                                                <option value="G" {{#if datos_formulario}}{{#eq datos_formulario.tipo_propiedad "G"}}selected{{/eq}}{{/if}} {{#eq propiedadExistente.tipo_propiedad "G"}}selected{{/eq}}>Galpon</option>  
                                             </select>
                                         </div>
                                     </div>
@@ -135,7 +140,7 @@
 
                                     <input hidden name="id" type="number" value="{{#if propiedadExistente}}{{propiedadExistente.id}}{{/if}}{{#if datos_formulario.id}}{{datos_formulario.id}}{{/if}}">
 
-                                    <div class="row form-group">
+                                    <div id="campo-detalles" class="row form-group">
                                         <div class="col col-md-3"><label for="detalles" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Detalles</font></font></label></div>
                                         <div class="col-12 col-md-9"><textarea{{#if errors}}{{#each errors}}{{#eq field "detalles"}} style=" border-color: #F3AA08 !important;"{{/eq}}{{/each}}{{/if}}  name="detalles" id="detalles" rows="9" placeholder="Detalles..." class="form-control" style="height: 127px;">{{#if datos_formulario}}{{datos_formulario.detalles}}{{/if}}{{propiedadExistente.detalles}}</textarea>
                                         {{#if errors}}
@@ -199,7 +204,7 @@
                                         {{/if}}
                                         </div>
                                     </div>
-                                    <div class="row form-group">
+                                    <div id="campo-precio" class="row form-group">
                                         <div class="col col-md-3"><label for="precio" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Precio</font></font></label></div>
                                         <div class="col-6 col-md-4"><input {{#if propiedadExistente}}value="{{propiedadExistente.precio}}"{{/if}} {{#if errors}}{{#each errors}}{{#eq field "precio"}} style=" border-color: #F3AA08 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.precio}}"{{/if}} {{#if req_campo_usuario_error}}value="{{req_campo_usuario_error}}"{{/if}} type="number" id="precio" name="precio" placeholder="Precio" class="form-control">
                                         {{#if errors}}
@@ -215,7 +220,39 @@
                                         {{/if}}
                                         </div>
                                     </div>
-                                    <div class="row form-group">
+                                    <div id="campo-estacionamiento" class="row form-group">
+                                        <div class="col col-md-3"><label for="estacionamiento" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Estacionamiento</font></font></label></div>
+                                        <div class="col-6 col-md-4"><input {{#if propiedadExistente}}value="{{propiedadExistente.estacionamiento}}"{{/if}} {{#if errors}}{{#each errors}}{{#eq field "estacionamiento"}} style=" border-color: #F3AA08 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.estacionamiento}}"{{/if}} {{#if req_campo_usuario_error}}value="{{req_campo_usuario_error}}"{{/if}} type="number" id="estacionamiento" name="estacionamiento" placeholder="Estacionamiento" class="form-control">
+                                        {{#if errors}}
+                                            {{#each errors}}
+                                                {{#eq field "estacionamiento"}}
+                                                    <div style="margin-top: 12px;" class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
+                                                        
+                                                            {{message}}
+                                                        
+                                                    </div>
+                                                {{/eq}}
+                                            {{/each}}
+                                        {{/if}}
+                                        </div>
+                                    </div>
+                                    <div id="campo-maletero" class="row form-group">
+                                        <div class="col col-md-3"><label for="maletero" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Maletero</font></font></label></div>
+                                        <div class="col-6 col-md-4"><input {{#if propiedadExistente}}value="{{propiedadExistente.maletero}}"{{/if}} {{#if errors}}{{#each errors}}{{#eq field "maletero"}} style=" border-color: #F3AA08 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.maletero}}"{{/if}} {{#if req_campo_usuario_error}}value="{{req_campo_usuario_error}}"{{/if}} type="number" id="maletero" name="maletero" placeholder="Maletero" class="form-control">
+                                        {{#if errors}}
+                                            {{#each errors}}
+                                                {{#eq field "maletero"}}
+                                                    <div style="margin-top: 12px;" class="sufee-alert alert with-close alert-warning alert-dismissible fade show">
+                                                        
+                                                            {{message}}
+                                                        
+                                                    </div>
+                                                {{/eq}}
+                                            {{/each}}
+                                        {{/if}}
+                                        </div>
+                                    </div>
+                                    <div id="campo-n_habitaciones" class="row form-group">
                                         <div class="col col-md-3"><label for="n_habitaciones" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Numero de habitaciones</font></font></label></div>
                                         <div class="col-6 col-md-4"><input {{#if propiedadExistente}}value="{{propiedadExistente.n_habitaciones}}"{{/if}} {{#if errors}}{{#each errors}}{{#eq field "n_habitaciones"}} style=" border-color: #F3AA08 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.n_habitaciones}}"{{/if}} {{#if req_campo_usuario_error}}value="{{req_campo_usuario_error}}"{{/if}} type="text" id="n_habitaciones" name="n_habitaciones" placeholder="Habitaciones" class="form-control">
                                         {{#if errors}}
@@ -231,7 +268,7 @@
                                         {{/if}}
                                         </div>
                                     </div>
-                                    <div class="row form-group">
+                                    <div id="campo-n_banos" class="row form-group">
                                         <div class="col col-md-3"><label for="n_banos" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Numero de baños</font></font></label></div>
                                         <div class="col-6 col-md-4"><input {{#if propiedadExistente}}value="{{propiedadExistente.n_banos}}"{{/if}} {{#if errors}}{{#each errors}}{{#eq field "n_banos"}} style=" border-color: #F3AA08 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.n_banos}}"{{/if}} {{#if req_campo_usuario_error}}value="{{req_campo_usuario_error}}"{{/if}} type="text" id="n_banos" name="n_banos" placeholder="Baños" class="form-control">
                                         {{#if errors}}
@@ -247,7 +284,7 @@
                                         {{/if}}
                                         </div>
                                     </div>
-                                    <div class="row form-group">
+                                    <div id="campo-terreno" class="row form-group">
                                         <div class="col col-md-3"><label for="terreno" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Terreno</font></font></label></div>
                                         <div class="col-6 col-md-4"><input {{#if propiedadExistente}}value="{{propiedadExistente.terreno}}"{{/if}} {{#if errors}}{{#each errors}}{{#eq field "terreno"}} style=" border-color: #F3AA08 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.terreno}}"{{/if}} {{#if req_campo_usuario_error}}value="{{req_campo_usuario_error}}"{{/if}} type="text" id="terreno" name="terreno" placeholder="Terreno" class="form-control">
                                         {{#if errors}}
@@ -263,7 +300,7 @@
                                         {{/if}}
                                         </div>
                                     </div>                                    
-                                    <div class="row form-group">
+                                    <div id="campo-superficie" class="row form-group">
                                         <div class="col col-md-3"><label for="superficie" class=" form-control-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Superficie</font></font></label></div>
                                         <div class="col-6 col-md-4"><input {{#if propiedadExistente}}value="{{propiedadExistente.superficie}}"{{/if}} {{#if errors}}{{#each errors}}{{#eq field "superficie"}} style=" border-color: #F3AA08 !important;" {{/eq}}{{/each}}{{/if}} {{#if datos_formulario}}value="{{datos_formulario.superficie}}"{{/if}} {{#if req_campo_usuario_error}}value="{{req_campo_usuario_error}}"{{/if}} type="text" id="superficie" name="superficie" placeholder="Superficie" class="form-control">
                                         {{#if errors}}
@@ -316,35 +353,60 @@
         const nBanosInput = document.getElementById("n_banos");
         const superficieInput = document.getElementById("superficie");
         const terrenoInput = document.getElementById("terreno");
+        const maleteroInput = document.getElementById("maletero");
+        const estacionamientoInput = document.getElementById("estacionamiento");
+
+        // Obtener referencia a los contenedores (div) de los campos
+        const maleteroDiv = document.getElementById("campo-maletero");
+        const estacionamientoDiv = document.getElementById("campo-estacionamiento");
+        const habitacionesDiv = document.getElementById("campo-n_habitaciones");
+        const banosDiv = document.getElementById("campo-n_banos");
+        const superficieDiv = document.getElementById("campo-superficie");
+        const terrenoDiv = document.getElementById("campo-terreno");
 
         // Obtener referencia al elemento de tipo de propiedad
         const tipoPropiedadSelect = document.getElementById("tipo_propiedad");
 
-        // Función para deshabilitar campos según el tipo de propiedad seleccionado
+        // Función para deshabilitar y ocultar campos según el tipo de propiedad seleccionado
         function deshabilitarCampos() {
             const tipoSeleccionado = tipoPropiedadSelect.value;
 
-            // Restablecer la propiedad "disabled" para todos los campos
-            nHabitacionesInput.disabled = false;
-            nBanosInput.disabled = false;
-            superficieInput.disabled = false;
-            terrenoInput.disabled = false;
+            // Restablecer todos los campos y mostrarlos
+            [nHabitacionesInput, nBanosInput, superficieInput, terrenoInput, maleteroInput, estacionamientoInput].forEach(input => input.disabled = false);
+            [maleteroDiv, estacionamientoDiv, habitacionesDiv, banosDiv, superficieDiv, terrenoDiv].forEach(div => div.style.display = "");
 
-            // Deshabilitar campos según el tipo de propiedad seleccionado
+            // Condiciones específicas para ocultar y deshabilitar campos según el tipo de propiedad
             if (tipoSeleccionado === "T") { // Terreno
                 nHabitacionesInput.disabled = true;
                 nBanosInput.disabled = true;
                 superficieInput.disabled = true;
+                habitacionesDiv.style.display = "none";
+                banosDiv.style.display = "none";
+                superficieDiv.style.display = "none";
             } else if (tipoSeleccionado === "O") { // Oficina
                 nHabitacionesInput.disabled = true;
                 terrenoInput.disabled = true;
+                habitacionesDiv.style.display = "none";
+                terrenoDiv.style.display = "none";
             } else if (tipoSeleccionado === "L") { // Local comercial
                 terrenoInput.disabled = true;
                 nHabitacionesInput.disabled = true;
+                terrenoDiv.style.display = "none";
+                habitacionesDiv.style.display = "none";
             } else if (tipoSeleccionado === "A") { // Apartamento
                 terrenoInput.disabled = true;
+                terrenoDiv.style.display = "none";
             } else if (tipoSeleccionado === "E") { // Edificio
                 terrenoInput.disabled = true;
+                terrenoDiv.style.display = "none";
+            }
+
+            // Ocultar "maletero" y "estacionamiento" si la propiedad no es "Galpón", "Townhouse" o "Penthouse"
+            if (!["G", "H", "P"].includes(tipoSeleccionado)) {
+                maleteroInput.disabled = true;
+                estacionamientoInput.disabled = true;
+                maleteroDiv.style.display = "none";
+                estacionamientoDiv.style.display = "none";
             }
         }
 

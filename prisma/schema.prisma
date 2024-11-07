@@ -42,6 +42,8 @@ model Propiedades {
   venta_renta      String? @db.VarChar(1) @default("V")
   n_habitaciones   Int?    @default(0)
   n_banos          Int?    @default(0)
+  maletero         Int?    @default(0)
+  estacionamiento  Int?    @default(0)
   superficie       Float?  @default(0)
   terreno          Float?  @default(0) 
   tipo_propiedad   String  @db.VarChar(1)

@@ -4,7 +4,8 @@ const router = Router();
 // Controllers
 import { actualizarPropiedadesGET, actualizarPropiedadesPUT, crearPropiedadPOTS, desmarcarExhibicionPOS, eliminarPropiedadDELETE, 
     marcarExhibicionPOS, 
-obtenerPropiedadGET, obtenerPropiedadesApartamentoGET, obtenerPropiedadesCasasGET, obtenerPropiedadesDePropietario, obtenerPropiedadesEdificiosGET, obtenerPropiedadesGET, obtenerPropiedadesLocalComercialGET, obtenerPropiedadesOficinasGET, obtenerPropiedadesTerrenosGET } from '../controllers/propiedades.controller.js';
+obtenerPropiedadGET, obtenerPropiedadesApartamentoGET, obtenerPropiedadesCasasGET, obtenerPropiedadesDePropietario, obtenerPropiedadesEdificiosGET, obtenerPropiedadesGET, obtenerPropiedadesGalponesGET, obtenerPropiedadesLocalComercialGET, obtenerPropiedadesOficinasGET, obtenerPropiedadesPenthousesGET, obtenerPropiedadesTerrenosGET,
+obtenerPropiedadesTownhousesGET} from '../controllers/propiedades.controller.js';
 import { validacion_actualizar_propiedad_propietario } from '../middlewares/validacion_actualizar_propiedad.middleware.js';
 /* router.get('/propiedad/:id', obtenerPropiedadGET); */
 
@@ -33,6 +34,12 @@ router.get('/propiedades/local-comercial', obtenerPropiedadesLocalComercialGET);
 router.get('/propiedades/oficinas', obtenerPropiedadesOficinasGET);
 
 router.get('/propiedades/edificios', obtenerPropiedadesEdificiosGET);
+
+router.get('/propiedades/townhouses', obtenerPropiedadesTownhousesGET);
+
+router.get('/propiedades/penthouses', obtenerPropiedadesPenthousesGET);
+
+router.get('/propiedades/galpones', obtenerPropiedadesGalponesGET);
 
 // Ruta para marcar una propiedad como en exhibición
 router.post('/marcar-en-exhibicion/:id', marcarExhibicionPOS);

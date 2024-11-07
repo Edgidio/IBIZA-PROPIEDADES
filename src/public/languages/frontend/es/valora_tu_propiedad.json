@@ -1,0 +1,224 @@
+{
+    "menu": {
+      "inicio": "Inicio",
+      "venda_su_propiedad": "Venda su propiedad",
+      "valorar_una_propiedad": "Valorar una propiedad",
+      "comprar": "Comprar",
+      "apartamento": "Apartamento",
+      "casa": "Casa",
+      "terreno": "Terreno",
+      "local_comercial": "Local comercial",
+      "oficina": "Oficina",
+      "edificio": "Edificio",
+      "alquilar": "Alquilar",
+      "empresa": "Empresa",
+      "acerca_de": "Acerca de Ibiza propiedades",
+      "contacto": "Contacto"
+    },
+
+    "header": {
+    "titulo": "¿Cuánto vale mi propiedad?"
+  },
+  "progressBar": {
+    "ubicacion": "Ubicación",
+    "propiedad": "Propiedad",
+    "informacion": "Información",
+    "valorar": "Valorar"
+  },
+  "formulario": {
+    "informacionBasica": {
+      "titulo": "Información básica",
+      "ubicacion": {
+        "label": "Ubicación",
+        "placeholder": "Estado, municipio, ciudad o localidad"
+      },
+      "numeroCasa": {
+        "label": "Número de casa",
+        "placeholder": "Número de casa"
+      }
+    },
+    "tipoPropiedad": {
+      "titulo": "Tipo de propiedad",
+      "opciones": {
+        "apartamento": "Apartamento",
+        "casa": "Casa"
+      },
+      "plantaApartamento": {
+        "label": "Planta del apartamento",
+        "placeholder": "Planta del apartamento"
+      },
+      "puertaBloque": {
+        "label": "Puerta / Bloque (opcional)",
+        "placeholder": "Puerta / Bloque"
+      },
+      "superficieConstruida": {
+        "label": "Superficie construida",
+        "placeholder": "Superficie construida"
+      },
+      "areaTerreno": {
+        "label": "Área del terreno",
+        "placeholder": "Tamaño del terreno"
+      }
+    },
+    "detallesPropiedad": {
+      "numHabitaciones": {
+        "label": "Número de habitaciones",
+        "placeholder": "Número de habitaciones"
+      },
+      "numBanios": {
+        "label": "Número de baños",
+        "placeholder": "Número de baños"
+      },
+      "estadoPropiedad": {
+        "label": "Estado de la propiedad",
+        "opciones": {
+          "obraNueva": "Obra nueva",
+          "buenEstado": "Buen estado",
+          "aReformar": "A reformar"
+        }
+      },
+      "caracteristicas": {
+        "titulo": "Seleccione las características",
+        "piscina": "Piscina",
+        "terraza": "Terraza",
+        "garaje": "Garaje"
+      }
+    },
+    "contacto": {
+      "titulo": "¿Cómo podemos contactarle?",
+      "nombre": {
+        "label": "Nombre",
+        "placeholder": "Nombre"
+      },
+      "apellidos": {
+        "label": "Apellidos",
+        "placeholder": "Apellidos"
+      },
+      "correo": {
+        "label": "Correo",
+        "placeholder": "Correo"
+      },
+      "telefono": {
+        "label": "Teléfono",
+        "placeholder": "Número de teléfono"
+      },
+      "cuandoContactar": {
+        "titulo": "¿Cuándo podemos contactarle?",
+        "manana": "Mañana",
+        "tarde": "Tarde",
+        "noche": "Noche"
+      }
+    },
+    "botones": {
+      "anterior": "Anterior",
+      "siguiente": "Siguiente",
+      "enviar": "Enviar"
+    }
+  },
+
+  "section": {
+    "title": "Valoración online de su vivienda con Ibiza propiedades",
+    "description": "¿Quiere vender su propiedad y sacarle el máximo partido? Una valoración correcta de su inmueble es el primer paso para una venta rápida y exitosa.",
+    "link1": {
+      "text": "¿Qué es mejor: la valoración online o la cita presencial?",
+      "href": "#the-online-valuation"
+    },
+    "link2": {
+      "text": "¿Cómo es el proceso de valoración de una vivienda?",
+      "href": "#how-is-the-process"
+    },
+    "link3": {
+      "text": "¿Cuánto cuesta la valoración online por parte de Ibiza propiedades?",
+      "href": "#how-much-does-the-valuation-cost"
+    },
+    "link4": {
+      "text": "Preguntas frecuentes",
+      "href": "#faq"
+    }
+  },
+
+  "heading": "¿Está pensando en alquilar?",
+  "subheading": "Consulte nuestro catálogo de propiedades en alquiler",
+  "button": {
+    "text": "Buscar"
+  },
+
+  "valuation_section": {
+    "heading": "¿Qué es mejor: la valoración online o la cita presencial?",
+    "lead": "Basándose en algunas características de su propiedad, nuestra herramienta de valoración de propiedades online calcula una estimación inicial del precio de su inmueble, comparando datos de miles de propiedades vendidas y ofrecidas. En una valoración detallada in situ realizada por uno de nuestros consultores inmobiliarios, se tienen en cuenta todas las características de la propiedad, lo que no ocurre en una valoración online.",
+    "usefulness": "Una valoración de la vivienda es útil si:",
+    "recommendation_1": "Está pensando en venderla y desea obtener una visión general del mercado.",
+    "recommendation_2": "Si necesita información más concreta y consejo profesional, le recomendamos tener una visita con nuestros consultores expertos.",
+    "advice": "Es aconsejable una valoración del inmueble in situ por parte de un consultor inmobiliario si:",
+    "importance_1": "desea conocer el valor exacto de su vivienda, teniendo en cuenta todas sus características.",
+    "importance_2": "concede gran importancia a la transparencia en la valoración de su inmueble.",
+    "importance_3": "le gustaría que nuestros expertos le proporcionen una estrategia de venta individualizada para conseguir el mejor precio posible para su propiedad."
+  },
+
+  "process_section": {
+    "heading": "¿Cómo es el proceso de valoración de una vivienda?",
+    "steps": {
+      "step_1": {
+        "title": "Descripción del inmueble a valorar",
+        "description": "Nuestra valoración de propiedades online le proporciona una estimación del precio inicial de su propiedad en función de los datos que nos facilite."
+      },
+      "step_2": {
+        "title": "Nos pondremos en contacto con usted tan pronto como sea posible",
+        "description": "Tras la valoración online, nuestros expertos consultores inmobiliarios le contactarán para una visita y atención más personalizada."
+      },
+      "step_3": {
+        "title": "Valoración online sin compromiso",
+        "description": "Nuestros consultores inmobiliarios le ayudarán a calcular el valor de su vivienda de forma transparente y gratuita y, por lo tanto, lo ayudarán a determinar el precio de venta ideal para su propiedad."
+      },
+      "step_4": {
+        "title": "Venderemos su propiedad",
+        "description": "Ibiza propiedades inicia ahora la comercialización de su propiedad. Estaremos encantados de acompañarle en cada paso del proceso de venta y comercialización de su propiedad de forma profesional y siempre de acuerdo con su criterio."
+      }
+    }
+  },
+
+  "valuation_cost": {
+    "heading": "¿Cuánto cuesta la valoración online por parte de Ibiza propiedades?",
+    "lead": "La valoración de la vivienda mediante nuestra herramienta online y la posterior valoración personal por parte de nuestro consultor inmobiliario in situ es totalmente gratuita y sin compromiso para usted. Y lo mejor: en Ibiza propiedades, todas las medidas para la posterior comercialización de su propiedad ya están incluidas en la comisión del consultor. A diferencia de muchos otros proveedores, ¡Usted no paga ninguna tarifa adicional por la creación de visitas virtuales en 3D o exposés!"
+  },
+
+  "faq": {
+    "heading": "PREGUNTAS FRECUENTES",
+    "questions": {
+      "question_one": {
+        "title": "¿Cómo determino el valor de mi propiedad?",
+        "answer": "Básicamente, existen dos formas de determinar el valor de su propiedad: Por un lado, puede obtener la valoración de su vivienda online para obtener una primera evaluación. Además, si quiere algo más personalizado, le ofrecemos la posibilidad de solicitar una tasación de bienes inmuebles con nuestros consultores inmobiliarios expertos en su zona. Simplemente contáctenos para concertar una visita. Ambos servicios son, por supuesto, gratuitos y sin compromiso para usted."
+      },
+      "question_two": {
+        "title": "¿Qué factores influyen en el valor de mi vivienda?",
+        "answer": "Son muchos los factores que influyen en el precio de mercado de una vivienda. Estos incluyen: • La ubicación de la propiedad • El área habitable y el tamaño de la parcela • La fecha de construcción y la condición estructural • Las comodidades de la propiedad (por ejemplo, número de habitaciones, piscina, bodega o terraza en la azotea) • La oferta y demanda en el mercado inmobiliario local."
+      },
+      "question_three": {
+        "title": "¿Qué factores se tienen en cuenta para la valoración online?",
+        "answer": "La valoración online de Ibiza propiedades se basa en los factores más importantes que influyen en el valor de una vivienda: • El tipo de propiedad - ¿es, por ejemplo, una casa para una o dos familias o un condominio? • El área habitable y el tamaño de la propiedad • El año de construcción • La macro-ubicación - el entorno más amplio y la región de su propiedad • La micro-ubicación - el distrito/parte del municipio en el que se encuentra su propiedad."
+      },
+      "question_four": {
+        "title": "¿Cómo de precisa es la valoración online?",
+        "answer": "La valoración de la vivienda online es ideal para que los propietarios obtengan una estimación del precio inicial de su propiedad. Todo lo que necesita hacer es ingresar cierta información básica, como la ubicación y el tipo de propiedad. Nuestra valoración online analiza estos datos y los compara con una selección de propiedades comparables y los complementa con información del mercado local. Luego, el algoritmo calcula el rango de valor de mercado de su inmueble a partir de estos datos. El valor indicado en nuestra valoración online no es, por tanto, un valor medio para las propiedades en su ubicación. Siempre se basa en las características individuales de su propiedad."
+      },
+      "question_five": {
+        "title": "¿Cómo puedo aumentar el valor de mi inmueble?",
+        "answer": "Puede tomar una serie de medidas para aumentar el valor de su propiedad antes de la venta. Estas incluyen: • Trabajos de renovación que mejorarán estéticamente la apariencia de la propiedad (por ejemplo, empapelado, colocación de alfombras, renovación de las fachadas exteriores, etc.). Por lo general, es más fácil encontrar un comprador si la propiedad está bien cuidada. • Medidas de renovación relacionadas con la energía (por ejemplo, instalación de nuevas ventanas, sistemas de calefacción, etc.). Cuanto más moderna y eficiente es una propiedad, mayor será su valor. • Cree espacio habitable: convierta el ático o cree espacio habitable adicional en el sótano. Las salas especiales, como un estudio o un cine en casa, no solo son exclusivas, sino que son aspectos destacados para los compradores potenciales. • Instale un sistema de seguridad: invierta en protección contra intrusos, un sistema de alarma, sensores de luz o medidas de seguridad similares. • Cree un entorno sin barreras: agrande las puertas o instale un salvaescaleras. Esto le permite llegar a un grupo objetivo más amplio y mejora la valoración."
+      }
+    }
+  },
+
+  "footer": {
+    "about_us": "SOBRE IBIZA PROPIEDADES",
+    "about_us_description": "Nuestro compromiso es premiar su confianza.",
+    "navigation": "NAVEGACIÓN",
+    "nav_home": "Inicio",
+    "nav_sell_property": "Venda su propiedad",
+    "nav_about_us": "Acerca de ibiza propiedades",
+    "nav_contact": "Contacto",
+    "follow_us": "SÍGANOS",
+    "instagram": "https://www.instagram.com/ibizapropiedades/",
+    "derechos_reservados": "Todos los derechos reservados. Prohibida la reproducción total o parcial de cualquier contenido sin el permiso expreso por escrito de PEVITE Tecnología."
+  }
+  }
+  
