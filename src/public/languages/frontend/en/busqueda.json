@@ -11,6 +11,9 @@
       "oficina": "Office",
       "edificio": "Building",
       "alquilar": "Rent",
+      "galpon": "Warehouse",
+      "townhouse": "Townhouse",
+      "penthouse": "Penthouse",
       "empresa": "Company -",
       "acerca_de": "About Ibiza propiedades",
       "contacto": "Contact"

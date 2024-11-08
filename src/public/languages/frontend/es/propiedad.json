@@ -10,6 +10,9 @@
       "local_comercial": "Local comercial",
       "oficina": "Oficina",
       "edificio": "Edificio",
+      "galpon": "Galpon",
+      "townhouse": "Townhouse",
+      "penthouse": "Penthouse",
       "alquilar": "Alquilar",
       "empresa": "Empresa",
       "acerca_de_ibiza_propiedades": "Acerca de Ibiza propiedades",
@@ -43,7 +46,9 @@
     "banos": "Baños",
     "habitaciones": "Habitaciones",
     "terreno": "Terreno",
-    "superficie": "Superficie"
+    "superficie": "Superficie",
+    "maletero": "Maletero",
+    "estacionamiento": "Estacionamiento"
   },
     "footer": {
     "sobre_ibiza": "SOBRE IBIZA PROPIEDADES",

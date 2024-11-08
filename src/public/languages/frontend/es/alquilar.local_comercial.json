@@ -9,7 +9,11 @@
       "land": "Terreno",
       "commercial_space": "Local comercial",
       "office": "Oficina",
+      "galpon": "Galpon",
+      "townhouse": "Townhouse",
+      "penthouse": "Penthouse",
       "building": "Edificio",
+      "empresa": "Empresa",
       "rent": "Alquilar",
       "about_us": "Acerca de Ibiza propiedades",
       "contact": "Contacto"
