@@ -20,7 +20,7 @@ const storage = multer.diskStorage({
     }
   });
   
-  const upload = multer({ storage: storage });
+export const upload = multer({ storage: storage });
 
 // Middlewares
 import { validate_crear_propietario } from "../middlewares/validacion_crear_propietario.middleware.js";

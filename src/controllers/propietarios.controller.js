@@ -4,6 +4,7 @@ import {__dirname} from '../app.js'
 import sizeOf from 'image-size';
 import path from 'path';
 import fs from 'fs-extra';
+import { procesarImagen } from "../utils/procesar-imagenes.utils.js";
 
 const db = new PrismaClient();
 
@@ -242,199 +243,6 @@ export const crearPropietarioPropiedadGET = async (req, res) => {
 
 };
 
-/* export const crearPropietarioPropiedadPOST = async (req, res) => {
-    try {
-
-
-        const { tipo_propiedad, venta_renta, descripcion, detalles, estado, ubicacion, precio, n_habitaciones, n_banos, terreno, superficie } = req.body;
-        const cedula_propietario = req.session.data_propietario.cedula;
-        const userId = req.user.id;
-        const files = req.files;
-
-        const isImagenValida = (filePath) => {
-
-          try {
-
-            const dimensions = sizeOf(filePath);
-            return dimensions.width && dimensions.height;
-
-          } catch (error) {
-
-            return false;
-
-          }
-        };
-
-
-    
-        // Verifica si se han proporcionado archivos
-        if (!files || files.length === 0) {
-          // Informacion para la navegacion necesaria    
-            const Inicios_de_sesiones = await db.log_sesiones.findMany({
-              where: {
-                  visto: false
-              }
-          });
-
-          const N_inicios = await db.log_sesiones.count({
-                  where: {
-                  visto: false,
-                  },
-              });
-
-          const Correos = await db.correos_ibiza.findMany({
-              where: {
-                  visto: false
-              }
-            });
-          
-          const N_correos = await db.correos_ibiza.count({
-              where: {
-              visto: false,
-              },
-          });
-          // FIN Informacion para la navegacion necesaria 
-    
-          return res.render("partials/dashboard/crear-propietario-propiedad", {
-            Titulo: "Ibiza Prop | Crear propiedad",
-            N_inicios,
-            rutaIF: "Backend",
-            Correos,
-            N_correos,
-            Inicios_de_sesiones: Inicios_de_sesiones,
-            datos_formulario: { tipo_propiedad, venta_renta, descripcion, detalles, estado, ubicacion, precio, n_habitaciones, n_banos, terreno, superficie, foto: "No ha seleccionado ninguna imagen para la propiedad" }
-          });
-        }
-    
-        const processImage = async (file) => {
-          const imagePath = path.join(__dirname, `public/images/uploads/propiedades/original/${file.filename}`);
-        
-          if (isImagenValida(imagePath)) {
-
-            const dimensions = sizeOf(imagePath);
-            const imagenGrande = path.join(__dirname, `public/images/uploads/propiedades/large/${file.filename}`);
-            const imagenMediana = path.join(__dirname, `public/images/uploads/propiedades/medium/${file.filename}`);
-            const imagenPequena = path.join(__dirname, `public/images/uploads/propiedades/small/${file.filename}`);
-        
-            try {
-              // Desactiva el caché para cerrar el recurso después de su uso
-              sharp.cache(false);
-        
-              await sharp(file.path).resize(800, 600).toFile(imagenGrande);
-              await sharp(file.path).resize(400, 300).toFile(imagenMediana);
-              await sharp(file.path).resize(200, 150).toFile(imagenPequena);
-
-            } catch (sharpError) {
-              return false;
-            } finally {
-              // Reactiva el caché después de su uso
-              sharp.cache(true);
-            }
-        
-            return true;
-
-          } else {
-            return false;
-          }
-        };
-    
-        // Procesar y guardar imágenes en diferentes tamaños
-        for (const file of files) {
-
-          const imageProcessed = await processImage(file);
-    
-          if (!imageProcessed) {
-
-          // Informacion para la navegacion necesaria    
-            const Inicios_de_sesiones = await db.log_sesiones.findMany({
-              where: {
-                  visto: false
-              }
-          });
-
-          const N_inicios = await db.log_sesiones.count({
-                  where: {
-                  visto: false,
-                  },
-              });
-
-          const Correos = await db.correos_ibiza.findMany({
-              where: {
-                  visto: false
-              }
-            });
-          
-          const N_correos = await db.correos_ibiza.count({
-              where: {
-              visto: false,
-              },
-          });
-          // FIN Informacion para la navegacion necesaria 
-    
-            return res.render("partials/dashboard/crear-propietario-propiedad", {
-              Titulo: "Ibiza Prop | Crear propiedad",
-              N_inicios,
-              ruta: "/usuarios",
-              rutaIF: "Backend",
-              Inicios_de_sesiones: Inicios_de_sesiones,
-              Correos,
-              N_correos,
-              datos_formulario: { tipo_propiedad, venta_renta, descripcion, detalles, estado, ubicacion, precio, n_habitaciones, n_banos, terreno, superficie, foto: "Por favor, selecciona archivos de imagen válidos." }
-            });
-          }
-        }
-    
-        // Guardar la información principal en la base de datos
-        const propiedad = await db.propiedades.create({
-          data: {
-            usuarioId: userId,
-            id_propietario: cedula_propietario,
-            tipo_propiedad,
-            venta_renta,
-            descripcion,
-            detalles,
-            ubicacion,
-            estado: estado,
-            usuarioId: userId,
-            precio: parseFloat(precio) || 0,
-            n_habitaciones: parseFloat(n_habitaciones) || 0,
-            n_banos: parseFloat(n_banos) || 0,
-            terreno: parseFloat(terreno) || 0,
-            superficie: parseFloat(superficie) || 0,
-          },
-        });
-    
-        const img_propiedad = await db.propiedades_img.create({
-          data: {
-            id_propiedad: propiedad.id,
-            rutas: req.files.map(file => file.filename),
-          },
-        });
-    
-        req.flash('propiedadC', "propietario creado satisfactoriamente");
-
-        // Elimina la propiedad específica de la sesión
-        delete req.session.data_propietario;
-    
-        return res.redirect("/admin-ibizapropiedades-dashboard/propietario-crear");
-
-
-      } catch (error) {
-        // Manejo de errores y redirección en caso de problemas
-        await db.log_sistema.create({
-          data: {
-              controlador: "crearPropietarioPropiedadPOST",
-              error: error.toString()
-          },
-        });
-
-        req.flash('error_controlador', 'Hubo un problema al procesar su solicitud. Por favor, inténtelo de nuevo más tarde o cominiquese con su desarrollador');
-
-        return res.redirect("/admin-ibizapropiedades-dashboard/propietario-crear");   
-      }
-     
-}; */
-
 export const crearPropietarioPropiedadPOST = async (req, res) => {
   try {
     const { tipo_propiedad, venta_renta, descripcion, detalles, estado, ubicacion, precio, n_habitaciones, n_banos, terreno, superficie } = req.body;
@@ -612,216 +420,12 @@ export const crearPropietarioPropiedadPOST = async (req, res) => {
   }
 };
 
-/* export const crearPropiedadPOST = async (req, res) => {
-  try {
-
-      const { id ,tipo_propiedad, venta_renta, descripcion, detalles, estado, ubicacion, precio, n_habitaciones, n_banos, terreno, superficie } = req.body;
-      
-      const userId = req.user.id;
-      
-      const files = req.files;
-
-      const isImagenValida = (filePath) => {
-
-        try {
-
-          const dimensions = sizeOf(filePath);
-          return dimensions.width && dimensions.height;
-
-        } catch (error) {
-
-          return false;
-
-        }
-      };
-
-
-  
-      // Verifica si se han proporcionado archivos
-      if (!files || files.length === 0) {
-        // Informacion para la navegacion necesaria    
-          const Inicios_de_sesiones = await db.log_sesiones.findMany({
-            where: {
-                visto: false
-            }
-        });
-
-        const N_inicios = await db.log_sesiones.count({
-                where: {
-                visto: false,
-                },
-            });
-
-        const Correos = await db.correos_ibiza.findMany({
-            where: {
-                visto: false
-            }
-          });
-        
-        const N_correos = await db.correos_ibiza.count({
-            where: {
-            visto: false,
-            },
-        });
-        // FIN Informacion para la navegacion necesaria 
-  
-        return res.render("partials/dashboard/anadir_propiedad", {
-          Titulo: "Ibiza Prop | Añadir propiedad",
-          N_inicios,
-          rutaIF: "Backend",
-          Correos,
-          N_correos,
-          Inicios_de_sesiones: Inicios_de_sesiones,
-          datos_formulario: { id, tipo_propiedad, venta_renta, descripcion, detalles, estado, ubicacion, precio, n_habitaciones, n_banos, terreno, superficie, foto: "No ha seleccionado ninguna imagen para la propiedad" }
-        });
-      }
-  
-      const processImage = async (file) => {
-        const imagePath = path.join(__dirname, `public/images/uploads/propiedades/original/${file.filename}`);
-      
-        if (isImagenValida(imagePath)) {
-
-          const dimensions = sizeOf(imagePath);
-          const imagenGrande = path.join(__dirname, `public/images/uploads/propiedades/large/${file.filename}`);
-          const imagenMediana = path.join(__dirname, `public/images/uploads/propiedades/medium/${file.filename}`);
-          const imagenPequena = path.join(__dirname, `public/images/uploads/propiedades/small/${file.filename}`);
-      
-          try {
-            // Desactiva el caché para cerrar el recurso después de su uso
-            sharp.cache(false);
-      
-            await sharp(file.path).resize(800, 600).toFile(imagenGrande);
-            await sharp(file.path).resize(400, 300).toFile(imagenMediana);
-            await sharp(file.path).resize(200, 150).toFile(imagenPequena);
-
-          } catch (sharpError) {
-            return false;
-          } finally {
-            // Reactiva el caché después de su uso
-            sharp.cache(true);
-          }
-      
-          return true;
-
-        } else {
-          return false;
-        }
-      };
-  
-      // Procesar y guardar imágenes en diferentes tamaños
-      for (const file of files) {
-
-        const imageProcessed = await processImage(file);
-  
-        if (!imageProcessed) {
-
-        // Informacion para la navegacion necesaria    
-          const Inicios_de_sesiones = await db.log_sesiones.findMany({
-            where: {
-                visto: false
-            }
-        });
-
-        const N_inicios = await db.log_sesiones.count({
-                where: {
-                visto: false,
-                },
-            });
-
-        const Correos = await db.correos_ibiza.findMany({
-            where: {
-                visto: false
-            }
-          });
-        
-        const N_correos = await db.correos_ibiza.count({
-            where: {
-            visto: false,
-            },
-        });
-        // FIN Informacion para la navegacion necesaria 
-  
-          return res.render("partials/dashboard/anadir_propiedad", {
-            Titulo: "Ibiza Prop | Añadir propiedad",
-            N_inicios,
-            ruta: "/usuarios",
-            rutaIF: "Backend",
-            Inicios_de_sesiones: Inicios_de_sesiones,
-            Correos,
-            N_correos,
-            datos_formulario: { id, tipo_propiedad, venta_renta, descripcion, detalles, estado, ubicacion, precio, n_habitaciones, n_banos, terreno, superficie, foto: "Por favor, selecciona archivos de imagen válidos." }
-          });
-        }
-      }
-  
-      // Guardar la información principal en la base de datos
-      const propiedad = await db.propiedades.create({
-        data: {
-          usuarioId: userId,
-          id_propietario: parseInt(id),
-          tipo_propiedad,
-          venta_renta,
-          descripcion,
-          detalles,
-          ubicacion,
-          estado: estado,
-          usuarioId: userId,
-          precio: parseFloat(precio) || 0,
-          n_habitaciones: parseFloat(n_habitaciones) || 0,
-          n_banos: parseFloat(n_banos) || 0,
-          terreno: parseFloat(terreno) || 0,
-          superficie: parseFloat(superficie) || 0,
-        },
-      });
-  
-      const img_propiedad = await db.propiedades_img.create({
-        data: {
-          id_propiedad: propiedad.id,
-          rutas: req.files.map(file => file.filename),
-        },
-      });
-  
-      req.flash('propiedadC', "propietario creado satisfactoriamente");
-
-      // Elimina la propiedad específica de la sesión
-      delete req.session.data_propietario;
-  
-      return res.redirect("/admin-ibizapropiedades-dashboard/propietario-crear");
-
-
-    } catch (error) {
-
-      console.log(error)
-
-      // Manejo de errores y redirección en caso de problemas
-      await db.log_sistema.create({
-        data: {
-            controlador: "crearPropietarioPropiedadPOST",
-            error: error.toString()
-        },
-      });
-
-      req.flash('error_controlador', 'Hubo un problema al procesar su solicitud. Por favor, inténtelo de nuevo más tarde o cominiquese con su desarrollador');
-
-      return res.redirect("/admin-ibizapropiedades-dashboard/propietario-crear");   
-    }
-   
-}; */
-
 export const crearPropiedadPOST = async (req, res) => {
   try {
     const { id, tipo_propiedad, venta_renta, descripcion, detalles, estado, ubicacion, precio, n_habitaciones, n_banos, terreno, superficie, maletero, estacionamiento } = req.body;
+    
     const userId = req.user.id;
     const files = req.files;
-
-    const isImagenValida = (filePath) => {
-      try {
-        const dimensions = sizeOf(filePath);
-        return dimensions.width && dimensions.height;
-      } catch (error) {
-        return false;
-      }
-    };
 
     // Verifica si se han proporcionado archivos
     if (!files || files.length === 0) {
@@ -861,96 +465,45 @@ export const crearPropiedadPOST = async (req, res) => {
       });
     }
 
-    const processImage = async (file) => {
-      const imagePath = path.join(__dirname, `public/images/uploads/propiedades/original/${file.filename}`);
+    const outputPath = path.join(__dirname, 'public/images/uploads/propiedades');
 
-      if (isImagenValida(imagePath)) {
-
-        const dimensions = sizeOf(imagePath);
-        const imagenGrande = path.join(__dirname, `public/images/uploads/propiedades/large/${file.filename}`);
-        const imagenMediana = path.join(__dirname, `public/images/uploads/propiedades/medium/${file.filename}`);
-        const imagenPequena = path.join(__dirname, `public/images/uploads/propiedades/small/${file.filename}`);
-
-        try {
-          await new Promise((resolve, reject) => {
-            gm(file.path)
-              .resize(800, 600)
-              .write(imagenGrande, (err) => {
-                if (err) reject(err);
-                resolve();
-              });
-          });
-
-          await new Promise((resolve, reject) => {
-            gm(file.path)
-              .resize(400, 300)
-              .write(imagenMediana, (err) => {
-                if (err) reject(err);
-                resolve();
-              });
-          });
-
-          await new Promise((resolve, reject) => {
-            gm(file.path)
-              .resize(200, 150)
-              .write(imagenPequena, (err) => {
-                if (err) reject(err);
-                resolve();
-              });
-          });
-
-        } catch (gmError) {
-          return false;
-        }
-
-        return true;
-
-      } else {
-        return false;
-      }
-    };
-
-    // Procesar y guardar imágenes en diferentes tamaños
     for (const file of files) {
-
-      const imageProcessed = await processImage(file);
-
-      if (!imageProcessed) {
+      const procesada = await procesarImagen(file, outputPath);
+      if (!procesada) {
         // Informacion para la navegacion necesaria    
-        const Inicios_de_sesiones = await db.log_sesiones.findMany({
-          where: {
-            visto: false
-          }
-        });
+      const Inicios_de_sesiones = await db.log_sesiones.findMany({
+        where: {
+          visto: false
+        }
+      });
 
-        const N_inicios = await db.log_sesiones.count({
-          where: {
-            visto: false,
-          },
-        });
+      const N_inicios = await db.log_sesiones.count({
+        where: {
+          visto: false,
+        },
+      });
 
-        const Correos = await db.correos_ibiza.findMany({
-          where: {
-            visto: false
-          }
-        });
+      const Correos = await db.correos_ibiza.findMany({
+        where: {
+          visto: false
+        }
+      });
 
-        const N_correos = await db.correos_ibiza.count({
-          where: {
-            visto: false,
-          },
-        });
+      const N_correos = await db.correos_ibiza.count({
+        where: {
+          visto: false,
+        },
+      });
 
-        return res.render("partials/dashboard/anadir_propiedad", {
-          Titulo: "Ibiza Prop | Añadir propiedad",
-          N_inicios,
-          ruta: "/usuarios",
-          rutaIF: "Backend",
-          Inicios_de_sesiones: Inicios_de_sesiones,
-          Correos,
-          N_correos,
-          datos_formulario: { id, tipo_propiedad, venta_renta, descripcion, detalles, estado, ubicacion, precio, n_habitaciones, n_banos, terreno, superficie,maletero, estacionamiento , foto: "Por favor, selecciona archivos de imagen válidos." }
-        });
+      return res.render("partials/dashboard/anadir_propiedad", {
+        Titulo: "Ibiza Prop | Añadir propiedad",
+        N_inicios,
+        rutaIF: "Backend",
+        Correos,
+        N_correos,
+        Inicios_de_sesiones: Inicios_de_sesiones,
+        datos_formulario: { id, tipo_propiedad, venta_renta, descripcion, detalles, estado, ubicacion, precio, n_habitaciones, n_banos, terreno, superficie, maletero, estacionamiento, foto: "El archivo no es una imagen valida" }
+      });
       }
     }
 

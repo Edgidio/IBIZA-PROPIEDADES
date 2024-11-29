@@ -68,6 +68,8 @@ const actualizar_propiedad_propietarioSchema = Joi.object({
     'string.max': 'El tipo de propiedad no puede tener más de {#limit} caracteres.',
   }),
 
+  fotos: Joi.any().optional().meta({ type: 'file' })
+
 });
 
 export { actualizar_propiedad_propietarioSchema };

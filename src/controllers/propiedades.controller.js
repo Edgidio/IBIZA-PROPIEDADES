@@ -1,9 +1,10 @@
 import {PrismaClient} from "@prisma/client"
 const db = new PrismaClient();
 
-import path from 'path';
-import fs from 'fs-extra';
-import {__dirname} from '../app.js'
+import { actualizarPropiedadEnDB } from '../utils/actualizar-datos-propiedad.utils.js';
+
+
+import {eliminarImagenes} from "../utils/eliminar-imagenes-propiedad.utils.js"
 
 export const obtenerPropiedadGET = async (req, res) => {
   
@@ -210,42 +211,10 @@ export const eliminarPropiedadDELETE = async (req, res) => {
       return res.redirect("/admin-ibizapropiedades-dashboard")
     }
 
-    // Define las carpetas de imágenes
-    const carpetasImagenes = [
-      '/images/uploads/propiedades/large/',
-      '/images/uploads/propiedades/medium/',
-      '/images/uploads/propiedades/original/',
-      '/images/uploads/propiedades/small/',
-    ];
+    const resultado = await eliminarImagenes(propiedadExistente.fotos);
 
-    // Elimina las imágenes asociadas a la propiedad
-    for (const imagen of propiedadExistente.fotos) {
-      for (const carpetaImagenes of carpetasImagenes) {
-        if (Array.isArray(imagen.rutas)) {
-          for (const ruta of imagen.rutas) {
-            const rutaCompleta = path.join(__dirname, 'public', carpetaImagenes, ruta);
-            try {
-              
-              await fs.unlink(rutaCompleta);
-              
-            } catch (error) {
-              return false
-            }
-          }
-        } else {
-          const rutas = imagen.rutas.split(',');
-          for (const ruta of rutas) {
-            const rutaCompleta = path.join(__dirname, 'public', carpetaImagenes, ruta);
-            try {
-              
-              await fs.unlink(rutaCompleta);
-              
-            } catch (error) {
-              return false
-            }
-          }
-        }
-      }
+    if (!resultado) {
+      return res.status(500).send("Error al eliminar imágenes");
     }
 
     // Elimina la relación con las imágenes antes de eliminar la propiedad
@@ -295,6 +264,8 @@ export const eliminarPropiedadDELETE = async (req, res) => {
         default:
             tipo_propiedad_c = '/admin-ibizapropiedades-dashboard/';
       }
+      
+      console.log("funciomno")
 
       req.flash("delete_propiedad", "La propiedad ha sido eliminada con éxito.")
   
@@ -393,49 +364,36 @@ export const actualizarPropiedadesGET = async (req, res) => {
 };
 
 export const actualizarPropiedadesPUT = async (req, res) => {
-
-  console.log("ACTUALZIAR LLEGO")
   
     try {
 
-      const propiedadId = parseInt(req.params.id); 
+      const propiedadId = parseInt(req.params.id);
+      const files = req.files;
       
       // Extrae los campos que se pueden actualizar del cuerpo de la solicitud
       const { descripcion, detalles, ubicacion, precio, n_habitaciones, n_banos, superficie, terreno, tipo_propiedad, vendida, venta_renta, estado, maletero, estacionamiento } = req.body;
 
-      const propiedadExistente = await db.propiedades.findUnique({
-        where: {
-          id: propiedadId,
-        },
-      });
-  
-      if (!propiedadExistente) {
-        return res.status(404).json({ error: 'Propiedad no encontrada' });
-      }
-  
-      // Actualiza la propiedad con los campos proporcionados
-      const propiedadActualizada = await db.propiedades.update({
-        where: {
-          id: propiedadId,
-        },
-        data: {
-          descripcion,
-          detalles,
-          ubicacion,
-          precio: isNaN(parseFloat(precio)) ? null : parseFloat(precio),
-          venta_renta,
-          n_habitaciones: isNaN(parseInt(n_habitaciones)) ? null : parseInt(n_habitaciones),
-          n_banos: isNaN(parseInt(n_banos)) ? null : parseInt(n_banos),
-          superficie: isNaN(parseFloat(superficie)) ? null : parseFloat(superficie),
-          terreno: isNaN(parseFloat(terreno)) ? null : parseFloat(terreno),
-          tipo_propiedad,
-          vendida,
-          maletero: parseFloat(maletero) || 0,
-          estacionamiento: parseFloat(estacionamiento) || 0,   
-        },
-      });
+      // Construye los datos para actualizar
+      const datosActualizados = {
+        descripcion,
+        detalles,
+        ubicacion,
+        precio: isNaN(parseFloat(precio)) ? null : parseFloat(precio),
+        venta_renta,
+        n_habitaciones: isNaN(parseInt(n_habitaciones)) ? null : parseInt(n_habitaciones),
+        n_banos: isNaN(parseInt(n_banos)) ? null : parseInt(n_banos),
+        superficie: isNaN(parseFloat(superficie)) ? null : parseFloat(superficie),
+        terreno: isNaN(parseFloat(terreno)) ? null : parseFloat(terreno),
+        tipo_propiedad,
+        vendida,
+        maletero: parseFloat(maletero) || 0,
+        estacionamiento: parseFloat(estacionamiento) || 0,
+      };
 
-      let tipo_propiedad_c = propiedadExistente.tipo_propiedad
+      // Llama a la función para actualizar
+      const propiedadActualizada = await actualizarPropiedadEnDB(propiedadId, datosActualizados, files);
+      
+      let tipo_propiedad_c = propiedadActualizada.tipo_propiedad
 
       switch (tipo_propiedad_c) {
         case 'C':
@@ -483,9 +441,10 @@ export const actualizarPropiedadesPUT = async (req, res) => {
           },
       });
 
+      console.log(error)
+
       req.flash('error_controlador', 'Hubo un problema al procesar su solicitud. Por favor, inténtelo de nuevo más tarde o cominiquese con su desarrollador');
 
-      return res.redirect(`/admin-ibizapropiedades-dashboard/propiedades/${tipo_propiedad_c}`)     
 
 
     }

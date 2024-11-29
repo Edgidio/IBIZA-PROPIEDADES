@@ -2,12 +2,14 @@ import { Router } from 'express';
 const router = Router();
 
 // Controllers
-import { actualizarPropiedadesGET, actualizarPropiedadesPUT, crearPropiedadPOTS, desmarcarExhibicionPOS, eliminarPropiedadDELETE, 
-    marcarExhibicionPOS, 
+import { actualizarPropiedadesGET, actualizarPropiedadesPUT, crearPropiedadPOTS, desmarcarExhibicionPOS, eliminarPropiedadDELETE,marcarExhibicionPOS, 
 obtenerPropiedadGET, obtenerPropiedadesApartamentoGET, obtenerPropiedadesCasasGET, obtenerPropiedadesDePropietario, obtenerPropiedadesEdificiosGET, obtenerPropiedadesGET, obtenerPropiedadesGalponesGET, obtenerPropiedadesLocalComercialGET, obtenerPropiedadesOficinasGET, obtenerPropiedadesPenthousesGET, obtenerPropiedadesTerrenosGET,
 obtenerPropiedadesTownhousesGET} from '../controllers/propiedades.controller.js';
+
 import { validacion_actualizar_propiedad_propietario } from '../middlewares/validacion_actualizar_propiedad.middleware.js';
-/* router.get('/propiedad/:id', obtenerPropiedadGET); */
+
+import { upload } from './propietarios.routes.js';
+
 
 router.get('/propiedades-propietario/:id_propietario', obtenerPropiedadesDePropietario);  
 
@@ -21,7 +23,7 @@ router.post('/propiedad/:id', eliminarPropiedadDELETE);
 
 router.get('/propiedad/actualizar/:id', actualizarPropiedadesGET);
 
-router.post('/propiedades/actualizar/:id', validacion_actualizar_propiedad_propietario , actualizarPropiedadesPUT);
+router.post('/propiedades/actualizar/:id', upload.array('fotos', 12), validacion_actualizar_propiedad_propietario , actualizarPropiedadesPUT);
 
 router.get('/propiedades/casas', obtenerPropiedadesCasasGET);
 
