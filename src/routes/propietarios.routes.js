@@ -8,6 +8,7 @@ import path from 'path';
 import fs from 'fs-extra';
 import multer from 'multer';
 import { v4 as uuidv4 } from 'uuid'; // Importa la función v4 de uuid
+
 // Configuración de Multer
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -20,7 +21,11 @@ const storage = multer.diskStorage({
     }
   });
   
-export const upload = multer({ storage: storage });
+export const upload = multer(
+  { 
+    storage: storage
+  }
+);
 
 // Middlewares
 import { validate_crear_propietario } from "../middlewares/validacion_crear_propietario.middleware.js";

@@ -369,10 +369,51 @@ export const actualizarPropiedadesPUT = async (req, res) => {
 
       const propiedadId = parseInt(req.params.id);
       const files = req.files;
-      
-      // Extrae los campos que se pueden actualizar del cuerpo de la solicitud
-      const { descripcion, detalles, ubicacion, precio, n_habitaciones, n_banos, superficie, terreno, tipo_propiedad, vendida, venta_renta, estado, maletero, estacionamiento } = req.body;
 
+      // Extrae los campos que se pueden actualizar del cuerpo de la solicitud
+      const { id, descripcion, detalles, ubicacion, precio, n_habitaciones, n_banos, superficie, terreno, tipo_propiedad, vendida, venta_renta, estado, maletero, estacionamiento } = req.body;
+
+
+      // Validación de cada archivo para asegurarnos de que es una imagen
+      for (const file of files) {
+        if (!file.mimetype.startsWith('image/')) {
+                // Informacion para la navegacion necesaria    
+      const Inicios_de_sesiones = await db.log_sesiones.findMany({
+        where: {
+          visto: false
+        }
+      });
+
+      const N_inicios = await db.log_sesiones.count({
+        where: {
+          visto: false,
+        },
+      });
+
+      const Correos = await db.correos_ibiza.findMany({
+        where: {
+          visto: false
+        }
+      });
+
+      const N_correos = await db.correos_ibiza.count({
+        where: {
+          visto: false,
+        },
+      });
+
+      return res.render("partials/dashboard/propiedad-actualizar", {
+        Titulo: "Ibiza Prop | Añadir propiedad",
+        N_inicios,
+        rutaIF: "Backend",
+        Correos,
+        N_correos,
+        Inicios_de_sesiones: Inicios_de_sesiones,
+        datos_formulario: {id, tipo_propiedad, venta_renta, descripcion, detalles, estado, ubicacion, precio, n_habitaciones, n_banos, terreno, superficie, maletero, estacionamiento, foto: `El archivo ${file.originalname} no es una imagen válida.` }
+      });
+        }
+      }
+      
       // Construye los datos para actualizar
       const datosActualizados = {
         descripcion,
